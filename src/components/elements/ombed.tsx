@@ -17,7 +17,7 @@ const Oembed = ({url, ...props}: Props) => {
   const {isIntersecting, ref} = useIntersectionObserver({freezeOnceVisible: true})
   return (
     <div {...props} ref={ref} className={twMerge("relative aspect-[16/9] w-full", props.className)}>
-      {/* @ts-ignore */}
+      {/* @ts-expect-error React types don't match with the library. */}
       {isIntersecting && <Embed url={url} LoadingFallbackElement={<Loading />} />}
     </div>
   )

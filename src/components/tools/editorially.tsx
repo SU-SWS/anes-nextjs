@@ -6,7 +6,7 @@ import {useEffect} from "react"
 const Editori11y = () => {
   const startEditoria11y = () => {
     if (typeof Ed11y != "undefined") {
-      // @ts-ignore
+      // @ts-expect-error Ed11y is a global class provided by the external library.
       new Ed11y({
         checkRoots: "#main-content",
         ignoreElements: "nav *, .ed11y-ignore",

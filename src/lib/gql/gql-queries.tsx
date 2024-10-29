@@ -39,7 +39,7 @@ export const getEntityFromPath = async <T extends NodeUnion>(
         })
       } catch (e) {
         if (e instanceof ClientError) {
-          // @ts-ignore
+          // @ts-expect-error Client error type doesn't define the debugMessage, but it's there.
           const messages = e.response.errors?.map((error: DrupalGraphqlError) => error.debugMessage || error.message)
           console.warn([...new Set(messages)].join(" "))
         } else {
