@@ -40,7 +40,7 @@ const ListParagraph = async ({paragraph, ...props}: Props) => {
       className={twMerge("centered mb-20 flex flex-col gap-10 xl:max-w-[980px]", props.className)}
       aria-labelledby={ListWrapper === "section" ? paragraph.id : undefined}
     >
-      {behaviors.list_paragraph?.heading_behavior !== "remove" && (
+      {paragraph.suListHeadline && behaviors.list_paragraph?.heading_behavior !== "remove" && (
         <H2
           id={paragraph.id}
           className={twMerge("text-center", behaviors.list_paragraph?.heading_behavior === "hide" && "sr-only")}

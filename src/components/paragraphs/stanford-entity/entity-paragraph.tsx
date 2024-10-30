@@ -28,7 +28,7 @@ const EntityParagraph = async ({paragraph, ...props}: Props) => {
       className={twMerge("centered mb-20 flex flex-col gap-10 xl:max-w-[980px]", props.className)}
       aria-labelledby={EntityWrapper === "section" ? paragraph.id : undefined}
     >
-      {behaviors.stanford_teaser?.heading_behavior !== "remove" && (
+      {paragraph.suEntityHeadline && behaviors.stanford_teaser?.heading_behavior !== "remove" && (
         <H2
           id={paragraph.id}
           className={twMerge(
