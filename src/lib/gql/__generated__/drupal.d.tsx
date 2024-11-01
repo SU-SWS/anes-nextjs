@@ -1190,6 +1190,7 @@ export type NodeStanfordEventSeriesSuEventSeriesComponentsUnion =
   | ParagraphStanfordBanner
   | ParagraphStanfordCard
   | ParagraphStanfordEntity
+  | ParagraphStanfordFaq
   | ParagraphStanfordGallery
   | ParagraphStanfordLayout
   | ParagraphStanfordList
@@ -1202,6 +1203,7 @@ export type NodeStanfordEventSuEventComponentsUnion =
   | ParagraphStanfordBanner
   | ParagraphStanfordCard
   | ParagraphStanfordEntity
+  | ParagraphStanfordFaq
   | ParagraphStanfordGallery
   | ParagraphStanfordLayout
   | ParagraphStanfordList
@@ -1305,6 +1307,7 @@ export type NodeStanfordNewsSuNewsComponentsUnion =
   | ParagraphStanfordBanner
   | ParagraphStanfordCard
   | ParagraphStanfordEntity
+  | ParagraphStanfordFaq
   | ParagraphStanfordGallery
   | ParagraphStanfordLayout
   | ParagraphStanfordList
@@ -1389,6 +1392,7 @@ export type NodeStanfordPageSuPageComponentsUnion =
   | ParagraphStanfordBanner
   | ParagraphStanfordCard
   | ParagraphStanfordEntity
+  | ParagraphStanfordFaq
   | ParagraphStanfordGallery
   | ParagraphStanfordLayout
   | ParagraphStanfordList
@@ -1498,6 +1502,7 @@ export type NodeStanfordPersonSuPersonComponentsUnion =
   | ParagraphStanfordBanner
   | ParagraphStanfordCard
   | ParagraphStanfordEntity
+  | ParagraphStanfordFaq
   | ParagraphStanfordGallery
   | ParagraphStanfordLayout
   | ParagraphStanfordList
@@ -1663,6 +1668,7 @@ export type NodeStanfordPublicationSuPublicationComponentsUnion =
   | ParagraphStanfordBanner
   | ParagraphStanfordCard
   | ParagraphStanfordEntity
+  | ParagraphStanfordFaq
   | ParagraphStanfordGallery
   | ParagraphStanfordLayout
   | ParagraphStanfordList
@@ -1820,6 +1826,30 @@ export type ParagraphStanfordEntitySuEntityItemUnion =
   | NodeStanfordPerson
   | NodeStanfordPolicy
   | NodeStanfordPublication
+
+/** Entity type paragraph. */
+export type ParagraphStanfordFaq = LayoutParagraphsInterface &
+  ParagraphInterface & {
+    __typename?: "ParagraphStanfordFaq"
+    /** Paragraph Behavior Settings. */
+    behaviors?: Maybe<Scalars["String"]["output"]>
+    /** The layout information for this paragraph. */
+    composition: LayoutParagraphs
+    /** The time that the Paragraph was created. */
+    created: DateTime
+    /** The Universally Unique IDentifier (UUID). */
+    id: Scalars["ID"]["output"]
+    /** The paragraphs entity language code. */
+    langcode: Language
+    /** Published */
+    status: Scalars["Boolean"]["output"]
+    /** Description */
+    suFaqDescription?: Maybe<Text>
+    /** Headline */
+    suFaqHeadline?: Maybe<Scalars["String"]["output"]>
+    /** Questions/Answers */
+    suFaqQuestions?: Maybe<Array<ParagraphStanfordAccordion>>
+  }
 
 /** Entity type paragraph. */
 export type ParagraphStanfordGallery = LayoutParagraphsInterface &
@@ -2055,6 +2085,7 @@ export type ParagraphUnion =
   | ParagraphStanfordBanner
   | ParagraphStanfordCard
   | ParagraphStanfordEntity
+  | ParagraphStanfordFaq
   | ParagraphStanfordGallery
   | ParagraphStanfordLayout
   | ParagraphStanfordList
@@ -4037,6 +4068,22 @@ export type NodeQuery = {
               > | null
             }
           | {
+              __typename: "ParagraphStanfordFaq"
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suFaqHeadline?: string | null
+              suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+              suFaqQuestions?: Array<{
+                __typename: "ParagraphStanfordAccordion"
+                suAccordionTitle: string
+                id: string
+                behaviors?: string | null
+                status: boolean
+                suAccordionBody: {__typename?: "Text"; processed?: any | null}
+              }> | null
+            }
+          | {
               __typename: "ParagraphStanfordGallery"
               id: string
               behaviors?: string | null
@@ -4337,6 +4384,22 @@ export type NodeQuery = {
               > | null
             }
           | {
+              __typename: "ParagraphStanfordFaq"
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suFaqHeadline?: string | null
+              suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+              suFaqQuestions?: Array<{
+                __typename: "ParagraphStanfordAccordion"
+                suAccordionTitle: string
+                id: string
+                behaviors?: string | null
+                status: boolean
+                suAccordionBody: {__typename?: "Text"; processed?: any | null}
+              }> | null
+            }
+          | {
               __typename: "ParagraphStanfordGallery"
               id: string
               behaviors?: string | null
@@ -4566,6 +4629,22 @@ export type NodeQuery = {
               > | null
             }
           | {
+              __typename: "ParagraphStanfordFaq"
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suFaqHeadline?: string | null
+              suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+              suFaqQuestions?: Array<{
+                __typename: "ParagraphStanfordAccordion"
+                suAccordionTitle: string
+                id: string
+                behaviors?: string | null
+                status: boolean
+                suAccordionBody: {__typename?: "Text"; processed?: any | null}
+              }> | null
+            }
+          | {
               __typename: "ParagraphStanfordGallery"
               id: string
               behaviors?: string | null
@@ -4785,6 +4864,22 @@ export type NodeQuery = {
               > | null
             }
           | {
+              __typename: "ParagraphStanfordFaq"
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suFaqHeadline?: string | null
+              suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+              suFaqQuestions?: Array<{
+                __typename: "ParagraphStanfordAccordion"
+                suAccordionTitle: string
+                id: string
+                behaviors?: string | null
+                status: boolean
+                suAccordionBody: {__typename?: "Text"; processed?: any | null}
+              }> | null
+            }
+          | {
               __typename: "ParagraphStanfordGallery"
               id: string
               behaviors?: string | null
@@ -4941,6 +5036,22 @@ export type NodeQuery = {
                 | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
                 | {__typename?: "NodeStanfordPublication"; id: string; path: string}
               > | null
+            }
+          | {
+              __typename: "ParagraphStanfordFaq"
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suFaqHeadline?: string | null
+              suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+              suFaqQuestions?: Array<{
+                __typename: "ParagraphStanfordAccordion"
+                suAccordionTitle: string
+                id: string
+                behaviors?: string | null
+                status: boolean
+                suAccordionBody: {__typename?: "Text"; processed?: any | null}
+              }> | null
             }
           | {
               __typename: "ParagraphStanfordGallery"
@@ -5196,6 +5307,22 @@ export type NodeQuery = {
                 | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
                 | {__typename?: "NodeStanfordPublication"; id: string; path: string}
               > | null
+            }
+          | {
+              __typename: "ParagraphStanfordFaq"
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suFaqHeadline?: string | null
+              suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+              suFaqQuestions?: Array<{
+                __typename: "ParagraphStanfordAccordion"
+                suAccordionTitle: string
+                id: string
+                behaviors?: string | null
+                status: boolean
+                suAccordionBody: {__typename?: "Text"; processed?: any | null}
+              }> | null
             }
           | {
               __typename: "ParagraphStanfordGallery"
@@ -5633,6 +5760,22 @@ export type EventSeriesQuery = {
             > | null
           }
         | {
+            __typename: "ParagraphStanfordFaq"
+            id: string
+            behaviors?: string | null
+            status: boolean
+            suFaqHeadline?: string | null
+            suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+            suFaqQuestions?: Array<{
+              __typename: "ParagraphStanfordAccordion"
+              suAccordionTitle: string
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suAccordionBody: {__typename?: "Text"; processed?: any | null}
+            }> | null
+          }
+        | {
             __typename: "ParagraphStanfordGallery"
             id: string
             behaviors?: string | null
@@ -5890,6 +6033,22 @@ export type EventsQuery = {
               | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
               | {__typename?: "NodeStanfordPublication"; id: string; path: string}
             > | null
+          }
+        | {
+            __typename: "ParagraphStanfordFaq"
+            id: string
+            behaviors?: string | null
+            status: boolean
+            suFaqHeadline?: string | null
+            suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+            suFaqQuestions?: Array<{
+              __typename: "ParagraphStanfordAccordion"
+              suAccordionTitle: string
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suAccordionBody: {__typename?: "Text"; processed?: any | null}
+            }> | null
           }
         | {
             __typename: "ParagraphStanfordGallery"
@@ -6216,6 +6375,22 @@ export type NewsQuery = {
             > | null
           }
         | {
+            __typename: "ParagraphStanfordFaq"
+            id: string
+            behaviors?: string | null
+            status: boolean
+            suFaqHeadline?: string | null
+            suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+            suFaqQuestions?: Array<{
+              __typename: "ParagraphStanfordAccordion"
+              suAccordionTitle: string
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suAccordionBody: {__typename?: "Text"; processed?: any | null}
+            }> | null
+          }
+        | {
             __typename: "ParagraphStanfordGallery"
             id: string
             behaviors?: string | null
@@ -6448,6 +6623,22 @@ export type BasicPagesQuery = {
             > | null
           }
         | {
+            __typename: "ParagraphStanfordFaq"
+            id: string
+            behaviors?: string | null
+            status: boolean
+            suFaqHeadline?: string | null
+            suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+            suFaqQuestions?: Array<{
+              __typename: "ParagraphStanfordAccordion"
+              suAccordionTitle: string
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suAccordionBody: {__typename?: "Text"; processed?: any | null}
+            }> | null
+          }
+        | {
             __typename: "ParagraphStanfordGallery"
             id: string
             behaviors?: string | null
@@ -6617,6 +6808,22 @@ export type PeopleQuery = {
               | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
               | {__typename?: "NodeStanfordPublication"; id: string; path: string}
             > | null
+          }
+        | {
+            __typename: "ParagraphStanfordFaq"
+            id: string
+            behaviors?: string | null
+            status: boolean
+            suFaqHeadline?: string | null
+            suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+            suFaqQuestions?: Array<{
+              __typename: "ParagraphStanfordAccordion"
+              suAccordionTitle: string
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suAccordionBody: {__typename?: "Text"; processed?: any | null}
+            }> | null
           }
         | {
             __typename: "ParagraphStanfordGallery"
@@ -6898,6 +7105,22 @@ export type PublicationsQuery = {
               | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
               | {__typename?: "NodeStanfordPublication"; id: string; path: string}
             > | null
+          }
+        | {
+            __typename: "ParagraphStanfordFaq"
+            id: string
+            behaviors?: string | null
+            status: boolean
+            suFaqHeadline?: string | null
+            suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+            suFaqQuestions?: Array<{
+              __typename: "ParagraphStanfordAccordion"
+              suAccordionTitle: string
+              id: string
+              behaviors?: string | null
+              status: boolean
+              suAccordionBody: {__typename?: "Text"; processed?: any | null}
+            }> | null
           }
         | {
             __typename: "ParagraphStanfordGallery"
@@ -7403,6 +7626,22 @@ export type ParagraphQuery = {
           | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
           | {__typename?: "NodeStanfordPublication"; id: string; path: string}
         > | null
+      }
+    | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
       }
     | {
         __typename: "ParagraphStanfordGallery"
@@ -8269,6 +8508,22 @@ export type FragmentNodeStanfordPageFragment = {
         > | null
       }
     | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
+      }
+    | {
         __typename: "ParagraphStanfordGallery"
         id: string
         behaviors?: string | null
@@ -8522,6 +8777,22 @@ export type FragmentNodeStanfordEventFragment = {
           | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
           | {__typename?: "NodeStanfordPublication"; id: string; path: string}
         > | null
+      }
+    | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
       }
     | {
         __typename: "ParagraphStanfordGallery"
@@ -8825,6 +9096,22 @@ export type FragmentNodeStanfordEventSeriesFragment = {
         > | null
       }
     | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
+      }
+    | {
         __typename: "ParagraphStanfordGallery"
         id: string
         behaviors?: string | null
@@ -9055,6 +9342,22 @@ export type FragmentNodeStanfordNewsFragment = {
         > | null
       }
     | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
+      }
+    | {
         __typename: "ParagraphStanfordGallery"
         id: string
         behaviors?: string | null
@@ -9236,6 +9539,22 @@ export type FragmentNodeStanfordPersonFragment = {
           | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
           | {__typename?: "NodeStanfordPublication"; id: string; path: string}
         > | null
+      }
+    | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
       }
     | {
         __typename: "ParagraphStanfordGallery"
@@ -9493,6 +9812,22 @@ export type FragmentNodeStanfordPublicationFragment = {
           | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
           | {__typename?: "NodeStanfordPublication"; id: string; path: string}
         > | null
+      }
+    | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
       }
     | {
         __typename: "ParagraphStanfordGallery"
@@ -9773,6 +10108,22 @@ type FragmentNodeUnion_NodeStanfordEvent_Fragment = {
           | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
           | {__typename?: "NodeStanfordPublication"; id: string; path: string}
         > | null
+      }
+    | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
       }
     | {
         __typename: "ParagraphStanfordGallery"
@@ -10076,6 +10427,22 @@ type FragmentNodeUnion_NodeStanfordEventSeries_Fragment = {
         > | null
       }
     | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
+      }
+    | {
         __typename: "ParagraphStanfordGallery"
         id: string
         behaviors?: string | null
@@ -10306,6 +10673,22 @@ type FragmentNodeUnion_NodeStanfordNews_Fragment = {
         > | null
       }
     | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
+      }
+    | {
         __typename: "ParagraphStanfordGallery"
         id: string
         behaviors?: string | null
@@ -10526,6 +10909,22 @@ type FragmentNodeUnion_NodeStanfordPage_Fragment = {
         > | null
       }
     | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
+      }
+    | {
         __typename: "ParagraphStanfordGallery"
         id: string
         behaviors?: string | null
@@ -10683,6 +11082,22 @@ type FragmentNodeUnion_NodeStanfordPerson_Fragment = {
           | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
           | {__typename?: "NodeStanfordPublication"; id: string; path: string}
         > | null
+      }
+    | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
       }
     | {
         __typename: "ParagraphStanfordGallery"
@@ -10940,6 +11355,22 @@ type FragmentNodeUnion_NodeStanfordPublication_Fragment = {
           | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
           | {__typename?: "NodeStanfordPublication"; id: string; path: string}
         > | null
+      }
+    | {
+        __typename: "ParagraphStanfordFaq"
+        id: string
+        behaviors?: string | null
+        status: boolean
+        suFaqHeadline?: string | null
+        suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+        suFaqQuestions?: Array<{
+          __typename: "ParagraphStanfordAccordion"
+          suAccordionTitle: string
+          id: string
+          behaviors?: string | null
+          status: boolean
+          suAccordionBody: {__typename?: "Text"; processed?: any | null}
+        }> | null
       }
     | {
         __typename: "ParagraphStanfordGallery"
@@ -11635,6 +12066,13 @@ type FragmentParagraphInterface_ParagraphStanfordEntity_Fragment = {
   status: boolean
 }
 
+type FragmentParagraphInterface_ParagraphStanfordFaq_Fragment = {
+  __typename: "ParagraphStanfordFaq"
+  id: string
+  behaviors?: string | null
+  status: boolean
+}
+
 type FragmentParagraphInterface_ParagraphStanfordGallery_Fragment = {
   __typename: "ParagraphStanfordGallery"
   id: string
@@ -11703,6 +12141,7 @@ export type FragmentParagraphInterfaceFragment =
   | FragmentParagraphInterface_ParagraphStanfordBanner_Fragment
   | FragmentParagraphInterface_ParagraphStanfordCard_Fragment
   | FragmentParagraphInterface_ParagraphStanfordEntity_Fragment
+  | FragmentParagraphInterface_ParagraphStanfordFaq_Fragment
   | FragmentParagraphInterface_ParagraphStanfordGallery_Fragment
   | FragmentParagraphInterface_ParagraphStanfordLayout_Fragment
   | FragmentParagraphInterface_ParagraphStanfordList_Fragment
@@ -11720,6 +12159,23 @@ export type FragmentParagraphStanfordAccordionFragment = {
   behaviors?: string | null
   status: boolean
   suAccordionBody: {__typename?: "Text"; processed?: any | null}
+}
+
+export type FragmentParagraphStanfordFaqFragment = {
+  __typename: "ParagraphStanfordFaq"
+  suFaqHeadline?: string | null
+  id: string
+  behaviors?: string | null
+  status: boolean
+  suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+  suFaqQuestions?: Array<{
+    __typename: "ParagraphStanfordAccordion"
+    suAccordionTitle: string
+    id: string
+    behaviors?: string | null
+    status: boolean
+    suAccordionBody: {__typename?: "Text"; processed?: any | null}
+  }> | null
 }
 
 export type FragmentParagraphStanfordBannerFragment = {
@@ -11998,6 +12454,23 @@ type FragmentParagraphUnion_ParagraphStanfordEntity_Fragment = {
   > | null
 }
 
+type FragmentParagraphUnion_ParagraphStanfordFaq_Fragment = {
+  __typename: "ParagraphStanfordFaq"
+  id: string
+  behaviors?: string | null
+  status: boolean
+  suFaqHeadline?: string | null
+  suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+  suFaqQuestions?: Array<{
+    __typename: "ParagraphStanfordAccordion"
+    suAccordionTitle: string
+    id: string
+    behaviors?: string | null
+    status: boolean
+    suAccordionBody: {__typename?: "Text"; processed?: any | null}
+  }> | null
+}
+
 type FragmentParagraphUnion_ParagraphStanfordGallery_Fragment = {
   __typename: "ParagraphStanfordGallery"
   id: string
@@ -12099,6 +12572,7 @@ export type FragmentParagraphUnionFragment =
   | FragmentParagraphUnion_ParagraphStanfordBanner_Fragment
   | FragmentParagraphUnion_ParagraphStanfordCard_Fragment
   | FragmentParagraphUnion_ParagraphStanfordEntity_Fragment
+  | FragmentParagraphUnion_ParagraphStanfordFaq_Fragment
   | FragmentParagraphUnion_ParagraphStanfordGallery_Fragment
   | FragmentParagraphUnion_ParagraphStanfordLayout_Fragment
   | FragmentParagraphUnion_ParagraphStanfordList_Fragment
@@ -12361,6 +12835,22 @@ export type RouteQuery = {
                       | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
                       | {__typename?: "NodeStanfordPublication"; id: string; path: string}
                     > | null
+                  }
+                | {
+                    __typename: "ParagraphStanfordFaq"
+                    id: string
+                    behaviors?: string | null
+                    status: boolean
+                    suFaqHeadline?: string | null
+                    suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+                    suFaqQuestions?: Array<{
+                      __typename: "ParagraphStanfordAccordion"
+                      suAccordionTitle: string
+                      id: string
+                      behaviors?: string | null
+                      status: boolean
+                      suAccordionBody: {__typename?: "Text"; processed?: any | null}
+                    }> | null
                   }
                 | {
                     __typename: "ParagraphStanfordGallery"
@@ -12681,6 +13171,22 @@ export type RouteQuery = {
                     > | null
                   }
                 | {
+                    __typename: "ParagraphStanfordFaq"
+                    id: string
+                    behaviors?: string | null
+                    status: boolean
+                    suFaqHeadline?: string | null
+                    suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+                    suFaqQuestions?: Array<{
+                      __typename: "ParagraphStanfordAccordion"
+                      suAccordionTitle: string
+                      id: string
+                      behaviors?: string | null
+                      status: boolean
+                      suAccordionBody: {__typename?: "Text"; processed?: any | null}
+                    }> | null
+                  }
+                | {
                     __typename: "ParagraphStanfordGallery"
                     id: string
                     behaviors?: string | null
@@ -12926,6 +13432,22 @@ export type RouteQuery = {
                       | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
                       | {__typename?: "NodeStanfordPublication"; id: string; path: string}
                     > | null
+                  }
+                | {
+                    __typename: "ParagraphStanfordFaq"
+                    id: string
+                    behaviors?: string | null
+                    status: boolean
+                    suFaqHeadline?: string | null
+                    suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+                    suFaqQuestions?: Array<{
+                      __typename: "ParagraphStanfordAccordion"
+                      suAccordionTitle: string
+                      id: string
+                      behaviors?: string | null
+                      status: boolean
+                      suAccordionBody: {__typename?: "Text"; processed?: any | null}
+                    }> | null
                   }
                 | {
                     __typename: "ParagraphStanfordGallery"
@@ -13177,6 +13699,22 @@ export type RouteQuery = {
                     > | null
                   }
                 | {
+                    __typename: "ParagraphStanfordFaq"
+                    id: string
+                    behaviors?: string | null
+                    status: boolean
+                    suFaqHeadline?: string | null
+                    suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+                    suFaqQuestions?: Array<{
+                      __typename: "ParagraphStanfordAccordion"
+                      suAccordionTitle: string
+                      id: string
+                      behaviors?: string | null
+                      status: boolean
+                      suAccordionBody: {__typename?: "Text"; processed?: any | null}
+                    }> | null
+                  }
+                | {
                     __typename: "ParagraphStanfordGallery"
                     id: string
                     behaviors?: string | null
@@ -13351,6 +13889,22 @@ export type RouteQuery = {
                       | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
                       | {__typename?: "NodeStanfordPublication"; id: string; path: string}
                     > | null
+                  }
+                | {
+                    __typename: "ParagraphStanfordFaq"
+                    id: string
+                    behaviors?: string | null
+                    status: boolean
+                    suFaqHeadline?: string | null
+                    suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+                    suFaqQuestions?: Array<{
+                      __typename: "ParagraphStanfordAccordion"
+                      suAccordionTitle: string
+                      id: string
+                      behaviors?: string | null
+                      status: boolean
+                      suAccordionBody: {__typename?: "Text"; processed?: any | null}
+                    }> | null
                   }
                 | {
                     __typename: "ParagraphStanfordGallery"
@@ -13624,6 +14178,22 @@ export type RouteQuery = {
                       | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
                       | {__typename?: "NodeStanfordPublication"; id: string; path: string}
                     > | null
+                  }
+                | {
+                    __typename: "ParagraphStanfordFaq"
+                    id: string
+                    behaviors?: string | null
+                    status: boolean
+                    suFaqHeadline?: string | null
+                    suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
+                    suFaqQuestions?: Array<{
+                      __typename: "ParagraphStanfordAccordion"
+                      suAccordionTitle: string
+                      id: string
+                      behaviors?: string | null
+                      status: boolean
+                      suAccordionBody: {__typename?: "Text"; processed?: any | null}
+                    }> | null
                   }
                 | {
                     __typename: "ParagraphStanfordGallery"

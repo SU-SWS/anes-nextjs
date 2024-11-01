@@ -266,6 +266,7 @@ const WysiwygImage = ({
         alt={alt ? alt.trim() : ""}
         height={parseInt(`${height}`)}
         width={parseInt(`${width}`)}
+        unoptimized
       />
     )
   }

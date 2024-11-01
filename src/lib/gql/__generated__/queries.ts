@@ -111,6 +111,19 @@ export const FragmentParagraphStanfordAccordionFragmentDoc = gql`
 }
     ${FragmentParagraphInterfaceFragmentDoc}
 ${FragmentTextFragmentDoc}`;
+export const FragmentParagraphStanfordFaqFragmentDoc = gql`
+    fragment FragmentParagraphStanfordFaq on ParagraphStanfordFaq {
+  ...FragmentParagraphInterface
+  suFaqHeadline
+  suFaqDescription {
+    processed
+  }
+  suFaqQuestions {
+    ...FragmentParagraphStanfordAccordion
+  }
+}
+    ${FragmentParagraphInterfaceFragmentDoc}
+${FragmentParagraphStanfordAccordionFragmentDoc}`;
 export const FragmentMediaInterfaceFragmentDoc = gql`
     fragment FragmentMediaInterface on MediaInterface {
   __typename
@@ -321,6 +334,7 @@ export const FragmentParagraphUnionFragmentDoc = gql`
     fragment FragmentParagraphUnion on ParagraphUnion {
   ...FragmentParagraphInterface
   ...FragmentParagraphStanfordAccordion
+  ...FragmentParagraphStanfordFaq
   ...FragmentParagraphStanfordBanner
   ...FragmentParagraphStanfordCard
   ...FragmentParagraphStanfordEntity
@@ -333,6 +347,7 @@ export const FragmentParagraphUnionFragmentDoc = gql`
 }
     ${FragmentParagraphInterfaceFragmentDoc}
 ${FragmentParagraphStanfordAccordionFragmentDoc}
+${FragmentParagraphStanfordFaqFragmentDoc}
 ${FragmentParagraphStanfordBannerFragmentDoc}
 ${FragmentParagraphStanfordCardFragmentDoc}
 ${FragmentParagraphStanfordEntityFragmentDoc}

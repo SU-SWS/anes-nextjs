@@ -10,6 +10,7 @@ import {isPreviewMode} from "@lib/drupal/is-preview-mode"
 import {ParagraphUnion} from "@lib/gql/__generated__/drupal.d"
 import {Suspense} from "react"
 import EditorAlert from "@components/elements/editor-alert"
+import FaqParagraph from "@components/paragraphs/stanford-faq/faq-paragraph"
 
 type Props = {
   /**
@@ -42,6 +43,8 @@ const ParagraphComponent = async ({paragraph}: Props) => {
       return <CardParagraph paragraph={paragraph} {...itemProps} />
     case "ParagraphStanfordEntity":
       return <EntityParagraph paragraph={paragraph} {...itemProps} />
+    case "ParagraphStanfordFaq":
+      return <FaqParagraph paragraph={paragraph} {...itemProps} />
     case "ParagraphStanfordGallery":
       return <GalleryParagraph paragraph={paragraph} {...itemProps} />
     case "ParagraphStanfordMediaCaption":

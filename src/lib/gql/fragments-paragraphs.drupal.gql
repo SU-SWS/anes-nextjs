@@ -1,4 +1,3 @@
-
 fragment FragmentParagraphInterface on ParagraphInterface {
     __typename
     id
@@ -12,6 +11,17 @@ fragment FragmentParagraphStanfordAccordion on ParagraphStanfordAccordion {
         ...FragmentText
     }
     suAccordionTitle
+}
+
+fragment FragmentParagraphStanfordFaq on ParagraphStanfordFaq {
+    ...FragmentParagraphInterface
+    suFaqHeadline
+    suFaqDescription {
+        processed
+    }
+    suFaqQuestions {
+        ...FragmentParagraphStanfordAccordion
+    }
 }
 
 fragment FragmentParagraphStanfordBanner on ParagraphStanfordBanner {
@@ -171,6 +181,7 @@ fragment FragmentParagraphStanfordPageTitleBanner on ParagraphStanfordPageTitleB
 fragment FragmentParagraphUnion on ParagraphUnion {
     ...FragmentParagraphInterface
     ...FragmentParagraphStanfordAccordion
+    ...FragmentParagraphStanfordFaq
     ...FragmentParagraphStanfordBanner
     ...FragmentParagraphStanfordCard
     ...FragmentParagraphStanfordEntity
