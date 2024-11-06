@@ -1,32 +1,13 @@
-import {NodeStanfordPolicy, StanfordBasicSiteSetting} from "@lib/gql/__generated__/drupal.d"
-import {getConfigPageField} from "@lib/gql/gql-queries"
+import {NodeStanfordPolicy} from "@lib/gql/__generated__/drupal.d"
 import {getCleanDescription} from "@lib/utils/text-tools"
+import NodePageMetadata from "@components/nodes/pages/node-page-metadata"
 
 type Props = {
   node: NodeStanfordPolicy
 }
-const StanfordPolicyMetadata = async ({node}: Props) => {
-  const siteName =
-    (await getConfigPageField<StanfordBasicSiteSetting, StanfordBasicSiteSetting["suSiteName"]>(
-      "StanfordBasicSiteSetting",
-      "suSiteName"
-    )) || "Stanford University"
-
-  const pageTitle = `${node.title} | ${siteName}`
+const StanfordPolicyMetadata = ({node}: Props) => {
   const description = getCleanDescription(node.body?.processed)
 
-  return (
-    <>
-      <title>{pageTitle}</title>
-      <meta name="description" content={description} />
-      <meta property="og:title" content={pageTitle} />
-      <meta property="og:description" content={description} />
-
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={pageTitle} />
-      <meta name="twitter:description" content={description} />
-    </>
-  )
+  return <NodePageMetadata pageTitle={node.title} description={description} />
 }
 export default StanfordPolicyMetadata
