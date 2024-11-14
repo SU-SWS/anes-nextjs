@@ -34,7 +34,7 @@ export const Lockup = async () => {
     logoUrl: logoUrl,
   }
 
-  if (!lockupSettingsConfig?.suLockupEnabled) {
+  if (!lockupSettingsConfig || lockupSettingsConfig.suLockupEnabled) {
     return (
       <div className="py-10">
         <Link href="/" className="flex no-underline">
