@@ -4,11 +4,29 @@ import {JSX} from "react"
 import {OpenGraphType} from "next/dist/lib/metadata/types/opengraph-types"
 
 type Props = {
+  /**
+   * Page title without the site name, undefined if the home page.
+   */
   pageTitle?: string
+  /**
+   * Short description of the page.
+   */
   description?: string
+  /**
+   * Drupal image.
+   */
   image?: false | Image
+  /**
+   * Additional meta data if desired.
+   */
   children?: JSX.Element | JSX.Element[]
+  /**
+   * Page type.
+   */
   ogType?: OpenGraphType
+  /**
+   * Twitter card style.
+   */
   twitterCard?: "summary" | "summary_large_image" | "app" | "player"
 }
 

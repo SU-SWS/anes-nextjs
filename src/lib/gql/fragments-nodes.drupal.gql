@@ -283,13 +283,70 @@ fragment FragmentNodeStanfordPublication on NodeStanfordPublication {
         ...FragmentParagraphUnion
     }
     suPublicationCta {
-        url
-        title
+        ...FragmentLink
     }
     suPublicationImage {
         ...FragmentMediaImage
     }
     suPublicationTopics {
+        ...FragmentTermInterface
+    }
+}
+
+
+fragment FragmentNodeStanfordOpportunity on NodeStanfordOpportunity {
+    ...FragmentNodeInterface
+    body {
+        ...FragmentTextSummary
+    }
+    suOppApplicationDeadline {
+        ...FragmentDateTime
+    }
+    suOppComponents {
+        ...FragmentParagraphUnion
+    }
+    suOppContactEmail
+    suOppContactName
+    suOppContactPhone
+    suOppContactUrl {
+        ...FragmentLink
+    }
+    suOppCourseCode
+    suOppCtaUrl {
+        ...FragmentLink
+    }
+    suOppEligibility {
+        ...FragmentText
+    }
+    suOppImage {
+        ...FragmentMediaImage
+    }
+    suOppLearnMore {
+        ...FragmentLink
+    }
+    suOppOpenDate {
+        ...FragmentDateTime
+    }
+    suOppPrerequisites {
+        processed
+    }
+    suOppSource {
+        ...FragmentLink
+    }
+    suOppSponsor {
+        ...FragmentTermInterface
+    }
+    suOppStartDate {
+        ...FragmentDateTime
+    }
+    suOppStatus
+    suOppSummary {
+        ...FragmentText
+    }
+    suOppTags {
+        ...FragmentTermInterface
+    }
+    suOppType {
         ...FragmentTermInterface
     }
 }
@@ -304,6 +361,7 @@ fragment FragmentNodeUnion on NodeUnion {
     ...FragmentNodeStanfordPerson
     ...FragmentNodeStanfordPolicy
     ...FragmentNodeStanfordPublication
+    ...FragmentNodeStanfordOpportunity
 }
 
 fragment FragmentNodeStanfordCourseTeaser on NodeStanfordCourse {
@@ -405,6 +463,46 @@ fragment FragmentNodeStanfordPublicationTeaser on NodeStanfordPublication {
     suPublicationTopics {
         ...FragmentTermInterface
     }
+    suPublicationCitation {
+        ... on CitationInterface {
+            id
+            title
+            ... on CitationSuArticleNewspaper {
+                apa
+                chicago
+            }
+            ... on CitationSuBook {
+                apa
+                chicago
+            }
+            ... on CitationSuArticleJournal {
+                apa
+                chicago
+            }
+            ... on CitationSuOther {
+                apa
+                chicago
+            }
+            ... on CitationSuThesi {
+                apa
+                chicago
+            }
+        }
+    }
+}
+
+
+fragment FragmentNodeStanfordOpportunityTeaser on NodeStanfordOpportunity {
+    ...FragmentNodeInterface
+    suOppImage {
+        ...FragmentMediaImage
+    }
+    suOppSummary {
+        ...FragmentText
+    }
+    suOppSource {
+        url
+    }
 }
 
 fragment FragmentNodeTeaserUnion on NodeUnion {
@@ -417,4 +515,5 @@ fragment FragmentNodeTeaserUnion on NodeUnion {
     ...FragmentNodeStanfordPersonTeaser
     ...FragmentNodeStanfordPolicyTeaser
     ...FragmentNodeStanfordPublicationTeaser
+    ...FragmentNodeStanfordOpportunityTeaser
 }

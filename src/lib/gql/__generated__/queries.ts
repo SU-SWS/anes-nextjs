@@ -752,6 +752,12 @@ export const FragmentNodeStanfordPersonTeaserFragmentDoc = gql`
 }
     ${FragmentNodeInterfaceFragmentDoc}
 ${FragmentMediaImageFragmentDoc}`;
+export const FragmentLinkFragmentDoc = gql`
+    fragment FragmentLink on Link {
+  url
+  title
+}
+    `;
 export const FragmentNodeStanfordPublicationFragmentDoc = gql`
     fragment FragmentNodeStanfordPublication on NodeStanfordPublication {
   ...FragmentNodeInterface
@@ -762,8 +768,7 @@ export const FragmentNodeStanfordPublicationFragmentDoc = gql`
     ...FragmentParagraphUnion
   }
   suPublicationCta {
-    url
-    title
+    ...FragmentLink
   }
   suPublicationImage {
     ...FragmentMediaImage
@@ -775,6 +780,72 @@ export const FragmentNodeStanfordPublicationFragmentDoc = gql`
     ${FragmentNodeInterfaceFragmentDoc}
 ${FragmentNodeStanfordPersonTeaserFragmentDoc}
 ${FragmentParagraphUnionFragmentDoc}
+${FragmentLinkFragmentDoc}
+${FragmentMediaImageFragmentDoc}
+${FragmentTermInterfaceFragmentDoc}`;
+export const FragmentNodeStanfordOpportunityFragmentDoc = gql`
+    fragment FragmentNodeStanfordOpportunity on NodeStanfordOpportunity {
+  ...FragmentNodeInterface
+  body {
+    ...FragmentTextSummary
+  }
+  suOppApplicationDeadline {
+    ...FragmentDateTime
+  }
+  suOppComponents {
+    ...FragmentParagraphUnion
+  }
+  suOppContactEmail
+  suOppContactName
+  suOppContactPhone
+  suOppContactUrl {
+    ...FragmentLink
+  }
+  suOppCourseCode
+  suOppCtaUrl {
+    ...FragmentLink
+  }
+  suOppEligibility {
+    ...FragmentText
+  }
+  suOppImage {
+    ...FragmentMediaImage
+  }
+  suOppLearnMore {
+    ...FragmentLink
+  }
+  suOppOpenDate {
+    ...FragmentDateTime
+  }
+  suOppPrerequisites {
+    processed
+  }
+  suOppSource {
+    ...FragmentLink
+  }
+  suOppSponsor {
+    ...FragmentTermInterface
+  }
+  suOppStartDate {
+    ...FragmentDateTime
+  }
+  suOppStatus
+  suOppSummary {
+    ...FragmentText
+  }
+  suOppTags {
+    ...FragmentTermInterface
+  }
+  suOppType {
+    ...FragmentTermInterface
+  }
+}
+    ${FragmentNodeInterfaceFragmentDoc}
+${FragmentTextSummaryFragmentDoc}
+${FragmentDateTimeFragmentDoc}
+${FragmentParagraphUnionFragmentDoc}
+${FragmentLinkFragmentDoc}
+${FragmentTextFragmentDoc}
 ${FragmentMediaImageFragmentDoc}
 ${FragmentTermInterfaceFragmentDoc}`;
 export const FragmentNodeUnionFragmentDoc = gql`
@@ -788,6 +859,7 @@ export const FragmentNodeUnionFragmentDoc = gql`
   ...FragmentNodeStanfordPerson
   ...FragmentNodeStanfordPolicy
   ...FragmentNodeStanfordPublication
+  ...FragmentNodeStanfordOpportunity
 }
     ${FragmentNodeInterfaceFragmentDoc}
 ${FragmentNodeStanfordCourseFragmentDoc}
@@ -797,7 +869,8 @@ ${FragmentNodeStanfordNewsFragmentDoc}
 ${FragmentNodeStanfordPageFragmentDoc}
 ${FragmentNodeStanfordPersonFragmentDoc}
 ${FragmentNodeStanfordPolicyFragmentDoc}
-${FragmentNodeStanfordPublicationFragmentDoc}`;
+${FragmentNodeStanfordPublicationFragmentDoc}
+${FragmentNodeStanfordOpportunityFragmentDoc}`;
 export const FragmentNodeStanfordCourseTeaserFragmentDoc = gql`
     fragment FragmentNodeStanfordCourseTeaser on NodeStanfordCourse {
   ...FragmentNodeInterface
@@ -881,9 +954,51 @@ export const FragmentNodeStanfordPublicationTeaserFragmentDoc = gql`
   suPublicationTopics {
     ...FragmentTermInterface
   }
+  suPublicationCitation {
+    ... on CitationInterface {
+      id
+      title
+      ... on CitationSuArticleNewspaper {
+        apa
+        chicago
+      }
+      ... on CitationSuBook {
+        apa
+        chicago
+      }
+      ... on CitationSuArticleJournal {
+        apa
+        chicago
+      }
+      ... on CitationSuOther {
+        apa
+        chicago
+      }
+      ... on CitationSuThesi {
+        apa
+        chicago
+      }
+    }
+  }
 }
     ${FragmentNodeInterfaceFragmentDoc}
 ${FragmentTermInterfaceFragmentDoc}`;
+export const FragmentNodeStanfordOpportunityTeaserFragmentDoc = gql`
+    fragment FragmentNodeStanfordOpportunityTeaser on NodeStanfordOpportunity {
+  ...FragmentNodeInterface
+  suOppImage {
+    ...FragmentMediaImage
+  }
+  suOppSummary {
+    ...FragmentText
+  }
+  suOppSource {
+    url
+  }
+}
+    ${FragmentNodeInterfaceFragmentDoc}
+${FragmentMediaImageFragmentDoc}
+${FragmentTextFragmentDoc}`;
 export const FragmentNodeTeaserUnionFragmentDoc = gql`
     fragment FragmentNodeTeaserUnion on NodeUnion {
   ...FragmentNodeInterface
@@ -895,6 +1010,7 @@ export const FragmentNodeTeaserUnionFragmentDoc = gql`
   ...FragmentNodeStanfordPersonTeaser
   ...FragmentNodeStanfordPolicyTeaser
   ...FragmentNodeStanfordPublicationTeaser
+  ...FragmentNodeStanfordOpportunityTeaser
 }
     ${FragmentNodeInterfaceFragmentDoc}
 ${FragmentNodeStanfordCourseTeaserFragmentDoc}
@@ -904,7 +1020,8 @@ ${FragmentNodeStanfordNewsTeaserFragmentDoc}
 ${FragmentNodeStanfordPageTeaserFragmentDoc}
 ${FragmentNodeStanfordPersonTeaserFragmentDoc}
 ${FragmentNodeStanfordPolicyTeaserFragmentDoc}
-${FragmentNodeStanfordPublicationTeaserFragmentDoc}`;
+${FragmentNodeStanfordPublicationTeaserFragmentDoc}
+${FragmentNodeStanfordOpportunityTeaserFragmentDoc}`;
 export const FragmentMenuLinkFragmentDoc = gql`
     fragment FragmentMenuLink on MenuItem {
   url

@@ -3,12 +3,7 @@ import {ViewDisplayProps} from "@components/views/view"
 import LoadMoreList from "@components/elements/load-more-list"
 import StanfordPublicationListItem from "@components/nodes/list-item/stanford-publication/stanford-publication-list-item"
 
-const PublicationsApaView = async ({
-  items,
-  headingLevel,
-  totalItems,
-  loadPage,
-}: ViewDisplayProps<NodeStanfordPublication>) => {
+const PublicationsApaView = async ({items, totalItems, loadPage}: ViewDisplayProps<NodeStanfordPublication>) => {
   return (
     <LoadMoreList
       ulProps={{className: "list-unstyled mb-20"}}
@@ -19,7 +14,7 @@ const PublicationsApaView = async ({
       loadPage={loadPage}
     >
       {items.map(item => (
-        <StanfordPublicationListItem key={item.id} node={item} headingLevel={headingLevel} />
+        <StanfordPublicationListItem key={item.id} node={item} apa />
       ))}
     </LoadMoreList>
   )

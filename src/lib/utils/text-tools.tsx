@@ -10,14 +10,16 @@ export const getFirstText = (components?: Maybe<ParagraphUnion[]>) => {
   }
 }
 
-export const getCleanDescription = (description: string | undefined): string | undefined => {
+export const getCleanDescription = (description: string | undefined, numSentences?: number): string | undefined => {
   if (description) {
     const text: string =
-      description
-        .replace(/(<([^>]+)>)/gi, " ")
-        .replace("/ +/", " ")
+      decode(description)
+        .replaceAll(/(<([^>]+)>)/gi, " ")
+        .replaceAll(/ +/g, " ")
+        .replaceAll(/ </g, "<")
+        .replace(/\.\s+$/, "")
         .split(".")
-        .slice(0, 1)
+        .slice(0, numSentences || 1)
         .join(".") + "."
     return text?.length > 1 ? decode(text) : undefined
   }

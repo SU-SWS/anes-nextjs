@@ -3,12 +3,7 @@ import StanfordPublicationListItem from "@components/nodes/list-item/stanford-pu
 import {NodeStanfordPublication} from "@lib/gql/__generated__/drupal.d"
 import {ViewDisplayProps} from "@components/views/view"
 
-const PublicationsChicagoView = async ({
-  items,
-  headingLevel,
-  totalItems,
-  loadPage,
-}: ViewDisplayProps<NodeStanfordPublication>) => {
+const PublicationsChicagoView = async ({items, totalItems, loadPage}: ViewDisplayProps<NodeStanfordPublication>) => {
   return (
     <LoadMoreList
       ulProps={{className: "list-unstyled mb-20"}}
@@ -19,7 +14,7 @@ const PublicationsChicagoView = async ({
       loadPage={loadPage}
     >
       {items.map(item => (
-        <StanfordPublicationListItem key={item.id} node={item} headingLevel={headingLevel} />
+        <StanfordPublicationListItem key={item.id} node={item} chicago />
       ))}
     </LoadMoreList>
   )

@@ -3,7 +3,10 @@ fragment FragmentTextSummary on TextSummary {
     processed
     summary
 }
-
+fragment FragmentLink on Link {
+    url
+    title
+}
 fragment FragmentText on Text {
     processed
 }

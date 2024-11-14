@@ -8,6 +8,7 @@ import StanfordPolicyListItem from "@components/nodes/list-item/stanford-policy/
 import StanfordPublicationListItem from "@components/nodes/list-item/stanford-publication/stanford-publication-list-item"
 import {isPreviewMode} from "@lib/drupal/is-preview-mode"
 import {NodeUnion} from "@lib/gql/__generated__/drupal.d"
+import StanfordOpportunityListItem from "@components/nodes/list-item/stanford-opportunity/stanford-opportunity-list-item"
 
 type Props = {
   /**
@@ -44,7 +45,9 @@ const NodeListItem = ({node, headingLevel}: Props) => {
     case "NodeStanfordPolicy":
       return <StanfordPolicyListItem node={node} headingLevel={headingLevel} {...itemProps} />
     case "NodeStanfordPublication":
-      return <StanfordPublicationListItem node={node} headingLevel={headingLevel} {...itemProps} />
+      return <StanfordPublicationListItem node={node} {...itemProps} />
+    case "NodeStanfordOpportunity":
+      return <StanfordOpportunityListItem node={node} headingLevel={headingLevel} {...itemProps} />
   }
 }
 export default NodeListItem

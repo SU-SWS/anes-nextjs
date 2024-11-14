@@ -1,39 +1,35 @@
-import Link from "@components/elements/link"
-import {H2, H3} from "@components/elements/headers"
 import {HtmlHTMLAttributes} from "react"
 import {NodeStanfordPublication} from "@lib/gql/__generated__/drupal.d"
-import twMerge from "@lib/utils/twMerge"
-import ReverseVisualOrder from "@components/elements/reverse-visual-order"
+import Wysiwyg from "@components/elements/wysiwyg"
+import Link from "@components/elements/link"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   node: NodeStanfordPublication
-  headingLevel?: "h2" | "h3"
+  apa?: boolean
+  chicago?: boolean
 }
 
-const StanfordPublicationListItem = ({node, headingLevel, ...props}: Props) => {
-  const citationUrl = node.suPublicationCitation?.suUrl?.url
-  const Heading = headingLevel === "h3" ? H3 : H2
-  return (
-    <article
-      {...props}
-      aria-labelledby={node.id}
-      className={twMerge("mx-auto w-full max-w-[500px] border border-black-20 p-10 shadow-xl", props.className)}
-    >
-      <ReverseVisualOrder>
-        <Heading id={node.id}>
-          <Link href={citationUrl || node.path}>{node.title}</Link>
-        </Heading>
-        <div className="font-bold">Publication</div>
-      </ReverseVisualOrder>
+const StanfordPublicationListItem = ({node, apa, chicago, ...props}: Props) => {
+  const citation = apa ? node.suPublicationCitation?.apa : node.suPublicationCitation?.chicago
 
-      {node.suPublicationTopics && (
-        <div>
-          {node.suPublicationTopics.map(topic => (
-            <div key={topic.id}>{topic.name}</div>
-          ))}
-        </div>
+  return (
+    <div {...props}>
+      {citation && (
+        <Wysiwyg
+          html={apa ? node.suPublicationCitation?.apa : node.suPublicationCitation?.chicago}
+          className="ml-12 -indent-12 [&_a]:text-digital-red [&_a]:no-underline [&_a]:hocus:text-black [&_a]:hocus:underline"
+        />
       )}
-    </article>
+      {!citation && (
+        <Link
+          className="text-digital-red no-underline hocus:text-black hocus:underline"
+          href={node.path}
+          prefetch={false}
+        >
+          {node.title}
+        </Link>
+      )}
+    </div>
   )
 }
 export default StanfordPublicationListItem
