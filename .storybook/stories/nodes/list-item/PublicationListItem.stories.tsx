@@ -16,10 +16,6 @@ const meta: Meta<ComponentStoryProps> = {
   component: StanfordPublicationListItem,
   tags: ["autodocs"],
   argTypes: {
-    headingLevel: {
-      options: ["h2", "h3"],
-      control: {type: "select"},
-    },
     node: {
       table: {
         disable: true,

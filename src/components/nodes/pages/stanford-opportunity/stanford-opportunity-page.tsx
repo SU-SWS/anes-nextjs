@@ -2,9 +2,10 @@ import Rows from "@components/paragraphs/rows/rows"
 import {H1} from "@components/elements/headers"
 import {HtmlHTMLAttributes} from "react"
 import {NodeStanfordOpportunity} from "@lib/gql/__generated__/drupal.d"
-import StanfordOpportunityMetadata from "@components/nodes/pages/stanford-opportunity/stanford-opportunity-metadata"
 import Wysiwyg from "@components/elements/wysiwyg"
 import Image from "next/image"
+import NodePageMetadata from "@components/nodes/pages/node-page-metadata"
+import {getCleanDescription, getFirstText} from "@lib/utils/text-tools"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   node: NodeStanfordOpportunity
@@ -15,7 +16,15 @@ const StanfordOpportunityPage = ({node, ...props}: Props) => {
   const image = node.suOppImage?.mediaImage
   return (
     <article className="centered mt-32" {...props}>
-      <StanfordOpportunityMetadata node={node} />
+      <NodePageMetadata
+        pageTitle={node.title}
+        metatags={node.metatag}
+        backupDescription={
+          getCleanDescription(node.suOppSummary?.processed, 2) ||
+          getCleanDescription(node.body?.processed) ||
+          getFirstText(node.suOppComponents)
+        }
+      />
       <H1>{node.title}</H1>
 
       <div className="grid grid-cols-3-1 gap-20">

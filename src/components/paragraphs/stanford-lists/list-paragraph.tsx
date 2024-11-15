@@ -39,6 +39,7 @@ const ListParagraph = async ({paragraph, ...props}: Props) => {
       {...props}
       className={twMerge("centered mb-20 flex flex-col gap-10 xl:max-w-[980px]", props.className)}
       aria-labelledby={ListWrapper === "section" ? paragraph.id : undefined}
+      data-nosnippet
     >
       {paragraph.suListHeadline && behaviors.list_paragraph?.heading_behavior !== "remove" && (
         <H2

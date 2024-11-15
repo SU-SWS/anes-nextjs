@@ -4192,17 +4192,28 @@ export type NodeQuery = {
   node?:
     | {
         __typename: "NodeStanfordCourse"
-        id: string
-        title: string
-        status: boolean
-        path: string
         suCourseAcademicYear?: string | null
         suCourseCode?: string | null
         suCourseId?: number | null
         suCourseInstructors?: Array<string> | null
         suCourseSectionUnits?: string | null
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
+        id: string
+        title: string
+        path: string
+        metatag: Array<
+          | {__typename?: "MetaTagLink"}
+          | {
+              __typename: "MetaTagProperty"
+              tag: string
+              attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+            }
+          | {__typename?: "MetaTagScript"}
+          | {
+              __typename: "MetaTagValue"
+              tag: string
+              attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+            }
+        >
         body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
         suCourseLink: {__typename?: "Link"; url?: string | null; title?: string | null}
         suCourseQuarters?: Array<{
@@ -4283,10 +4294,6 @@ export type NodeQuery = {
       }
     | {
         __typename: "NodeStanfordEvent"
-        id: string
-        title: string
-        status: boolean
-        path: string
         suEventAltLoc?: string | null
         suEventContactInfo?: string | null
         suEventDek?: string | null
@@ -4294,8 +4301,23 @@ export type NodeQuery = {
         suEventSponsor?: Array<string> | null
         suEventSubheadline?: string | null
         suEventTelephone?: any | null
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
+        id: string
+        title: string
+        path: string
+        metatag: Array<
+          | {__typename?: "MetaTagLink"}
+          | {
+              __typename: "MetaTagProperty"
+              tag: string
+              attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+            }
+          | {__typename?: "MetaTagScript"}
+          | {
+              __typename: "MetaTagValue"
+              tag: string
+              attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+            }
+        >
         body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
         suEventAudience?: Array<{
           __typename: "TermEventAudience"
@@ -4367,14 +4389,14 @@ export type NodeQuery = {
               suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
               suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
               suEntityItem?: Array<
-                | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
               > | null
             }
           | {
@@ -4385,11 +4407,8 @@ export type NodeQuery = {
               suFaqHeadline?: string | null
               suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
               suFaqQuestions?: Array<{
-                __typename: "ParagraphStanfordAccordion"
+                __typename?: "ParagraphStanfordAccordion"
                 suAccordionTitle: string
-                id: string
-                behaviors?: string | null
-                status: boolean
                 suAccordionBody: {__typename?: "Text"; processed?: any | null}
               }> | null
             }
@@ -4542,10 +4561,10 @@ export type NodeQuery = {
         suEventMapLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEventSchedule?: Array<{
           __typename: "ParagraphStanfordSchedule"
-          suScheduleHeadline?: string | null
           id: string
           behaviors?: string | null
           status: boolean
+          suScheduleHeadline?: string | null
           suScheduleDescription?: {__typename?: "Text"; processed?: any | null} | null
           suScheduleDateTime?: {
             __typename?: "SmartDateType"
@@ -4573,12 +4592,9 @@ export type NodeQuery = {
           } | null
           suScheduleUrl?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
           suScheduleSpeaker?: Array<{
-            __typename: "ParagraphStanfordPersonCtum"
+            __typename?: "ParagraphStanfordPersonCtum"
             suPersonCtaName?: string | null
             suPersonCtaTitle?: string | null
-            id: string
-            behaviors?: string | null
-            status: boolean
             suPersonCtaLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
             suPersonCtaImage?: {
               __typename: "MediaImage"
@@ -4642,14 +4658,25 @@ export type NodeQuery = {
       }
     | {
         __typename: "NodeStanfordEventSeries"
-        id: string
-        title: string
-        status: boolean
-        path: string
         suEventSeriesDek?: string | null
         suEventSeriesSubheadline?: string | null
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
+        id: string
+        title: string
+        path: string
+        metatag: Array<
+          | {__typename?: "MetaTagLink"}
+          | {
+              __typename: "MetaTagProperty"
+              tag: string
+              attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+            }
+          | {__typename?: "MetaTagScript"}
+          | {
+              __typename: "MetaTagValue"
+              tag: string
+              attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+            }
+        >
         suEventSeriesComponents?: Array<
           | {
               __typename: "ParagraphStanfordBanner"
@@ -4695,14 +4722,14 @@ export type NodeQuery = {
               suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
               suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
               suEntityItem?: Array<
-                | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
               > | null
             }
           | {
@@ -4713,11 +4740,8 @@ export type NodeQuery = {
               suFaqHeadline?: string | null
               suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
               suFaqQuestions?: Array<{
-                __typename: "ParagraphStanfordAccordion"
+                __typename?: "ParagraphStanfordAccordion"
                 suAccordionTitle: string
-                id: string
-                behaviors?: string | null
-                status: boolean
                 suAccordionBody: {__typename?: "Text"; processed?: any | null}
               }> | null
             }
@@ -4793,14 +4817,10 @@ export type NodeQuery = {
             }
         > | null
         suEventSeriesEvent?: Array<{
-          __typename: "NodeStanfordEvent"
+          __typename?: "NodeStanfordEvent"
           suEventAltLoc?: string | null
           suEventSubheadline?: string | null
           suEventDek?: string | null
-          id: string
-          title: string
-          status: boolean
-          path: string
           suEventLocation?: {
             __typename?: "Address"
             langcode?: string | null
@@ -4851,8 +4871,6 @@ export type NodeQuery = {
               | null
           }> | null
           suEventSource?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }> | null
         suEventSeriesType?: Array<{
           __typename: "TermStanfordEventType"
@@ -4882,16 +4900,27 @@ export type NodeQuery = {
       }
     | {
         __typename: "NodeStanfordNews"
-        id: string
-        title: string
-        status: boolean
-        path: string
         suNewsBannerMediaCaption?: string | null
         suNewsByline?: string | null
         suNewsDek?: string | null
         suNewsHideSocial?: boolean | null
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
+        id: string
+        title: string
+        path: string
+        metatag: Array<
+          | {__typename?: "MetaTagLink"}
+          | {
+              __typename: "MetaTagProperty"
+              tag: string
+              attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+            }
+          | {__typename?: "MetaTagScript"}
+          | {
+              __typename: "MetaTagValue"
+              tag: string
+              attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+            }
+        >
         suNewsBanner?:
           | {
               __typename: "MediaImage"
@@ -4946,14 +4975,14 @@ export type NodeQuery = {
               suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
               suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
               suEntityItem?: Array<
-                | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
               > | null
             }
           | {
@@ -4964,11 +4993,8 @@ export type NodeQuery = {
               suFaqHeadline?: string | null
               suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
               suFaqQuestions?: Array<{
-                __typename: "ParagraphStanfordAccordion"
+                __typename?: "ParagraphStanfordAccordion"
                 suAccordionTitle: string
-                id: string
-                behaviors?: string | null
-                status: boolean
                 suAccordionBody: {__typename?: "Text"; processed?: any | null}
               }> | null
             }
@@ -5079,17 +5105,28 @@ export type NodeQuery = {
       }
     | {
         __typename: "NodeStanfordOpportunity"
-        id: string
-        title: string
-        status: boolean
-        path: string
         suOppContactEmail?: any | null
         suOppContactName?: string | null
         suOppContactPhone?: any | null
         suOppCourseCode?: Array<string> | null
         suOppStatus?: boolean | null
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
+        id: string
+        title: string
+        path: string
+        metatag: Array<
+          | {__typename?: "MetaTagLink"}
+          | {
+              __typename: "MetaTagProperty"
+              tag: string
+              attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+            }
+          | {__typename?: "MetaTagScript"}
+          | {
+              __typename: "MetaTagValue"
+              tag: string
+              attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+            }
+        >
         body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
         suOppApplicationDeadline?: {__typename?: "DateTime"; timezone: any; time: any} | null
         suOppComponents?: Array<
@@ -5137,14 +5174,14 @@ export type NodeQuery = {
               suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
               suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
               suEntityItem?: Array<
-                | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
               > | null
             }
           | {
@@ -5155,11 +5192,8 @@ export type NodeQuery = {
               suFaqHeadline?: string | null
               suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
               suFaqQuestions?: Array<{
-                __typename: "ParagraphStanfordAccordion"
+                __typename?: "ParagraphStanfordAccordion"
                 suAccordionTitle: string
-                id: string
-                behaviors?: string | null
-                status: boolean
                 suAccordionBody: {__typename?: "Text"; processed?: any | null}
               }> | null
             }
@@ -5327,13 +5361,24 @@ export type NodeQuery = {
       }
     | {
         __typename: "NodeStanfordPage"
+        suPageDescription?: string | null
         id: string
         title: string
-        status: boolean
         path: string
-        suPageDescription?: string | null
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
+        metatag: Array<
+          | {__typename?: "MetaTagLink"}
+          | {
+              __typename: "MetaTagProperty"
+              tag: string
+              attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+            }
+          | {__typename?: "MetaTagScript"}
+          | {
+              __typename: "MetaTagValue"
+              tag: string
+              attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+            }
+        >
         layoutSelection?: {__typename?: "LayoutLibrary"; id: string} | null
         suBasicPageType?: Array<{
           __typename: "TermBasicPageType"
@@ -5363,11 +5408,11 @@ export type NodeQuery = {
         suPageBanner?:
           | {
               __typename: "ParagraphStanfordBanner"
-              suBannerHeader?: string | null
-              suBannerSupHeader?: string | null
               id: string
               behaviors?: string | null
               status: boolean
+              suBannerHeader?: string | null
+              suBannerSupHeader?: string | null
               suBannerBody?: {__typename?: "Text"; processed?: any | null} | null
               suBannerButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
               suBannerImage?: {
@@ -5435,14 +5480,14 @@ export type NodeQuery = {
               suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
               suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
               suEntityItem?: Array<
-                | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
               > | null
             }
           | {
@@ -5453,11 +5498,8 @@ export type NodeQuery = {
               suFaqHeadline?: string | null
               suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
               suFaqQuestions?: Array<{
-                __typename: "ParagraphStanfordAccordion"
+                __typename?: "ParagraphStanfordAccordion"
                 suAccordionTitle: string
-                id: string
-                behaviors?: string | null
-                status: boolean
                 suAccordionBody: {__typename?: "Text"; processed?: any | null}
               }> | null
             }
@@ -5541,10 +5583,6 @@ export type NodeQuery = {
       }
     | {
         __typename: "NodeStanfordPerson"
-        id: string
-        title: string
-        status: boolean
-        path: string
         suPersonAcademicAppt?: string | null
         suPersonAdminAppts?: Array<string> | null
         suPersonEducation?: Array<string> | null
@@ -5560,8 +5598,23 @@ export type NodeQuery = {
         suPersonResearchInterests?: Array<string> | null
         suPersonShortTitle?: string | null
         suPersonTelephone?: string | null
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
+        id: string
+        title: string
+        path: string
+        metatag: Array<
+          | {__typename?: "MetaTagLink"}
+          | {
+              __typename: "MetaTagProperty"
+              tag: string
+              attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+            }
+          | {__typename?: "MetaTagScript"}
+          | {
+              __typename: "MetaTagValue"
+              tag: string
+              attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+            }
+        >
         body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
         suPersonAffiliations?: Array<{__typename?: "Link"; url?: string | null; title?: string | null}> | null
         suPersonComponents?: Array<
@@ -5609,14 +5662,14 @@ export type NodeQuery = {
               suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
               suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
               suEntityItem?: Array<
-                | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
               > | null
             }
           | {
@@ -5627,11 +5680,8 @@ export type NodeQuery = {
               suFaqHeadline?: string | null
               suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
               suFaqQuestions?: Array<{
-                __typename: "ParagraphStanfordAccordion"
+                __typename?: "ParagraphStanfordAccordion"
                 suAccordionTitle: string
-                id: string
-                behaviors?: string | null
-                status: boolean
                 suAccordionBody: {__typename?: "Text"; processed?: any | null}
               }> | null
             }
@@ -5746,18 +5796,29 @@ export type NodeQuery = {
       }
     | {
         __typename: "NodeStanfordPolicy"
-        id: string
-        title: string
-        status: boolean
-        path: string
         suPolicyAuthority?: string | null
         suPolicyAutoPrefix?: boolean | null
         suPolicyChapter?: string | null
         suPolicyPolicyNum?: string | null
         suPolicySubchapter?: string | null
         suPolicyTitle: string
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
+        id: string
+        title: string
+        path: string
+        metatag: Array<
+          | {__typename?: "MetaTagLink"}
+          | {
+              __typename: "MetaTagProperty"
+              tag: string
+              attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+            }
+          | {__typename?: "MetaTagScript"}
+          | {
+              __typename: "MetaTagValue"
+              tag: string
+              attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+            }
+        >
         body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
         suPolicyChangelog?: Array<{
           __typename: "SuPolicyLog"
@@ -5817,26 +5878,31 @@ export type NodeQuery = {
         __typename: "NodeStanfordPublication"
         id: string
         title: string
-        status: boolean
         path: string
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
+        metatag: Array<
+          | {__typename?: "MetaTagLink"}
+          | {
+              __typename: "MetaTagProperty"
+              tag: string
+              attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+            }
+          | {__typename?: "MetaTagScript"}
+          | {
+              __typename: "MetaTagValue"
+              tag: string
+              attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+            }
+        >
         suPublicationAuthorRef?: Array<{
-          __typename: "NodeStanfordPerson"
+          __typename?: "NodeStanfordPerson"
           suPersonFullTitle?: string | null
           suPersonShortTitle?: string | null
-          id: string
-          title: string
-          status: boolean
-          path: string
           suPersonPhoto?: {
             __typename: "MediaImage"
             id: string
             name: string
             mediaImage: {__typename?: "Image"; url: string; alt?: string | null; height: number; width: number}
           } | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }> | null
         suPublicationComponents?: Array<
           | {
@@ -5883,14 +5949,14 @@ export type NodeQuery = {
               suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
               suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
               suEntityItem?: Array<
-                | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
               > | null
             }
           | {
@@ -5901,11 +5967,8 @@ export type NodeQuery = {
               suFaqHeadline?: string | null
               suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
               suFaqQuestions?: Array<{
-                __typename: "ParagraphStanfordAccordion"
+                __typename?: "ParagraphStanfordAccordion"
                 suAccordionTitle: string
-                id: string
-                behaviors?: string | null
-                status: boolean
                 suAccordionBody: {__typename?: "Text"; processed?: any | null}
               }> | null
             }
@@ -6198,16 +6261,12 @@ export type CoursesQuery = {
   nodeStanfordCourses: {
     __typename?: "NodeStanfordCourseConnection"
     nodes: Array<{
-      __typename: "NodeStanfordCourse"
+      __typename?: "NodeStanfordCourse"
       suCourseAcademicYear?: string | null
       suCourseCode?: string | null
       suCourseId?: number | null
       suCourseInstructors?: Array<string> | null
       suCourseSectionUnits?: string | null
-      id: string
-      title: string
-      status: boolean
-      path: string
       body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
       suCourseLink: {__typename?: "Link"; url?: string | null; title?: string | null}
       suCourseQuarters?: Array<{
@@ -6285,8 +6344,6 @@ export type CoursesQuery = {
           | {__typename?: "TermSuSharedTag"; id: string}
           | null
       }> | null
-      changed: {__typename?: "DateTime"; timezone: any; time: any}
-      created: {__typename?: "DateTime"; timezone: any; time: any}
     }>
     pageInfo: {__typename?: "ConnectionPageInfo"; hasNextPage: boolean; endCursor?: any | null}
   }
@@ -6302,13 +6359,9 @@ export type EventSeriesQuery = {
   nodeStanfordEventSeriesItems: {
     __typename?: "NodeStanfordEventSeriesConnection"
     nodes: Array<{
-      __typename: "NodeStanfordEventSeries"
+      __typename?: "NodeStanfordEventSeries"
       suEventSeriesDek?: string | null
       suEventSeriesSubheadline?: string | null
-      id: string
-      title: string
-      status: boolean
-      path: string
       suEventSeriesComponents?: Array<
         | {
             __typename: "ParagraphStanfordBanner"
@@ -6354,14 +6407,14 @@ export type EventSeriesQuery = {
             suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
             suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
             suEntityItem?: Array<
-              | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-              | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-              | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-              | {__typename?: "NodeStanfordNews"; id: string; path: string}
-              | {__typename?: "NodeStanfordPage"; id: string; path: string}
-              | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-              | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-              | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+              | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
             > | null
           }
         | {
@@ -6372,11 +6425,8 @@ export type EventSeriesQuery = {
             suFaqHeadline?: string | null
             suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
             suFaqQuestions?: Array<{
-              __typename: "ParagraphStanfordAccordion"
+              __typename?: "ParagraphStanfordAccordion"
               suAccordionTitle: string
-              id: string
-              behaviors?: string | null
-              status: boolean
               suAccordionBody: {__typename?: "Text"; processed?: any | null}
             }> | null
           }
@@ -6452,14 +6502,10 @@ export type EventSeriesQuery = {
           }
       > | null
       suEventSeriesEvent?: Array<{
-        __typename: "NodeStanfordEvent"
+        __typename?: "NodeStanfordEvent"
         suEventAltLoc?: string | null
         suEventSubheadline?: string | null
         suEventDek?: string | null
-        id: string
-        title: string
-        status: boolean
-        path: string
         suEventLocation?: {
           __typename?: "Address"
           langcode?: string | null
@@ -6510,8 +6556,6 @@ export type EventSeriesQuery = {
             | null
         }> | null
         suEventSource?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
       }> | null
       suEventSeriesType?: Array<{
         __typename: "TermStanfordEventType"
@@ -6538,8 +6582,6 @@ export type EventSeriesQuery = {
           | {__typename?: "TermSuSharedTag"; id: string}
           | null
       }> | null
-      changed: {__typename?: "DateTime"; timezone: any; time: any}
-      created: {__typename?: "DateTime"; timezone: any; time: any}
     }>
     pageInfo: {__typename?: "ConnectionPageInfo"; hasNextPage: boolean; endCursor?: any | null}
   }
@@ -6555,7 +6597,7 @@ export type EventsQuery = {
   nodeStanfordEvents: {
     __typename?: "NodeStanfordEventConnection"
     nodes: Array<{
-      __typename: "NodeStanfordEvent"
+      __typename?: "NodeStanfordEvent"
       suEventAltLoc?: string | null
       suEventContactInfo?: string | null
       suEventDek?: string | null
@@ -6563,10 +6605,6 @@ export type EventsQuery = {
       suEventSponsor?: Array<string> | null
       suEventSubheadline?: string | null
       suEventTelephone?: any | null
-      id: string
-      title: string
-      status: boolean
-      path: string
       body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
       suEventAudience?: Array<{
         __typename: "TermEventAudience"
@@ -6638,14 +6676,14 @@ export type EventsQuery = {
             suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
             suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
             suEntityItem?: Array<
-              | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-              | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-              | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-              | {__typename?: "NodeStanfordNews"; id: string; path: string}
-              | {__typename?: "NodeStanfordPage"; id: string; path: string}
-              | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-              | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-              | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+              | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
             > | null
           }
         | {
@@ -6656,11 +6694,8 @@ export type EventsQuery = {
             suFaqHeadline?: string | null
             suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
             suFaqQuestions?: Array<{
-              __typename: "ParagraphStanfordAccordion"
+              __typename?: "ParagraphStanfordAccordion"
               suAccordionTitle: string
-              id: string
-              behaviors?: string | null
-              status: boolean
               suAccordionBody: {__typename?: "Text"; processed?: any | null}
             }> | null
           }
@@ -6813,10 +6848,10 @@ export type EventsQuery = {
       suEventMapLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
       suEventSchedule?: Array<{
         __typename: "ParagraphStanfordSchedule"
-        suScheduleHeadline?: string | null
         id: string
         behaviors?: string | null
         status: boolean
+        suScheduleHeadline?: string | null
         suScheduleDescription?: {__typename?: "Text"; processed?: any | null} | null
         suScheduleDateTime?: {
           __typename?: "SmartDateType"
@@ -6844,12 +6879,9 @@ export type EventsQuery = {
         } | null
         suScheduleUrl?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suScheduleSpeaker?: Array<{
-          __typename: "ParagraphStanfordPersonCtum"
+          __typename?: "ParagraphStanfordPersonCtum"
           suPersonCtaName?: string | null
           suPersonCtaTitle?: string | null
-          id: string
-          behaviors?: string | null
-          status: boolean
           suPersonCtaLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
           suPersonCtaImage?: {
             __typename: "MediaImage"
@@ -6910,8 +6942,6 @@ export type EventsQuery = {
           | {__typename?: "TermSuSharedTag"; id: string}
           | null
       }> | null
-      changed: {__typename?: "DateTime"; timezone: any; time: any}
-      created: {__typename?: "DateTime"; timezone: any; time: any}
     }>
     pageInfo: {__typename?: "ConnectionPageInfo"; hasNextPage: boolean; endCursor?: any | null}
   }
@@ -6927,15 +6957,11 @@ export type NewsQuery = {
   nodeStanfordNewsItems: {
     __typename?: "NodeStanfordNewsConnection"
     nodes: Array<{
-      __typename: "NodeStanfordNews"
+      __typename?: "NodeStanfordNews"
       suNewsBannerMediaCaption?: string | null
       suNewsByline?: string | null
       suNewsDek?: string | null
       suNewsHideSocial?: boolean | null
-      id: string
-      title: string
-      status: boolean
-      path: string
       suNewsBanner?:
         | {
             __typename: "MediaImage"
@@ -6990,14 +7016,14 @@ export type NewsQuery = {
             suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
             suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
             suEntityItem?: Array<
-              | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-              | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-              | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-              | {__typename?: "NodeStanfordNews"; id: string; path: string}
-              | {__typename?: "NodeStanfordPage"; id: string; path: string}
-              | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-              | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-              | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+              | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
             > | null
           }
         | {
@@ -7008,11 +7034,8 @@ export type NewsQuery = {
             suFaqHeadline?: string | null
             suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
             suFaqQuestions?: Array<{
-              __typename: "ParagraphStanfordAccordion"
+              __typename?: "ParagraphStanfordAccordion"
               suAccordionTitle: string
-              id: string
-              behaviors?: string | null
-              status: boolean
               suAccordionBody: {__typename?: "Text"; processed?: any | null}
             }> | null
           }
@@ -7120,8 +7143,6 @@ export type NewsQuery = {
           | {__typename?: "TermSuSharedTag"; id: string}
           | null
       }> | null
-      changed: {__typename?: "DateTime"; timezone: any; time: any}
-      created: {__typename?: "DateTime"; timezone: any; time: any}
     }>
     pageInfo: {__typename?: "ConnectionPageInfo"; hasNextPage: boolean; endCursor?: any | null}
   }
@@ -7137,12 +7158,8 @@ export type BasicPagesQuery = {
   nodeStanfordPages: {
     __typename?: "NodeStanfordPageConnection"
     nodes: Array<{
-      __typename: "NodeStanfordPage"
+      __typename?: "NodeStanfordPage"
       suPageDescription?: string | null
-      id: string
-      title: string
-      status: boolean
-      path: string
       layoutSelection?: {__typename?: "LayoutLibrary"; id: string} | null
       suBasicPageType?: Array<{
         __typename: "TermBasicPageType"
@@ -7172,11 +7189,11 @@ export type BasicPagesQuery = {
       suPageBanner?:
         | {
             __typename: "ParagraphStanfordBanner"
-            suBannerHeader?: string | null
-            suBannerSupHeader?: string | null
             id: string
             behaviors?: string | null
             status: boolean
+            suBannerHeader?: string | null
+            suBannerSupHeader?: string | null
             suBannerBody?: {__typename?: "Text"; processed?: any | null} | null
             suBannerButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
             suBannerImage?: {
@@ -7244,14 +7261,14 @@ export type BasicPagesQuery = {
             suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
             suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
             suEntityItem?: Array<
-              | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-              | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-              | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-              | {__typename?: "NodeStanfordNews"; id: string; path: string}
-              | {__typename?: "NodeStanfordPage"; id: string; path: string}
-              | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-              | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-              | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+              | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
             > | null
           }
         | {
@@ -7262,11 +7279,8 @@ export type BasicPagesQuery = {
             suFaqHeadline?: string | null
             suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
             suFaqQuestions?: Array<{
-              __typename: "ParagraphStanfordAccordion"
+              __typename?: "ParagraphStanfordAccordion"
               suAccordionTitle: string
-              id: string
-              behaviors?: string | null
-              status: boolean
               suAccordionBody: {__typename?: "Text"; processed?: any | null}
             }> | null
           }
@@ -7347,8 +7361,6 @@ export type BasicPagesQuery = {
         name: string
         mediaImage: {__typename?: "Image"; url: string; alt?: string | null; height: number; width: number}
       } | null
-      changed: {__typename?: "DateTime"; timezone: any; time: any}
-      created: {__typename?: "DateTime"; timezone: any; time: any}
     }>
     pageInfo: {__typename?: "ConnectionPageInfo"; hasNextPage: boolean; endCursor?: any | null}
   }
@@ -7364,7 +7376,7 @@ export type PeopleQuery = {
   nodeStanfordPeople: {
     __typename?: "NodeStanfordPersonConnection"
     nodes: Array<{
-      __typename: "NodeStanfordPerson"
+      __typename?: "NodeStanfordPerson"
       suPersonAcademicAppt?: string | null
       suPersonAdminAppts?: Array<string> | null
       suPersonEducation?: Array<string> | null
@@ -7380,10 +7392,6 @@ export type PeopleQuery = {
       suPersonResearchInterests?: Array<string> | null
       suPersonShortTitle?: string | null
       suPersonTelephone?: string | null
-      id: string
-      title: string
-      status: boolean
-      path: string
       body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
       suPersonAffiliations?: Array<{__typename?: "Link"; url?: string | null; title?: string | null}> | null
       suPersonComponents?: Array<
@@ -7431,14 +7439,14 @@ export type PeopleQuery = {
             suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
             suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
             suEntityItem?: Array<
-              | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-              | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-              | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-              | {__typename?: "NodeStanfordNews"; id: string; path: string}
-              | {__typename?: "NodeStanfordPage"; id: string; path: string}
-              | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-              | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-              | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+              | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
             > | null
           }
         | {
@@ -7449,11 +7457,8 @@ export type PeopleQuery = {
             suFaqHeadline?: string | null
             suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
             suFaqQuestions?: Array<{
-              __typename: "ParagraphStanfordAccordion"
+              __typename?: "ParagraphStanfordAccordion"
               suAccordionTitle: string
-              id: string
-              behaviors?: string | null
-              status: boolean
               suAccordionBody: {__typename?: "Text"; processed?: any | null}
             }> | null
           }
@@ -7565,8 +7570,6 @@ export type PeopleQuery = {
           | {__typename?: "TermSuSharedTag"; id: string}
           | null
       }> | null
-      changed: {__typename?: "DateTime"; timezone: any; time: any}
-      created: {__typename?: "DateTime"; timezone: any; time: any}
     }>
     pageInfo: {__typename?: "ConnectionPageInfo"; hasNextPage: boolean; endCursor?: any | null}
   }
@@ -7582,17 +7585,13 @@ export type PoliciesQuery = {
   nodeStanfordPolicies: {
     __typename?: "NodeStanfordPolicyConnection"
     nodes: Array<{
-      __typename: "NodeStanfordPolicy"
+      __typename?: "NodeStanfordPolicy"
       suPolicyAuthority?: string | null
       suPolicyAutoPrefix?: boolean | null
       suPolicyChapter?: string | null
       suPolicyPolicyNum?: string | null
       suPolicySubchapter?: string | null
       suPolicyTitle: string
-      id: string
-      title: string
-      status: boolean
-      path: string
       body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
       suPolicyChangelog?: Array<{
         __typename: "SuPolicyLog"
@@ -7647,8 +7646,6 @@ export type PoliciesQuery = {
           }>
         }>
       } | null
-      changed: {__typename?: "DateTime"; timezone: any; time: any}
-      created: {__typename?: "DateTime"; timezone: any; time: any}
     }>
     pageInfo: {__typename?: "ConnectionPageInfo"; hasNextPage: boolean; endCursor?: any | null}
   }
@@ -7664,27 +7661,17 @@ export type PublicationsQuery = {
   nodeStanfordPublications: {
     __typename?: "NodeStanfordPublicationConnection"
     nodes: Array<{
-      __typename: "NodeStanfordPublication"
-      id: string
-      title: string
-      status: boolean
-      path: string
+      __typename?: "NodeStanfordPublication"
       suPublicationAuthorRef?: Array<{
-        __typename: "NodeStanfordPerson"
+        __typename?: "NodeStanfordPerson"
         suPersonFullTitle?: string | null
         suPersonShortTitle?: string | null
-        id: string
-        title: string
-        status: boolean
-        path: string
         suPersonPhoto?: {
           __typename: "MediaImage"
           id: string
           name: string
           mediaImage: {__typename?: "Image"; url: string; alt?: string | null; height: number; width: number}
         } | null
-        changed: {__typename?: "DateTime"; timezone: any; time: any}
-        created: {__typename?: "DateTime"; timezone: any; time: any}
       }> | null
       suPublicationComponents?: Array<
         | {
@@ -7731,14 +7718,14 @@ export type PublicationsQuery = {
             suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
             suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
             suEntityItem?: Array<
-              | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-              | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-              | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-              | {__typename?: "NodeStanfordNews"; id: string; path: string}
-              | {__typename?: "NodeStanfordPage"; id: string; path: string}
-              | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-              | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-              | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+              | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+              | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
             > | null
           }
         | {
@@ -7749,11 +7736,8 @@ export type PublicationsQuery = {
             suFaqHeadline?: string | null
             suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
             suFaqQuestions?: Array<{
-              __typename: "ParagraphStanfordAccordion"
+              __typename?: "ParagraphStanfordAccordion"
               suAccordionTitle: string
-              id: string
-              behaviors?: string | null
-              status: boolean
               suAccordionBody: {__typename?: "Text"; processed?: any | null}
             }> | null
           }
@@ -7860,8 +7844,6 @@ export type PublicationsQuery = {
           | {__typename?: "TermSuSharedTag"; id: string}
           | null
       }> | null
-      changed: {__typename?: "DateTime"; timezone: any; time: any}
-      created: {__typename?: "DateTime"; timezone: any; time: any}
     }>
     pageInfo: {__typename?: "ConnectionPageInfo"; hasNextPage: boolean; endCursor?: any | null}
   }
@@ -8369,14 +8351,14 @@ export type ParagraphQuery = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -8387,11 +8369,8 @@ export type ParagraphQuery = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -9176,94 +9155,89 @@ export type FragmentAddressTypeFragment = {
   country?: {__typename?: "AddressCountry"; name?: string | null; code?: string | null} | null
 }
 
+type FragmentMetaTag_MetaTagLink_Fragment = {__typename?: "MetaTagLink"}
+
+type FragmentMetaTag_MetaTagProperty_Fragment = {
+  __typename: "MetaTagProperty"
+  tag: string
+  attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+}
+
+type FragmentMetaTag_MetaTagScript_Fragment = {__typename?: "MetaTagScript"}
+
+type FragmentMetaTag_MetaTagValue_Fragment = {
+  __typename: "MetaTagValue"
+  tag: string
+  attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+}
+
+export type FragmentMetaTagFragment =
+  | FragmentMetaTag_MetaTagLink_Fragment
+  | FragmentMetaTag_MetaTagProperty_Fragment
+  | FragmentMetaTag_MetaTagScript_Fragment
+  | FragmentMetaTag_MetaTagValue_Fragment
+
 type FragmentNodeInterface_NodeStanfordCourse_Fragment = {
   __typename: "NodeStanfordCourse"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeInterface_NodeStanfordEvent_Fragment = {
   __typename: "NodeStanfordEvent"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeInterface_NodeStanfordEventSeries_Fragment = {
   __typename: "NodeStanfordEventSeries"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeInterface_NodeStanfordNews_Fragment = {
   __typename: "NodeStanfordNews"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeInterface_NodeStanfordOpportunity_Fragment = {
   __typename: "NodeStanfordOpportunity"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeInterface_NodeStanfordPage_Fragment = {
   __typename: "NodeStanfordPage"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeInterface_NodeStanfordPerson_Fragment = {
   __typename: "NodeStanfordPerson"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeInterface_NodeStanfordPolicy_Fragment = {
   __typename: "NodeStanfordPolicy"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeInterface_NodeStanfordPublication_Fragment = {
   __typename: "NodeStanfordPublication"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeInterfaceFragment =
@@ -9277,13 +9251,209 @@ export type FragmentNodeInterfaceFragment =
   | FragmentNodeInterface_NodeStanfordPolicy_Fragment
   | FragmentNodeInterface_NodeStanfordPublication_Fragment
 
-export type FragmentNodeStanfordPageFragment = {
-  __typename: "NodeStanfordPage"
-  suPageDescription?: string | null
+type FragmentNodePage_NodeStanfordCourse_Fragment = {
+  __typename: "NodeStanfordCourse"
   id: string
   title: string
-  status: boolean
   path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
+}
+
+type FragmentNodePage_NodeStanfordEvent_Fragment = {
+  __typename: "NodeStanfordEvent"
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
+}
+
+type FragmentNodePage_NodeStanfordEventSeries_Fragment = {
+  __typename: "NodeStanfordEventSeries"
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
+}
+
+type FragmentNodePage_NodeStanfordNews_Fragment = {
+  __typename: "NodeStanfordNews"
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
+}
+
+type FragmentNodePage_NodeStanfordOpportunity_Fragment = {
+  __typename: "NodeStanfordOpportunity"
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
+}
+
+type FragmentNodePage_NodeStanfordPage_Fragment = {
+  __typename: "NodeStanfordPage"
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
+}
+
+type FragmentNodePage_NodeStanfordPerson_Fragment = {
+  __typename: "NodeStanfordPerson"
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
+}
+
+type FragmentNodePage_NodeStanfordPolicy_Fragment = {
+  __typename: "NodeStanfordPolicy"
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
+}
+
+type FragmentNodePage_NodeStanfordPublication_Fragment = {
+  __typename: "NodeStanfordPublication"
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
+}
+
+export type FragmentNodePageFragment =
+  | FragmentNodePage_NodeStanfordCourse_Fragment
+  | FragmentNodePage_NodeStanfordEvent_Fragment
+  | FragmentNodePage_NodeStanfordEventSeries_Fragment
+  | FragmentNodePage_NodeStanfordNews_Fragment
+  | FragmentNodePage_NodeStanfordOpportunity_Fragment
+  | FragmentNodePage_NodeStanfordPage_Fragment
+  | FragmentNodePage_NodeStanfordPerson_Fragment
+  | FragmentNodePage_NodeStanfordPolicy_Fragment
+  | FragmentNodePage_NodeStanfordPublication_Fragment
+
+export type FragmentNodeStanfordPageFragment = {
+  __typename?: "NodeStanfordPage"
+  suPageDescription?: string | null
   layoutSelection?: {__typename?: "LayoutLibrary"; id: string} | null
   suBasicPageType?: Array<{
     __typename: "TermBasicPageType"
@@ -9313,11 +9483,11 @@ export type FragmentNodeStanfordPageFragment = {
   suPageBanner?:
     | {
         __typename: "ParagraphStanfordBanner"
-        suBannerHeader?: string | null
-        suBannerSupHeader?: string | null
         id: string
         behaviors?: string | null
         status: boolean
+        suBannerHeader?: string | null
+        suBannerSupHeader?: string | null
         suBannerBody?: {__typename?: "Text"; processed?: any | null} | null
         suBannerButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suBannerImage?: {
@@ -9385,14 +9555,14 @@ export type FragmentNodeStanfordPageFragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -9403,11 +9573,8 @@ export type FragmentNodeStanfordPageFragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -9488,21 +9655,15 @@ export type FragmentNodeStanfordPageFragment = {
     name: string
     mediaImage: {__typename?: "Image"; url: string; alt?: string | null; height: number; width: number}
   } | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordCourseFragment = {
-  __typename: "NodeStanfordCourse"
+  __typename?: "NodeStanfordCourse"
   suCourseAcademicYear?: string | null
   suCourseCode?: string | null
   suCourseId?: number | null
   suCourseInstructors?: Array<string> | null
   suCourseSectionUnits?: string | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suCourseLink: {__typename?: "Link"; url?: string | null; title?: string | null}
   suCourseQuarters?: Array<{
@@ -9580,12 +9741,10 @@ export type FragmentNodeStanfordCourseFragment = {
       | {__typename?: "TermSuSharedTag"; id: string}
       | null
   }> | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordEventFragment = {
-  __typename: "NodeStanfordEvent"
+  __typename?: "NodeStanfordEvent"
   suEventAltLoc?: string | null
   suEventContactInfo?: string | null
   suEventDek?: string | null
@@ -9593,10 +9752,6 @@ export type FragmentNodeStanfordEventFragment = {
   suEventSponsor?: Array<string> | null
   suEventSubheadline?: string | null
   suEventTelephone?: any | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suEventAudience?: Array<{
     __typename: "TermEventAudience"
@@ -9668,14 +9823,14 @@ export type FragmentNodeStanfordEventFragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -9686,11 +9841,8 @@ export type FragmentNodeStanfordEventFragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -9843,10 +9995,10 @@ export type FragmentNodeStanfordEventFragment = {
   suEventMapLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
   suEventSchedule?: Array<{
     __typename: "ParagraphStanfordSchedule"
-    suScheduleHeadline?: string | null
     id: string
     behaviors?: string | null
     status: boolean
+    suScheduleHeadline?: string | null
     suScheduleDescription?: {__typename?: "Text"; processed?: any | null} | null
     suScheduleDateTime?: {
       __typename?: "SmartDateType"
@@ -9874,12 +10026,9 @@ export type FragmentNodeStanfordEventFragment = {
     } | null
     suScheduleUrl?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
     suScheduleSpeaker?: Array<{
-      __typename: "ParagraphStanfordPersonCtum"
+      __typename?: "ParagraphStanfordPersonCtum"
       suPersonCtaName?: string | null
       suPersonCtaTitle?: string | null
-      id: string
-      behaviors?: string | null
-      status: boolean
       suPersonCtaLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
       suPersonCtaImage?: {
         __typename: "MediaImage"
@@ -9940,18 +10089,12 @@ export type FragmentNodeStanfordEventFragment = {
       | {__typename?: "TermSuSharedTag"; id: string}
       | null
   }> | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordEventSeriesFragment = {
-  __typename: "NodeStanfordEventSeries"
+  __typename?: "NodeStanfordEventSeries"
   suEventSeriesDek?: string | null
   suEventSeriesSubheadline?: string | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   suEventSeriesComponents?: Array<
     | {
         __typename: "ParagraphStanfordBanner"
@@ -9997,14 +10140,14 @@ export type FragmentNodeStanfordEventSeriesFragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -10015,11 +10158,8 @@ export type FragmentNodeStanfordEventSeriesFragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -10095,14 +10235,10 @@ export type FragmentNodeStanfordEventSeriesFragment = {
       }
   > | null
   suEventSeriesEvent?: Array<{
-    __typename: "NodeStanfordEvent"
+    __typename?: "NodeStanfordEvent"
     suEventAltLoc?: string | null
     suEventSubheadline?: string | null
     suEventDek?: string | null
-    id: string
-    title: string
-    status: boolean
-    path: string
     suEventLocation?: {
       __typename?: "Address"
       langcode?: string | null
@@ -10153,8 +10289,6 @@ export type FragmentNodeStanfordEventSeriesFragment = {
         | null
     }> | null
     suEventSource?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
-    changed: {__typename?: "DateTime"; timezone: any; time: any}
-    created: {__typename?: "DateTime"; timezone: any; time: any}
   }> | null
   suEventSeriesType?: Array<{
     __typename: "TermStanfordEventType"
@@ -10181,20 +10315,14 @@ export type FragmentNodeStanfordEventSeriesFragment = {
       | {__typename?: "TermSuSharedTag"; id: string}
       | null
   }> | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordNewsFragment = {
-  __typename: "NodeStanfordNews"
+  __typename?: "NodeStanfordNews"
   suNewsBannerMediaCaption?: string | null
   suNewsByline?: string | null
   suNewsDek?: string | null
   suNewsHideSocial?: boolean | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   suNewsBanner?:
     | {
         __typename: "MediaImage"
@@ -10249,14 +10377,14 @@ export type FragmentNodeStanfordNewsFragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -10267,11 +10395,8 @@ export type FragmentNodeStanfordNewsFragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -10379,12 +10504,10 @@ export type FragmentNodeStanfordNewsFragment = {
       | {__typename?: "TermSuSharedTag"; id: string}
       | null
   }> | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordPersonFragment = {
-  __typename: "NodeStanfordPerson"
+  __typename?: "NodeStanfordPerson"
   suPersonAcademicAppt?: string | null
   suPersonAdminAppts?: Array<string> | null
   suPersonEducation?: Array<string> | null
@@ -10400,10 +10523,6 @@ export type FragmentNodeStanfordPersonFragment = {
   suPersonResearchInterests?: Array<string> | null
   suPersonShortTitle?: string | null
   suPersonTelephone?: string | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suPersonAffiliations?: Array<{__typename?: "Link"; url?: string | null; title?: string | null}> | null
   suPersonComponents?: Array<
@@ -10451,14 +10570,14 @@ export type FragmentNodeStanfordPersonFragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -10469,11 +10588,8 @@ export type FragmentNodeStanfordPersonFragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -10585,22 +10701,16 @@ export type FragmentNodeStanfordPersonFragment = {
       | {__typename?: "TermSuSharedTag"; id: string}
       | null
   }> | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordPolicyFragment = {
-  __typename: "NodeStanfordPolicy"
+  __typename?: "NodeStanfordPolicy"
   suPolicyAuthority?: string | null
   suPolicyAutoPrefix?: boolean | null
   suPolicyChapter?: string | null
   suPolicyPolicyNum?: string | null
   suPolicySubchapter?: string | null
   suPolicyTitle: string
-  id: string
-  title: string
-  status: boolean
-  path: string
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suPolicyChangelog?: Array<{
     __typename: "SuPolicyLog"
@@ -10655,32 +10765,20 @@ export type FragmentNodeStanfordPolicyFragment = {
       }>
     }>
   } | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordPublicationFragment = {
-  __typename: "NodeStanfordPublication"
-  id: string
-  title: string
-  status: boolean
-  path: string
+  __typename?: "NodeStanfordPublication"
   suPublicationAuthorRef?: Array<{
-    __typename: "NodeStanfordPerson"
+    __typename?: "NodeStanfordPerson"
     suPersonFullTitle?: string | null
     suPersonShortTitle?: string | null
-    id: string
-    title: string
-    status: boolean
-    path: string
     suPersonPhoto?: {
       __typename: "MediaImage"
       id: string
       name: string
       mediaImage: {__typename?: "Image"; url: string; alt?: string | null; height: number; width: number}
     } | null
-    changed: {__typename?: "DateTime"; timezone: any; time: any}
-    created: {__typename?: "DateTime"; timezone: any; time: any}
   }> | null
   suPublicationComponents?: Array<
     | {
@@ -10727,14 +10825,14 @@ export type FragmentNodeStanfordPublicationFragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -10745,11 +10843,8 @@ export type FragmentNodeStanfordPublicationFragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -10856,21 +10951,15 @@ export type FragmentNodeStanfordPublicationFragment = {
       | {__typename?: "TermSuSharedTag"; id: string}
       | null
   }> | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordOpportunityFragment = {
-  __typename: "NodeStanfordOpportunity"
+  __typename?: "NodeStanfordOpportunity"
   suOppContactEmail?: any | null
   suOppContactName?: string | null
   suOppContactPhone?: any | null
   suOppCourseCode?: Array<string> | null
   suOppStatus?: boolean | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suOppApplicationDeadline?: {__typename?: "DateTime"; timezone: any; time: any} | null
   suOppComponents?: Array<
@@ -10918,14 +11007,14 @@ export type FragmentNodeStanfordOpportunityFragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -10936,11 +11025,8 @@ export type FragmentNodeStanfordOpportunityFragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -11105,23 +11191,32 @@ export type FragmentNodeStanfordOpportunityFragment = {
       | {__typename?: "TermSuSharedTag"; id: string}
       | null
   }> | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeUnion_NodeStanfordCourse_Fragment = {
   __typename: "NodeStanfordCourse"
-  id: string
-  title: string
-  status: boolean
-  path: string
   suCourseAcademicYear?: string | null
   suCourseCode?: string | null
   suCourseId?: number | null
   suCourseInstructors?: Array<string> | null
   suCourseSectionUnits?: string | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suCourseLink: {__typename?: "Link"; url?: string | null; title?: string | null}
   suCourseQuarters?: Array<{
@@ -11203,10 +11298,6 @@ type FragmentNodeUnion_NodeStanfordCourse_Fragment = {
 
 type FragmentNodeUnion_NodeStanfordEvent_Fragment = {
   __typename: "NodeStanfordEvent"
-  id: string
-  title: string
-  status: boolean
-  path: string
   suEventAltLoc?: string | null
   suEventContactInfo?: string | null
   suEventDek?: string | null
@@ -11214,8 +11305,23 @@ type FragmentNodeUnion_NodeStanfordEvent_Fragment = {
   suEventSponsor?: Array<string> | null
   suEventSubheadline?: string | null
   suEventTelephone?: any | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suEventAudience?: Array<{
     __typename: "TermEventAudience"
@@ -11287,14 +11393,14 @@ type FragmentNodeUnion_NodeStanfordEvent_Fragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -11305,11 +11411,8 @@ type FragmentNodeUnion_NodeStanfordEvent_Fragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -11462,10 +11565,10 @@ type FragmentNodeUnion_NodeStanfordEvent_Fragment = {
   suEventMapLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
   suEventSchedule?: Array<{
     __typename: "ParagraphStanfordSchedule"
-    suScheduleHeadline?: string | null
     id: string
     behaviors?: string | null
     status: boolean
+    suScheduleHeadline?: string | null
     suScheduleDescription?: {__typename?: "Text"; processed?: any | null} | null
     suScheduleDateTime?: {
       __typename?: "SmartDateType"
@@ -11493,12 +11596,9 @@ type FragmentNodeUnion_NodeStanfordEvent_Fragment = {
     } | null
     suScheduleUrl?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
     suScheduleSpeaker?: Array<{
-      __typename: "ParagraphStanfordPersonCtum"
+      __typename?: "ParagraphStanfordPersonCtum"
       suPersonCtaName?: string | null
       suPersonCtaTitle?: string | null
-      id: string
-      behaviors?: string | null
-      status: boolean
       suPersonCtaLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
       suPersonCtaImage?: {
         __typename: "MediaImage"
@@ -11563,14 +11663,25 @@ type FragmentNodeUnion_NodeStanfordEvent_Fragment = {
 
 type FragmentNodeUnion_NodeStanfordEventSeries_Fragment = {
   __typename: "NodeStanfordEventSeries"
-  id: string
-  title: string
-  status: boolean
-  path: string
   suEventSeriesDek?: string | null
   suEventSeriesSubheadline?: string | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
   suEventSeriesComponents?: Array<
     | {
         __typename: "ParagraphStanfordBanner"
@@ -11616,14 +11727,14 @@ type FragmentNodeUnion_NodeStanfordEventSeries_Fragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -11634,11 +11745,8 @@ type FragmentNodeUnion_NodeStanfordEventSeries_Fragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -11714,14 +11822,10 @@ type FragmentNodeUnion_NodeStanfordEventSeries_Fragment = {
       }
   > | null
   suEventSeriesEvent?: Array<{
-    __typename: "NodeStanfordEvent"
+    __typename?: "NodeStanfordEvent"
     suEventAltLoc?: string | null
     suEventSubheadline?: string | null
     suEventDek?: string | null
-    id: string
-    title: string
-    status: boolean
-    path: string
     suEventLocation?: {
       __typename?: "Address"
       langcode?: string | null
@@ -11772,8 +11876,6 @@ type FragmentNodeUnion_NodeStanfordEventSeries_Fragment = {
         | null
     }> | null
     suEventSource?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
-    changed: {__typename?: "DateTime"; timezone: any; time: any}
-    created: {__typename?: "DateTime"; timezone: any; time: any}
   }> | null
   suEventSeriesType?: Array<{
     __typename: "TermStanfordEventType"
@@ -11804,16 +11906,27 @@ type FragmentNodeUnion_NodeStanfordEventSeries_Fragment = {
 
 type FragmentNodeUnion_NodeStanfordNews_Fragment = {
   __typename: "NodeStanfordNews"
-  id: string
-  title: string
-  status: boolean
-  path: string
   suNewsBannerMediaCaption?: string | null
   suNewsByline?: string | null
   suNewsDek?: string | null
   suNewsHideSocial?: boolean | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
   suNewsBanner?:
     | {
         __typename: "MediaImage"
@@ -11868,14 +11981,14 @@ type FragmentNodeUnion_NodeStanfordNews_Fragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -11886,11 +11999,8 @@ type FragmentNodeUnion_NodeStanfordNews_Fragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -12002,17 +12112,28 @@ type FragmentNodeUnion_NodeStanfordNews_Fragment = {
 
 type FragmentNodeUnion_NodeStanfordOpportunity_Fragment = {
   __typename: "NodeStanfordOpportunity"
-  id: string
-  title: string
-  status: boolean
-  path: string
   suOppContactEmail?: any | null
   suOppContactName?: string | null
   suOppContactPhone?: any | null
   suOppCourseCode?: Array<string> | null
   suOppStatus?: boolean | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suOppApplicationDeadline?: {__typename?: "DateTime"; timezone: any; time: any} | null
   suOppComponents?: Array<
@@ -12060,14 +12181,14 @@ type FragmentNodeUnion_NodeStanfordOpportunity_Fragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -12078,11 +12199,8 @@ type FragmentNodeUnion_NodeStanfordOpportunity_Fragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -12251,13 +12369,24 @@ type FragmentNodeUnion_NodeStanfordOpportunity_Fragment = {
 
 type FragmentNodeUnion_NodeStanfordPage_Fragment = {
   __typename: "NodeStanfordPage"
+  suPageDescription?: string | null
   id: string
   title: string
-  status: boolean
   path: string
-  suPageDescription?: string | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
   layoutSelection?: {__typename?: "LayoutLibrary"; id: string} | null
   suBasicPageType?: Array<{
     __typename: "TermBasicPageType"
@@ -12287,11 +12416,11 @@ type FragmentNodeUnion_NodeStanfordPage_Fragment = {
   suPageBanner?:
     | {
         __typename: "ParagraphStanfordBanner"
-        suBannerHeader?: string | null
-        suBannerSupHeader?: string | null
         id: string
         behaviors?: string | null
         status: boolean
+        suBannerHeader?: string | null
+        suBannerSupHeader?: string | null
         suBannerBody?: {__typename?: "Text"; processed?: any | null} | null
         suBannerButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suBannerImage?: {
@@ -12359,14 +12488,14 @@ type FragmentNodeUnion_NodeStanfordPage_Fragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -12377,11 +12506,8 @@ type FragmentNodeUnion_NodeStanfordPage_Fragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -12466,10 +12592,6 @@ type FragmentNodeUnion_NodeStanfordPage_Fragment = {
 
 type FragmentNodeUnion_NodeStanfordPerson_Fragment = {
   __typename: "NodeStanfordPerson"
-  id: string
-  title: string
-  status: boolean
-  path: string
   suPersonAcademicAppt?: string | null
   suPersonAdminAppts?: Array<string> | null
   suPersonEducation?: Array<string> | null
@@ -12485,8 +12607,23 @@ type FragmentNodeUnion_NodeStanfordPerson_Fragment = {
   suPersonResearchInterests?: Array<string> | null
   suPersonShortTitle?: string | null
   suPersonTelephone?: string | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suPersonAffiliations?: Array<{__typename?: "Link"; url?: string | null; title?: string | null}> | null
   suPersonComponents?: Array<
@@ -12534,14 +12671,14 @@ type FragmentNodeUnion_NodeStanfordPerson_Fragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -12552,11 +12689,8 @@ type FragmentNodeUnion_NodeStanfordPerson_Fragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -12672,18 +12806,29 @@ type FragmentNodeUnion_NodeStanfordPerson_Fragment = {
 
 type FragmentNodeUnion_NodeStanfordPolicy_Fragment = {
   __typename: "NodeStanfordPolicy"
-  id: string
-  title: string
-  status: boolean
-  path: string
   suPolicyAuthority?: string | null
   suPolicyAutoPrefix?: boolean | null
   suPolicyChapter?: string | null
   suPolicyPolicyNum?: string | null
   suPolicySubchapter?: string | null
   suPolicyTitle: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
+  id: string
+  title: string
+  path: string
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suPolicyChangelog?: Array<{
     __typename: "SuPolicyLog"
@@ -12744,26 +12889,31 @@ type FragmentNodeUnion_NodeStanfordPublication_Fragment = {
   __typename: "NodeStanfordPublication"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
+  metatag: Array<
+    | {__typename?: "MetaTagLink"}
+    | {
+        __typename: "MetaTagProperty"
+        tag: string
+        attributes: {__typename?: "MetaTagPropertyAttributes"; property?: string | null; content?: string | null}
+      }
+    | {__typename?: "MetaTagScript"}
+    | {
+        __typename: "MetaTagValue"
+        tag: string
+        attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+      }
+  >
   suPublicationAuthorRef?: Array<{
-    __typename: "NodeStanfordPerson"
+    __typename?: "NodeStanfordPerson"
     suPersonFullTitle?: string | null
     suPersonShortTitle?: string | null
-    id: string
-    title: string
-    status: boolean
-    path: string
     suPersonPhoto?: {
       __typename: "MediaImage"
       id: string
       name: string
       mediaImage: {__typename?: "Image"; url: string; alt?: string | null; height: number; width: number}
     } | null
-    changed: {__typename?: "DateTime"; timezone: any; time: any}
-    created: {__typename?: "DateTime"; timezone: any; time: any}
   }> | null
   suPublicationComponents?: Array<
     | {
@@ -12810,14 +12960,14 @@ type FragmentNodeUnion_NodeStanfordPublication_Fragment = {
         suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
         suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
         suEntityItem?: Array<
-          | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-          | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-          | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-          | {__typename?: "NodeStanfordNews"; id: string; path: string}
-          | {__typename?: "NodeStanfordPage"; id: string; path: string}
-          | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-          | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-          | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+          | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+          | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
         > | null
       }
     | {
@@ -12828,11 +12978,8 @@ type FragmentNodeUnion_NodeStanfordPublication_Fragment = {
         suFaqHeadline?: string | null
         suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
         suFaqQuestions?: Array<{
-          __typename: "ParagraphStanfordAccordion"
+          __typename?: "ParagraphStanfordAccordion"
           suAccordionTitle: string
-          id: string
-          behaviors?: string | null
-          status: boolean
           suAccordionBody: {__typename?: "Text"; processed?: any | null}
         }> | null
       }
@@ -12953,14 +13100,10 @@ export type FragmentNodeUnionFragment =
   | FragmentNodeUnion_NodeStanfordPublication_Fragment
 
 export type FragmentNodeStanfordCourseTeaserFragment = {
-  __typename: "NodeStanfordCourse"
+  __typename?: "NodeStanfordCourse"
   suCourseAcademicYear?: string | null
   suCourseCode?: string | null
   suCourseInstructors?: Array<string> | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   suCourseSubject?: {
     __typename: "TermSuCourseSubject"
     id: string
@@ -13012,19 +13155,13 @@ export type FragmentNodeStanfordCourseTeaserFragment = {
       | null
   }> | null
   body?: {__typename?: "TextSummary"; processed?: any | null} | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordEventTeaserFragment = {
-  __typename: "NodeStanfordEvent"
+  __typename?: "NodeStanfordEvent"
   suEventAltLoc?: string | null
   suEventSubheadline?: string | null
   suEventDek?: string | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   suEventLocation?: {
     __typename?: "Address"
     langcode?: string | null
@@ -13075,28 +13212,16 @@ export type FragmentNodeStanfordEventTeaserFragment = {
       | null
   }> | null
   suEventSource?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordEventSeriesTeaserFragment = {
-  __typename: "NodeStanfordEventSeries"
+  __typename?: "NodeStanfordEventSeries"
   suEventSeriesDek?: string | null
-  id: string
-  title: string
-  status: boolean
-  path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordNewsTeaserFragment = {
-  __typename: "NodeStanfordNews"
+  __typename?: "NodeStanfordNews"
   suNewsDek?: string | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   suNewsFeaturedMedia?: {
     __typename: "MediaImage"
     id: string
@@ -13130,17 +13255,11 @@ export type FragmentNodeStanfordNewsTeaserFragment = {
   }> | null
   suNewsPublishingDate?: {__typename?: "DateTime"; timezone: any; time: any} | null
   suNewsSource?: {__typename?: "Link"; url?: string | null} | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordPageTeaserFragment = {
-  __typename: "NodeStanfordPage"
+  __typename?: "NodeStanfordPage"
   suPageDescription?: string | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   suPageImage?: {
     __typename: "MediaImage"
     id: string
@@ -13149,7 +13268,10 @@ export type FragmentNodeStanfordPageTeaserFragment = {
   } | null
   suPageBanner?:
     | {
-        __typename?: "ParagraphStanfordBanner"
+        __typename: "ParagraphStanfordBanner"
+        id: string
+        behaviors?: string | null
+        status: boolean
         suBannerImage?: {
           __typename: "MediaImage"
           id: string
@@ -13170,46 +13292,28 @@ export type FragmentNodeStanfordPageTeaserFragment = {
         }
       }
     | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordPersonTeaserFragment = {
-  __typename: "NodeStanfordPerson"
+  __typename?: "NodeStanfordPerson"
   suPersonFullTitle?: string | null
   suPersonShortTitle?: string | null
-  id: string
-  title: string
-  status: boolean
-  path: string
   suPersonPhoto?: {
     __typename: "MediaImage"
     id: string
     name: string
     mediaImage: {__typename?: "Image"; url: string; alt?: string | null; height: number; width: number}
   } | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordPolicyTeaserFragment = {
-  __typename: "NodeStanfordPolicy"
-  id: string
-  title: string
-  status: boolean
-  path: string
+  __typename?: "NodeStanfordPolicy"
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suPolicyUpdated?: {__typename?: "DateTime"; timezone: any; time: any} | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordPublicationTeaserFragment = {
-  __typename: "NodeStanfordPublication"
-  id: string
-  title: string
-  status: boolean
-  path: string
+  __typename?: "NodeStanfordPublication"
   suPublicationTopics?: Array<{
     __typename: "TermStanfordPublicationTopic"
     id: string
@@ -13242,16 +13346,10 @@ export type FragmentNodeStanfordPublicationTeaserFragment = {
     | {__typename?: "CitationSuOther"; apa?: any | null; chicago?: any | null; id: string; title: string}
     | {__typename?: "CitationSuThesi"; apa?: any | null; chicago?: any | null; id: string; title: string}
     | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 export type FragmentNodeStanfordOpportunityTeaserFragment = {
-  __typename: "NodeStanfordOpportunity"
-  id: string
-  title: string
-  status: boolean
-  path: string
+  __typename?: "NodeStanfordOpportunity"
   suOppImage?: {
     __typename: "MediaImage"
     id: string
@@ -13260,21 +13358,16 @@ export type FragmentNodeStanfordOpportunityTeaserFragment = {
   } | null
   suOppSummary?: {__typename?: "Text"; processed?: any | null} | null
   suOppSource?: {__typename?: "Link"; url?: string | null} | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeTeaserUnion_NodeStanfordCourse_Fragment = {
   __typename: "NodeStanfordCourse"
   id: string
   title: string
-  status: boolean
   path: string
   suCourseAcademicYear?: string | null
   suCourseCode?: string | null
   suCourseInstructors?: Array<string> | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
   suCourseSubject?: {
     __typename: "TermSuCourseSubject"
     id: string
@@ -13332,13 +13425,10 @@ type FragmentNodeTeaserUnion_NodeStanfordEvent_Fragment = {
   __typename: "NodeStanfordEvent"
   id: string
   title: string
-  status: boolean
   path: string
   suEventAltLoc?: string | null
   suEventSubheadline?: string | null
   suEventDek?: string | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
   suEventLocation?: {
     __typename?: "Address"
     langcode?: string | null
@@ -13395,22 +13485,16 @@ type FragmentNodeTeaserUnion_NodeStanfordEventSeries_Fragment = {
   __typename: "NodeStanfordEventSeries"
   id: string
   title: string
-  status: boolean
   path: string
   suEventSeriesDek?: string | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
 }
 
 type FragmentNodeTeaserUnion_NodeStanfordNews_Fragment = {
   __typename: "NodeStanfordNews"
   id: string
   title: string
-  status: boolean
   path: string
   suNewsDek?: string | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
   suNewsFeaturedMedia?: {
     __typename: "MediaImage"
     id: string
@@ -13450,10 +13534,7 @@ type FragmentNodeTeaserUnion_NodeStanfordOpportunity_Fragment = {
   __typename: "NodeStanfordOpportunity"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
   suOppImage?: {
     __typename: "MediaImage"
     id: string
@@ -13468,11 +13549,8 @@ type FragmentNodeTeaserUnion_NodeStanfordPage_Fragment = {
   __typename: "NodeStanfordPage"
   id: string
   title: string
-  status: boolean
   path: string
   suPageDescription?: string | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
   suPageImage?: {
     __typename: "MediaImage"
     id: string
@@ -13481,7 +13559,10 @@ type FragmentNodeTeaserUnion_NodeStanfordPage_Fragment = {
   } | null
   suPageBanner?:
     | {
-        __typename?: "ParagraphStanfordBanner"
+        __typename: "ParagraphStanfordBanner"
+        id: string
+        behaviors?: string | null
+        status: boolean
         suBannerImage?: {
           __typename: "MediaImage"
           id: string
@@ -13508,12 +13589,9 @@ type FragmentNodeTeaserUnion_NodeStanfordPerson_Fragment = {
   __typename: "NodeStanfordPerson"
   id: string
   title: string
-  status: boolean
   path: string
   suPersonFullTitle?: string | null
   suPersonShortTitle?: string | null
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
   suPersonPhoto?: {
     __typename: "MediaImage"
     id: string
@@ -13526,10 +13604,7 @@ type FragmentNodeTeaserUnion_NodeStanfordPolicy_Fragment = {
   __typename: "NodeStanfordPolicy"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
   body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suPolicyUpdated?: {__typename?: "DateTime"; timezone: any; time: any} | null
 }
@@ -13538,10 +13613,7 @@ type FragmentNodeTeaserUnion_NodeStanfordPublication_Fragment = {
   __typename: "NodeStanfordPublication"
   id: string
   title: string
-  status: boolean
   path: string
-  changed: {__typename?: "DateTime"; timezone: any; time: any}
-  created: {__typename?: "DateTime"; timezone: any; time: any}
   suPublicationTopics?: Array<{
     __typename: "TermStanfordPublicationTopic"
     id: string
@@ -13702,38 +13774,26 @@ export type FragmentParagraphInterfaceFragment =
   | FragmentParagraphInterface_ParagraphStanfordWysiwyg_Fragment
 
 export type FragmentParagraphStanfordAccordionFragment = {
-  __typename: "ParagraphStanfordAccordion"
+  __typename?: "ParagraphStanfordAccordion"
   suAccordionTitle: string
-  id: string
-  behaviors?: string | null
-  status: boolean
   suAccordionBody: {__typename?: "Text"; processed?: any | null}
 }
 
 export type FragmentParagraphStanfordFaqFragment = {
-  __typename: "ParagraphStanfordFaq"
+  __typename?: "ParagraphStanfordFaq"
   suFaqHeadline?: string | null
-  id: string
-  behaviors?: string | null
-  status: boolean
   suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
   suFaqQuestions?: Array<{
-    __typename: "ParagraphStanfordAccordion"
+    __typename?: "ParagraphStanfordAccordion"
     suAccordionTitle: string
-    id: string
-    behaviors?: string | null
-    status: boolean
     suAccordionBody: {__typename?: "Text"; processed?: any | null}
   }> | null
 }
 
 export type FragmentParagraphStanfordBannerFragment = {
-  __typename: "ParagraphStanfordBanner"
+  __typename?: "ParagraphStanfordBanner"
   suBannerHeader?: string | null
   suBannerSupHeader?: string | null
-  id: string
-  behaviors?: string | null
-  status: boolean
   suBannerBody?: {__typename?: "Text"; processed?: any | null} | null
   suBannerButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
   suBannerImage?: {
@@ -13745,12 +13805,9 @@ export type FragmentParagraphStanfordBannerFragment = {
 }
 
 export type FragmentParagraphStanfordCardFragment = {
-  __typename: "ParagraphStanfordCard"
+  __typename?: "ParagraphStanfordCard"
   suCardHeader?: string | null
   suCardSuperHeader?: string | null
-  id: string
-  behaviors?: string | null
-  status: boolean
   suCardBody?: {__typename?: "Text"; processed?: any | null} | null
   suCardLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
   suCardMedia?:
@@ -13765,31 +13822,25 @@ export type FragmentParagraphStanfordCardFragment = {
 }
 
 export type FragmentParagraphStanfordEntityFragment = {
-  __typename: "ParagraphStanfordEntity"
+  __typename?: "ParagraphStanfordEntity"
   suEntityHeadline?: string | null
-  id: string
-  behaviors?: string | null
-  status: boolean
   suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
   suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
   suEntityItem?: Array<
-    | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-    | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-    | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-    | {__typename?: "NodeStanfordNews"; id: string; path: string}
-    | {__typename?: "NodeStanfordPage"; id: string; path: string}
-    | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-    | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-    | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+    | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
   > | null
 }
 
 export type FragmentParagraphStanfordGalleryFragment = {
-  __typename: "ParagraphStanfordGallery"
+  __typename?: "ParagraphStanfordGallery"
   suGalleryHeadline?: string | null
-  id: string
-  behaviors?: string | null
-  status: boolean
   suGalleryDescription?: {__typename?: "Text"; processed?: any | null} | null
   suGalleryButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
   suGalleryImages?: Array<{
@@ -13802,11 +13853,8 @@ export type FragmentParagraphStanfordGalleryFragment = {
 }
 
 export type FragmentParagraphStanfordListFragment = {
-  __typename: "ParagraphStanfordList"
+  __typename?: "ParagraphStanfordList"
   suListHeadline: string
-  id: string
-  behaviors?: string | null
-  status: boolean
   suListDescription?: {__typename?: "Text"; processed?: any | null} | null
   suListButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
   suListView?: {
@@ -13819,10 +13867,7 @@ export type FragmentParagraphStanfordListFragment = {
 }
 
 export type FragmentParagraphStanfordMediaCaptionFragment = {
-  __typename: "ParagraphStanfordMediaCaption"
-  id: string
-  behaviors?: string | null
-  status: boolean
+  __typename?: "ParagraphStanfordMediaCaption"
   suMediaCaptionMedia?:
     | {
         __typename: "MediaImage"
@@ -13837,12 +13882,9 @@ export type FragmentParagraphStanfordMediaCaptionFragment = {
 }
 
 export type FragmentParagraphStanfordPersonCtumFragment = {
-  __typename: "ParagraphStanfordPersonCtum"
+  __typename?: "ParagraphStanfordPersonCtum"
   suPersonCtaName?: string | null
   suPersonCtaTitle?: string | null
-  id: string
-  behaviors?: string | null
-  status: boolean
   suPersonCtaLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
   suPersonCtaImage?: {
     __typename: "MediaImage"
@@ -13853,11 +13895,8 @@ export type FragmentParagraphStanfordPersonCtumFragment = {
 }
 
 export type FragmentParagraphStanfordScheduleFragment = {
-  __typename: "ParagraphStanfordSchedule"
+  __typename?: "ParagraphStanfordSchedule"
   suScheduleHeadline?: string | null
-  id: string
-  behaviors?: string | null
-  status: boolean
   suScheduleDescription?: {__typename?: "Text"; processed?: any | null} | null
   suScheduleDateTime?: {
     __typename?: "SmartDateType"
@@ -13885,12 +13924,9 @@ export type FragmentParagraphStanfordScheduleFragment = {
   } | null
   suScheduleUrl?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
   suScheduleSpeaker?: Array<{
-    __typename: "ParagraphStanfordPersonCtum"
+    __typename?: "ParagraphStanfordPersonCtum"
     suPersonCtaName?: string | null
     suPersonCtaTitle?: string | null
-    id: string
-    behaviors?: string | null
-    status: boolean
     suPersonCtaLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
     suPersonCtaImage?: {
       __typename: "MediaImage"
@@ -13909,26 +13945,17 @@ export type FragmentParagraphStanfordLayoutFragment = {
 }
 
 export type FragmentParagraphStanfordSpacerFragment = {
-  __typename: "ParagraphStanfordSpacer"
+  __typename?: "ParagraphStanfordSpacer"
   suSpacerSize?: string | null
-  id: string
-  behaviors?: string | null
-  status: boolean
 }
 
 export type FragmentParagraphStanfordWysiwygFragment = {
-  __typename: "ParagraphStanfordWysiwyg"
-  id: string
-  behaviors?: string | null
-  status: boolean
+  __typename?: "ParagraphStanfordWysiwyg"
   suWysiwygText?: {__typename?: "Text"; processed?: any | null} | null
 }
 
 export type FragmentParagraphStanfordPageTitleBannerFragment = {
-  __typename: "ParagraphStanfordPageTitleBanner"
-  id: string
-  behaviors?: string | null
-  status: boolean
+  __typename?: "ParagraphStanfordPageTitleBanner"
   suTitleBannerImage: {
     __typename: "MediaImage"
     id: string
@@ -13992,14 +14019,14 @@ type FragmentParagraphUnion_ParagraphStanfordEntity_Fragment = {
   suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
   suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
   suEntityItem?: Array<
-    | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-    | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-    | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-    | {__typename?: "NodeStanfordNews"; id: string; path: string}
-    | {__typename?: "NodeStanfordPage"; id: string; path: string}
-    | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-    | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-    | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+    | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+    | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
   > | null
 }
 
@@ -14011,11 +14038,8 @@ type FragmentParagraphUnion_ParagraphStanfordFaq_Fragment = {
   suFaqHeadline?: string | null
   suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
   suFaqQuestions?: Array<{
-    __typename: "ParagraphStanfordAccordion"
+    __typename?: "ParagraphStanfordAccordion"
     suAccordionTitle: string
-    id: string
-    behaviors?: string | null
-    status: boolean
     suAccordionBody: {__typename?: "Text"; processed?: any | null}
   }> | null
 }
@@ -14200,17 +14224,32 @@ export type RouteQuery = {
         entity?:
           | {
               __typename: "NodeStanfordCourse"
-              id: string
-              title: string
-              status: boolean
-              path: string
               suCourseAcademicYear?: string | null
               suCourseCode?: string | null
               suCourseId?: number | null
               suCourseInstructors?: Array<string> | null
               suCourseSectionUnits?: string | null
-              changed: {__typename?: "DateTime"; timezone: any; time: any}
-              created: {__typename?: "DateTime"; timezone: any; time: any}
+              id: string
+              title: string
+              path: string
+              metatag: Array<
+                | {__typename?: "MetaTagLink"}
+                | {
+                    __typename: "MetaTagProperty"
+                    tag: string
+                    attributes: {
+                      __typename?: "MetaTagPropertyAttributes"
+                      property?: string | null
+                      content?: string | null
+                    }
+                  }
+                | {__typename?: "MetaTagScript"}
+                | {
+                    __typename: "MetaTagValue"
+                    tag: string
+                    attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+                  }
+              >
               body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
               suCourseLink: {__typename?: "Link"; url?: string | null; title?: string | null}
               suCourseQuarters?: Array<{
@@ -14291,10 +14330,6 @@ export type RouteQuery = {
             }
           | {
               __typename: "NodeStanfordEvent"
-              id: string
-              title: string
-              status: boolean
-              path: string
               suEventAltLoc?: string | null
               suEventContactInfo?: string | null
               suEventDek?: string | null
@@ -14302,8 +14337,27 @@ export type RouteQuery = {
               suEventSponsor?: Array<string> | null
               suEventSubheadline?: string | null
               suEventTelephone?: any | null
-              changed: {__typename?: "DateTime"; timezone: any; time: any}
-              created: {__typename?: "DateTime"; timezone: any; time: any}
+              id: string
+              title: string
+              path: string
+              metatag: Array<
+                | {__typename?: "MetaTagLink"}
+                | {
+                    __typename: "MetaTagProperty"
+                    tag: string
+                    attributes: {
+                      __typename?: "MetaTagPropertyAttributes"
+                      property?: string | null
+                      content?: string | null
+                    }
+                  }
+                | {__typename?: "MetaTagScript"}
+                | {
+                    __typename: "MetaTagValue"
+                    tag: string
+                    attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+                  }
+              >
               body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
               suEventAudience?: Array<{
                 __typename: "TermEventAudience"
@@ -14387,14 +14441,14 @@ export type RouteQuery = {
                     suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
                     suEntityItem?: Array<
-                      | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                      | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
                     > | null
                   }
                 | {
@@ -14405,11 +14459,8 @@ export type RouteQuery = {
                     suFaqHeadline?: string | null
                     suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suFaqQuestions?: Array<{
-                      __typename: "ParagraphStanfordAccordion"
+                      __typename?: "ParagraphStanfordAccordion"
                       suAccordionTitle: string
-                      id: string
-                      behaviors?: string | null
-                      status: boolean
                       suAccordionBody: {__typename?: "Text"; processed?: any | null}
                     }> | null
                   }
@@ -14568,10 +14619,10 @@ export type RouteQuery = {
               suEventMapLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
               suEventSchedule?: Array<{
                 __typename: "ParagraphStanfordSchedule"
-                suScheduleHeadline?: string | null
                 id: string
                 behaviors?: string | null
                 status: boolean
+                suScheduleHeadline?: string | null
                 suScheduleDescription?: {__typename?: "Text"; processed?: any | null} | null
                 suScheduleDateTime?: {
                   __typename?: "SmartDateType"
@@ -14599,12 +14650,9 @@ export type RouteQuery = {
                 } | null
                 suScheduleUrl?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
                 suScheduleSpeaker?: Array<{
-                  __typename: "ParagraphStanfordPersonCtum"
+                  __typename?: "ParagraphStanfordPersonCtum"
                   suPersonCtaName?: string | null
                   suPersonCtaTitle?: string | null
-                  id: string
-                  behaviors?: string | null
-                  status: boolean
                   suPersonCtaLink?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
                   suPersonCtaImage?: {
                     __typename: "MediaImage"
@@ -14668,14 +14716,29 @@ export type RouteQuery = {
             }
           | {
               __typename: "NodeStanfordEventSeries"
-              id: string
-              title: string
-              status: boolean
-              path: string
               suEventSeriesDek?: string | null
               suEventSeriesSubheadline?: string | null
-              changed: {__typename?: "DateTime"; timezone: any; time: any}
-              created: {__typename?: "DateTime"; timezone: any; time: any}
+              id: string
+              title: string
+              path: string
+              metatag: Array<
+                | {__typename?: "MetaTagLink"}
+                | {
+                    __typename: "MetaTagProperty"
+                    tag: string
+                    attributes: {
+                      __typename?: "MetaTagPropertyAttributes"
+                      property?: string | null
+                      content?: string | null
+                    }
+                  }
+                | {__typename?: "MetaTagScript"}
+                | {
+                    __typename: "MetaTagValue"
+                    tag: string
+                    attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+                  }
+              >
               suEventSeriesComponents?: Array<
                 | {
                     __typename: "ParagraphStanfordBanner"
@@ -14733,14 +14796,14 @@ export type RouteQuery = {
                     suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
                     suEntityItem?: Array<
-                      | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                      | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
                     > | null
                   }
                 | {
@@ -14751,11 +14814,8 @@ export type RouteQuery = {
                     suFaqHeadline?: string | null
                     suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suFaqQuestions?: Array<{
-                      __typename: "ParagraphStanfordAccordion"
+                      __typename?: "ParagraphStanfordAccordion"
                       suAccordionTitle: string
-                      id: string
-                      behaviors?: string | null
-                      status: boolean
                       suAccordionBody: {__typename?: "Text"; processed?: any | null}
                     }> | null
                   }
@@ -14837,14 +14897,10 @@ export type RouteQuery = {
                   }
               > | null
               suEventSeriesEvent?: Array<{
-                __typename: "NodeStanfordEvent"
+                __typename?: "NodeStanfordEvent"
                 suEventAltLoc?: string | null
                 suEventSubheadline?: string | null
                 suEventDek?: string | null
-                id: string
-                title: string
-                status: boolean
-                path: string
                 suEventLocation?: {
                   __typename?: "Address"
                   langcode?: string | null
@@ -14895,8 +14951,6 @@ export type RouteQuery = {
                     | null
                 }> | null
                 suEventSource?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
-                changed: {__typename?: "DateTime"; timezone: any; time: any}
-                created: {__typename?: "DateTime"; timezone: any; time: any}
               }> | null
               suEventSeriesType?: Array<{
                 __typename: "TermStanfordEventType"
@@ -14926,16 +14980,31 @@ export type RouteQuery = {
             }
           | {
               __typename: "NodeStanfordNews"
-              id: string
-              title: string
-              status: boolean
-              path: string
               suNewsBannerMediaCaption?: string | null
               suNewsByline?: string | null
               suNewsDek?: string | null
               suNewsHideSocial?: boolean | null
-              changed: {__typename?: "DateTime"; timezone: any; time: any}
-              created: {__typename?: "DateTime"; timezone: any; time: any}
+              id: string
+              title: string
+              path: string
+              metatag: Array<
+                | {__typename?: "MetaTagLink"}
+                | {
+                    __typename: "MetaTagProperty"
+                    tag: string
+                    attributes: {
+                      __typename?: "MetaTagPropertyAttributes"
+                      property?: string | null
+                      content?: string | null
+                    }
+                  }
+                | {__typename?: "MetaTagScript"}
+                | {
+                    __typename: "MetaTagValue"
+                    tag: string
+                    attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+                  }
+              >
               suNewsBanner?:
                 | {
                     __typename: "MediaImage"
@@ -15002,14 +15071,14 @@ export type RouteQuery = {
                     suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
                     suEntityItem?: Array<
-                      | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                      | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
                     > | null
                   }
                 | {
@@ -15020,11 +15089,8 @@ export type RouteQuery = {
                     suFaqHeadline?: string | null
                     suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suFaqQuestions?: Array<{
-                      __typename: "ParagraphStanfordAccordion"
+                      __typename?: "ParagraphStanfordAccordion"
                       suAccordionTitle: string
-                      id: string
-                      behaviors?: string | null
-                      status: boolean
                       suAccordionBody: {__typename?: "Text"; processed?: any | null}
                     }> | null
                   }
@@ -15141,17 +15207,32 @@ export type RouteQuery = {
             }
           | {
               __typename: "NodeStanfordOpportunity"
-              id: string
-              title: string
-              status: boolean
-              path: string
               suOppContactEmail?: any | null
               suOppContactName?: string | null
               suOppContactPhone?: any | null
               suOppCourseCode?: Array<string> | null
               suOppStatus?: boolean | null
-              changed: {__typename?: "DateTime"; timezone: any; time: any}
-              created: {__typename?: "DateTime"; timezone: any; time: any}
+              id: string
+              title: string
+              path: string
+              metatag: Array<
+                | {__typename?: "MetaTagLink"}
+                | {
+                    __typename: "MetaTagProperty"
+                    tag: string
+                    attributes: {
+                      __typename?: "MetaTagPropertyAttributes"
+                      property?: string | null
+                      content?: string | null
+                    }
+                  }
+                | {__typename?: "MetaTagScript"}
+                | {
+                    __typename: "MetaTagValue"
+                    tag: string
+                    attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+                  }
+              >
               body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
               suOppApplicationDeadline?: {__typename?: "DateTime"; timezone: any; time: any} | null
               suOppComponents?: Array<
@@ -15211,14 +15292,14 @@ export type RouteQuery = {
                     suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
                     suEntityItem?: Array<
-                      | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                      | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
                     > | null
                   }
                 | {
@@ -15229,11 +15310,8 @@ export type RouteQuery = {
                     suFaqHeadline?: string | null
                     suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suFaqQuestions?: Array<{
-                      __typename: "ParagraphStanfordAccordion"
+                      __typename?: "ParagraphStanfordAccordion"
                       suAccordionTitle: string
-                      id: string
-                      behaviors?: string | null
-                      status: boolean
                       suAccordionBody: {__typename?: "Text"; processed?: any | null}
                     }> | null
                   }
@@ -15407,13 +15485,28 @@ export type RouteQuery = {
             }
           | {
               __typename: "NodeStanfordPage"
+              suPageDescription?: string | null
               id: string
               title: string
-              status: boolean
               path: string
-              suPageDescription?: string | null
-              changed: {__typename?: "DateTime"; timezone: any; time: any}
-              created: {__typename?: "DateTime"; timezone: any; time: any}
+              metatag: Array<
+                | {__typename?: "MetaTagLink"}
+                | {
+                    __typename: "MetaTagProperty"
+                    tag: string
+                    attributes: {
+                      __typename?: "MetaTagPropertyAttributes"
+                      property?: string | null
+                      content?: string | null
+                    }
+                  }
+                | {__typename?: "MetaTagScript"}
+                | {
+                    __typename: "MetaTagValue"
+                    tag: string
+                    attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+                  }
+              >
               layoutSelection?: {__typename?: "LayoutLibrary"; id: string} | null
               suBasicPageType?: Array<{
                 __typename: "TermBasicPageType"
@@ -15443,11 +15536,11 @@ export type RouteQuery = {
               suPageBanner?:
                 | {
                     __typename: "ParagraphStanfordBanner"
-                    suBannerHeader?: string | null
-                    suBannerSupHeader?: string | null
                     id: string
                     behaviors?: string | null
                     status: boolean
+                    suBannerHeader?: string | null
+                    suBannerSupHeader?: string | null
                     suBannerImage?: {
                       __typename: "MediaImage"
                       id: string
@@ -15539,14 +15632,14 @@ export type RouteQuery = {
                     suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
                     suEntityItem?: Array<
-                      | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                      | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
                     > | null
                   }
                 | {
@@ -15557,11 +15650,8 @@ export type RouteQuery = {
                     suFaqHeadline?: string | null
                     suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suFaqQuestions?: Array<{
-                      __typename: "ParagraphStanfordAccordion"
+                      __typename?: "ParagraphStanfordAccordion"
                       suAccordionTitle: string
-                      id: string
-                      behaviors?: string | null
-                      status: boolean
                       suAccordionBody: {__typename?: "Text"; processed?: any | null}
                     }> | null
                   }
@@ -15651,10 +15741,6 @@ export type RouteQuery = {
             }
           | {
               __typename: "NodeStanfordPerson"
-              id: string
-              title: string
-              status: boolean
-              path: string
               suPersonAcademicAppt?: string | null
               suPersonAdminAppts?: Array<string> | null
               suPersonEducation?: Array<string> | null
@@ -15670,8 +15756,27 @@ export type RouteQuery = {
               suPersonResearchInterests?: Array<string> | null
               suPersonShortTitle?: string | null
               suPersonTelephone?: string | null
-              changed: {__typename?: "DateTime"; timezone: any; time: any}
-              created: {__typename?: "DateTime"; timezone: any; time: any}
+              id: string
+              title: string
+              path: string
+              metatag: Array<
+                | {__typename?: "MetaTagLink"}
+                | {
+                    __typename: "MetaTagProperty"
+                    tag: string
+                    attributes: {
+                      __typename?: "MetaTagPropertyAttributes"
+                      property?: string | null
+                      content?: string | null
+                    }
+                  }
+                | {__typename?: "MetaTagScript"}
+                | {
+                    __typename: "MetaTagValue"
+                    tag: string
+                    attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+                  }
+              >
               body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
               suPersonAffiliations?: Array<{__typename?: "Link"; url?: string | null; title?: string | null}> | null
               suPersonComponents?: Array<
@@ -15731,14 +15836,14 @@ export type RouteQuery = {
                     suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
                     suEntityItem?: Array<
-                      | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                      | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
                     > | null
                   }
                 | {
@@ -15749,11 +15854,8 @@ export type RouteQuery = {
                     suFaqHeadline?: string | null
                     suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suFaqQuestions?: Array<{
-                      __typename: "ParagraphStanfordAccordion"
+                      __typename?: "ParagraphStanfordAccordion"
                       suAccordionTitle: string
-                      id: string
-                      behaviors?: string | null
-                      status: boolean
                       suAccordionBody: {__typename?: "Text"; processed?: any | null}
                     }> | null
                   }
@@ -15874,18 +15976,33 @@ export type RouteQuery = {
             }
           | {
               __typename: "NodeStanfordPolicy"
-              id: string
-              title: string
-              status: boolean
-              path: string
               suPolicyAuthority?: string | null
               suPolicyAutoPrefix?: boolean | null
               suPolicyChapter?: string | null
               suPolicyPolicyNum?: string | null
               suPolicySubchapter?: string | null
               suPolicyTitle: string
-              changed: {__typename?: "DateTime"; timezone: any; time: any}
-              created: {__typename?: "DateTime"; timezone: any; time: any}
+              id: string
+              title: string
+              path: string
+              metatag: Array<
+                | {__typename?: "MetaTagLink"}
+                | {
+                    __typename: "MetaTagProperty"
+                    tag: string
+                    attributes: {
+                      __typename?: "MetaTagPropertyAttributes"
+                      property?: string | null
+                      content?: string | null
+                    }
+                  }
+                | {__typename?: "MetaTagScript"}
+                | {
+                    __typename: "MetaTagValue"
+                    tag: string
+                    attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+                  }
+              >
               body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
               suPolicyChangelog?: Array<{
                 __typename: "SuPolicyLog"
@@ -15945,26 +16062,35 @@ export type RouteQuery = {
               __typename: "NodeStanfordPublication"
               id: string
               title: string
-              status: boolean
               path: string
-              changed: {__typename?: "DateTime"; timezone: any; time: any}
-              created: {__typename?: "DateTime"; timezone: any; time: any}
+              metatag: Array<
+                | {__typename?: "MetaTagLink"}
+                | {
+                    __typename: "MetaTagProperty"
+                    tag: string
+                    attributes: {
+                      __typename?: "MetaTagPropertyAttributes"
+                      property?: string | null
+                      content?: string | null
+                    }
+                  }
+                | {__typename?: "MetaTagScript"}
+                | {
+                    __typename: "MetaTagValue"
+                    tag: string
+                    attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
+                  }
+              >
               suPublicationAuthorRef?: Array<{
-                __typename: "NodeStanfordPerson"
+                __typename?: "NodeStanfordPerson"
                 suPersonFullTitle?: string | null
                 suPersonShortTitle?: string | null
-                id: string
-                title: string
-                status: boolean
-                path: string
                 suPersonPhoto?: {
                   __typename: "MediaImage"
                   id: string
                   name: string
                   mediaImage: {__typename?: "Image"; url: string; alt?: string | null; height: number; width: number}
                 } | null
-                changed: {__typename?: "DateTime"; timezone: any; time: any}
-                created: {__typename?: "DateTime"; timezone: any; time: any}
               }> | null
               suPublicationComponents?: Array<
                 | {
@@ -16023,14 +16149,14 @@ export type RouteQuery = {
                     suEntityDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suEntityButton?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
                     suEntityItem?: Array<
-                      | {__typename?: "NodeStanfordCourse"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEvent"; id: string; path: string}
-                      | {__typename?: "NodeStanfordEventSeries"; id: string; path: string}
-                      | {__typename?: "NodeStanfordNews"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPage"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPerson"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPolicy"; id: string; path: string}
-                      | {__typename?: "NodeStanfordPublication"; id: string; path: string}
+                      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+                      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
                     > | null
                   }
                 | {
@@ -16041,11 +16167,8 @@ export type RouteQuery = {
                     suFaqHeadline?: string | null
                     suFaqDescription?: {__typename?: "Text"; processed?: any | null} | null
                     suFaqQuestions?: Array<{
-                      __typename: "ParagraphStanfordAccordion"
+                      __typename?: "ParagraphStanfordAccordion"
                       suAccordionTitle: string
-                      id: string
-                      behaviors?: string | null
-                      status: boolean
                       suAccordionBody: {__typename?: "Text"; processed?: any | null}
                     }> | null
                   }
@@ -16226,18 +16349,17 @@ export type StanfordBasicPagesQuery = {
   stanfordBasicPages?: {
     __typename?: "StanfordBasicPagesResult"
     results: Array<
-      | {__typename?: "NodeStanfordCourse"}
-      | {__typename?: "NodeStanfordEvent"}
-      | {__typename?: "NodeStanfordEventSeries"}
-      | {__typename?: "NodeStanfordNews"}
-      | {__typename?: "NodeStanfordOpportunity"}
+      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordOpportunity"; id: string; title: string; path: string}
       | {
           __typename: "NodeStanfordPage"
-          suPageDescription?: string | null
           id: string
           title: string
-          status: boolean
           path: string
+          suPageDescription?: string | null
           suPageImage?: {
             __typename: "MediaImage"
             id: string
@@ -16246,7 +16368,10 @@ export type StanfordBasicPagesQuery = {
           } | null
           suPageBanner?:
             | {
-                __typename?: "ParagraphStanfordBanner"
+                __typename: "ParagraphStanfordBanner"
+                id: string
+                behaviors?: string | null
+                status: boolean
                 suBannerImage?: {
                   __typename: "MediaImage"
                   id: string
@@ -16267,12 +16392,10 @@ export type StanfordBasicPagesQuery = {
                 }
               }
             | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }
-      | {__typename?: "NodeStanfordPerson"}
-      | {__typename?: "NodeStanfordPolicy"}
-      | {__typename?: "NodeStanfordPublication"}
+      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
     >
     pageInfo: {__typename?: "ViewPageInfo"; page: number; total: number}
   } | null
@@ -16292,15 +16415,14 @@ export type StanfordCoursesQuery = {
     results: Array<
       | {
           __typename: "NodeStanfordCourse"
+          id: string
+          title: string
+          path: string
           suCourseAcademicYear?: string | null
           suCourseCode?: string | null
           suCourseId?: number | null
           suCourseInstructors?: Array<string> | null
           suCourseSectionUnits?: string | null
-          id: string
-          title: string
-          status: boolean
-          path: string
           body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
           suCourseLink: {__typename?: "Link"; url?: string | null; title?: string | null}
           suCourseQuarters?: Array<{
@@ -16378,17 +16500,15 @@ export type StanfordCoursesQuery = {
               | {__typename?: "TermSuSharedTag"; id: string}
               | null
           }> | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }
-      | {__typename?: "NodeStanfordEvent"}
-      | {__typename?: "NodeStanfordEventSeries"}
-      | {__typename?: "NodeStanfordNews"}
-      | {__typename?: "NodeStanfordOpportunity"}
-      | {__typename?: "NodeStanfordPage"}
-      | {__typename?: "NodeStanfordPerson"}
-      | {__typename?: "NodeStanfordPolicy"}
-      | {__typename?: "NodeStanfordPublication"}
+      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordOpportunity"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
     >
     pageInfo: {__typename?: "ViewPageInfo"; page: number; total: number}
   } | null
@@ -16406,16 +16526,15 @@ export type StanfordEventsQuery = {
   stanfordEvents?: {
     __typename?: "StanfordEventsResult"
     results: Array<
-      | {__typename?: "NodeStanfordCourse"}
+      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
       | {
           __typename: "NodeStanfordEvent"
+          id: string
+          title: string
+          path: string
           suEventAltLoc?: string | null
           suEventSubheadline?: string | null
           suEventDek?: string | null
-          id: string
-          title: string
-          status: boolean
-          path: string
           suEventLocation?: {
             __typename?: "Address"
             langcode?: string | null
@@ -16466,16 +16585,14 @@ export type StanfordEventsQuery = {
               | null
           }> | null
           suEventSource?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }
-      | {__typename?: "NodeStanfordEventSeries"}
-      | {__typename?: "NodeStanfordNews"}
-      | {__typename?: "NodeStanfordOpportunity"}
-      | {__typename?: "NodeStanfordPage"}
-      | {__typename?: "NodeStanfordPerson"}
-      | {__typename?: "NodeStanfordPolicy"}
-      | {__typename?: "NodeStanfordPublication"}
+      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordOpportunity"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
     >
     pageInfo: {__typename?: "ViewPageInfo"; page: number; total: number}
   } | null
@@ -16493,16 +16610,15 @@ export type StanfordEventsPastEventsQuery = {
   stanfordEventsPastEvents?: {
     __typename?: "StanfordEventsPastEventsResult"
     results: Array<
-      | {__typename?: "NodeStanfordCourse"}
+      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
       | {
           __typename: "NodeStanfordEvent"
+          id: string
+          title: string
+          path: string
           suEventAltLoc?: string | null
           suEventSubheadline?: string | null
           suEventDek?: string | null
-          id: string
-          title: string
-          status: boolean
-          path: string
           suEventLocation?: {
             __typename?: "Address"
             langcode?: string | null
@@ -16553,16 +16669,14 @@ export type StanfordEventsPastEventsQuery = {
               | null
           }> | null
           suEventSource?: {__typename?: "Link"; url?: string | null; title?: string | null} | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }
-      | {__typename?: "NodeStanfordEventSeries"}
-      | {__typename?: "NodeStanfordNews"}
-      | {__typename?: "NodeStanfordOpportunity"}
-      | {__typename?: "NodeStanfordPage"}
-      | {__typename?: "NodeStanfordPerson"}
-      | {__typename?: "NodeStanfordPolicy"}
-      | {__typename?: "NodeStanfordPublication"}
+      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordOpportunity"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
     >
     pageInfo: {__typename?: "ViewPageInfo"; page: number; total: number}
   } | null
@@ -16580,16 +16694,15 @@ export type StanfordNewsQuery = {
   stanfordNews?: {
     __typename?: "StanfordNewsResult"
     results: Array<
-      | {__typename?: "NodeStanfordCourse"}
-      | {__typename?: "NodeStanfordEvent"}
-      | {__typename?: "NodeStanfordEventSeries"}
+      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
       | {
           __typename: "NodeStanfordNews"
-          suNewsDek?: string | null
           id: string
           title: string
-          status: boolean
           path: string
+          suNewsDek?: string | null
           suNewsFeaturedMedia?: {
             __typename: "MediaImage"
             id: string
@@ -16623,14 +16736,12 @@ export type StanfordNewsQuery = {
           }> | null
           suNewsPublishingDate?: {__typename?: "DateTime"; timezone: any; time: any} | null
           suNewsSource?: {__typename?: "Link"; url?: string | null} | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }
-      | {__typename?: "NodeStanfordOpportunity"}
-      | {__typename?: "NodeStanfordPage"}
-      | {__typename?: "NodeStanfordPerson"}
-      | {__typename?: "NodeStanfordPolicy"}
-      | {__typename?: "NodeStanfordPublication"}
+      | {__typename: "NodeStanfordOpportunity"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
     >
     pageInfo: {__typename?: "ViewPageInfo"; page: number; total: number}
   } | null
@@ -16648,31 +16759,28 @@ export type StanfordPersonQuery = {
   stanfordPerson?: {
     __typename?: "StanfordPersonResult"
     results: Array<
-      | {__typename?: "NodeStanfordCourse"}
-      | {__typename?: "NodeStanfordEvent"}
-      | {__typename?: "NodeStanfordEventSeries"}
-      | {__typename?: "NodeStanfordNews"}
-      | {__typename?: "NodeStanfordOpportunity"}
-      | {__typename?: "NodeStanfordPage"}
+      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordOpportunity"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
       | {
           __typename: "NodeStanfordPerson"
-          suPersonFullTitle?: string | null
-          suPersonShortTitle?: string | null
           id: string
           title: string
-          status: boolean
           path: string
+          suPersonFullTitle?: string | null
+          suPersonShortTitle?: string | null
           suPersonPhoto?: {
             __typename: "MediaImage"
             id: string
             name: string
             mediaImage: {__typename?: "Image"; url: string; alt?: string | null; height: number; width: number}
           } | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }
-      | {__typename?: "NodeStanfordPolicy"}
-      | {__typename?: "NodeStanfordPublication"}
+      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPublication"; id: string; title: string; path: string}
     >
     pageInfo: {__typename?: "ViewPageInfo"; page: number; total: number}
   } | null
@@ -16690,19 +16798,18 @@ export type StanfordPublicationsQuery = {
   stanfordPublications?: {
     __typename?: "StanfordPublicationsResult"
     results: Array<
-      | {__typename?: "NodeStanfordCourse"}
-      | {__typename?: "NodeStanfordEvent"}
-      | {__typename?: "NodeStanfordEventSeries"}
-      | {__typename?: "NodeStanfordNews"}
-      | {__typename?: "NodeStanfordOpportunity"}
-      | {__typename?: "NodeStanfordPage"}
-      | {__typename?: "NodeStanfordPerson"}
-      | {__typename?: "NodeStanfordPolicy"}
+      | {__typename: "NodeStanfordCourse"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordEvent"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordEventSeries"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordNews"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordOpportunity"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPage"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPerson"; id: string; title: string; path: string}
+      | {__typename: "NodeStanfordPolicy"; id: string; title: string; path: string}
       | {
           __typename: "NodeStanfordPublication"
           id: string
           title: string
-          status: boolean
           path: string
           suPublicationTopics?: Array<{
             __typename: "TermStanfordPublicationTopic"
@@ -16748,8 +16855,6 @@ export type StanfordPublicationsQuery = {
             | {__typename?: "CitationSuOther"; apa?: any | null; chicago?: any | null; id: string; title: string}
             | {__typename?: "CitationSuThesi"; apa?: any | null; chicago?: any | null; id: string; title: string}
             | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }
     >
     pageInfo: {__typename?: "ViewPageInfo"; page: number; total: number}
@@ -16772,13 +16877,10 @@ export type StanfordSharedTagsQuery = {
           __typename: "NodeStanfordCourse"
           id: string
           title: string
-          status: boolean
           path: string
           suCourseAcademicYear?: string | null
           suCourseCode?: string | null
           suCourseInstructors?: Array<string> | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suCourseSubject?: {
             __typename: "TermSuCourseSubject"
             id: string
@@ -16835,13 +16937,10 @@ export type StanfordSharedTagsQuery = {
           __typename: "NodeStanfordEvent"
           id: string
           title: string
-          status: boolean
           path: string
           suEventAltLoc?: string | null
           suEventSubheadline?: string | null
           suEventDek?: string | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suEventLocation?: {
             __typename?: "Address"
             langcode?: string | null
@@ -16897,21 +16996,15 @@ export type StanfordSharedTagsQuery = {
           __typename: "NodeStanfordEventSeries"
           id: string
           title: string
-          status: boolean
           path: string
           suEventSeriesDek?: string | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }
       | {
           __typename: "NodeStanfordNews"
           id: string
           title: string
-          status: boolean
           path: string
           suNewsDek?: string | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suNewsFeaturedMedia?: {
             __typename: "MediaImage"
             id: string
@@ -16950,10 +17043,7 @@ export type StanfordSharedTagsQuery = {
           __typename: "NodeStanfordOpportunity"
           id: string
           title: string
-          status: boolean
           path: string
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suOppImage?: {
             __typename: "MediaImage"
             id: string
@@ -16967,11 +17057,8 @@ export type StanfordSharedTagsQuery = {
           __typename: "NodeStanfordPage"
           id: string
           title: string
-          status: boolean
           path: string
           suPageDescription?: string | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suPageImage?: {
             __typename: "MediaImage"
             id: string
@@ -16980,7 +17067,10 @@ export type StanfordSharedTagsQuery = {
           } | null
           suPageBanner?:
             | {
-                __typename?: "ParagraphStanfordBanner"
+                __typename: "ParagraphStanfordBanner"
+                id: string
+                behaviors?: string | null
+                status: boolean
                 suBannerImage?: {
                   __typename: "MediaImage"
                   id: string
@@ -17006,12 +17096,9 @@ export type StanfordSharedTagsQuery = {
           __typename: "NodeStanfordPerson"
           id: string
           title: string
-          status: boolean
           path: string
           suPersonFullTitle?: string | null
           suPersonShortTitle?: string | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suPersonPhoto?: {
             __typename: "MediaImage"
             id: string
@@ -17023,10 +17110,7 @@ export type StanfordSharedTagsQuery = {
           __typename: "NodeStanfordPolicy"
           id: string
           title: string
-          status: boolean
           path: string
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
           suPolicyUpdated?: {__typename?: "DateTime"; timezone: any; time: any} | null
         }
@@ -17034,10 +17118,7 @@ export type StanfordSharedTagsQuery = {
           __typename: "NodeStanfordPublication"
           id: string
           title: string
-          status: boolean
           path: string
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suPublicationTopics?: Array<{
             __typename: "TermStanfordPublicationTopic"
             id: string
@@ -17104,13 +17185,10 @@ export type SearchQuery = {
           __typename: "NodeStanfordCourse"
           id: string
           title: string
-          status: boolean
           path: string
           suCourseAcademicYear?: string | null
           suCourseCode?: string | null
           suCourseInstructors?: Array<string> | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suCourseSubject?: {
             __typename: "TermSuCourseSubject"
             id: string
@@ -17167,13 +17245,10 @@ export type SearchQuery = {
           __typename: "NodeStanfordEvent"
           id: string
           title: string
-          status: boolean
           path: string
           suEventAltLoc?: string | null
           suEventSubheadline?: string | null
           suEventDek?: string | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suEventLocation?: {
             __typename?: "Address"
             langcode?: string | null
@@ -17229,21 +17304,15 @@ export type SearchQuery = {
           __typename: "NodeStanfordEventSeries"
           id: string
           title: string
-          status: boolean
           path: string
           suEventSeriesDek?: string | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
         }
       | {
           __typename: "NodeStanfordNews"
           id: string
           title: string
-          status: boolean
           path: string
           suNewsDek?: string | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suNewsFeaturedMedia?: {
             __typename: "MediaImage"
             id: string
@@ -17282,10 +17351,7 @@ export type SearchQuery = {
           __typename: "NodeStanfordOpportunity"
           id: string
           title: string
-          status: boolean
           path: string
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suOppImage?: {
             __typename: "MediaImage"
             id: string
@@ -17299,11 +17365,8 @@ export type SearchQuery = {
           __typename: "NodeStanfordPage"
           id: string
           title: string
-          status: boolean
           path: string
           suPageDescription?: string | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suPageImage?: {
             __typename: "MediaImage"
             id: string
@@ -17312,7 +17375,10 @@ export type SearchQuery = {
           } | null
           suPageBanner?:
             | {
-                __typename?: "ParagraphStanfordBanner"
+                __typename: "ParagraphStanfordBanner"
+                id: string
+                behaviors?: string | null
+                status: boolean
                 suBannerImage?: {
                   __typename: "MediaImage"
                   id: string
@@ -17338,12 +17404,9 @@ export type SearchQuery = {
           __typename: "NodeStanfordPerson"
           id: string
           title: string
-          status: boolean
           path: string
           suPersonFullTitle?: string | null
           suPersonShortTitle?: string | null
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suPersonPhoto?: {
             __typename: "MediaImage"
             id: string
@@ -17355,10 +17418,7 @@ export type SearchQuery = {
           __typename: "NodeStanfordPolicy"
           id: string
           title: string
-          status: boolean
           path: string
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
           suPolicyUpdated?: {__typename?: "DateTime"; timezone: any; time: any} | null
         }
@@ -17366,10 +17426,7 @@ export type SearchQuery = {
           __typename: "NodeStanfordPublication"
           id: string
           title: string
-          status: boolean
           path: string
-          changed: {__typename?: "DateTime"; timezone: any; time: any}
-          created: {__typename?: "DateTime"; timezone: any; time: any}
           suPublicationTopics?: Array<{
             __typename: "TermStanfordPublicationTopic"
             id: string

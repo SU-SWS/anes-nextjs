@@ -1,7 +1,11 @@
 import {getConfigPageField} from "@lib/gql/gql-queries"
-import {Image, StanfordBasicSiteSetting} from "@lib/gql/__generated__/drupal.d"
+import {
+  MetaTagUnion,
+  MetaTagValue as MetaTagValueType,
+  MetaTagProperty as MetaTagPropertyType,
+  StanfordBasicSiteSetting,
+} from "@lib/gql/__generated__/drupal.d"
 import {JSX} from "react"
-import {OpenGraphType} from "next/dist/lib/metadata/types/opengraph-types"
 
 type Props = {
   /**
@@ -9,35 +13,20 @@ type Props = {
    */
   pageTitle?: string
   /**
-   * Short description of the page.
+   * Metatag field data.
    */
-  description?: string
+  metatags?: MetaTagUnion[]
   /**
-   * Drupal image.
+   * If no description metatag is provided by the backend, use this.
    */
-  image?: false | Image
+  backupDescription?: string
   /**
    * Additional meta data if desired.
    */
   children?: JSX.Element | JSX.Element[]
-  /**
-   * Page type.
-   */
-  ogType?: OpenGraphType
-  /**
-   * Twitter card style.
-   */
-  twitterCard?: "summary" | "summary_large_image" | "app" | "player"
 }
 
-const NodePageMetadata = async ({
-  pageTitle,
-  description,
-  image,
-  ogType = "website",
-  twitterCard = "summary_large_image",
-  children,
-}: Props) => {
+const NodePageMetadata = async ({pageTitle, metatags, backupDescription, children}: Props) => {
   const siteName =
     (await getConfigPageField<StanfordBasicSiteSetting, StanfordBasicSiteSetting["suSiteName"]>(
       "StanfordBasicSiteSetting",
@@ -46,38 +35,46 @@ const NodePageMetadata = async ({
 
   const title = pageTitle ? `${pageTitle} | ${siteName}` : siteName
 
+  const hasDescription = metatags?.some(
+    tag => tag.__typename === "MetaTagValue" && tag.attributes.name === "description"
+  )
+
   return (
     <>
       <title>{title}</title>
       <meta property="og:title" content={title} />
-      <meta property="og:type" content={ogType} />
-      <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={title} />
 
-      {description && (
+      {!hasDescription && backupDescription && (
         <>
-          <meta name="description" content={description} />
-          <meta property="og:description" content={description} />
-          <meta name="twitter:description" content={description} />
+          <meta name="description" content={backupDescription} />
+          <meta name="twitter:description" content={backupDescription} />
+          <meta property="og:description" content={backupDescription} />
         </>
       )}
 
-      {image && (
-        <>
-          <meta property="og:image" content={image.url} />
-          <meta property="og:image:width" content={image.width.toString()} />
-          <meta property="og:image:height" content={image.height.toString()} />
-          {image.alt && <meta property="og:image:alt" content={image.alt} />}
-
-          <meta name="twitter:image" content={image.url} />
-          <meta name="twitter:image:width" content={image.width.toString()} />
-          <meta name="twitter:image:height" content={image.height.toString()} />
-          {image.alt && <meta name="twitter:image:alt" content={image.alt} />}
-        </>
-      )}
+      {metatags?.map((tag, i) => <MetaTag key={`metatag-${i}`} tag={tag} />)}
 
       {children}
     </>
   )
 }
+
+const MetaTag = ({tag}: {tag: MetaTagUnion}) => {
+  if (tag.__typename === "MetaTagValue") return <MetaTagValue tag={tag} />
+  if (tag.__typename === "MetaTagProperty") return <MetaTagProperty tag={tag} />
+}
+
+const MetaTagValue = ({tag}: {tag: MetaTagValueType}) => {
+  const ignoreNames = ["title", "twitter:title"]
+  if (tag.attributes.name && tag.attributes.content && !ignoreNames.includes(tag.attributes.name))
+    return <meta name={tag.attributes.name} content={tag.attributes.content} />
+}
+
+const MetaTagProperty = ({tag}: {tag: MetaTagPropertyType}) => {
+  const ignoreProperties = ["og:url", "og:title"]
+  if (tag.attributes.property && tag.attributes.content && !ignoreProperties.includes(tag.attributes.property))
+    return <meta property={tag.attributes.property} content={tag.attributes.content} />
+}
+
 export default NodePageMetadata

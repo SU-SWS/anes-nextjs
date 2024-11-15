@@ -4,7 +4,8 @@ import {H1} from "@components/elements/headers"
 import {HtmlHTMLAttributes} from "react"
 import {NodeStanfordCourse} from "@lib/gql/__generated__/drupal.d"
 import {isPreviewMode} from "@lib/drupal/is-preview-mode"
-import StanfordCourseMetadata from "@components/nodes/pages/stanford-course/stanford-course-metadata"
+import NodePageMetadata from "@components/nodes/pages/node-page-metadata"
+import {getCleanDescription} from "@lib/utils/text-tools"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   node: NodeStanfordCourse
@@ -15,7 +16,11 @@ const StanfordCoursePage = ({node, ...props}: Props) => {
   if (node.suCourseLink?.url && !isPreviewMode()) redirect(node.suCourseLink?.url)
   return (
     <article className="centered my-32" {...props}>
-      <StanfordCourseMetadata node={node} />
+      <NodePageMetadata
+        pageTitle={node.title}
+        metatags={node.metatag}
+        backupDescription={getCleanDescription(node.body?.processed)}
+      />
       <H1>{node.title}</H1>
       <div className="flex flex-col gap-10">
         {node.suCourseSubject && <div>{node.suCourseSubject.name}</div>}

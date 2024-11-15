@@ -10,7 +10,8 @@ import {H1, H2} from "@components/elements/headers"
 import {HtmlHTMLAttributes} from "react"
 import {NodeStanfordPerson} from "@lib/gql/__generated__/drupal.d"
 import ReverseVisualOrder from "@components/elements/reverse-visual-order"
-import StanfordPersonMetadata from "@components/nodes/pages/stanford-person/stanford-person-metadata"
+import NodePageMetadata from "@components/nodes/pages/node-page-metadata"
+import {getCleanDescription} from "@lib/utils/text-tools"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   node: NodeStanfordPerson
@@ -22,7 +23,11 @@ const StanfordPersonPage = ({node, ...props}: Props) => {
 
   return (
     <article className="centered mt-32" {...props}>
-      <StanfordPersonMetadata node={node} />
+      <NodePageMetadata
+        pageTitle={node.title}
+        metatags={node.metatag}
+        backupDescription={node.suPersonFullTitle || getCleanDescription(node.body?.processed)}
+      />
       <div className="mb-32 flex flex-col gap-20 lg:flex-row">
         {imageUrl && (
           <div className="relative mx-auto aspect-[1/1] w-[250px] shrink-0 lg:mx-0">
@@ -40,8 +45,8 @@ const StanfordPersonPage = ({node, ...props}: Props) => {
         </div>
       </div>
 
-      <section className="flex flex-col lg:flex-row">
-        <div className="flex-1 shrink-0">
+      <section className="flex flex-col gap-32 lg:flex-row">
+        <div className="flex-grow">
           <Wysiwyg html={node.body?.processed} />
 
           <Rows components={node.suPersonComponents} />
@@ -69,9 +74,9 @@ const StanfordPersonPage = ({node, ...props}: Props) => {
           {node.suPersonAffiliations && (
             <div className="mb-10">
               <H2 className="type-2">Stanford Affiliations</H2>
-              <div className="grid grid-cols-2 gap-10">
+              <div className="flex flex-wrap gap-20">
                 {node.suPersonAffiliations.map((affiliation, i) => (
-                  <div key={`${node.id}-affiliation-${i}`}>
+                  <div key={`${node.id}-affiliation-${i}`} className="min-w-fit">
                     <Button href={affiliation.url}>{affiliation.title}</Button>
                   </div>
                 ))}

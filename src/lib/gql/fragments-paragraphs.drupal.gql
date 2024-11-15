@@ -6,7 +6,6 @@ fragment FragmentParagraphInterface on ParagraphInterface {
 }
 
 fragment FragmentParagraphStanfordAccordion on ParagraphStanfordAccordion {
-    ...FragmentParagraphInterface
     suAccordionBody {
         ...FragmentText
     }
@@ -14,7 +13,6 @@ fragment FragmentParagraphStanfordAccordion on ParagraphStanfordAccordion {
 }
 
 fragment FragmentParagraphStanfordFaq on ParagraphStanfordFaq {
-    ...FragmentParagraphInterface
     suFaqHeadline
     suFaqDescription {
         processed
@@ -25,7 +23,6 @@ fragment FragmentParagraphStanfordFaq on ParagraphStanfordFaq {
 }
 
 fragment FragmentParagraphStanfordBanner on ParagraphStanfordBanner {
-    ...FragmentParagraphInterface
     suBannerHeader
     suBannerBody {
         ...FragmentText
@@ -41,7 +38,6 @@ fragment FragmentParagraphStanfordBanner on ParagraphStanfordBanner {
 }
 
 fragment FragmentParagraphStanfordCard on ParagraphStanfordCard {
-    ...FragmentParagraphInterface
     suCardHeader
     suCardSuperHeader
     suCardBody {
@@ -57,7 +53,6 @@ fragment FragmentParagraphStanfordCard on ParagraphStanfordCard {
 }
 
 fragment FragmentParagraphStanfordEntity on ParagraphStanfordEntity {
-    ...FragmentParagraphInterface
     suEntityHeadline
     suEntityDescription {
         ...FragmentText
@@ -67,15 +62,11 @@ fragment FragmentParagraphStanfordEntity on ParagraphStanfordEntity {
         title
     }
     suEntityItem {
-        ... on NodeInterface {
-            id
-            path
-        }
+        ...FragmentNodeInterface
     }
 }
 
 fragment FragmentParagraphStanfordGallery on ParagraphStanfordGallery {
-    ...FragmentParagraphInterface
     suGalleryHeadline
     suGalleryDescription {
         ...FragmentText
@@ -90,7 +81,6 @@ fragment FragmentParagraphStanfordGallery on ParagraphStanfordGallery {
 }
 
 fragment FragmentParagraphStanfordList on ParagraphStanfordList {
-    ...FragmentParagraphInterface
     suListHeadline
     suListDescription {
         ...FragmentText
@@ -108,7 +98,6 @@ fragment FragmentParagraphStanfordList on ParagraphStanfordList {
 }
 
 fragment FragmentParagraphStanfordMediaCaption on ParagraphStanfordMediaCaption {
-    ...FragmentParagraphInterface
     suMediaCaptionMedia {
         ...FragmentMediaUnion
     }
@@ -122,7 +111,6 @@ fragment FragmentParagraphStanfordMediaCaption on ParagraphStanfordMediaCaption 
 }
 
 fragment FragmentParagraphStanfordPersonCtum on ParagraphStanfordPersonCtum {
-    ...FragmentParagraphInterface
     suPersonCtaName
     suPersonCtaTitle
     suPersonCtaLink {
@@ -135,7 +123,6 @@ fragment FragmentParagraphStanfordPersonCtum on ParagraphStanfordPersonCtum {
 }
 
 fragment FragmentParagraphStanfordSchedule on ParagraphStanfordSchedule {
-    ...FragmentParagraphInterface
     suScheduleHeadline
     suScheduleDescription {
         ...FragmentText
@@ -160,19 +147,16 @@ fragment FragmentParagraphStanfordLayout on ParagraphStanfordLayout {
 }
 
 fragment FragmentParagraphStanfordSpacer on ParagraphStanfordSpacer {
-    ...FragmentParagraphInterface
     suSpacerSize
 }
 
 fragment FragmentParagraphStanfordWysiwyg on ParagraphStanfordWysiwyg {
-    ...FragmentParagraphInterface
     suWysiwygText {
         ...FragmentText
     }
 }
 
 fragment FragmentParagraphStanfordPageTitleBanner on ParagraphStanfordPageTitleBanner {
-    ...FragmentParagraphInterface
     suTitleBannerImage {
         ...FragmentMediaImage
     }

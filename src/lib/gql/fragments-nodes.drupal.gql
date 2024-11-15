@@ -3,18 +3,17 @@ fragment FragmentNodeInterface on NodeInterface {
     __typename
     id
     title
-    status
     path
-    changed {
-        ...FragmentDateTime
-    }
-    created {
-        ...FragmentDateTime
+}
+
+fragment FragmentNodePage on NodeInterface {
+    ...FragmentNodeInterface
+    metatag {
+        ...FragmentMetaTag
     }
 }
 
 fragment FragmentNodeStanfordPage on NodeStanfordPage {
-    ...FragmentNodeInterface
     layoutSelection {
         id
     }
@@ -22,6 +21,7 @@ fragment FragmentNodeStanfordPage on NodeStanfordPage {
         ...FragmentTermInterface
     }
     suPageBanner {
+        ...FragmentParagraphInterface
         ...FragmentParagraphStanfordBanner
         ...FragmentParagraphStanfordPageTitleBanner
     }
@@ -35,7 +35,6 @@ fragment FragmentNodeStanfordPage on NodeStanfordPage {
 }
 
 fragment FragmentNodeStanfordCourse on NodeStanfordCourse {
-    ...FragmentNodeInterface
     body {
         ...FragmentTextSummary
     }
@@ -60,7 +59,6 @@ fragment FragmentNodeStanfordCourse on NodeStanfordCourse {
 }
 
 fragment FragmentNodeStanfordEvent on NodeStanfordEvent {
-    ...FragmentNodeInterface
     body {
         ...FragmentTextSummary
     }
@@ -95,6 +93,7 @@ fragment FragmentNodeStanfordEvent on NodeStanfordEvent {
         title
     }
     suEventSchedule {
+        ...FragmentParagraphInterface
         ...FragmentParagraphStanfordSchedule
     }
     suEventSource {
@@ -113,7 +112,6 @@ fragment FragmentNodeStanfordEvent on NodeStanfordEvent {
 }
 
 fragment FragmentNodeStanfordEventSeries on NodeStanfordEventSeries {
-    ...FragmentNodeInterface
     suEventSeriesComponents {
         ...FragmentParagraphUnion
     }
@@ -128,7 +126,6 @@ fragment FragmentNodeStanfordEventSeries on NodeStanfordEventSeries {
 }
 
 fragment FragmentNodeStanfordNews on NodeStanfordNews {
-    ...FragmentNodeInterface
     suNewsBanner {
         ...FragmentMediaUnion
     }
@@ -155,7 +152,6 @@ fragment FragmentNodeStanfordNews on NodeStanfordNews {
 }
 
 fragment FragmentNodeStanfordPerson on NodeStanfordPerson {
-    ...FragmentNodeInterface
     body {
         ...FragmentTextSummary
     }
@@ -211,7 +207,6 @@ fragment FragmentNodeStanfordPerson on NodeStanfordPerson {
 }
 
 fragment FragmentNodeStanfordPolicy on NodeStanfordPolicy {
-    ...FragmentNodeInterface
     body {
         ...FragmentTextSummary
     }
@@ -275,7 +270,6 @@ fragment FragmentNodeStanfordPolicy on NodeStanfordPolicy {
 }
 
 fragment FragmentNodeStanfordPublication on NodeStanfordPublication {
-    ...FragmentNodeInterface
     suPublicationAuthorRef {
         ...FragmentNodeStanfordPersonTeaser
     }
@@ -295,7 +289,6 @@ fragment FragmentNodeStanfordPublication on NodeStanfordPublication {
 
 
 fragment FragmentNodeStanfordOpportunity on NodeStanfordOpportunity {
-    ...FragmentNodeInterface
     body {
         ...FragmentTextSummary
     }
@@ -352,7 +345,7 @@ fragment FragmentNodeStanfordOpportunity on NodeStanfordOpportunity {
 }
 
 fragment FragmentNodeUnion on NodeUnion {
-    ...FragmentNodeInterface
+    ...FragmentNodePage
     ...FragmentNodeStanfordCourse
     ...FragmentNodeStanfordEvent
     ...FragmentNodeStanfordEventSeries
@@ -365,7 +358,6 @@ fragment FragmentNodeUnion on NodeUnion {
 }
 
 fragment FragmentNodeStanfordCourseTeaser on NodeStanfordCourse {
-    ...FragmentNodeInterface
     suCourseSubject {
         ...FragmentTermInterface
     }
@@ -381,7 +373,6 @@ fragment FragmentNodeStanfordCourseTeaser on NodeStanfordCourse {
 }
 
 fragment FragmentNodeStanfordEventTeaser on NodeStanfordEvent {
-    ...FragmentNodeInterface
     suEventAltLoc
     suEventSubheadline
     suEventDek
@@ -402,12 +393,10 @@ fragment FragmentNodeStanfordEventTeaser on NodeStanfordEvent {
 }
 
 fragment FragmentNodeStanfordEventSeriesTeaser on NodeStanfordEventSeries {
-    ...FragmentNodeInterface
     suEventSeriesDek
 }
 
 fragment FragmentNodeStanfordNewsTeaser on NodeStanfordNews {
-    ...FragmentNodeInterface
     suNewsDek
     suNewsFeaturedMedia {
         ...FragmentMediaImage
@@ -424,12 +413,12 @@ fragment FragmentNodeStanfordNewsTeaser on NodeStanfordNews {
 }
 
 fragment FragmentNodeStanfordPageTeaser on NodeStanfordPage {
-    ...FragmentNodeInterface
     suPageDescription
     suPageImage {
         ...FragmentMediaImage
     }
     suPageBanner {
+        ...FragmentParagraphInterface
         ... on ParagraphStanfordBanner {
             suBannerImage {
                 ...FragmentMediaImage
@@ -440,7 +429,6 @@ fragment FragmentNodeStanfordPageTeaser on NodeStanfordPage {
 }
 
 fragment FragmentNodeStanfordPersonTeaser on NodeStanfordPerson {
-    ...FragmentNodeInterface
     suPersonPhoto {
         ...FragmentMediaImage
     }
@@ -449,7 +437,6 @@ fragment FragmentNodeStanfordPersonTeaser on NodeStanfordPerson {
 }
 
 fragment FragmentNodeStanfordPolicyTeaser on NodeStanfordPolicy {
-    ...FragmentNodeInterface
     body {
         ...FragmentTextSummary
     }
@@ -459,7 +446,6 @@ fragment FragmentNodeStanfordPolicyTeaser on NodeStanfordPolicy {
 }
 
 fragment FragmentNodeStanfordPublicationTeaser on NodeStanfordPublication {
-    ...FragmentNodeInterface
     suPublicationTopics {
         ...FragmentTermInterface
     }
@@ -493,7 +479,6 @@ fragment FragmentNodeStanfordPublicationTeaser on NodeStanfordPublication {
 
 
 fragment FragmentNodeStanfordOpportunityTeaser on NodeStanfordOpportunity {
-    ...FragmentNodeInterface
     suOppImage {
         ...FragmentMediaImage
     }

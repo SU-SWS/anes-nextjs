@@ -2,7 +2,8 @@ import StanfordEventListItem from "@components/nodes/list-item/stanford-event/st
 import {H1} from "@components/elements/headers"
 import {HtmlHTMLAttributes} from "react"
 import {NodeStanfordEventSeries} from "@lib/gql/__generated__/drupal.d"
-import StanfordEventSeriesMetadata from "@components/nodes/pages/stanford-event-series/stanford-event-series-metadata"
+import NodePageMetadata from "@components/nodes/pages/node-page-metadata"
+import {getFirstText} from "@lib/utils/text-tools"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   node: NodeStanfordEventSeries
@@ -12,7 +13,11 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
 const StanfordEventSeriesPage = ({node, ...props}: Props) => {
   return (
     <article className="centered" {...props}>
-      <StanfordEventSeriesMetadata node={node} />
+      <NodePageMetadata
+        pageTitle={node.title}
+        metatags={node.metatag}
+        backupDescription={node.suEventSeriesSubheadline || getFirstText(node.suEventSeriesComponents)}
+      />
       <H1 className="mt-32">{node.title}</H1>
 
       {node.suEventSeriesDek && <div className="type-4 mb-20 font-bold">{node.suEventSeriesDek}</div>}
