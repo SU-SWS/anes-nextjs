@@ -4,6 +4,7 @@ import {H2} from "@components/elements/headers"
 import Wysiwyg from "@components/elements/wysiwyg"
 import Accordion from "@components/elements/accordion"
 import twMerge from "@lib/utils/twMerge"
+import ExpandCollapseAll from "@components/paragraphs/stanford-faq/expand-collapse-all"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   paragraph: ParagraphStanfordFaq
@@ -12,7 +13,11 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
 const FaqParagraph = ({paragraph, ...props}: Props) => {
   return (
     <div {...props} className={twMerge("space-y-10", props.className)}>
-      {paragraph.suFaqHeadline && <H2>{paragraph.suFaqHeadline}</H2>}
+      <div className="flex items-center justify-between gap-20">
+        {paragraph.suFaqHeadline && <H2>{paragraph.suFaqHeadline}</H2>}
+
+        <ExpandCollapseAll className="ml-auto" />
+      </div>
       <Wysiwyg html={paragraph.suFaqDescription?.processed} />
 
       <div>
