@@ -15,6 +15,11 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
 const FaqParagraph = ({paragraph, ...props}: Props) => {
   const behaviors = getParagraphBehaviors<FAQParagraphBehaviors>(paragraph)
   const headerTag = behaviors.faq_accordions?.heading || "h2"
+
+  let Header = H2
+  if (headerTag === "h3") Header = H3
+  if (headerTag == "h4") Header = H4
+
   const heading = paragraph.suFaqHeadline
 
   let accordionHeadingLevel: AccordionHeaderChoice = "h2"
@@ -25,14 +30,12 @@ const FaqParagraph = ({paragraph, ...props}: Props) => {
   }
 
   return (
-    <div {...props} className={twMerge("space-y-10", props.className)}>
+    <div {...props} className={twMerge("space-y-20", props.className)}>
       <div className="flex items-center justify-between gap-20">
         {heading && (
-          <>
-            {headerTag === "h2" && <H2 id={paragraph.id}>{heading}</H2>}
-            {headerTag === "h3" && <H3 id={paragraph.id}>{heading}</H3>}
-            {headerTag === "h4" && <H4 id={paragraph.id}>{heading}</H4>}
-          </>
+          <Header id={paragraph.id} className="mb-0">
+            {heading}
+          </Header>
         )}
 
         <ExpandCollapseAll className="ml-auto" />
