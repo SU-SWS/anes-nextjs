@@ -18,12 +18,12 @@ export const metadata = {
 }
 
 type Props = {
-  params: Promise<{uuid: string[]}>
+  params: Promise<{uuid: string}>
 }
 
 const Page = async (props: Props) => {
   const params = await props.params
-  const [paragraphId, mediaUuid] = params.uuid
+  const [paragraphId, mediaUuid] = decodeURIComponent(params.uuid).split(":")
 
   const paragraphQuery = await graphqlClient().Paragraph({uuid: paragraphId})
   if (paragraphQuery.paragraph?.__typename !== "ParagraphStanfordGallery") notFound()

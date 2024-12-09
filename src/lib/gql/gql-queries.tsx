@@ -60,47 +60,39 @@ export const getEntityFromPath = async <T extends NodeUnion>(
   return getData()
 }
 
-export const getConfigPage = async <T extends ConfigPagesUnion>(
-  configPageType: ConfigPagesUnion["__typename"]
-): Promise<T | undefined> => {
-  const getData = nextCache(
-    async () => {
-      let query: ConfigPagesQuery
-      try {
-        query = await graphqlClient().ConfigPages()
-      } catch (e) {
-        console.warn("Unable to fetch config pages: " + (e instanceof Error && e.stack))
-        return
-      }
+export const getConfigPage = nextCache(
+  async <T extends ConfigPagesUnion>(configPageType: ConfigPagesUnion["__typename"]): Promise<T | undefined> => {
+    let query: ConfigPagesQuery
+    try {
+      query = await graphqlClient().ConfigPages()
+    } catch (e) {
+      console.warn("Unable to fetch config pages: " + (e instanceof Error && e.stack))
+      return
+    }
 
-      const queryKeys = Object.keys(query) as (keyof ConfigPagesQuery)[]
-      for (let i = 0; i < queryKeys.length; i++) {
-        const queryKey = queryKeys[i]
-        if (queryKey !== "__typename" && query[queryKey]?.nodes[0]?.__typename === configPageType) {
-          return query[queryKey].nodes[0] as T
-        }
+    const queryKeys = Object.keys(query) as (keyof ConfigPagesQuery)[]
+    for (let i = 0; i < queryKeys.length; i++) {
+      const queryKey = queryKeys[i]
+      if (queryKey !== "__typename" && query[queryKey]?.nodes[0]?.__typename === configPageType) {
+        return query[queryKey].nodes[0] as T
       }
-    },
-    [configPageType || "config-pages"],
-    {tags: ["config-pages"]}
-  )
-  return getData()
-}
+    }
+  },
+  [],
+  {tags: ["config-pages"]}
+)
 
-export const getConfigPageField = async <T extends ConfigPagesUnion, F>(
-  configPageType: ConfigPagesUnion["__typename"],
-  fieldName: keyof T
-): Promise<F | undefined> => {
-  const getData = nextCache(
-    async () => {
-      const configPage = await getConfigPage<T>(configPageType)
-      return configPage?.[fieldName] as F
-    },
-    [fieldName.toString()],
-    {tags: ["config-pages"]}
-  )
-  return getData()
-}
+export const getConfigPageField = nextCache(
+  async <T extends ConfigPagesUnion, F>(
+    configPageType: ConfigPagesUnion["__typename"],
+    fieldName: keyof T
+  ): Promise<F | undefined> => {
+    const configPage = await getConfigPage<T>(configPageType)
+    return configPage?.[fieldName] as F
+  },
+  [],
+  {tags: ["config-pages"]}
+)
 
 export const getMenu = async (name?: MenuAvailable, maxLevels?: number): Promise<MenuItem[]> => {
   const menuName = name?.toLowerCase() || "main"
@@ -151,7 +143,7 @@ export const getAllNodes = nextCache(
     return nodes
   },
   ["all-nodes"],
-  {revalidate: 25200, tags: ["all-entities"]}
+  {revalidate: 604800, tags: ["all-entities"]}
 )
 
 /**
@@ -185,5 +177,5 @@ export const getAlgoliaCredential = nextCache(
     return appId && indexName && apiKey ? [appId, indexName, apiKey] : []
   },
   ["algolia"],
-  {tags: ["algolia"]}
+  {tags: ["algolia", "config-pages"]}
 )
