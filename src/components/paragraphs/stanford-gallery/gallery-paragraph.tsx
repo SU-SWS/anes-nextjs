@@ -61,7 +61,7 @@ const GalleryImage = ({
     <figure>
       <div className="relative aspect-[4/3] w-full">
         <Link
-          href={`/gallery/${galleryId}:${image.id}`}
+          href={`/gallery/${galleryId}/${image.id}`}
           className="relative block h-full w-full"
           rel="nofollow"
           scroll={false}
