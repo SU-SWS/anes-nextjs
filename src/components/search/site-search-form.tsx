@@ -20,7 +20,7 @@ const SiteSearchForm = ({inputValue, ...props}: Props) => {
           Search this site
         </label>
         <input
-          className="h-15 lg:w-100 w-full rounded-full text-19 lg:border-black-20"
+          className="h-15 lg:w-100 w-full rounded-full px-8 text-19 lg:border-black-20"
           type="text"
           placeholder="Search this site"
           id={inputId}

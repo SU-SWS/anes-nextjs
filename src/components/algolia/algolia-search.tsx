@@ -94,7 +94,7 @@ const SearchBox = (props?: UseSearchBoxProps) => {
         </label>
         <input
           id="search-input"
-          className="type-2 h-20 max-w-xl rounded-full hocus:shadow-2xl"
+          className="type-2 h-20 max-w-xl rounded-full px-10 hocus:shadow-2xl"
           ref={inputRef}
           autoCorrect="on"
           spellCheck={false}
