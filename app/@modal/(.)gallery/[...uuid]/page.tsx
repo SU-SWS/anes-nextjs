@@ -7,7 +7,6 @@ import {notFound} from "next/navigation"
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
 export const revalidate = false
-export const dynamic = "force-static"
 // https://vercel.com/docs/functions/runtimes#max-duration
 export const maxDuration = 60
 
@@ -92,10 +91,6 @@ const Page = async (props: Props) => {
       })}
     </InterceptionModal>
   )
-}
-
-export const generateStaticParams = async (): Promise<Array<{uuid: string[]}>> => {
-  return []
 }
 
 export default Page
