@@ -12,12 +12,12 @@ export const dynamic = "force-static"
 export const maxDuration = 60
 
 type Props = {
-  params: Promise<{uuid: string[]}>
+  params: Promise<{uuid: string}>
 }
 
 const Page = async (props: Props) => {
   const params = await props.params
-  const [paragraphId, mediaUuid] = params.uuid
+  const [paragraphId, mediaUuid] = decodeURIComponent(params.uuid).split(":")
 
   const paragraphQuery = await graphqlClient().Paragraph({uuid: paragraphId})
   if (paragraphQuery.paragraph?.__typename !== "ParagraphStanfordGallery") notFound()
@@ -64,7 +64,7 @@ const Page = async (props: Props) => {
                     <li className="mr-auto">
                       <Link
                         className="text-white no-underline hocus:text-white hocus:underline"
-                        href={`/gallery/${paragraph.id}/${paragraph.suGalleryImages?.[prevImageIndex].id}`}
+                        href={`/gallery/${paragraph.id}:${paragraph.suGalleryImages?.[prevImageIndex].id}`}
                         replace={true}
                         scroll={false}
                       >
@@ -76,7 +76,7 @@ const Page = async (props: Props) => {
                     <li className="ml-auto">
                       <Link
                         className="text-white no-underline hocus:text-white hocus:underline"
-                        href={`/gallery/${paragraph.id}/${paragraph.suGalleryImages?.[nextImageIndex].id}`}
+                        href={`/gallery/${paragraph.id}:${paragraph.suGalleryImages?.[nextImageIndex].id}`}
                         replace={true}
                         scroll={false}
                       >
