@@ -13,6 +13,10 @@ export type DefaultAlgoliaHit = {
 
 const DefaultHit = ({hit}: {hit: HitType<DefaultAlgoliaHit>}) => {
   const hitUrl = new URL(hit.url)
+  const imageUrl = hit.photo
+    ?.replace(hitUrl.origin, `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}`)
+    .replace(/styles\/\w+\/public\//, "")
+    .replace(/\?.*/, "")
 
   return (
     <article className="flex justify-between gap-20 py-12 @container">
@@ -34,14 +38,9 @@ const DefaultHit = ({hit}: {hit: HitType<DefaultAlgoliaHit>}) => {
         )}
       </div>
 
-      {hit.photo && (
+      {imageUrl && (
         <div className="relative hidden aspect-1 h-[150px] w-[150px] shrink-0 @6xl:block">
-          <Image
-            className="object-cover"
-            src={hit.photo.replace(hitUrl.origin, `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}`)}
-            alt=""
-            fill
-          />
+          <Image className="object-cover" src={imageUrl} alt="" fill sizes="(max-width: 768px) 50vw, 300px" />
         </div>
       )}
     </article>

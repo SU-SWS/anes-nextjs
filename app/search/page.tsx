@@ -21,9 +21,15 @@ export const metadata = {
 }
 const Page = async (props: {searchParams?: Promise<Record<string, string>>}) => {
   const searchParams = await props.searchParams
+  if (searchParams) {
+    // Honeypot check.
+    if (searchParams?.search) redirect("/search")
+    // Bot actor adding unwanted parameters.
+    delete searchParams.search
+    delete searchParams.q
+    if (Object.keys(searchParams).length > 0) redirect("/search")
+  }
 
-  // Honeypot check.
-  if (searchParams?.search) redirect("/search")
   const [appId, indexName, apiKey] = await getAlgoliaCredential()
 
   const initialState: IndexUiState = {refinementList: {}}
