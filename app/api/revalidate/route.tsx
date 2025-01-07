@@ -21,19 +21,6 @@ export const GET = async (request: NextRequest) => {
   const path = request.nextUrl.searchParams.get("slug")
   if (!path || path.startsWith("/node/")) return NextResponse.json({message: "Invalid slug"}, {status: 400})
 
-  if (!path.startsWith("/tags/") && process.env.NEXT_PUBLIC_DOMAIN) {
-    // 404 and 307 path responses are cached heavily. We need to invalidate the
-    // path, not just the tags.
-    await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}${path}`, {redirect: "manual"})
-      .then(res => {
-        if (!res.ok) {
-          revalidatePath(path)
-          return NextResponse.json({revalidated: true, path})
-        }
-      })
-      .catch(_e => console.warn("something went wrong checking for path"))
-  }
-
   const tagsInvalidated = path.includes("/tags/") ? [] : [`paths:${path}`]
   if (path.startsWith("/tags/"))
     path
