@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from "next/server"
-import {revalidatePath, revalidateTag, unstable_cache as nextCache} from "next/cache"
+import {revalidateTag, unstable_cache as nextCache} from "next/cache"
 import {getEntityFromPath} from "@lib/gql/gql-queries"
 
 export const revalidate = 0
