@@ -69,7 +69,7 @@ const LocalFooter = async ({...props}: Props) => {
                   if (!link.url) return
                   return (
                     <li key={`footer-action-link-${index}`} className="m-0 p-0">
-                      <Link href={link.url} className="py-1 text-2xl">
+                      <Link href={link.url} className="text-2xl">
                         {link.title}
                       </Link>
                     </li>

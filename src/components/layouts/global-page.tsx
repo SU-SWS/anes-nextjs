@@ -12,10 +12,9 @@ const GlobalPage = ({children, ...props}: Props) => {
 
       <main id="main-content" className="mb-32 flex-grow">
         {children}
+
+        <BackToTop />
       </main>
-
-      <BackToTop />
-
       <PageFooter />
     </div>
   )
