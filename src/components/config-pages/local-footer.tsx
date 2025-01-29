@@ -23,6 +23,14 @@ import {Maybe, StanfordLocalFooter} from "@lib/gql/__generated__/drupal.d"
 import {buildUrl} from "@lib/drupal/utils"
 import {getConfigPage} from "@lib/gql/gql-queries"
 import twMerge from "@lib/utils/twMerge"
+import LinkedInIcon from "@components/elements/icons/LinkedInIcon"
+import InstagramIcon from "@components/elements/icons/InstagramIcon"
+import BlueSkyIcon from "@components/elements/icons/BlueSkyIcon"
+import FlickrIcon from "@components/elements/icons/FlickrIcon"
+import GithubIcon from "@components/elements/icons/GithubIcon"
+import GoogleScholarIcon from "@components/elements/icons/GoogleScholarIcon"
+import MastodonIcon from "@components/elements/icons/MastodonIcon"
+import ThreadsIcon from "@components/elements/icons/ThreadsIcon"
 
 type Props = HTMLAttributes<HTMLDivElement>
 
@@ -52,7 +60,7 @@ const LocalFooter = async ({...props}: Props) => {
         </div>
 
         <div className="grid gap-32 md:grid-cols-2 lg:grid-cols-4 [&_a:focus]:text-black [&_a:focus]:underline [&_a:hover]:text-black [&_a:hover]:underline [&_a]:font-normal [&_a]:no-underline [&_a]:transition">
-          <div>
+          <div className="space-y-12">
             {localFooterConfig.suLocalFootAddress && <Address {...localFooterConfig.suLocalFootAddress} />}
 
             {localFooterConfig.suLocalFootAction && (
@@ -60,8 +68,10 @@ const LocalFooter = async ({...props}: Props) => {
                 {localFooterConfig.suLocalFootAction.map((link, index) => {
                   if (!link.url) return
                   return (
-                    <li key={`footer-action-link-${index}`}>
-                      <Link href={link.url}>{link.title}</Link>
+                    <li key={`footer-action-link-${index}`} className="m-0 p-0">
+                      <Link href={link.url} className="py-1 text-2xl">
+                        {link.title}
+                      </Link>
                     </li>
                   )
                 })}
@@ -69,12 +79,15 @@ const LocalFooter = async ({...props}: Props) => {
             )}
 
             {localFooterConfig.suLocalFootSocial && (
-              <ul className="list-unstyled flex gap-2">
+              <ul className="list-unstyled flex flex-wrap gap-3">
                 {localFooterConfig.suLocalFootSocial.map((link, index) => {
                   if (!link.url) return
                   return (
                     <li key={`footer-action-link-${index}`}>
-                      <Link href={link.url}>
+                      <Link
+                        href={link.url}
+                        className="block rounded-full border border-transparent p-2 hocus:border-digital-blue [&_svg]:fill-black hocus:[&_svg]:fill-digital-blue"
+                      >
                         <SocialIcon url={link.url} />
                         <span className="sr-only">{link.title}</span>
                       </Link>
@@ -88,14 +101,16 @@ const LocalFooter = async ({...props}: Props) => {
           </div>
 
           <div>
-            {localFooterConfig.suLocalFootPrimeH && <H2 className="type-2">{localFooterConfig.suLocalFootPrimeH}</H2>}
+            {localFooterConfig.suLocalFootPrimeH && <H2 className="type-0">{localFooterConfig.suLocalFootPrimeH}</H2>}
             {localFooterConfig.suLocalFootPrimary && (
               <ul className="list-unstyled">
                 {localFooterConfig.suLocalFootPrimary.map((link, index) => {
                   if (!link.url) return
                   return (
-                    <li key={`footer-primary-link-${index}`}>
-                      <Link href={link.url}>{link.title}</Link>
+                    <li key={`footer-primary-link-${index}`} className="m-0 p-0">
+                      <Link href={link.url} className="text-3xl">
+                        {link.title}
+                      </Link>
                     </li>
                   )
                 })}
@@ -105,15 +120,17 @@ const LocalFooter = async ({...props}: Props) => {
           </div>
 
           <div>
-            {localFooterConfig.suLocalFootSecondH && <H2 className="type-2">{localFooterConfig.suLocalFootSecondH}</H2>}
+            {localFooterConfig.suLocalFootSecondH && <H2 className="type-0">{localFooterConfig.suLocalFootSecondH}</H2>}
 
             {localFooterConfig.suLocalFootSecond && (
               <ul className="list-unstyled">
                 {localFooterConfig.suLocalFootSecond.map((link, index) => {
                   if (!link.url) return
                   return (
-                    <li key={`footer-second-link-${index}`}>
-                      <Link href={link.url}>{link.title}</Link>
+                    <li key={`footer-second-link-${index}`} className="m-0 p-0">
+                      <Link href={link.url} className="text-3xl">
+                        {link.title}
+                      </Link>
                     </li>
                   )
                 })}
@@ -131,9 +148,20 @@ const LocalFooter = async ({...props}: Props) => {
 }
 
 const SocialIcon = ({url}: {url: string}) => {
-  if (url.includes("twitter.com")) return <TwitterIcon />
+  if (url.includes("twitter.com") || url.includes("x.com")) return <TwitterIcon />
   if (url.includes("youtube.com")) return <YoutubeIcon />
   if (url.includes("facebook")) return <FacebookIcon />
+  if (url.includes("linkedin")) return <LinkedInIcon />
+  if (url.includes("instagram")) return <InstagramIcon />
+  if (url.includes("bsky")) return <BlueSkyIcon />
+  if (url.includes("google")) return <GoogleScholarIcon />
+  if (url.includes("github")) return <GithubIcon />
+  if (url.includes("flickr")) return <FlickrIcon />
+  if (url.includes("mastodon")) return <MastodonIcon />
+  if (url.includes("threads")) return <ThreadsIcon />
+  if (url.includes("youtube")) return <YoutubeIcon />
+
+  console.warn("Social link icon not supported: " + url)
   return null
 }
 

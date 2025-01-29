@@ -2,7 +2,7 @@
 module.exports = function () {
   return function ({addComponents}) {
     const components = {
-      ".local-footer": {
+      ".local-footer .wysiwyg": {
         h2: {
           fontSize: "1.5em",
         },
