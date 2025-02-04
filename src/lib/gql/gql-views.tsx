@@ -14,6 +14,7 @@ import {
   StanfordBasicPagesSortKeys,
 } from "@lib/gql/__generated__/drupal.d"
 import {graphqlClient} from "@lib/gql/gql-client"
+import {cacheTag} from "next/dist/server/use-cache/cache-tag"
 
 export const VIEW_PAGE_SIZE = 21
 
@@ -48,7 +49,7 @@ export const getViewPagedItems = async (
   page?: Maybe<number>,
   filter?: Maybe<Record<string, string | number | Array<string | number>>>
 ): Promise<{items: NodeUnion[]; totalItems: number}> => {
-  "use server"
+  "use cache"
 
   let items: NodeUnion[] = []
   let totalItems = 0
@@ -66,9 +67,9 @@ export const getViewPagedItems = async (
     stanford_person: "views:stanford_person",
     stanford_publications: "views:stanford_publication",
   }
-  const tags = ["views", viewTags[viewId]]
+  cacheTag("views", viewTags[viewId])
 
-  const client = graphqlClient({next: {tags}})
+  const client = graphqlClient()
   let contextualFilters = getContextualFilters(["term_node_taxonomy_name_depth"], contextualFilter)
   let graphqlResponse
 

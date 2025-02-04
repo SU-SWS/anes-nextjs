@@ -6,7 +6,6 @@ export const graphqlClient = (requestConfig: Omit<RequestInit, "method"> = {}, i
 
   const client = new GraphQLClient(process.env.NEXT_PUBLIC_DRUPAL_BASE_URL + "/graphql", {
     ...requestConfig,
-    next: requestConfig.cache ? {...requestConfig.next} : {revalidate: 60 * 60 * 24 * 365, ...requestConfig.next},
     // Use fetch function so Next.js will be able to cache it normally.
     fetch: async (input: URL | RequestInfo, init?: RequestInit) => fetch(input, init),
   })

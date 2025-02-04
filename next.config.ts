@@ -1,10 +1,20 @@
 import type {NextConfig} from "next"
+import {INFINITE_CACHE} from "next/dist/lib/constants"
 
 const drupalUrl = new URL(process.env.NEXT_PUBLIC_DRUPAL_BASE_URL as string)
 
 /** @type {import("next").NextConfig} */
 const nextConfig: NextConfig = {
-  experimental: {},
+  experimental: {
+    useCache: true,
+    cacheLife: {
+      default: {
+        stale: undefined,
+        revalidate: INFINITE_CACHE,
+        expire: INFINITE_CACHE,
+      },
+    },
+  },
   typescript: {
     // Disable build errors since dev dependencies aren't loaded on prod. Rely on GitHub actions to throw any errors.
     ignoreBuildErrors: process.env.CI !== "true",

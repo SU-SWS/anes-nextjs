@@ -4,9 +4,10 @@ import type {ReadonlyRequestCookies} from "next/dist/server/web/spec-extension/a
 /*
  * Draft mode works when in normal builds. Use environment variable during development.
  */
-export const isPreviewMode = (): boolean => {
+export const isPreviewMode = async (): Promise<boolean> => {
   return (
     process.env.NODE_ENV === "development" ||
-    (cookies() as unknown as ReadonlyRequestCookies)?.get("preview")?.value === process.env.DRUPAL_PREVIEW_SECRET
+    ((await cookies()) as unknown as ReadonlyRequestCookies)?.get("preview")?.value ===
+      process.env.DRUPAL_PREVIEW_SECRET
   )
 }

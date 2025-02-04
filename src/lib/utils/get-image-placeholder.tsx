@@ -1,13 +1,13 @@
 import {getPlaiceholder} from "plaiceholder"
 import {ImageProps} from "next/image"
-import {unstable_cache as nextCache} from "next/cache"
 
 type ReturnProps = {
   placeholder?: ImageProps["placeholder"]
   blurDataURL?: ImageProps["blurDataURL"]
 }
 
-export const getImagePlaceholder = nextCache(async (src: string): Promise<ReturnProps> => {
+export const getImagePlaceholder = async (src: string): Promise<ReturnProps> => {
+  "use cache"
   try {
     const buffer = await fetch(src).then(async res => Buffer.from(await res.arrayBuffer()))
     const {base64: blurDataURL} = await getPlaiceholder(buffer, {size: 10})
@@ -16,4 +16,4 @@ export const getImagePlaceholder = nextCache(async (src: string): Promise<Return
     console.warn(err instanceof Error ? err.message : "Unable to produce placeholder image: " + src)
     return {}
   }
-})
+}

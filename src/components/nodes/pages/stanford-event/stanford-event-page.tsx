@@ -12,7 +12,6 @@ import {NodeStanfordEvent} from "@lib/gql/__generated__/drupal.d"
 import Email from "@components/elements/email"
 import Telephone from "@components/elements/telephone"
 import Link from "@components/elements/link"
-import {isPreviewMode} from "@lib/drupal/is-preview-mode"
 import ReverseVisualOrder from "@components/elements/reverse-visual-order"
 import NodePageMetadata from "@components/nodes/pages/node-page-metadata"
 import {getCleanDescription} from "@lib/utils/text-tools"
@@ -23,7 +22,7 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
 }
 
 const StanfordEventPage = ({node, ...props}: Props) => {
-  if (node.suEventSource?.url && !isPreviewMode()) redirect(node.suEventSource.url)
+  if (node.suEventSource?.url) redirect(node.suEventSource.url)
 
   const startTime = new Date(node.suEventDateTime.value * 1000)
   const endTime = new Date(node.suEventDateTime.end_value * 1000)

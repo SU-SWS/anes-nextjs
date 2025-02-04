@@ -8,16 +8,15 @@ import {isPreviewMode} from "@lib/drupal/is-preview-mode"
 
 const PreviewPage = async (props: PageProps) => {
   const params = await props.params
-  if (!isPreviewMode()) notFound()
+  if (!(await isPreviewMode())) notFound()
   const {entity} = await getEntityFromPath<NodeUnion>(getPathFromContext(params.slug), true)
 
   if (!entity) notFound()
 
   return (
-    <>
-      <EditorAlert status={entity.status} message="Unpublished Page" />
+    <EditorAlert status={entity.status} message="Unpublished Page">
       <NodePage node={entity} />
-    </>
+    </EditorAlert>
   )
 }
 

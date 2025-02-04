@@ -1,17 +1,8 @@
 import {NextRequest, NextResponse} from "next/server"
-import {revalidateTag, unstable_cache as nextCache} from "next/cache"
-import {getEntityFromPath} from "@lib/gql/gql-queries"
+import {revalidateTag} from "next/cache"
+import {getHomePagePath} from "@lib/gql/gql-queries"
 
 export const revalidate = 0
-
-const getHomePagePath = nextCache(
-  async () => {
-    const {entity} = await getEntityFromPath("/")
-    return entity?.path
-  },
-  [],
-  {tags: ["paths:/"]}
-)
 
 export const GET = async (request: NextRequest) => {
   const secret = request.nextUrl.searchParams.get("secret")
