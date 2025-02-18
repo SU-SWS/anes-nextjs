@@ -25,7 +25,7 @@ const ListParagraph = async ({paragraph, ...props}: Props) => {
       : {items: [], totalItems: 0}
 
   const {totalItems} = pagedItems
-  const viewItems = limit ? pagedItems.items.slice(0, limit) : pagedItems.items
+  const viewItems = limit ? pagedItems.items.slice(0, VIEW_PAGE_SIZE) : pagedItems.items
 
   const addLoadMore = (limit || 3) >= VIEW_PAGE_SIZE && totalItems > viewItems.length
 

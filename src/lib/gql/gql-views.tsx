@@ -180,6 +180,7 @@ export const getViewPagedItems = async (
     if (e instanceof Error) console.warn(e.message)
     return {items: [], totalItems: 0}
   }
+
   return {items, totalItems}
 }
 
