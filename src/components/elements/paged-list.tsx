@@ -3,12 +3,12 @@
 import {useLayoutEffect, useRef, HtmlHTMLAttributes, useEffect, JSX, useState, useCallback} from "react"
 import {useBoolean, useCounter} from "usehooks-ts"
 import {useRouter, useSearchParams} from "next/navigation"
-import usePagination from "@lib/hooks/usePagination"
-import useFocusOnRender from "@lib/hooks/useFocusOnRender"
+import usePagination from "@hooks/usePagination"
+import useFocusOnRender from "@hooks/useFocusOnRender"
 import {ArrowLongLeftIcon, ArrowLongRightIcon} from "@heroicons/react/20/solid"
 import {ArrowPathIcon} from "@heroicons/react/16/solid"
 import twMerge from "@lib/utils/twMerge"
-import useServerAction from "@lib/hooks/useServerAction"
+import useServerAction from "@hooks/useServerAction"
 import {clsx} from "clsx"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {

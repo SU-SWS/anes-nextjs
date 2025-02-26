@@ -67,7 +67,7 @@ export const getViewPagedItems = async (
     stanford_person: "views:stanford_person",
     stanford_publications: "views:stanford_publication",
   }
-  cacheTag("views", viewTags[viewId])
+  cacheTag("views", viewTags[viewId] || "views:all")
 
   const client = graphqlClient()
   let contextualFilters = getContextualFilters(["term_node_taxonomy_name_depth"], contextualFilter)

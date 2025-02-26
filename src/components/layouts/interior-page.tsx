@@ -2,7 +2,7 @@ import {getMenu} from "@lib/gql/gql-queries"
 import SideNav from "@components/menu/side-nav"
 import {HtmlHTMLAttributes} from "react"
 import {BookLink, MenuAvailable, MenuItem} from "@lib/gql/__generated__/drupal.d"
-import {getMenuActiveTrail} from "@lib/drupal/utils"
+import {getMenuActiveTrail} from "@lib/utils/utils"
 import twMerge from "@lib/utils/twMerge"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {

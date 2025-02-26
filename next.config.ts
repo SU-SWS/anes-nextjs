@@ -3,7 +3,6 @@ import {INFINITE_CACHE} from "next/dist/lib/constants"
 
 const drupalUrl = new URL(process.env.NEXT_PUBLIC_DRUPAL_BASE_URL as string)
 
-/** @type {import("next").NextConfig} */
 const nextConfig: NextConfig = {
   experimental: {
     useCache: true,
@@ -54,6 +53,11 @@ const nextConfig: NextConfig = {
       {
         source: "/home",
         destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/node/:slug",
+        destination: process.env.NEXT_PUBLIC_DRUPAL_BASE_URL + "/node/:slug",
         permanent: true,
       },
       {

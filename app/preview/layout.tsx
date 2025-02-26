@@ -1,4 +1,4 @@
-import {isPreviewMode} from "@lib/drupal/is-preview-mode"
+import {isPreviewMode} from "@lib/utils/is-preview-mode"
 import Editori11y from "@components/tools/editorially"
 import EditorAlert from "@components/elements/editor-alert"
 

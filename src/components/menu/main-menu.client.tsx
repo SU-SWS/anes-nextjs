@@ -1,6 +1,6 @@
 "use client"
 
-import useOutsideClick from "@lib/hooks/useOutsideClick"
+import useOutsideClick from "@hooks/useOutsideClick"
 import {ChevronDownIcon} from "@heroicons/react/20/solid"
 import {clsx} from "clsx"
 import {useBoolean, useEventListener} from "usehooks-ts"

@@ -2,8 +2,8 @@
 
 import {useLayoutEffect, useRef, HtmlHTMLAttributes, JSX, useId, useState} from "react"
 import {useBoolean, useCounter} from "usehooks-ts"
-import useFocusOnRender from "@lib/hooks/useFocusOnRender"
-import useServerAction from "@lib/hooks/useServerAction"
+import useFocusOnRender from "@hooks/useFocusOnRender"
+import useServerAction from "@hooks/useServerAction"
 import twMerge from "@lib/utils/twMerge"
 import {ArrowPathIcon} from "@heroicons/react/20/solid"
 import Button from "@components/elements/button"

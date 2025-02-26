@@ -28,9 +28,6 @@ export const getEntityFromPath = async <T extends NodeUnion>(
   entity?: T
   redirect?: RouteRedirect["url"]
 }> => {
-  // Paths that start with /node/ should not be used.
-  if (path.startsWith("/node/")) return {}
-
   cacheTag(`paths:${path}`, "all-entities")
 
   let query: RouteQuery

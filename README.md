@@ -104,8 +104,8 @@ If you experience any issues during development, delete the `.next` directory an
 In the layout and pages, we set the `revalidate` variable to `false`. This caches the page and layout build indefinitely.
 Layouts and page caches are treated separately and can be invalidated independently of each other, while also allowing
 specific parts of each to be invalidated. A route handler is provided that allows the CMS system to invalidate 
-appropriate areas of the site. Making a `GET` request to `/api/revalidate?secret=[secret]&slug=/[slug]` with the correct
-parameters will accomplish this invalidation. Passing a slug in the form `/tags/foo:bar` will invalidate the cache tags
+appropriate areas of the site. Making a `GET` request to `/api/revalidate?secret=[secret]&path=/[path]` with the correct
+parameters will accomplish this invalidation. Passing a path in the form `/tags/foo:bar` will invalidate the cache tags
 for `foo:bar` using the [revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag) function. The
 reason for this is the Next.js Drupal module only provides a single API url for on demand invalidation. So we have to 
 implement our own logic.
@@ -122,7 +122,7 @@ be rebuilt upon the next request. This shouldn't impact the CMS system since the
 ### Page
 
 Page routes are cache separately from Layouts. When invalidating a route or any fetch requests on the route, the layout
-caches will not be impacted. Using the route handler, if we invalidate the slug `/foo/bar` using the [revalidatePath](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)
+caches will not be impacted. Using the route handler, if we invalidate the path `/foo/bar` using the [revalidatePath](https://nextjs.org/docs/app/api-reference/functions/revalidatePath)
 function, it will invalidate any `fetch` request that was used to build that single page and no other pages. Requests
 like list paragraphs, or external fetches will be re-executed when the page is requested.
 

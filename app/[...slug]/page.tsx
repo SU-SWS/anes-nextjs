@@ -2,7 +2,7 @@ import NodePage from "@components/nodes/pages/node-page"
 import {NodeUnion} from "@lib/gql/__generated__/drupal.d"
 import {getAllNodes, getEntityFromPath} from "@lib/gql/gql-queries"
 import {notFound, redirect} from "next/navigation"
-import {getPathFromContext, PageProps, Slug} from "@lib/drupal/utils"
+import {getPathFromContext, PageProps, Slug} from "@lib/utils/utils"
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
 export const revalidate = false

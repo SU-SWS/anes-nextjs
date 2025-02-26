@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from "next/server"
 import {revalidateTag} from "next/cache"
-import {getHomePagePath} from "@lib/gql/gql-queries"
+import {getEntityFromPath, getHomePagePath} from "@lib/gql/gql-queries"
 
 export const revalidate = 0
 
@@ -9,8 +9,14 @@ export const GET = async (request: NextRequest) => {
   if (secret !== process.env.DRUPAL_REVALIDATE_SECRET)
     return NextResponse.json({message: "Invalid token"}, {status: 403})
 
-  const path = request.nextUrl.searchParams.get("slug")
-  if (!path || path.startsWith("/node/")) return NextResponse.json({message: "Invalid slug"}, {status: 400})
+  let path = request.nextUrl.searchParams.get("path")
+  if (!path) return NextResponse.json({message: "Invalid Path"}, {status: 400})
+
+  if (path.startsWith("/node/")) {
+    const {entity} = await getEntityFromPath(path)
+    path = entity?.path || null
+    if (!path) return NextResponse.json({message: "Invalid Path"}, {status: 400})
+  }
 
   const tagsInvalidated = path.includes("/tags/") ? [] : [`paths:${path}`]
   if (path.startsWith("/tags/"))
