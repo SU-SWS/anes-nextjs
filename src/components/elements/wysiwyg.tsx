@@ -35,6 +35,7 @@ const options: HTMLReactParserOptions = {
     if (domNode instanceof Element) {
       const nodeProps = attributesToProps(domNode.attribs)
       nodeProps.className = fixClasses(nodeProps.className)
+
       const NodeName = domNode.name as React.ElementType
       const children: DOMNode[] = domNode.children as DOMNode[]
 
@@ -130,30 +131,22 @@ const fixClasses = (classes?: string | boolean): string => {
   classes = classes
     .replaceAll(" su-", " ")
     .replaceAll(" text-align-center ", " text-center ")
-    .replace(" text-align-right ", " text-right ")
+    .replaceAll(" text-align-right ", " text-right ")
     .replaceAll(" align-center ", " mx-auto ")
     .replaceAll(" align-left ", " float-left mr-10 mb-10 ")
     .replaceAll(" align-right ", " float-right ml-10 mb-10 ")
     .replaceAll(" visually-hidden ", " sr-only ")
-    .replaceAll(" font-splash ", " splash-text type-5 ")
+    .replaceAll(" font-splash ", " font-bold type-4 ")
     .replaceAll(" callout-text ", " font-bold type-2 ")
     .replaceAll(" related-text ", " shadow-lg border border-black-20 p-16 ")
     .replaceAll(" intro-text ", " type-2 ")
-    .replaceAll(" quote-text ", " px-32 py-16 ml-32 type-3 border-l-3 border-black ")
+    .replaceAll(" quote-text ", " px-24 py-16 ml-32 type-3 border-l-3 border-black ")
     .replaceAll(
       " drop-cap ",
-      " type-2 first-letter:font-bold first-letter:type-7 first-letter:float-left first-letter:my-2 first-letter:mr-4 "
+      " type-2 first-letter:font-bold first-letter:type-6 first-letter:float-left first-letter:my-2 first-letter:mr-4 "
     )
-    .replace(/ tablesaw.*? /g, " ")
-    .replace(/ +/g, " ")
-    .trim()
-
-  classes = classes
-    .split(" ")
-    .filter(className => className.trim().length >= 1)
-    .join(" ")
-
-  return twMerge(classes.trim())
+    .replaceAll(/ tablesaw[\w-] /g, " ")
+  return twMerge(classes)
 }
 
 const cleanMediaMarkup = (node: Element) => {
