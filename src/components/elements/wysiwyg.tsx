@@ -136,9 +136,10 @@ const fixClasses = (classes?: string | boolean): string => {
     .replaceAll(" align-right ", " float-right ml-10 mb-10 ")
     .replaceAll(" visually-hidden ", " sr-only ")
     .replaceAll(" font-splash ", " splash-text type-5 ")
-    .replaceAll(" callout-text ", " font-bold type-3 ")
+    .replaceAll(" callout-text ", " font-bold type-2 ")
     .replaceAll(" related-text ", " shadow-lg border border-black-20 p-16 ")
     .replaceAll(" intro-text ", " type-2 ")
+    .replaceAll(" quote-text ", " px-32 py-16 ml-32 type-3 border-l-3 border-black ")
     .replaceAll(
       " drop-cap ",
       " type-2 first-letter:font-bold first-letter:type-7 first-letter:float-left first-letter:my-2 first-letter:mr-4 "
