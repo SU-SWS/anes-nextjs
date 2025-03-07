@@ -17,7 +17,7 @@ const StanfordPublicationCard = ({node, headingLevel, ...props}: Props) => {
     <ImageCard {...props} aria-labelledby={node.id} isArticle>
       <ReverseVisualOrder>
         <Heading className="[&_a]:text-black [&_a]:hocus:text-digital-red" id={node.id}>
-          <Link href={citationUrl || node.path}>{node.title}</Link>
+          <Link href={citationUrl || node.path || "#"}>{node.title}</Link>
         </Heading>
         <div className="font-bold">Publication</div>
       </ReverseVisualOrder>

@@ -2,6 +2,7 @@ import type {Meta, StoryObj} from "@storybook/react"
 import {ComponentProps} from "react"
 import StanfordMediaCaption from "@components/paragraphs/stanford-media-caption/media-caption-paragraph"
 import {getStoryBookImage} from "../storybook-entities"
+import {faker} from "@faker-js/faker"
 
 type ComponentStoryProps = ComponentProps<typeof StanfordMediaCaption> & {
   // text: Text["processed"]
@@ -37,10 +38,10 @@ export const Caption: Story = {
         timezone: "America/Los_Angeles",
       },
       suMediaCaptionCaption: {
-        processed: "<p>Here is my caption.</p>",
+        processed: faker.word.words(10),
       },
       suMediaCaptionLink: {
-        title: "Link text.",
+        title: faker.word.words(2),
         url: "/publications",
         internal: true,
       },

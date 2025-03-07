@@ -3,7 +3,7 @@ import StanfordPolicyCard from "@components/nodes/cards/stanford-policy/stanford
 import StringWithLines from "@components/elements/string-with-lines"
 import {HtmlHTMLAttributes, Suspense} from "react"
 import {H1, H2, H3} from "@components/elements/headers"
-import {BookLink, Maybe, NodeStanfordPolicy} from "@lib/gql/__generated__/drupal.d"
+import {BookLink, NodeInterface, NodeStanfordPolicy} from "@lib/gql/__generated__/drupal.d"
 import {getEntityFromPath} from "@lib/gql/gql-queries"
 import {ImageCardSkeleton} from "@components/patterns/image-card"
 import InteriorPage from "@components/layouts/interior-page"
@@ -58,7 +58,7 @@ const StanfordPolicyPage = async ({node, ...props}: Props) => {
           )}
         </div>
       </div>
-      <InteriorPage currentPath={node.path} menuItems={node.book ? [node.book] : undefined}>
+      <InteriorPage currentPath={node.path || "#"} menuItems={node.book ? [node.book] : undefined}>
         <div className="flex flex-col gap-20">
           {(node.suPolicyAuthority || node.suPolicyUpdated || node.suPolicyEffective) && (
             <div>
@@ -124,7 +124,7 @@ const StanfordPolicyPage = async ({node, ...props}: Props) => {
 
           <Wysiwyg html={node.body?.processed} />
 
-          {node.book && <ChildPages currentPath={node.path} bookItems={[node.book]} />}
+          {node.book && <ChildPages currentPath={node.path || "#"} bookItems={[node.book]} />}
         </div>
       </InteriorPage>
 
@@ -167,7 +167,7 @@ const ChildPages = ({bookItems, currentPath}: {bookItems: Array<BookLink>; curre
   )
 }
 
-const ChildTeaser = async ({path}: {path: Maybe<string> | undefined}) => {
+const ChildTeaser = async ({path}: {path: NodeInterface["path"]}) => {
   if (!path) return
   const queryResponse = await getEntityFromPath<NodeStanfordPolicy>(path, false, true)
   if (!queryResponse.entity) return
@@ -179,7 +179,8 @@ const ChildTeaser = async ({path}: {path: Maybe<string> | undefined}) => {
   )
 }
 
-const RelatedPolicy = async ({path}: {path: string}) => {
+const RelatedPolicy = async ({path}: {path: NodeInterface["path"]}) => {
+  if (!path) return
   const queryResponse = await getEntityFromPath<NodeStanfordPolicy>(path, false, true)
   if (!queryResponse.entity) return
   return <StanfordPolicyCard node={queryResponse.entity} headingLevel="h3" />

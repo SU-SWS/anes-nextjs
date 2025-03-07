@@ -3,6 +3,7 @@ import GlobalMessage from "@components/config-pages/global-message"
 import {ComponentProps} from "react"
 import {Link, StanfordGlobalMessage, Text} from "@lib/gql/__generated__/drupal.d"
 import {createMock} from "storybook-addon-module-mock"
+import {faker} from "@faker-js/faker"
 import * as gql from "@lib/gql/gql-queries"
 
 type ComponentStoryProps = ComponentProps<typeof GlobalMessage> & {
@@ -26,17 +27,16 @@ const globalMessage = {
   id: "message",
   metatag: [],
   suGlobalMsgEnabled: true,
-  suGlobalMsgHeader: "Global Message Header",
-  suGlobalMsgLabel: "Global Message Label",
+  suGlobalMsgHeader: faker.word.words(5),
+  suGlobalMsgLabel: faker.word.words(5),
   suGlobalMsgMessage: {
-    processed:
-      "<p>Erat euismod nunc ipsum morbi tincidunt accumsan bibendum elementum mi vel leo elit urna bibendum sit metus varius leo enim ex tristique amet elit interdum.</p>",
+    processed: faker.word.words(50),
   },
   suGlobalMsgType: "success",
   suGlobalMsgLink: {
     internal: false,
     url: "https://localhost",
-    title: "Local Link",
+    title: faker.word.words(3),
   },
 } satisfies StanfordGlobalMessage
 

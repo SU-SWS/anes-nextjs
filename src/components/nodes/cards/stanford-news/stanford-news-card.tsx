@@ -29,7 +29,7 @@ const StanfordNewsCard = ({node, headingLevel, ...props}: Props) => {
     <ImageCard {...props} aria-labelledby={node.id} imageUrl={image?.url} isArticle>
       <ReverseVisualOrder>
         <Heading className="[&_a]:text-black" id={node.id}>
-          <Link href={node.suNewsSource?.url || node.path}>{node.title}</Link>
+          <Link href={node.suNewsSource?.url || node.path || "#"}>{node.title}</Link>
         </Heading>
 
         {publishDate && <div>{publishDate}</div>}

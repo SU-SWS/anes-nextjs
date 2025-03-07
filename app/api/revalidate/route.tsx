@@ -13,7 +13,8 @@ export const GET = async (request: NextRequest) => {
   if (!path) return NextResponse.json({message: "Invalid Path"}, {status: 400})
 
   if (path.startsWith("/node/")) {
-    const {entity} = await getEntityFromPath(path)
+    // Fetch the teaser data to avoid the possibly cached page fetch.
+    const {entity} = await getEntityFromPath(path, false, true)
     path = entity?.path || null
     if (!path) return NextResponse.json({message: "Invalid Path"}, {status: 400})
   }

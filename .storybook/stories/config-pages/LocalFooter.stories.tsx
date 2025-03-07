@@ -4,6 +4,7 @@ import {ComponentProps} from "react"
 import {createMock} from "storybook-addon-module-mock"
 import * as gql from "@lib/gql/gql-queries"
 import {StanfordLocalFooter} from "@lib/gql/__generated__/drupal.d"
+import {faker} from "@faker-js/faker"
 
 type ComponentStoryProps = ComponentProps<typeof LocalFooter> & {}
 
@@ -23,20 +24,20 @@ const localFooterConfig = {
   metatag: [],
   suFooterEnabled: true,
   suLocalFootAction: [
-    {title: "Action link 1", url: "https://localhost", internal: false},
-    {title: "Action link 2", url: "https://localhost", internal: false},
+    {title: faker.word.words(2), url: "https://localhost", internal: false},
+    {title: faker.word.words(2), url: "https://localhost", internal: false},
   ],
   suLocalFootAddress: {
     additionalName: "additional_name",
-    addressLine1: "address_line1",
-    addressLine2: "address_line2",
+    addressLine1: faker.location.streetAddress(),
+    addressLine2: faker.location.secondaryAddress(),
     administrativeArea: "administrative_area",
-    country: {code: "country_code"},
-    familyName: "family_name",
-    givenName: "given_name",
-    locality: "locality",
+    country: {code: "US"},
+    familyName: faker.person.lastName(),
+    givenName: faker.person.firstName(),
+    locality: faker.location.city(),
     organization: "organization",
-    postalCode: "postal_code",
+    postalCode: faker.location.zipCode(),
     sortingCode: "sorting_code",
   },
   suLocalFootFButton: "suLocalFoot_f_button",

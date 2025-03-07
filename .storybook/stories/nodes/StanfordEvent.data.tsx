@@ -1,10 +1,11 @@
 import {NodeStanfordEvent} from "@lib/gql/__generated__/drupal.d"
+import {faker} from "@faker-js/faker"
 
 export const StanfordEventData = () => {
   return {
     __typename: "NodeStanfordEvent",
     id: "210be681-f305-4b99-a2a6-da7d7a1ac2e8",
-    title: "Introduction to Stanford Sites",
+    title: faker.word.words(5),
     status: true,
     path: "/events/stanford-sites-onboarding-sessions/5x/introduction-stanford-sites-1",
     changed: {
@@ -22,7 +23,7 @@ export const StanfordEventData = () => {
     suEventContactInfo: null,
     suEventCta: {
       url: "https://docs.google.com/forms/d/e/1FAIpQLSdzOKMwQ_Mo6XL9F7ytGI8LoUmeI2zHF6FccOYlnUfzVjSJjQ/viewform",
-      title: "Register",
+      title: faker.word.words(2),
     },
     suEventDateTime: {
       value: "1708110000",
@@ -31,7 +32,7 @@ export const StanfordEventData = () => {
       rrule_index: null,
       rrule: null,
     },
-    suEventDek: "dek field Join our monthly onboarding session",
+    suEventDek: faker.word.words(10),
     suEventEmail: null,
     suEventGroups: null,
     suEventKeywords: null,
@@ -41,14 +42,14 @@ export const StanfordEventData = () => {
       givenName: null,
       additionalName: null,
       familyName: null,
-      organization: "Green Ridge",
-      addressLine1: "766 Green Ridge Park",
+      organization: faker.location.street(),
+      addressLine1: faker.location.streetAddress(),
       addressLine2: null,
-      postalCode: "99999",
+      postalCode: faker.location.zipCode(),
       sortingCode: null,
       dependentLocality: null,
-      locality: "Washington",
-      administrativeArea: "DC",
+      locality: faker.location.state(),
+      administrativeArea: faker.location.state({abbreviated: true}),
     },
     suEventMapLink: null,
     suEventSchedule: null,
@@ -57,14 +58,14 @@ export const StanfordEventData = () => {
       title: "",
     },
     suEventSponsor: null,
-    suEventSubheadline: "subheadline field",
+    suEventSubheadline: faker.word.words(3),
     suEventSubject: null,
     suEventTelephone: null,
     suEventType: [
       {
         __typename: "TermStanfordEventType",
         id: "2402818d-7056-4eec-a522-49e77def4cdc",
-        name: "5.x",
+        name: faker.word.words(2),
         path: "/events/stanford-sites-onboarding-sessions/5x",
         weight: 0,
         parent: {id: "249d3aa0-686f-4533-b73e-493cd596aeee"},

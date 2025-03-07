@@ -1,10 +1,11 @@
 import {NodeStanfordPublication} from "@lib/gql/__generated__/drupal.d"
+import {faker} from "@faker-js/faker"
 
 export const StanfordPublicationData = () => {
   return {
     __typename: "NodeStanfordPublication",
     id: "66fcad17-6c9d-457e-b5fe-e5d8ed365c8e",
-    title: "Journal Article Example Publication",
+    title: faker.word.words(5),
     status: true,
     path: "/publications/journal-article-example-publication",
     changed: {timezone: "America/Los_Angeles", time: "2023-07-21T10:33:31-07:00"},
@@ -13,7 +14,7 @@ export const StanfordPublicationData = () => {
       {
         __typename: "NodeStanfordPerson",
         id: "62957556-fb66-4fab-9e8d-eaab24c6cdf3",
-        title: "Foo N Bar",
+        title: faker.word.words(5),
         status: true,
         path: "/people/foobar",
         changed: {timezone: "America/Los_Angeles", time: "2023-10-03T10:42:12-07:00"},
@@ -29,8 +30,8 @@ export const StanfordPublicationData = () => {
             width: 350,
           },
         },
-        suPersonFullTitle: "Systems Administrator III",
-        suPersonShortTitle: "SysAdmin",
+        suPersonFullTitle: faker.person.jobTitle(),
+        suPersonShortTitle: faker.person.jobArea(),
       },
     ],
     suPublicationCta: null,

@@ -16,7 +16,7 @@ const StanfordCourseCard = ({node, headingLevel, ...props}: Props) => {
     <ImageCard {...props} aria-labelledby={node.id} isArticle>
       <ReverseVisualOrder>
         <Heading id={node.id}>
-          <Link href={node.path}>{node.title}</Link>
+          <Link href={node.path || "#"}>{node.title}</Link>
         </Heading>
 
         <div className="flex items-center gap-5">

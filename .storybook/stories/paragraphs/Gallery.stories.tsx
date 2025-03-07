@@ -2,6 +2,7 @@ import type {Meta, StoryObj} from "@storybook/react"
 import {ComponentProps} from "react"
 import GalleryParagraph from "@components/paragraphs/stanford-gallery/gallery-paragraph"
 import {getStoryBookGalleryImage} from "../storybook-entities"
+import {faker} from "@faker-js/faker"
 
 type ComponentStoryProps = ComponentProps<typeof GalleryParagraph> & {
   numberofimages: number
@@ -55,8 +56,7 @@ export const Gallery: Story = {
         internal: false,
       },
       suGalleryDescription: {
-        processed:
-          "<p>Pepper jack fromage frais pecorino cheesecake cheesy grin camembert de normandie macaroni cheese the big cheese.</p>",
+        processed: faker.word.words(5),
       },
       suGalleryHeadline: "This is a Gallery Headline",
       suGalleryImages: [],

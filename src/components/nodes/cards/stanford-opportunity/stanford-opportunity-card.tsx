@@ -17,7 +17,7 @@ const StanfordOpportunityCard = ({node, headingLevel, ...props}: Props) => {
   return (
     <ImageCard {...props} aria-labelledby={node.id} imageUrl={image?.url} isArticle>
       <Heading className="[&_a]:text-black" id={node.id}>
-        <Link href={node.suOppSource?.url || node.path}>{node.title}</Link>
+        <Link href={node.suOppSource?.url || node.path || "#"}>{node.title}</Link>
       </Heading>
       <Wysiwyg html={node.suOppSummary?.processed || node.body?.summary} />
     </ImageCard>

@@ -1,8 +1,9 @@
 import type {Meta, StoryObj} from "@storybook/react"
 import {ComponentProps} from "react"
-import {ParagraphStanfordCard, Text} from "@lib/gql/__generated__/drupal.d"
+import {Text} from "@lib/gql/__generated__/drupal.d"
 import CardParagraph from "@components/paragraphs/stanford-card/card-paragraph"
 import {getStoryBookImage} from "../storybook-entities"
+import {faker} from "@faker-js/faker"
 
 type ComponentStoryProps = ComponentProps<typeof CardParagraph> & {
   text: Text["processed"]
@@ -37,19 +38,18 @@ export const Card: Story = {
         timezone: "America/Los_Angeles",
       },
       id: "9954cc81-919b-4498-9151-bf930831fca7",
-      suCardHeader:
-        "Nam scelerisque, urna vitae auctor efficitur, tortor nunc cursus tortor, ut blandit purus arcu quis sapien",
+      suCardHeader: faker.word.words(5),
       suCardBody: {
         processed:
           "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae dignissim felis. Nullam nulla leo, venenatis at feugiat sit amet, ultricies non lorem.</p>",
       },
       suCardLink: {
-        title: "Button",
+        title: faker.word.words(2),
         url: "/",
         internal: true,
       },
       suCardMedia: getStoryBookImage(),
-      suCardSuperHeader: "Vestibulum",
+      suCardSuperHeader: faker.word.words(2),
     },
   },
 }

@@ -1,8 +1,9 @@
 import type {Meta, StoryObj} from "@storybook/react"
 import {ComponentProps} from "react"
-import {ParagraphStanfordBanner, Text} from "@lib/gql/__generated__/drupal.d"
+import {Text} from "@lib/gql/__generated__/drupal.d"
 import BannerParagraph from "@components/paragraphs/stanford-banner/banner-paragraph"
 import {getStoryBookImage} from "../storybook-entities"
+import {faker} from "@faker-js/faker"
 
 type ComponentStoryProps = ComponentProps<typeof BannerParagraph> & {
   text: Text["processed"]
@@ -37,14 +38,12 @@ export const Banner: Story = {
         timezone: "America/Los_Angeles",
       },
       id: "9954cc81-919b-4498-9151-bf930831fca7",
-      suBannerHeader:
-        "Nam scelerisque, urna vitae auctor efficitur, tortor nunc cursus tortor, ut blandit purus arcu quis sapien",
+      suBannerHeader: faker.word.words(5),
       suBannerBody: {
-        processed:
-          "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae dignissim felis. Nullam nulla leo, venenatis at feugiat sit amet, ultricies non lorem.</p>",
+        processed: faker.word.words(5),
       },
       suBannerImage: getStoryBookImage(),
-      suBannerSupHeader: "Vestibulum",
+      suBannerSupHeader: faker.word.words(2),
     },
   },
 }
