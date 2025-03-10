@@ -1,15 +1,11 @@
+"use cache"
+
 import Rows from "@components/paragraphs/rows/rows"
 import {notFound} from "next/navigation"
 import {getConfigPageField, getEntityFromPath} from "@lib/gql/gql-queries"
 import {NodeStanfordPage, StanfordBasicSiteSetting} from "@lib/gql/__generated__/drupal.d"
 import BannerParagraph from "@components/paragraphs/stanford-banner/banner-paragraph"
 import NodePageMetadata from "@components/nodes/pages/node-page-metadata"
-
-// https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
-export const revalidate = false
-export const dynamic = "force-static"
-// https://vercel.com/docs/functions/runtimes#max-duration
-export const maxDuration = 30
 
 const Home = async () => {
   const {entity} = await getEntityFromPath<NodeStanfordPage>("/")

@@ -1,3 +1,5 @@
+"use cache"
+
 import "../src/styles/index.css"
 import {Icon} from "next/dist/lib/metadata/types/metadata-types"
 import {sourceSans3, stanford} from "../src/styles/typography/fonts"
@@ -30,10 +32,7 @@ export const metadata = {
   },
 }
 
-// https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
-export const revalidate = false
-
-const RootLayout = ({children, modal}: {children: React.ReactNode; modal: React.ReactNode}) => {
+const RootLayout = async ({children, modal}: {children: React.ReactNode; modal: React.ReactNode}) => {
   return (
     <html lang="en" className={twJoin(sourceSans3.className, stanford.variable)}>
       <UserAnalytics />
