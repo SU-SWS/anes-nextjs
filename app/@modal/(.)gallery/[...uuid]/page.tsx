@@ -39,25 +39,25 @@ const Page = async (props: Props) => {
         if (!galleryImage.suGalleryImage?.url) return
 
         return (
-          <div key={galleryImage.id}>
-            <figure className="table" key={galleryImage.id}>
-              <picture>
+          <div key={galleryImage.id} className="flex h-full flex-col">
+            <figure key={galleryImage.id} className="flex flex-grow flex-col">
+              <picture className="relative block h-full w-full flex-grow">
                 <Image
                   src={galleryImage.suGalleryImage.url}
-                  width={galleryImage.suGalleryImage.width}
-                  height={galleryImage.suGalleryImage.height}
                   alt={galleryImage.suGalleryImage.alt || ""}
-                  className="m-0 h-auto max-w-full p-0"
+                  fill
+                  className="object-contain"
+                  unoptimized
                 />
               </picture>
               {galleryImage.suGalleryCaption && (
-                <figcaption id={mediaUuid} className="m-0 table-caption w-full caption-bottom bg-white p-5 text-right">
+                <figcaption id={mediaUuid} className="m-0 mx-auto w-fit bg-white px-32 py-5">
                   {galleryImage.suGalleryCaption}
                 </figcaption>
               )}
             </figure>
             {(prevImageIndex || nextImageIndex) && (
-              <nav>
+              <nav className="">
                 <ul className="list-unstyled flex justify-between">
                   {prevImageIndex >= 0 && (
                     <li className="mr-auto">

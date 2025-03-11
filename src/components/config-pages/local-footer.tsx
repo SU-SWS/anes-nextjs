@@ -31,6 +31,7 @@ import GithubIcon from "@components/elements/icons/GithubIcon"
 import GoogleScholarIcon from "@components/elements/icons/GoogleScholarIcon"
 import MastodonIcon from "@components/elements/icons/MastodonIcon"
 import ThreadsIcon from "@components/elements/icons/ThreadsIcon"
+import ActionLink from "@components/elements/action-link";
 
 type Props = HTMLAttributes<HTMLDivElement>
 
@@ -69,9 +70,9 @@ const LocalFooter = async ({...props}: Props) => {
                   if (!link.url) return
                   return (
                     <li key={`footer-action-link-${index}`} className="m-0 p-0">
-                      <Link href={link.url} className="text-2xl">
+                      <ActionLink href={link.url} className="text-2xl">
                         {link.title}
-                      </Link>
+                      </ActionLink>
                     </li>
                   )
                 })}

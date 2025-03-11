@@ -94,7 +94,7 @@ export const getMenu = async (name?: MenuAvailable, maxLevels?: number): Promise
   const menuItems = (menu.menu?.items || []) as MenuItem[]
 
   const filterInaccessible = (items: MenuItem[], level: number): MenuItem[] => {
-    if (maxLevels && level > maxLevels) return []
+    if ((maxLevels || maxLevels === 0) && level > maxLevels) return []
     items = items.filter(item => item.title !== "Inaccessible")
     items.map(item => (item.children = filterInaccessible(item.children, level + 1)))
     return items
@@ -104,7 +104,6 @@ export const getMenu = async (name?: MenuAvailable, maxLevels?: number): Promise
 
 export const getAllNodes = async () => {
   cacheTag("all-entities")
-  cacheLife("weeks")
 
   const nodes: NodeUnion[] = []
   let fetchMore = true

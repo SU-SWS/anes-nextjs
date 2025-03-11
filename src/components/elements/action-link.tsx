@@ -12,9 +12,9 @@ type Props = HtmlHTMLAttributes<HTMLAnchorElement> & {
 
 const ActionLink = ({children, ...props}: Props) => {
   return (
-    <Link {...props} className={twMerge("group relative", props.className)}>
+    <Link {...props} className={twMerge("group relative pr-[25px]", props.className)}>
       {children}
-      <ChevronRightIcon height={25} className="ml-2 inline-block transition-all group-hocus-visible:translate-x-2" />
+      <ChevronRightIcon height={25} className="ml-2 inline-block transition-all group-hocus-visible:translate-x-1" />
     </Link>
   )
 }
