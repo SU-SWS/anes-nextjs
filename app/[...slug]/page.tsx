@@ -3,14 +3,14 @@ import {NodeUnion} from "@lib/gql/__generated__/drupal.d"
 import {getAllNodes, getEntityFromPath} from "@lib/gql/gql-queries"
 import {notFound, redirect} from "next/navigation"
 import {getPathFromContext, PageProps, Slug} from "@lib/utils/utils"
+import { cacheLife } from "next/dist/server/use-cache/cache-life";
 
-// https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
-export const revalidate = false
-export const dynamic = "force-static"
 // https://vercel.com/docs/functions/runtimes#max-duration
 export const maxDuration = 60
 
 const Page = async (props: PageProps) => {
+  "use cache"
+
   const params = await props.params
   const path = getPathFromContext(params.slug)
   const {redirect: redirectPath, entity} = await getEntityFromPath<NodeUnion>(path)

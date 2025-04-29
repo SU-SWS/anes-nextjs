@@ -1,5 +1,3 @@
-"use cache"
-
 import Rows from "@components/paragraphs/rows/rows"
 import {notFound} from "next/navigation"
 import {getConfigPageField, getEntityFromPath} from "@lib/gql/gql-queries"
@@ -7,7 +5,11 @@ import {NodeStanfordPage, StanfordBasicSiteSetting} from "@lib/gql/__generated__
 import BannerParagraph from "@components/paragraphs/stanford-banner/banner-paragraph"
 import NodePageMetadata from "@components/nodes/pages/node-page-metadata"
 
+export const maxDuration = 60
+
 const Home = async () => {
+  "use cache"
+
   const {entity} = await getEntityFromPath<NodeStanfordPage>("/")
   if (!entity) notFound()
 
