@@ -38,6 +38,7 @@ export const Banner: Story = {
         timezone: "America/Los_Angeles",
       },
       id: "9954cc81-919b-4498-9151-bf930831fca7",
+      uuid: "banner",
       suBannerHeader: faker.word.words(5),
       suBannerBody: {
         processed: faker.word.words(5),

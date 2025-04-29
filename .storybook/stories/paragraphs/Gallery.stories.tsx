@@ -50,6 +50,7 @@ export const Gallery: Story = {
         timezone: "America/Los_Angeles",
       },
       id: "1e0c21ee-7cb8-4eff-8877-862d16c9885c",
+      uuid: "gallery",
       suGalleryButton: {
         url: "http://stanford.edu",
         title: "Button text",

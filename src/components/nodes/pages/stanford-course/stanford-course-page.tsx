@@ -31,7 +31,7 @@ const StanfordCoursePage = ({node, ...props}: Props) => {
         {node.suCourseTags && (
           <div>
             {node.suCourseTags.map(tag => (
-              <div key={tag.id}>{tag.name}</div>
+              <div key={tag.uuid}>{tag.name}</div>
             ))}
           </div>
         )}
@@ -39,7 +39,7 @@ const StanfordCoursePage = ({node, ...props}: Props) => {
         {node.suCourseQuarters && (
           <div>
             {node.suCourseQuarters.map(quarter => (
-              <div key={quarter.id}>{quarter.name}</div>
+              <div key={quarter.uuid}>{quarter.name}</div>
             ))}
           </div>
         )}

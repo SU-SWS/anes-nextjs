@@ -1,7 +1,7 @@
 
 fragment FragmentNodeInterface on NodeInterface {
     __typename
-    id
+    uuid
     title
     path
 }
@@ -223,7 +223,7 @@ fragment FragmentNodeStanfordPolicy on NodeStanfordPolicy {
     suPolicyPolicyNum
     suPolicyRelated {
         ... on NodeInterface {
-            id
+            uuid
             path
         }
     }
@@ -296,6 +296,9 @@ fragment FragmentNodeStanfordOpportunity on NodeStanfordOpportunity {
     suOppApplicationDeadline {
         ...FragmentDateTime
     }
+    suOppCardFooter {
+        ...FragmentText
+    }
     suOppComponents {
         ...FragmentParagraphUnion
     }
@@ -312,6 +315,10 @@ fragment FragmentNodeStanfordOpportunity on NodeStanfordOpportunity {
     suOppEligibility {
         ...FragmentText
     }
+    suOppIcon {
+        iconName
+        style
+    }
     suOppImage {
         ...FragmentMediaImage
     }
@@ -322,7 +329,7 @@ fragment FragmentNodeStanfordOpportunity on NodeStanfordOpportunity {
         ...FragmentDateTime
     }
     suOppPrerequisites {
-        processed
+        ...FragmentText
     }
     suOppSource {
         ...FragmentLink
@@ -341,6 +348,9 @@ fragment FragmentNodeStanfordOpportunity on NodeStanfordOpportunity {
         ...FragmentTermInterface
     }
     suOppType {
+        ...FragmentTermInterface
+    }
+    suOppUnits {
         ...FragmentTermInterface
     }
 }
@@ -452,7 +462,7 @@ fragment FragmentNodeStanfordPublicationTeaser on NodeStanfordPublication {
     }
     suPublicationCitation {
         ... on CitationInterface {
-            id
+            uuid
             title
             ... on CitationSuArticleNewspaper {
                 apa
@@ -480,6 +490,13 @@ fragment FragmentNodeStanfordPublicationTeaser on NodeStanfordPublication {
 
 
 fragment FragmentNodeStanfordOpportunityTeaser on NodeStanfordOpportunity {
+    suOppCardFooter {
+        ...FragmentText
+    }
+    suOppIcon {
+        iconName
+        style
+    }
     suOppImage {
         ...FragmentMediaImage
     }
@@ -488,6 +505,12 @@ fragment FragmentNodeStanfordOpportunityTeaser on NodeStanfordOpportunity {
     }
     suOppSource {
         url
+    }
+    suOppSponsor {
+        ...FragmentTermInterface
+    }
+    suOppType {
+        ...FragmentTermInterface
     }
 }
 

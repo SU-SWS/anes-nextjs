@@ -1,6 +1,6 @@
 fragment FragmentParagraphInterface on ParagraphInterface {
     __typename
-    id
+    uuid
     behaviors
     status
 }
@@ -97,6 +97,19 @@ fragment FragmentParagraphStanfordList on ParagraphStanfordList {
     }
 }
 
+fragment FragmentParagraphStanfordFilteredList on ParagraphStanfordFilteredList {
+    suListHeadline
+    suListDescription {
+        ...FragmentText
+    }
+    suFilteredListView {
+        view
+        display
+        contextualFilter
+        pageSize
+    }
+}
+
 fragment FragmentParagraphStanfordMediaCaption on ParagraphStanfordMediaCaption {
     suMediaCaptionMedia {
         ...FragmentMediaUnion
@@ -171,6 +184,7 @@ fragment FragmentParagraphUnion on ParagraphUnion {
     ...FragmentParagraphStanfordEntity
     ...FragmentParagraphStanfordGallery
     ...FragmentParagraphStanfordList
+    ...FragmentParagraphStanfordFilteredList
     ...FragmentParagraphStanfordMediaCaption
     ...FragmentParagraphStanfordSpacer
     ...FragmentParagraphStanfordWysiwyg

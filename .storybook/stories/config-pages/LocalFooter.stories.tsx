@@ -21,6 +21,7 @@ type Story = StoryObj<ComponentStoryProps>
 
 const localFooterConfig = {
   id: "local-footer",
+  uuid: "local-footer",
   metatag: [],
   suFooterEnabled: true,
   suLocalFootAction: [

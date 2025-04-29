@@ -18,9 +18,9 @@ const StanfordCourseListItem = ({node, headingLevel, ...props}: Props) => {
     .split(" ")
 
   return (
-    <article {...props} aria-labelledby={node.id}>
+    <article {...props} aria-labelledby={node.uuid}>
       <ReverseVisualOrder>
-        <Heading id={node.id}>
+        <Heading id={node.uuid}>
           <Link href={node.path || "#"}>{node.title}</Link>
         </Heading>
 

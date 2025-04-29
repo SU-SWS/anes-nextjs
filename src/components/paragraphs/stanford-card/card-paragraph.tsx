@@ -30,7 +30,7 @@ const CardParagraph = ({paragraph, ...props}: Props) => {
   return (
     <ImageCard
       {...props}
-      aria-labelledby={paragraph.suCardHeader ? paragraph.id : undefined}
+      aria-labelledby={paragraph.suCardHeader ? paragraph.uuid : undefined}
       imageUrl={image?.url}
       imageAlt={image?.alt}
       videoUrl={videoUrl}
@@ -39,17 +39,17 @@ const CardParagraph = ({paragraph, ...props}: Props) => {
       {paragraph.suCardHeader && (
         <>
           {headerTag === "h2" && (
-            <H2 id={paragraph.id} className={headerClasses}>
+            <H2 id={paragraph.uuid} className={headerClasses}>
               {paragraph.suCardHeader}
             </H2>
           )}
           {headerTag === "h3" && (
-            <H3 id={paragraph.id} className={headerClasses}>
+            <H3 id={paragraph.uuid} className={headerClasses}>
               {paragraph.suCardHeader}
             </H3>
           )}
           {headerTag === "h4" && (
-            <H4 id={paragraph.id} className={headerClasses}>
+            <H4 id={paragraph.uuid} className={headerClasses}>
               {paragraph.suCardHeader}
             </H4>
           )}

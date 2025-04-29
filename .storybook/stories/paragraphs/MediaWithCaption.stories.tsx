@@ -28,6 +28,7 @@ export const Caption: Story = {
     paragraph: {
       __typename: "ParagraphStanfordMediaCaption",
       id: "6fa23537-dda7-4861-930a-648445d9904c",
+      uuid: "media-caption",
       status: true,
       composition: {},
       langcode: {},

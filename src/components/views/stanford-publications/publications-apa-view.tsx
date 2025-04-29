@@ -14,7 +14,7 @@ const PublicationsApaView = async ({items, totalItems, loadPage}: ViewDisplayPro
       loadPage={loadPage}
     >
       {items.map(item => (
-        <StanfordPublicationListItem key={item.id} node={item} apa />
+        <StanfordPublicationListItem key={item.uuid} node={item} apa />
       ))}
     </LoadMoreList>
   )

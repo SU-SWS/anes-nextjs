@@ -27,11 +27,11 @@ const EntityParagraph = async ({paragraph, ...props}: Props) => {
     <EntityWrapper
       {...props}
       className={twMerge("centered mb-20 flex flex-col gap-10 xl:max-w-[980px]", props.className)}
-      aria-labelledby={EntityWrapper === "section" ? paragraph.id : undefined}
+      aria-labelledby={EntityWrapper === "section" ? paragraph.uuid : undefined}
     >
       {paragraph.suEntityHeadline && behaviors.stanford_teaser?.heading_behavior !== "remove" && (
         <H2
-          id={paragraph.id}
+          id={paragraph.uuid}
           className={twMerge(
             "mb-0 text-center",
             clsx({"sr-only": behaviors.stanford_teaser?.heading_behavior === "hide"})
@@ -53,7 +53,7 @@ const EntityParagraph = async ({paragraph, ...props}: Props) => {
         )}
       >
         {entities.map(entity => (
-          <Suspense key={`${paragraph.id}-${entity.id}`} fallback={<ImageCardSkeleton />}>
+          <Suspense key={`${paragraph.uuid}-${entity.uuid}`} fallback={<ImageCardSkeleton />}>
             <EntityCard path={entity.path} headingLevel={paragraph.suEntityHeadline ? "h3" : "h2"} />
           </Suspense>
         ))}

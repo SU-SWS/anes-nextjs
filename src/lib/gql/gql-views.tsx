@@ -5,6 +5,7 @@ import {
   NodeStanfordCourse,
   NodeStanfordEvent,
   NodeStanfordNews,
+  NodeStanfordOpportunity,
   NodeStanfordPage,
   NodeStanfordPerson,
   NodeStanfordPublication,
@@ -141,6 +142,19 @@ export const getViewPagedItems = async (
         })
         items = graphqlResponse.stanfordNews?.results as unknown as NodeStanfordNews[]
         totalItems = graphqlResponse.stanfordNews?.pageInfo.total || 0
+        break
+
+      case "stanford_opportunities--cards":
+      case "stanford_opportunities--list":
+      case "stanford_opportunities_filtered--list_page":
+      case "stanford_opportunities_filtered--cards":
+        graphqlResponse = await client.stanfordOpportunities({
+          contextualFilters,
+          filter,
+          ...queryVariables,
+        })
+        items = graphqlResponse.stanfordOpportunities?.results as unknown as NodeStanfordOpportunity[]
+        totalItems = graphqlResponse.stanfordOpportunities?.pageInfo.total || 0
         break
 
       case "stanford_person--grid_list_all":

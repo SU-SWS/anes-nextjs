@@ -1,0 +1,137 @@
+"use client"
+import {LoadMoreListProps} from "@components/elements/load-more-list"
+import {useLayoutEffect, useRef, JSX, useId, useState, ChangeEvent} from "react"
+import {useBoolean, useCounter} from "usehooks-ts"
+import useFocusOnRender from "@hooks/useFocusOnRender"
+import useServerAction from "@hooks/useServerAction"
+import twMerge from "@lib/utils/twMerge"
+import {ArrowPathIcon, CheckIcon} from "@heroicons/react/20/solid"
+import Button from "@components/elements/button"
+import {FilterGroup} from "@components/views/stanford-opportunities/opportunities-card-view"
+
+type Props = LoadMoreListProps & {
+  filters: Array<FilterGroup>
+}
+
+const OpportunitiesFilteredViewClient = ({
+  buttonText,
+  children,
+  ulProps,
+  liProps,
+  totalItems,
+  loadPage,
+  filters,
+  ...props
+}: Props) => {
+  const {count: filteredTotalItems, setCount: setFilteredTotalItems} = useCounter(totalItems)
+  const [chosenFilters, setChosenFilters] = useState<Array<string>>([])
+  const id = useId()
+  const {count: page, increment: incrementPage, reset: resetPage} = useCounter(0)
+  const [items, setItems] = useState<JSX.Element[]>(children)
+  const {value: focusOnElement, setTrue: enableFocusElement, setFalse: disableFocusElement} = useBoolean(false)
+  const [runLoadPage, isPending] = useServerAction(loadPage)
+
+  const focusItemRef = useRef<HTMLLIElement>(null)
+
+  const showMoreItems = () => {
+    if (loadPage) {
+      runLoadPage(page + 1, {filters: chosenFilters})
+        .then(results => {
+          const resultChildren = results?.props.children
+          setItems([...items, ...resultChildren])
+
+          enableFocusElement()
+          incrementPage()
+        })
+        .catch(_e => console.warn("An error happened"))
+    }
+  }
+
+  const setFocusOnItem = useFocusOnRender(focusItemRef, false)
+
+  useLayoutEffect(() => {
+    if (focusOnElement) setFocusOnItem()
+  }, [focusOnElement, setFocusOnItem])
+
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value
+    const newState = chosenFilters.includes(value)
+      ? chosenFilters.filter(item => item !== value)
+      : [...chosenFilters, value]
+
+    runLoadPage(0, {filters: newState})
+      .then(results => {
+        const resultChildren = results?.props.children
+        setFilteredTotalItems(results?.props.totalItems)
+        setItems([...resultChildren])
+        resetPage()
+        setChosenFilters(newState)
+        enableFocusElement()
+      })
+      .catch(_e => console.warn("An error happened"))
+  }
+
+  return (
+    <div {...props} className={twMerge("relative", props.className)}>
+      {isPending && (
+        <div className="absolute left-0 top-0 z-20 h-full w-full bg-black-30 bg-opacity-80">
+          <div className="absolute bottom-20 left-1/2 -translate-x-[25px]">
+            <ArrowPathIcon className="animate-spin" width={50} />
+          </div>
+        </div>
+      )}
+      <div className="flex flex-col gap-12 lg:flex-row">
+        <form className="shrink-0 lg:w-1/4">
+          {filters.map((filterGroup, i) => (
+            <fieldset
+              key={`filter-${filterGroup.label.toLowerCase().replaceAll(/[^a-z0-9-]/g, "-")}-${i}`}
+              className="mb-10 max-h-96 space-y-3 overflow-y-auto pb-5"
+            >
+              <legend className="mb-10 w-full border-t border-black pt-10 font-semibold">{filterGroup.label}</legend>
+              {filterGroup.options.map(option => (
+                <label key={option.value} className="group flex cursor-pointer items-center gap-5">
+                  <input
+                    type="checkbox"
+                    value={option.value}
+                    className="peer sr-only"
+                    onChange={onInputChange}
+                    checked={chosenFilters.includes(option.value)}
+                  />
+                  <div className="h-10 w-10 rounded border border-black peer-checked:hidden" />
+                  <CheckIcon className="hidden rounded border border-black peer-checked:block" width={25} />
+                  <div>{option.label}</div>
+                </label>
+              ))}
+            </fieldset>
+          ))}
+        </form>
+        <div className="flex-grow">
+          <ul {...ulProps}>
+            {items.map((item, i) => (
+              <li
+                key={`${id}--${i}`}
+                ref={i === children.length * page ? focusItemRef : null}
+                tabIndex={i === children.length * page && focusOnElement ? 0 : undefined}
+                onBlur={disableFocusElement}
+                {...liProps}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+          <span className="sr-only" aria-live="polite" aria-atomic="true">
+            Showing {items.length} of {filteredTotalItems} items.
+          </span>
+
+          {items.length < filteredTotalItems && loadPage && (
+            <Button buttonElem centered onClick={showMoreItems}>
+              {buttonText ? buttonText : "Load More"}
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default OpportunitiesFilteredViewClient

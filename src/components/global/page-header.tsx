@@ -4,6 +4,7 @@ import GlobalMessage from "@components/config-pages/global-message"
 import Lockup from "@components/elements/lockup/lockup"
 import {HTMLAttributes} from "react"
 import twMerge from "@lib/utils/twMerge"
+import UtilityNav from "@components/menu/utility-nav"
 
 type Props = HTMLAttributes<HTMLElement>
 
@@ -25,7 +26,10 @@ const PageHeader = ({...props}: Props) => {
         <div className="min-h-50 centered pr-24 lg:pr-0">
           <div className="flex w-full justify-between">
             <Lockup />
-            <SiteSearchForm className="hidden lg:block" />
+            <div>
+              <UtilityNav />
+              <SiteSearchForm className="hidden lg:block" />
+            </div>
           </div>
         </div>
 

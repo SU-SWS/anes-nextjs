@@ -55,7 +55,7 @@ const StanfordPersonPage = ({node, ...props}: Props) => {
             <div className="mb-10">
               <H2 className="type-2">Education</H2>
               {node.suPersonEducation.map((education, i) => (
-                <div key={`${node.id}-education-${i}`}>{education}</div>
+                <div key={`${node.uuid}-education-${i}`}>{education}</div>
               ))}
             </div>
           )}
@@ -65,7 +65,7 @@ const StanfordPersonPage = ({node, ...props}: Props) => {
               <H2 className="type-2">Research</H2>
               <div className="grid grid-cols-2 gap-10">
                 {node.suPersonResearch.map((research, i) => (
-                  <Wysiwyg key={`${node.id}-research-${i}`} html={research.processed} />
+                  <Wysiwyg key={`${node.uuid}-research-${i}`} html={research.processed} />
                 ))}
               </div>
             </div>
@@ -76,7 +76,7 @@ const StanfordPersonPage = ({node, ...props}: Props) => {
               <H2 className="type-2">Stanford Affiliations</H2>
               <div className="flex flex-wrap gap-20">
                 {node.suPersonAffiliations.map((affiliation, i) => (
-                  <div key={`${node.id}-affiliation-${i}`} className="min-w-fit">
+                  <div key={`${node.uuid}-affiliation-${i}`} className="min-w-fit">
                     <Button href={affiliation.url}>{affiliation.title}</Button>
                   </div>
                 ))}
@@ -149,7 +149,7 @@ const StanfordPersonPage = ({node, ...props}: Props) => {
                 {node.suPersonLinks.map((link, i) => {
                   if (!link.url) return
                   return (
-                    <Link key={`${node.id}-link-${i}`} href={link.url}>
+                    <Link key={`${node.uuid}-link-${i}`} href={link.url}>
                       {link.title}
                     </Link>
                   )

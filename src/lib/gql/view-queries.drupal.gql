@@ -65,6 +65,18 @@ query stanfordNews($contextualFilters: StanfordNewsContextualFilterInput, $pageS
     }
 }
 
+query stanfordOpportunities($contextualFilters: StanfordOpportunitiesContextualFilterInput, $filter: StanfordOpportunitiesFilterInput $pageSize: Int = 3, $page: Int $offset: Int) {
+    stanfordOpportunities(contextualFilter: $contextualFilters, filter: $filter, pageSize: $pageSize, page: $page, offset: $offset) {
+        results {
+            ...FragmentNodeInterface
+            ...FragmentNodeStanfordOpportunityTeaser
+        }
+        pageInfo {
+            ...FragmentViewPageInfo
+        }
+    }
+}
+
 query stanfordPerson($contextualFilters: StanfordPersonContextualFilterInput, $pageSize: Int, $page: Int = -1, $offset: Int) {
     stanfordPerson(contextualFilter: $contextualFilters, pageSize: $pageSize, page: $page, offset: $offset) {
         results {

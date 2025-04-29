@@ -31,7 +31,7 @@ import GithubIcon from "@components/elements/icons/GithubIcon"
 import GoogleScholarIcon from "@components/elements/icons/GoogleScholarIcon"
 import MastodonIcon from "@components/elements/icons/MastodonIcon"
 import ThreadsIcon from "@components/elements/icons/ThreadsIcon"
-import ActionLink from "@components/elements/action-link";
+import ActionLink from "@components/elements/action-link"
 
 type Props = HTMLAttributes<HTMLDivElement>
 

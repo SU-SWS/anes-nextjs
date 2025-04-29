@@ -13,9 +13,9 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
 const StanfordCourseCard = ({node, headingLevel, ...props}: Props) => {
   const Heading = headingLevel === "h3" ? H3 : H2
   return (
-    <ImageCard {...props} aria-labelledby={node.id} isArticle>
+    <ImageCard {...props} aria-labelledby={node.uuid} isArticle>
       <ReverseVisualOrder>
-        <Heading id={node.id}>
+        <Heading id={node.uuid}>
           <Link href={node.path || "#"}>{node.title}</Link>
         </Heading>
 

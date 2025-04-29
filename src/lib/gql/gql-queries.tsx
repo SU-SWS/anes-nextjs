@@ -11,12 +11,12 @@ import {
   RouteQuery,
   RouteRedirect,
   StanfordBasicSiteSetting,
+  TermOpportunityTagFilter,
 } from "@lib/gql/__generated__/drupal.d"
 import {graphqlClient} from "@lib/gql/gql-client"
 import {ClientError} from "graphql-request"
 import {GraphQLError} from "graphql/error"
 import {cacheTag} from "next/dist/server/use-cache/cache-tag"
-import {cacheLife} from "next/dist/server/use-cache/cache-life"
 
 type DrupalGraphqlError = GraphQLError & {debugMessage: string}
 
@@ -165,4 +165,10 @@ export const getHomePagePath = async () => {
   cacheTag("paths:/")
   const {entity} = await getEntityFromPath("/")
   return entity?.path
+}
+
+export const getOpportunityFilterTerms = async () => {
+  cacheTag("taxonomy:opportunity_tag_filters")
+  const terms = await graphqlClient().OpportunityFiltersTerms()
+  return terms.termOpportunityTagFilters.nodes as TermOpportunityTagFilter[]
 }

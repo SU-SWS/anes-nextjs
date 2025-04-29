@@ -14,9 +14,9 @@ const StanfordPublicationCard = ({node, headingLevel, ...props}: Props) => {
   const citationUrl = node.suPublicationCitation?.suUrl?.url
   const Heading = headingLevel === "h3" ? H3 : H2
   return (
-    <ImageCard {...props} aria-labelledby={node.id} isArticle>
+    <ImageCard {...props} aria-labelledby={node.uuid} isArticle>
       <ReverseVisualOrder>
-        <Heading className="[&_a]:text-black [&_a]:hocus:text-digital-red" id={node.id}>
+        <Heading className="[&_a]:text-black [&_a]:hocus:text-digital-red" id={node.uuid}>
           <Link href={citationUrl || node.path || "#"}>{node.title}</Link>
         </Heading>
         <div className="font-bold">Publication</div>
@@ -25,7 +25,7 @@ const StanfordPublicationCard = ({node, headingLevel, ...props}: Props) => {
       {node.suPublicationTopics && (
         <div>
           {node.suPublicationTopics.map(topic => (
-            <div key={topic.id}>{topic.name}</div>
+            <div key={topic.uuid}>{topic.name}</div>
           ))}
         </div>
       )}

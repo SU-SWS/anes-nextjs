@@ -7,8 +7,9 @@ import useServerAction from "@hooks/useServerAction"
 import twMerge from "@lib/utils/twMerge"
 import {ArrowPathIcon} from "@heroicons/react/20/solid"
 import Button from "@components/elements/button"
+import {Maybe} from "@lib/gql/__generated__/drupal.d"
 
-type Props = HtmlHTMLAttributes<HTMLDivElement> & {
+export type LoadMoreListProps = HtmlHTMLAttributes<HTMLDivElement> & {
   /**
    * Load more button text/element.
    */
@@ -32,14 +33,17 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   /**
    * Server action callback to fetch the next "page" contents.
    */
-  loadPage?: (_page: number) => Promise<JSX.Element>
+  loadPage?: (
+    _page: number,
+    _filter?: Maybe<Record<string, string | number | Array<string | number>>>
+  ) => Promise<JSX.Element>
   /**
    * Count of the total number of items of all pages.
    */
   totalItems: number
 }
 
-const LoadMoreList = ({buttonText, children, ulProps, liProps, totalItems, loadPage, ...props}: Props) => {
+const LoadMoreList = ({buttonText, children, ulProps, liProps, totalItems, loadPage, ...props}: LoadMoreListProps) => {
   const id = useId()
   const {count: page, increment: incrementPage} = useCounter(0)
   const [items, setItems] = useState<JSX.Element[]>(children)

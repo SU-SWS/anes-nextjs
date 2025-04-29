@@ -29,7 +29,7 @@ const StanfordEventListItem = ({node, headingLevel, ...props}: Props) => {
   const Heading = headingLevel === "h3" ? H3 : H2
 
   return (
-    <article {...props} aria-labelledby={node.id} className={twMerge("mx-auto flex w-full gap-10", props.className)}>
+    <article {...props} aria-labelledby={node.uuid} className={twMerge("mx-auto flex w-full gap-10", props.className)}>
       <div aria-hidden className="flex w-fit flex-col items-start">
         <div className="type-0 mb-2 w-full text-center font-semibold">{startMonth.toUpperCase()}</div>
         <div className="type-4 w-full text-center font-bold">{startDay}</div>
@@ -44,7 +44,7 @@ const StanfordEventListItem = ({node, headingLevel, ...props}: Props) => {
       </div>
       <div>
         <ReverseVisualOrder>
-          <Heading id={node.id}>
+          <Heading id={node.uuid}>
             <Link
               href={node.suEventSource?.url || node.path || "#"}
               className="text-digital-red no-underline hocus:text-black hocus:underline"

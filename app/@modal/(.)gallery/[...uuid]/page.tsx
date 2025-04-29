@@ -23,12 +23,12 @@ const Page = async (props: Props) => {
 
   const paragraph = paragraphQuery.paragraph as ParagraphStanfordGallery
 
-  const currentImageIndex = paragraph.suGalleryImages?.findIndex(image => image.id === mediaUuid) || 0
+  const currentImageIndex = paragraph.suGalleryImages?.findIndex(image => image.uuid === mediaUuid) || 0
   const prevImageIndex = paragraph.suGalleryImages?.[currentImageIndex - 1] ? currentImageIndex - 1 : -1
   const nextImageIndex = paragraph.suGalleryImages?.[currentImageIndex + 1] ? currentImageIndex + 1 : -1
 
   let galleryImages = mediaUuid
-    ? paragraph.suGalleryImages?.filter(image => image.id === mediaUuid)
+    ? paragraph.suGalleryImages?.filter(image => image.uuid === mediaUuid)
     : paragraph.suGalleryImages
 
   galleryImages = galleryImages?.filter(image => !!image.suGalleryImage?.url)
@@ -39,8 +39,8 @@ const Page = async (props: Props) => {
         if (!galleryImage.suGalleryImage?.url) return
 
         return (
-          <div key={galleryImage.id} className="flex h-full flex-col">
-            <figure key={galleryImage.id} className="flex flex-grow flex-col">
+          <div key={galleryImage.uuid} className="flex h-full flex-col">
+            <figure key={galleryImage.uuid} className="flex flex-grow flex-col">
               <picture className="relative block h-full w-full flex-grow">
                 <Image
                   src={galleryImage.suGalleryImage.url}
@@ -63,7 +63,7 @@ const Page = async (props: Props) => {
                     <li className="mr-auto">
                       <Link
                         className="text-white no-underline hocus:text-white hocus:underline"
-                        href={`/gallery/${paragraph.id}/${paragraph.suGalleryImages?.[prevImageIndex].id}`}
+                        href={`/gallery/${paragraph.uuid}/${paragraph.suGalleryImages?.[prevImageIndex].uuid}`}
                         replace={true}
                         scroll={false}
                       >
@@ -75,7 +75,7 @@ const Page = async (props: Props) => {
                     <li className="ml-auto">
                       <Link
                         className="text-white no-underline hocus:text-white hocus:underline"
-                        href={`/gallery/${paragraph.id}/${paragraph.suGalleryImages?.[nextImageIndex].id}`}
+                        href={`/gallery/${paragraph.uuid}/${paragraph.suGalleryImages?.[nextImageIndex].uuid}`}
                         replace={true}
                         scroll={false}
                       >

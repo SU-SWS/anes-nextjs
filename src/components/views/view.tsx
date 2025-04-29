@@ -15,11 +15,14 @@ import {
   NodeStanfordCourse,
   NodeStanfordEvent,
   NodeStanfordNews,
+  NodeStanfordOpportunity,
   NodeStanfordPage,
   NodeStanfordPerson,
   NodeStanfordPublication,
   NodeUnion,
 } from "@lib/gql/__generated__/drupal.d"
+import OpportunitiesCardView from "@components/views/stanford-opportunities/opportunities-card-view"
+import OpportunitiesListView from "@components/views/stanford-opportunities/opportunities-list-view"
 
 export type ViewDisplayProps<T extends NodeUnion = NodeUnion> = {
   /**
@@ -111,6 +114,26 @@ const View = async ({viewId, displayId, items, totalItems, loadPage, headingLeve
 
     case "stanford_publications--chicago_list":
       return <PublicationsChicagoView items={items as NodeStanfordPublication[]} {...viewProps} />
+
+    case "stanford_opportunities--cards":
+    case "stanford_opportunities_filtered--cards":
+      return (
+        <OpportunitiesCardView
+          items={items as NodeStanfordOpportunity[]}
+          filtered={component.includes("filtered")}
+          {...viewProps}
+        />
+      )
+
+    case "stanford_opportunities--list":
+    case "stanford_opportunities_filtered--list_page":
+      return (
+        <OpportunitiesListView
+          items={items as NodeStanfordOpportunity[]}
+          filtered={component.includes("filtered")}
+          {...viewProps}
+        />
+      )
   }
 }
 export default View

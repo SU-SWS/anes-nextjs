@@ -25,6 +25,7 @@ type Story = StoryObj<ComponentStoryProps>
 
 const globalMessage = {
   id: "message",
+  uuid: "message",
   metatag: [],
   suGlobalMsgEnabled: true,
   suGlobalMsgHeader: faker.word.words(5),

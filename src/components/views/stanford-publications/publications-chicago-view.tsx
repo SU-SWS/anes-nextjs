@@ -14,7 +14,7 @@ const PublicationsChicagoView = async ({items, totalItems, loadPage}: ViewDispla
       loadPage={loadPage}
     >
       {items.map(item => (
-        <StanfordPublicationListItem key={item.id} node={item} chicago />
+        <StanfordPublicationListItem key={item.uuid} node={item} chicago />
       ))}
     </LoadMoreList>
   )

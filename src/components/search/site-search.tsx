@@ -24,7 +24,7 @@ const SiteSearch = async ({search}: Props) => {
         loadPage={addLoadMore ? loadViewPage.bind(null, "search", "search", [], false, 12) : undefined}
       >
         {viewItems.map(item => (
-          <NodeListItem key={item.id} node={item} headingLevel="h2" />
+          <NodeListItem key={item.uuid} node={item} headingLevel="h2" />
         ))}
       </SiteSearchClient>
     </div>

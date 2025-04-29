@@ -10,6 +10,7 @@ import {ParagraphUnion} from "@lib/gql/__generated__/drupal.d"
 import {Suspense} from "react"
 import EditorAlert from "@components/elements/editor-alert"
 import FaqParagraph from "@components/paragraphs/stanford-faq/faq-paragraph"
+import FilteredListParagraph from "@components/paragraphs/stanford-filtered-lists/filtered-list-paragraph"
 
 type Props = {
   /**
@@ -30,7 +31,7 @@ const ParagraphComponent = async ({paragraph}: Props) => {
   const itemProps: Record<string, string> = {}
   if (process.env.NODE_ENV === "development") {
     itemProps["data-type"] = paragraph.__typename || "unknown"
-    itemProps["data-id"] = paragraph.id
+    itemProps["data-id"] = paragraph.uuid
   }
 
   switch (paragraph.__typename) {
@@ -56,7 +57,13 @@ const ParagraphComponent = async ({paragraph}: Props) => {
           <ListParagraph paragraph={paragraph} {...itemProps} />
         </Suspense>
       )
+    case "ParagraphStanfordFilteredList":
+      return (
+        <Suspense>
+          <FilteredListParagraph paragraph={paragraph} {...itemProps} />
+        </Suspense>
+      )
   }
-  console.warn(`Unknown paragraph ${paragraph.__typename}. Item ${paragraph.id}.`)
+  console.warn(`Unknown paragraph ${paragraph.__typename}. Item ${paragraph.uuid}.`)
 }
 export default Paragraph

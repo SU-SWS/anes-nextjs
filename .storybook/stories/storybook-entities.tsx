@@ -7,6 +7,7 @@ export const getStoryBookImage = (imageUrl?: string): MediaImage => {
     path: "",
     status: true,
     id: makeid(),
+    uuid: makeid(),
     changed: {
       offset: "",
       timestamp: Math.round(new Date().getTime() / 1000),
@@ -40,6 +41,7 @@ export const getStoryBookGalleryImage = (imageUrl?: string, imageCaption?: strin
     path: "",
     status: true,
     id: makeid(),
+    uuid: makeid(),
     changed: {
       offset: "",
       timestamp: Math.round(new Date().getTime() / 1000),
@@ -74,6 +76,7 @@ export const getStoryBookVideo = (videoUrl?: string): MediaVideo => {
     path: "",
     status: true,
     id: makeid(),
+    uuid: makeid(),
     changed: {
       offset: "",
       timestamp: Math.round(new Date().getTime() / 1000),
@@ -96,6 +99,7 @@ export const getStoryBookTaxonomyTerm = (name?: string): TermInterface => {
   return {
     name: name || "Foo Bar",
     id: makeid(),
+    uuid: makeid(),
     description: {},
     langcode: {},
     changed: {offset: "", time: "", timezone: "", timestamp: ""},

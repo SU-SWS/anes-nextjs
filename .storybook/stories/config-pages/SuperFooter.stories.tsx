@@ -22,6 +22,7 @@ type Story = StoryObj<ComponentStoryProps>
 
 const superFooterConfig = {
   id: "super-footer",
+  uuid: "super-footer",
   metatag: [],
   suSuperFootEnabled: true,
   suSuperFootIntranet: {title: "suSuperFoot_intranet", url: "http://localhost", internal: false},

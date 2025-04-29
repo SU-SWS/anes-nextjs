@@ -34,13 +34,13 @@ export const getTaxonomyTree = <T extends TermUnion>(terms: T[]): TermTree<T>[] 
 export const buildTaxonomyTree = <T extends TermUnion>(terms: T[], parent: T["id"] = ""): {below?: T[]} => {
   if (!terms?.length) return {below: []}
 
-  const children = terms.filter(term => parent && term.parent?.id === parent)
+  const children = terms.filter(term => parent && term.parent?.uuid === parent)
 
   return children.length
     ? {
         below: children.map(link => ({
           ...link,
-          ...buildTaxonomyTree(terms, link.id),
+          ...buildTaxonomyTree(terms, link.uuid),
         })),
       }
     : {}

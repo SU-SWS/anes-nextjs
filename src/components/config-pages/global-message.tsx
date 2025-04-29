@@ -15,7 +15,7 @@ const GlobalMessage = async () => {
 
   return (
     <WrapperElement
-      aria-labelledby={globalMessageConfig.suGlobalMsgHeader ? globalMessageConfig.id : undefined}
+      aria-labelledby={globalMessageConfig.suGlobalMsgHeader ? globalMessageConfig.uuid : undefined}
       className={twMerge(
         "py-10",
         clsx({
@@ -34,7 +34,7 @@ const GlobalMessage = async () => {
         </div>
         <div>
           {globalMessageConfig.suGlobalMsgHeader && (
-            <H2 id={globalMessageConfig.id}>{globalMessageConfig.suGlobalMsgHeader}</H2>
+            <H2 id={globalMessageConfig.uuid}>{globalMessageConfig.suGlobalMsgHeader}</H2>
           )}
 
           <Wysiwyg

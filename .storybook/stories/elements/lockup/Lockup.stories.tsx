@@ -20,6 +20,7 @@ type Story = StoryObj<ComponentStoryProps>
 
 const lockupSettings = {
   id: "foo",
+  uuid: "foo",
   metatag: [],
   suLockupEnabled: true,
   suLine1: "suLine1",

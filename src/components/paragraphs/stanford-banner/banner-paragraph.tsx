@@ -27,7 +27,7 @@ const BannerParagraph = ({paragraph, eagerLoadImage, ...props}: Props) => {
   return (
     <HeroBanner
       {...props}
-      aria-labelledby={paragraph.suBannerHeader ? paragraph.id : undefined}
+      aria-labelledby={paragraph.suBannerHeader ? paragraph.uuid : undefined}
       imageUrl={paragraph.suBannerImage?.mediaImage.url}
       imageAlt={paragraph.suBannerImage?.mediaImage.alt}
       isSection={!!paragraph.suBannerHeader && headerTag !== "div"}
@@ -39,17 +39,17 @@ const BannerParagraph = ({paragraph, eagerLoadImage, ...props}: Props) => {
           {paragraph.suBannerHeader && (
             <>
               {headerTag === "h2" && (
-                <H2 id={paragraph.id} className={twMerge(headerClasses, "type-2 mb-0")}>
+                <H2 id={paragraph.uuid} className={twMerge(headerClasses, "type-2 mb-0")}>
                   {paragraph.suBannerHeader}
                 </H2>
               )}
               {headerTag === "h3" && (
-                <H3 id={paragraph.id} className={headerClasses}>
+                <H3 id={paragraph.uuid} className={headerClasses}>
                   {paragraph.suBannerHeader}
                 </H3>
               )}
               {headerTag === "h4" && (
-                <H4 id={paragraph.id} className={headerClasses}>
+                <H4 id={paragraph.uuid} className={headerClasses}>
                   {paragraph.suBannerHeader}
                 </H4>
               )}

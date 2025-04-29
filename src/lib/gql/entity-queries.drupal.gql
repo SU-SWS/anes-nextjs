@@ -11,7 +11,7 @@ fragment FragmentPageInfo on ConnectionPageInfo {
 }
 
 fragment AllNodeInterface on NodeInterface {
-    id
+    uuid
     path
     changed {
         time
@@ -186,6 +186,18 @@ query Term($uuid: ID!) {
     }
 }
 
+query OpportunityFiltersTerms {
+    termOpportunityTagFilters(first: 1000) {
+        nodes {
+            ...FragmentTermInterface
+            ... on TermInterface {
+                id
+                weight
+            }
+        }
+    }
+}
+
 query Paragraph($uuid: ID!) {
     paragraph(id: $uuid) {
         ...FragmentParagraphUnion
@@ -196,7 +208,7 @@ query ConfigPages {
     stanfordBasicSiteSettings(first: 1) {
         nodes {
             __typename
-            id
+            uuid
             suGoogleAnalytics
             suSiteAlgolia
             suSiteAlgoliaId
@@ -207,12 +219,20 @@ query ConfigPages {
             suSiteMenuLevels
             suSiteName
             suSiteNobots
+            suSiteHeaderButton {
+                title
+                url
+            }
+            suSiteHeaderLinks {
+                title
+                url
+            }
         }
     }
     stanfordGlobalMessages(first: 1) {
         nodes {
             __typename
-            id
+            uuid
             suGlobalMsgEnabled
             suGlobalMsgHeader
             suGlobalMsgLabel
@@ -229,7 +249,7 @@ query ConfigPages {
     stanfordLocalFooters(first: 1) {
         nodes {
             __typename
-            id
+            uuid
             suFooterEnabled
             suLocalFootAction {
                 title
@@ -312,7 +332,7 @@ query ConfigPages {
     stanfordSuperFooters(first: 1) {
         nodes {
             __typename
-            id
+            uuid
             suSuperFootEnabled
             suSuperFootIntranet {
                 title
@@ -331,7 +351,7 @@ query ConfigPages {
     lockupSettings(first: 1) {
         nodes {
             __typename
-            id
+            uuid
             suLine1
             suLine2
             suLine3

@@ -11,8 +11,8 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
 const StanfordPolicyListItem = ({node, headingLevel, ...props}: Props) => {
   const Heading = headingLevel === "h3" ? H3 : H2
   return (
-    <article {...props} aria-labelledby={node.id}>
-      <Heading id={node.id}>
+    <article {...props} aria-labelledby={node.uuid}>
+      <Heading id={node.uuid}>
         <Link href={node.path || "#"}>{node.title}</Link>
       </Heading>
       {node.suPolicyUpdated && (

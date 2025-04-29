@@ -20,10 +20,10 @@ const StanfordPageListItem = ({node, headingLevel, ...props}: Props) => {
 
   const Heading = headingLevel === "h3" ? H3 : H2
   return (
-    <article {...props} aria-labelledby={node.id} className={twMerge("@container", props.className)}>
+    <article {...props} aria-labelledby={node.uuid} className={twMerge("@container", props.className)}>
       <div className="flex flex-col justify-between gap-20 @4xl:flex-row" {...props}>
         <div className="order-2 @4xl:order-1">
-          <Heading id={node.id}>
+          <Heading id={node.uuid}>
             <Link href={node.path || "#"}>{node.title}</Link>
           </Heading>
 
@@ -31,14 +31,16 @@ const StanfordPageListItem = ({node, headingLevel, ...props}: Props) => {
         </div>
 
         {image && (
-          <div className="relative order-1 aspect-[16/9] h-fit w-full shrink-0 @4xl:order-2 @4xl:w-1/4">
-            <Image
-              className="object-cover"
-              src={image.url}
-              alt={image.alt || ""}
-              fill
-              sizes="(max-width: 768px) 100vw, 1000px"
-            />
+          <div className="order-1 w-full shrink-0 @3xl:w-1/4">
+            <div className="relative mb-10 aspect-[16/9] @3xl:order-2 @3xl:mb-0">
+              <Image
+                className="object-cover"
+                src={image.url}
+                alt={image.alt || ""}
+                fill
+                sizes="(max-width: 768px) 100vw, 1000px"
+              />
+            </div>
           </div>
         )}
       </div>

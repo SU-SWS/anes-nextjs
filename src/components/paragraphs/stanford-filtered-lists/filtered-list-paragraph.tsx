@@ -1,31 +1,30 @@
 import Wysiwyg from "@components/elements/wysiwyg"
-import Button from "@components/elements/button"
 import View from "@components/views/view"
 import {H2} from "@components/elements/headers"
 import {ElementType, HtmlHTMLAttributes, Suspense} from "react"
-import {ParagraphStanfordList} from "@lib/gql/__generated__/drupal.d"
+import {ParagraphStanfordFilteredList} from "@lib/gql/__generated__/drupal.d"
 import {getParagraphBehaviors} from "@components/paragraphs/get-paragraph-behaviors"
 import twMerge from "@lib/utils/twMerge"
 import {ListParagraphBehaviors} from "@lib/drupal/drupal-jsonapi.d"
 import {getViewPagedItems, loadViewPage, VIEW_PAGE_SIZE} from "@lib/gql/gql-views"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
-  paragraph: ParagraphStanfordList
+  paragraph: ParagraphStanfordFilteredList
 }
 
-const ListParagraph = async ({paragraph, ...props}: Props) => {
+const FilteredListParagraph = async ({paragraph, ...props}: Props) => {
   const behaviors = getParagraphBehaviors<ListParagraphBehaviors>(paragraph)
-  const viewId = paragraph.suListView?.view || ""
-  const displayId = paragraph.suListView?.display || ""
-  const limit = paragraph.suListView?.pageSize || VIEW_PAGE_SIZE
+  const viewId = paragraph.suFilteredListView?.view || ""
+  const displayId = paragraph.suFilteredListView?.display || ""
+  const limit = paragraph.suFilteredListView?.pageSize || VIEW_PAGE_SIZE
 
   const pagedItems =
     viewId && displayId
-      ? await getViewPagedItems(viewId, displayId, paragraph.suListView?.contextualFilter, limit)
+      ? await getViewPagedItems(viewId, displayId, paragraph.suFilteredListView?.contextualFilter, limit)
       : {items: [], totalItems: 0}
 
   const {totalItems} = pagedItems
-  const viewItems = (limit || 3) < VIEW_PAGE_SIZE ? pagedItems.items.slice(0, limit) : pagedItems.items
+  const viewItems = limit ? pagedItems.items.slice(0, VIEW_PAGE_SIZE) : pagedItems.items
 
   const addLoadMore = (limit || 3) >= VIEW_PAGE_SIZE && totalItems > viewItems.length
 
@@ -37,7 +36,7 @@ const ListParagraph = async ({paragraph, ...props}: Props) => {
   return (
     <ListWrapper
       {...props}
-      className={twMerge("centered mb-20 flex flex-col gap-10 xl:max-w-[980px]", props.className)}
+      className={twMerge("centered mb-20 flex flex-col gap-10", props.className)}
       aria-labelledby={ListWrapper === "section" ? paragraph.uuid : undefined}
       data-nosnippet
     >
@@ -65,7 +64,7 @@ const ListParagraph = async ({paragraph, ...props}: Props) => {
                     null,
                     viewId,
                     displayId,
-                    paragraph.suListView?.contextualFilter || [],
+                    paragraph.suFilteredListView?.contextualFilter || [],
                     !!paragraph.suListHeadline,
                     VIEW_PAGE_SIZE
                   )
@@ -79,14 +78,8 @@ const ListParagraph = async ({paragraph, ...props}: Props) => {
       {viewItems.length === 0 && behaviors.list_paragraph?.empty_message && (
         <p>{behaviors.list_paragraph.empty_message}</p>
       )}
-
-      {paragraph.suListButton?.url && (
-        <Button centered href={paragraph.suListButton.url}>
-          {paragraph.suListButton.title}
-        </Button>
-      )}
     </ListWrapper>
   )
 }
 
-export default ListParagraph
+export default FilteredListParagraph

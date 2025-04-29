@@ -100,7 +100,7 @@ const StanfordPolicyPage = async ({node, ...props}: Props) => {
               <H2 className="type-2">Change log:</H2>
 
               {changeLog.map(change => (
-                <div key={change.id}>
+                <div key={change.uuid}>
                   <H3 className="type-0 flex gap-2">
                     <div>
                       {new Date(change.suPolicyDate.time).toLocaleDateString("en-us", {
@@ -115,7 +115,7 @@ const StanfordPolicyPage = async ({node, ...props}: Props) => {
                   </H3>
 
                   <div>
-                    <StringWithLines text={change.suPolicyNotes} key={change.id} />
+                    <StringWithLines text={change.suPolicyNotes} key={change.uuid} />
                   </div>
                 </div>
               ))}
@@ -133,7 +133,7 @@ const StanfordPolicyPage = async ({node, ...props}: Props) => {
           <H2 className="text-center">Related Policies</H2>
           <ul className="list-unstyled grid gap-20 lg:grid-cols-3">
             {node.suPolicyRelated.map(policy => (
-              <li key={policy.id}>
+              <li key={policy.uuid}>
                 <Suspense fallback={<ImageCardSkeleton />}>
                   <RelatedPolicy path={policy.path} />
                 </Suspense>
