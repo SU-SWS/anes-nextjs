@@ -147,10 +147,7 @@ export const MainMenuItemClientWrapper = ({id, level, link, children, ...props}:
   )
 }
 
-type LinkItemProps = LinkProps & {
-  level: number
-}
-export const MainMenuItemClientLink = ({href, children, ...props}: LinkItemProps) => {
+export const MainMenuItemClientLink = ({href, children, ...props}: LinkProps) => {
   const currentPath = usePathname()
   const isCurrent = href === currentPath
 

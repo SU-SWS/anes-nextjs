@@ -131,10 +131,12 @@ export const FragmentParagraphStanfordFaqFragmentDoc = gql`
     processed
   }
   suFaqQuestions {
+    ...FragmentParagraphInterface
     ...FragmentParagraphStanfordAccordion
   }
 }
-    ${FragmentParagraphStanfordAccordionFragmentDoc}`;
+    ${FragmentParagraphInterfaceFragmentDoc}
+${FragmentParagraphStanfordAccordionFragmentDoc}`;
 export const FragmentMediaInterfaceFragmentDoc = gql`
     fragment FragmentMediaInterface on MediaInterface {
   __typename

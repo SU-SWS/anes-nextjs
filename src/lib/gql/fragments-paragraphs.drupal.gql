@@ -18,6 +18,7 @@ fragment FragmentParagraphStanfordFaq on ParagraphStanfordFaq {
         processed
     }
     suFaqQuestions {
+        ...FragmentParagraphInterface
         ...FragmentParagraphStanfordAccordion
     }
 }
@@ -151,6 +152,7 @@ fragment FragmentParagraphStanfordSchedule on ParagraphStanfordSchedule {
         title
     }
     suScheduleSpeaker {
+        ...FragmentParagraphInterface
         ...FragmentParagraphStanfordPersonCtum
     }
 }

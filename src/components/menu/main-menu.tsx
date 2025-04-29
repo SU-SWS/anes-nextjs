@@ -40,7 +40,6 @@ const MenuItem = ({id, url, title, children, level}: MenuItemProps) => {
       link={
         <>
           <MainMenuItemClientLink
-            level={level}
             id={id}
             href={url || "#"}
             className={twMerge(

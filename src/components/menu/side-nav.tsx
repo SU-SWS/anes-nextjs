@@ -47,7 +47,7 @@ const MenuItem = ({id, url, title, children, activeTrail, level, expanded}: Menu
 
   return (
     <li className="m-0 border-b p-0 last:border-0">
-      <Link href={url || "#"} className={linkClasses} aria-current={activeTrail.at(-1) === id ? "true" : undefined}>
+      <Link href={url || "#"} className={linkClasses} aria-current={activeTrail.at(-1) === id ? "page" : undefined}>
         {title}
       </Link>
       {expanded && children && children.length > 0 && activeTrail.includes(id) && (
