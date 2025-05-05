@@ -85,7 +85,7 @@ const OpportunitiesFilteredViewClient = ({
           {filters.map((filterGroup, i) => (
             <fieldset
               key={`filter-${filterGroup.label.toLowerCase().replaceAll(/[^a-z0-9-]/g, "-")}-${i}`}
-              className="mb-10 max-h-96 space-y-3 overflow-y-auto pb-5"
+              className="mb-10 max-h-96 space-y-3 overflow-y-auto overflow-x-hidden pb-5"
             >
               <legend className="mb-10 w-full border-t border-black pt-10 font-semibold">{filterGroup.label}</legend>
               {filterGroup.options.map(option => (
@@ -93,13 +93,16 @@ const OpportunitiesFilteredViewClient = ({
                   <input
                     type="checkbox"
                     value={option.value}
-                    className="peer sr-only"
+                    className="peer relative -left-96"
                     onChange={onInputChange}
                     checked={chosenFilters.includes(option.value)}
                   />
-                  <span className="block h-10 w-10 rounded border border-black peer-checked:hidden" />
-                  <CheckIcon className="hidden rounded border border-black peer-checked:block" width={25} />
-                  <span className="block">{option.label}</span>
+                  <span className="block h-10 w-10 rounded border border-black peer-checked:hidden peer-focus-visible:bg-cardinal-red" />
+                  <CheckIcon
+                    className="hidden rounded border border-black peer-checked:block peer-focus-visible:bg-cardinal-red peer-focus-visible:text-white"
+                    width={25}
+                  />
+                  <span className="block peer-hover:underline peer-focus-visible:underline">{option.label}</span>
                 </label>
               ))}
             </fieldset>
