@@ -2,12 +2,15 @@
 
 import {HTMLAttributes, JSX} from "react"
 import LoadMoreList from "@components/elements/load-more-list"
+import {Maybe} from "@lib/gql/__generated__/drupal.d"
+import {ViewDisplayProps} from "@components/views/view"
+import {ViewFilter} from "@lib/gql/gql-views"
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   /**
    * Server action to load a page.
    */
-  loadPage?: (_page: number, _filters?: Record<string, string>) => Promise<JSX.Element>
+  loadPage?: ViewDisplayProps["loadPage"]
   /**
    * Total number of items to build the pager.
    */
@@ -21,8 +24,8 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 const SiteSearchClient = ({totalItems, loadPage, children}: Props) => {
   let pagerLoadPage
   if (loadPage) {
-    pagerLoadPage = (page: number) => {
-      return loadPage(page, {key: "images"})
+    pagerLoadPage = (page?: Maybe<number>, filter?: ViewFilter) => {
+      return loadPage(page, filter)
     }
   }
 

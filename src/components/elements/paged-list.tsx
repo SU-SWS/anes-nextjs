@@ -10,6 +10,7 @@ import {ArrowPathIcon} from "@heroicons/react/16/solid"
 import twMerge from "@lib/utils/twMerge"
 import useServerAction from "@hooks/useServerAction"
 import {clsx} from "clsx"
+import {ViewDisplayProps} from "@components/views/view"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   /**
@@ -35,7 +36,7 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   /**
    * Server action to load a page.
    */
-  loadPage?: (_page: number) => Promise<JSX.Element>
+  loadPage?: ViewDisplayProps["loadPage"]
 }
 
 const PagedList = ({

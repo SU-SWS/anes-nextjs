@@ -1,17 +1,22 @@
-import {getViewPagedItems, loadViewPage} from "@lib/gql/gql-views"
+import {getViewPagedItems, loadViewPage, ViewFilter} from "@lib/gql/gql-views"
 import SiteSearchClient from "@components/search/site-search.client"
 import NodeListItem from "@components/nodes/list-item/node-list-item"
 import SiteSearchForm from "@components/search/site-search-form"
+import {Maybe} from "@lib/gql/__generated__/drupal.d"
 
 type Props = {
   search: string
 }
 const SiteSearch = async ({search}: Props) => {
-  const {items: viewItems, totalItems} = await getViewPagedItems("search", "search", undefined, 12, 0, {
+  const {items: viewItems, totalItems} = await getViewPagedItems("search", "search", 12, [], 0, {
     key: search || "",
   })
-
-  const addLoadMore = totalItems > viewItems.length
+  const loadMore = async (page?: Maybe<number>, _filter?: ViewFilter) => {
+    "use server"
+    return loadViewPage("search", "search", false, 12, [], page, {
+      key: search || "",
+    })
+  }
 
   return (
     <div className="space-y-24">
@@ -19,10 +24,7 @@ const SiteSearch = async ({search}: Props) => {
 
       {viewItems.length === 0 && <p>No results found for the given search keywords. Please try again.</p>}
 
-      <SiteSearchClient
-        totalItems={totalItems}
-        loadPage={addLoadMore ? loadViewPage.bind(null, "search", "search", [], false, 12) : undefined}
-      >
+      <SiteSearchClient totalItems={totalItems} loadPage={totalItems > viewItems.length ? loadMore : undefined}>
         {viewItems.map(item => (
           <NodeListItem key={item.uuid} node={item} headingLevel="h2" />
         ))}

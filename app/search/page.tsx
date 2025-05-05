@@ -24,10 +24,12 @@ const Page = async (props: {searchParams?: Promise<Record<string, string>>}) => 
   if (searchParams) {
     // Honeypot check.
     if (searchParams?.search) redirect("/search")
+
+    const testSearchParams = {...searchParams}
     // Bot actor adding unwanted parameters.
-    delete searchParams.search
-    delete searchParams.q
-    if (Object.keys(searchParams).length > 0) redirect("/search")
+    delete testSearchParams.search
+    delete testSearchParams.q
+    if (Object.keys(testSearchParams).length > 0) redirect("/search")
   }
 
   const [appId, indexName, apiKey] = await getAlgoliaCredential()

@@ -1,7 +1,7 @@
 
 fragment FragmentNodeInterface on NodeInterface {
     __typename
-    uuid
+     uuid
     title
     path
 }

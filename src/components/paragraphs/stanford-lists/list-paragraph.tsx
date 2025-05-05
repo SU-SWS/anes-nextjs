@@ -21,7 +21,7 @@ const ListParagraph = async ({paragraph, ...props}: Props) => {
 
   const pagedItems =
     viewId && displayId
-      ? await getViewPagedItems(viewId, displayId, paragraph.suListView?.contextualFilter, limit)
+      ? await getViewPagedItems(viewId, displayId, limit, paragraph.suListView?.contextualFilter)
       : {items: [], totalItems: 0}
 
   const {totalItems} = pagedItems
@@ -65,9 +65,9 @@ const ListParagraph = async ({paragraph, ...props}: Props) => {
                     null,
                     viewId,
                     displayId,
-                    paragraph.suListView?.contextualFilter || [],
                     !!paragraph.suListHeadline,
-                    VIEW_PAGE_SIZE
+                    VIEW_PAGE_SIZE,
+                    paragraph.suListView?.contextualFilter || []
                   )
                 : undefined
             }

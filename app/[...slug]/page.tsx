@@ -3,7 +3,6 @@ import {NodeUnion} from "@lib/gql/__generated__/drupal.d"
 import {getAllNodes, getEntityFromPath} from "@lib/gql/gql-queries"
 import {notFound, redirect} from "next/navigation"
 import {getPathFromContext, PageProps, Slug} from "@lib/utils/utils"
-import { cacheLife } from "next/dist/server/use-cache/cache-life";
 
 // https://vercel.com/docs/functions/runtimes#max-duration
 export const maxDuration = 60

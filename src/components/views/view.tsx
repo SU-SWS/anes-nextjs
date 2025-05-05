@@ -12,6 +12,7 @@ import CourseCardView from "@components/views/stanford-courses/course-card-view"
 import PublicationsApaView from "@components/views/stanford-publications/publications-apa-view"
 import PublicationsChicagoView from "@components/views/stanford-publications/publications-chicago-view"
 import {
+  Maybe,
   NodeStanfordCourse,
   NodeStanfordEvent,
   NodeStanfordNews,
@@ -23,6 +24,7 @@ import {
 } from "@lib/gql/__generated__/drupal.d"
 import OpportunitiesCardView from "@components/views/stanford-opportunities/opportunities-card-view"
 import OpportunitiesListView from "@components/views/stanford-opportunities/opportunities-list-view"
+import {ViewFilter} from "@lib/gql/gql-views"
 
 export type ViewDisplayProps<T extends NodeUnion = NodeUnion> = {
   /**
@@ -40,7 +42,7 @@ export type ViewDisplayProps<T extends NodeUnion = NodeUnion> = {
   /**
    * Server action callback to fetch the next "page" contents.
    */
-  loadPage?: (_page: number) => Promise<JSX.Element>
+  loadPage?: (_page?: Maybe<number>, _filter?: ViewFilter) => Promise<JSX.Element>
 }
 
 type Props = {
@@ -67,7 +69,7 @@ type Props = {
   /**
    * Server action to load a page.
    */
-  loadPage?: (_page: number) => Promise<JSX.Element>
+  loadPage?: ViewDisplayProps["loadPage"]
 }
 
 const View = async ({viewId, displayId, items, totalItems, loadPage, headingLevel = "h3"}: Props) => {

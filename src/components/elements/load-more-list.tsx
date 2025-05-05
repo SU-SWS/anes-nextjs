@@ -7,7 +7,7 @@ import useServerAction from "@hooks/useServerAction"
 import twMerge from "@lib/utils/twMerge"
 import {ArrowPathIcon} from "@heroicons/react/20/solid"
 import Button from "@components/elements/button"
-import {Maybe} from "@lib/gql/__generated__/drupal.d"
+import {ViewDisplayProps} from "@components/views/view"
 
 export type LoadMoreListProps = HtmlHTMLAttributes<HTMLDivElement> & {
   /**
@@ -33,10 +33,7 @@ export type LoadMoreListProps = HtmlHTMLAttributes<HTMLDivElement> & {
   /**
    * Server action callback to fetch the next "page" contents.
    */
-  loadPage?: (
-    _page: number,
-    _filter?: Maybe<Record<string, string | number | Array<string | number>>>
-  ) => Promise<JSX.Element>
+  loadPage?: ViewDisplayProps["loadPage"]
   /**
    * Count of the total number of items of all pages.
    */

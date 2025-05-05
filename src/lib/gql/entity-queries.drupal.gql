@@ -5,11 +5,6 @@ query Node($uuid: ID!) {
     }
 }
 
-fragment FragmentPageInfo on ConnectionPageInfo {
-    hasNextPage
-    endCursor
-}
-
 fragment AllNodeInterface on NodeInterface {
     uuid
     path
@@ -18,157 +13,117 @@ fragment AllNodeInterface on NodeInterface {
     }
 }
 
+fragment FragmentPageInfo on ConnectionPageInfo {
+    hasNextPage
+    endCursor
+}
+
+fragment FragmentNodePageInfo on Connection {
+    pageInfo {
+        ...FragmentPageInfo
+    }
+    nodes {
+        ...AllNodeInterface
+    }
+}
+
+
+
 query AllNodes($first: Int = 1000, $nodeStanfordCourses: Cursor, $nodeStanfordEventSeriesItems: Cursor, $nodeStanfordEvents: Cursor, $nodeStanfordNewsItems: Cursor, $nodeStanfordPages: Cursor, $nodeStanfordPeople: Cursor, $nodeStanfordPolicies: Cursor, $nodeStanfordPublications: Cursor) {
     nodeStanfordPages(first: $first, after: $nodeStanfordPages, sortKey: CREATED_AT) {
-        nodes {
-            ...AllNodeInterface
-        }
-        pageInfo {
-            ...FragmentPageInfo
-        }
+        ...FragmentNodePageInfo
     }
     nodeStanfordCourses(first: $first, after: $nodeStanfordCourses, sortKey: CREATED_AT) {
-        nodes {
-            ...AllNodeInterface
-        }
-        pageInfo {
-            ...FragmentPageInfo
-        }
+        ...FragmentNodePageInfo
     }
     nodeStanfordEventSeriesItems(first: $first, after: $nodeStanfordEventSeriesItems, sortKey: CREATED_AT) {
-        nodes {
-            ...AllNodeInterface
-        }
-        pageInfo {
-            ...FragmentPageInfo
-        }
+        ...FragmentNodePageInfo
     }
     nodeStanfordEvents(first: $first, after: $nodeStanfordEvents, sortKey: CREATED_AT) {
-        nodes {
-            ...AllNodeInterface
-        }
-        pageInfo {
-            ...FragmentPageInfo
-        }
+        ...FragmentNodePageInfo
     }
     nodeStanfordNewsItems(first: $first, after: $nodeStanfordNewsItems, sortKey: CREATED_AT) {
-        nodes {
-            ...AllNodeInterface
-        }
-        pageInfo {
-            ...FragmentPageInfo
-        }
+        ...FragmentNodePageInfo
     }
     nodeStanfordPeople(first: $first, after: $nodeStanfordPeople, sortKey: CREATED_AT) {
-        nodes {
-            ...AllNodeInterface
-        }
-        pageInfo {
-            ...FragmentPageInfo
-        }
+        ...FragmentNodePageInfo
     }
     nodeStanfordPolicies(first: $first, after: $nodeStanfordPolicies, sortKey: CREATED_AT) {
-        nodes {
-            ...AllNodeInterface
-        }
-        pageInfo {
-            ...FragmentPageInfo
-        }
+        ...FragmentNodePageInfo
     }
     nodeStanfordPublications(first: $first, after: $nodeStanfordPublications, sortKey: CREATED_AT) {
-        nodes {
-            ...AllNodeInterface
-        }
-        pageInfo {
-            ...FragmentPageInfo
-        }
+        ...FragmentNodePageInfo
     }
 }
 
 query Courses($first: Int = 1000, $after: Cursor) {
     nodeStanfordCourses(first: $first, after: $after, sortKey: CREATED_AT) {
+        ...FragmentNodePageInfo
         nodes {
             ...FragmentNodeStanfordCourse
-        }
-        pageInfo {
-            ...FragmentPageInfo
         }
     }
 }
 
 query EventSeries($first: Int = 1000, $after: Cursor) {
     nodeStanfordEventSeriesItems(first: $first, after: $after, sortKey: CREATED_AT) {
+        ...FragmentNodePageInfo
         nodes {
             ...FragmentNodeStanfordEventSeries
-        }
-        pageInfo {
-            ...FragmentPageInfo
         }
     }
 }
 
 query Events($first: Int = 1000, $after: Cursor) {
     nodeStanfordEvents(first: $first, after: $after, sortKey: CREATED_AT) {
+        ...FragmentNodePageInfo
         nodes {
             ...FragmentNodeStanfordEvent
-        }
-        pageInfo {
-            ...FragmentPageInfo
         }
     }
 }
 
 query News($first: Int = 1000, $after: Cursor) {
     nodeStanfordNewsItems(first: $first, after: $after, sortKey: CREATED_AT) {
+        ...FragmentNodePageInfo
         nodes {
             ...FragmentNodeStanfordNews
-        }
-        pageInfo {
-            ...FragmentPageInfo
         }
     }
 }
 
 query BasicPages($first: Int = 1000, $after: Cursor) {
     nodeStanfordPages(first: $first, after: $after, sortKey: CREATED_AT) {
+        ...FragmentNodePageInfo
         nodes {
             ...FragmentNodeStanfordPage
-        }
-        pageInfo {
-            ...FragmentPageInfo
         }
     }
 }
 
 query People($first: Int = 1000, $after: Cursor) {
     nodeStanfordPeople(first: $first, after: $after, sortKey: CREATED_AT) {
+        ...FragmentNodePageInfo
         nodes {
             ...FragmentNodeStanfordPerson
-        }
-        pageInfo {
-            ...FragmentPageInfo
         }
     }
 }
 
 query Policies($first: Int = 1000, $after: Cursor) {
     nodeStanfordPolicies(first: $first, after: $after, sortKey: CREATED_AT) {
+        ...FragmentNodePageInfo
         nodes {
             ...FragmentNodeStanfordPolicy
-        }
-        pageInfo {
-            ...FragmentPageInfo
         }
     }
 }
 
 query Publications($first: Int = 1000, $after: Cursor) {
     nodeStanfordPublications(first: $first, after: $after, sortKey: CREATED_AT) {
+        ...FragmentNodePageInfo
         nodes {
             ...FragmentNodeStanfordPublication
-        }
-        pageInfo {
-            ...FragmentPageInfo
         }
     }
 }

@@ -97,9 +97,9 @@ const OpportunitiesFilteredViewClient = ({
                     onChange={onInputChange}
                     checked={chosenFilters.includes(option.value)}
                   />
-                  <div className="h-10 w-10 rounded border border-black peer-checked:hidden" />
+                  <span className="block h-10 w-10 rounded border border-black peer-checked:hidden" />
                   <CheckIcon className="hidden rounded border border-black peer-checked:block" width={25} />
-                  <div>{option.label}</div>
+                  <span className="block">{option.label}</span>
                 </label>
               ))}
             </fieldset>

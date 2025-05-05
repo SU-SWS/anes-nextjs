@@ -73,7 +73,7 @@ const StanfordOpportunityPage = async ({node, ...props}: Props) => {
 
           <Wysiwyg html={node.body?.processed} />
         </div>
-        <div className="border-t border-black-30">
+        <div className="border-t border-black-30 lg:w-3/12">
           {(node.suOppType || node.suOppCourseCode || node.suOppUnits) && (
             <div className="flex flex-col gap-8 border-b border-black-30 px-5 py-16">
               {node.suOppType && (

@@ -65,7 +65,7 @@ const MenuItem = ({id, url, title, children, level}: MenuItemProps) => {
           className={twMerge(
             "list-unstyled col-span-10 w-full min-w-[300px] px-0 lg:bg-white",
             clsx({
-              "lg:absolute lg:left-0 lg:right-full lg:top-full lg:shadow-2xl": level === 0,
+              "lg:absolute lg:right-0 lg:top-full lg:shadow-2xl": level === 0,
               "lg:top-0": level !== 0,
             })
           )}

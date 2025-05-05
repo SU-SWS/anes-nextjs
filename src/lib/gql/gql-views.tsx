@@ -11,7 +11,6 @@ import {
   NodeStanfordPublication,
   NodeUnion,
   SearchFilterInput,
-  StanfordBasicPagesQueryVariables,
   StanfordBasicPagesSortKeys,
 } from "@lib/gql/__generated__/drupal.d"
 import {graphqlClient} from "@lib/gql/gql-client"
@@ -19,18 +18,20 @@ import {cacheTag} from "next/dist/server/use-cache/cache-tag"
 
 export const VIEW_PAGE_SIZE = 21
 
+export type ViewFilter = Maybe<Record<string, string | number | Array<string | number>>>
+
 export const loadViewPage = async (
   viewId: string,
   displayId: string,
-  contextualFilter: string[],
   hasHeadline: boolean,
   pageSize: number = VIEW_PAGE_SIZE,
-  page: number,
-  filter?: Maybe<Record<string, string | number | Array<string | number>>>
+  contextualFilter?: Maybe<string[]>,
+  page?: Maybe<number>,
+  filter?: ViewFilter
 ): Promise<JSX.Element> => {
   "use server"
 
-  const {items, totalItems} = await getViewPagedItems(viewId, displayId, contextualFilter, pageSize, page, filter)
+  const {items, totalItems} = await getViewPagedItems(viewId, displayId, pageSize, contextualFilter, page, filter)
   return (
     <View
       viewId={viewId}
@@ -45,10 +46,10 @@ export const loadViewPage = async (
 export const getViewPagedItems = async (
   viewId: string,
   displayId: string,
-  contextualFilter?: Maybe<string[]>,
   pageSize?: Maybe<number>,
+  contextualFilter?: Maybe<string[]>,
   page?: Maybe<number>,
-  filter?: Maybe<Record<string, string | number | Array<string | number>>>
+  filter?: ViewFilter
 ): Promise<{items: NodeUnion[]; totalItems: number}> => {
   "use cache"
 
@@ -56,7 +57,6 @@ export const getViewPagedItems = async (
   let totalItems = 0
   // View filters allow multiples of 3 for page sizes. If the user wants 4, we'll fetch 6 and then slice it at the end.
   const itemsPerPage = pageSize ? Math.min(Math.ceil(pageSize / 3) * 3, 99) : undefined
-  const queryVariables: StanfordBasicPagesQueryVariables = {pageSize: itemsPerPage, page}
 
   const viewTags: Record<string, string> = {
     search: "views:all",
@@ -73,24 +73,27 @@ export const getViewPagedItems = async (
   const client = graphqlClient()
   let contextualFilters = getContextualFilters(["term_node_taxonomy_name_depth"], contextualFilter)
   let graphqlResponse
+  let sortKey
 
   try {
     switch (`${viewId}--${displayId}`) {
       case "search--search":
-        graphqlResponse = await client.search({filter: filter as SearchFilterInput, ...queryVariables})
+        graphqlResponse = await client.search({filter: filter as SearchFilterInput, pageSize: itemsPerPage, page})
         items = graphqlResponse.search?.results as unknown as NodeUnion[]
         totalItems = graphqlResponse.search?.pageInfo.total || 0
         break
 
       case "stanford_basic_pages--card_grid_alpha":
-        queryVariables.sortKey = StanfordBasicPagesSortKeys["Title"]
+        sortKey = StanfordBasicPagesSortKeys["Title"]
 
       case "stanford_basic_pages--basic_page_type_list":
       case "stanford_basic_pages--viewfield_block_1":
         contextualFilters = getContextualFilters(["term_node_taxonomy_name_depth"], contextualFilter)
         graphqlResponse = await client.stanfordBasicPages({
           contextualFilters,
-          ...queryVariables,
+          pageSize: itemsPerPage,
+          sortKey,
+          page,
         })
         items = graphqlResponse.stanfordBasicPages?.results as unknown as NodeStanfordPage[]
         totalItems = graphqlResponse.stanfordBasicPages?.pageInfo.total || 0
@@ -100,7 +103,8 @@ export const getViewPagedItems = async (
       case "stanford_courses--vertical_teaser_viewfield_block":
         graphqlResponse = await client.stanfordCourses({
           contextualFilters,
-          ...queryVariables,
+          pageSize: itemsPerPage,
+          page,
         })
         items = graphqlResponse.stanfordCourses?.results as unknown as NodeStanfordCourse[]
         totalItems = graphqlResponse.stanfordCourses?.pageInfo.total || 0
@@ -119,7 +123,8 @@ export const getViewPagedItems = async (
         )
         graphqlResponse = await client.stanfordEvents({
           contextualFilters,
-          ...queryVariables,
+          pageSize: itemsPerPage,
+          page,
         })
         items = graphqlResponse.stanfordEvents?.results as unknown as NodeStanfordEvent[]
         totalItems = graphqlResponse.stanfordEvents?.pageInfo.total || 0
@@ -128,7 +133,8 @@ export const getViewPagedItems = async (
       case "stanford_events--past_events_list_block":
         graphqlResponse = await client.stanfordEventsPastEvents({
           contextualFilters,
-          ...queryVariables,
+          pageSize: itemsPerPage,
+          page,
         })
         items = graphqlResponse.stanfordEventsPastEvents?.results as unknown as NodeStanfordEvent[]
         totalItems = graphqlResponse.stanfordEventsPastEvents?.pageInfo.total || 0
@@ -138,7 +144,8 @@ export const getViewPagedItems = async (
       case "stanford_news--vertical_cards":
         graphqlResponse = await client.stanfordNews({
           contextualFilters,
-          ...queryVariables,
+          pageSize: itemsPerPage,
+          page,
         })
         items = graphqlResponse.stanfordNews?.results as unknown as NodeStanfordNews[]
         totalItems = graphqlResponse.stanfordNews?.pageInfo.total || 0
@@ -151,7 +158,8 @@ export const getViewPagedItems = async (
         graphqlResponse = await client.stanfordOpportunities({
           contextualFilters,
           filter,
-          ...queryVariables,
+          pageSize: itemsPerPage,
+          page,
         })
         items = graphqlResponse.stanfordOpportunities?.results as unknown as NodeStanfordOpportunity[]
         totalItems = graphqlResponse.stanfordOpportunities?.pageInfo.total || 0
@@ -160,7 +168,8 @@ export const getViewPagedItems = async (
       case "stanford_person--grid_list_all":
         graphqlResponse = await client.stanfordPerson({
           contextualFilters,
-          ...queryVariables,
+          pageSize: itemsPerPage,
+          page,
         })
         items = graphqlResponse.stanfordPerson?.results as unknown as NodeStanfordPerson[]
         totalItems = graphqlResponse.stanfordPerson?.pageInfo.total || 0
@@ -170,7 +179,8 @@ export const getViewPagedItems = async (
       case "stanford_publications--chicago_list":
         graphqlResponse = await client.stanfordPublications({
           contextualFilters,
-          ...queryVariables,
+          pageSize: itemsPerPage,
+          page,
         })
         items = graphqlResponse.stanfordPublications?.results as unknown as NodeStanfordPublication[]
         totalItems = graphqlResponse.stanfordPublications?.pageInfo.total || 0
@@ -180,7 +190,8 @@ export const getViewPagedItems = async (
         contextualFilters = getContextualFilters(["term_node_taxonomy_name_depth", "type"], contextualFilter)
         graphqlResponse = await client.stanfordSharedTags({
           contextualFilters,
-          ...queryVariables,
+          pageSize: itemsPerPage,
+          page,
         })
         items = graphqlResponse.stanfordSharedTags?.results as unknown as NodeUnion[]
         totalItems = graphqlResponse.stanfordSharedTags?.pageInfo.total || 0

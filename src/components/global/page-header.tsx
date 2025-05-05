@@ -24,7 +24,7 @@ const PageHeader = ({...props}: Props) => {
       <GlobalMessage />
       <div className="relative shadow">
         <div className="min-h-50 centered pr-24 lg:pr-0">
-          <div className="flex w-full justify-between">
+          <div className="flex w-full items-center justify-between">
             <Lockup />
             <div>
               <UtilityNav />
