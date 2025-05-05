@@ -93,7 +93,7 @@ const OpportunitiesFilteredViewClient = ({
                   <input
                     type="checkbox"
                     value={option.value}
-                    className="peer relative -left-96"
+                    className="peer relative -left-[999px] h-0 w-0"
                     onChange={onInputChange}
                     checked={chosenFilters.includes(option.value)}
                   />
