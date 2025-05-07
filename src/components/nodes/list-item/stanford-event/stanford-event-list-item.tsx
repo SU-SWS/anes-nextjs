@@ -30,7 +30,7 @@ const StanfordEventListItem = ({node, headingLevel, ...props}: Props) => {
 
   return (
     <article {...props} aria-labelledby={node.uuid} className={twMerge("mx-auto flex w-full gap-10", props.className)}>
-      <div aria-hidden className="flex w-fit flex-col items-start">
+      <div aria-hidden="true" className="flex w-fit flex-col items-start">
         <div className="type-0 mb-2 w-full text-center font-semibold">{startMonth.toUpperCase()}</div>
         <div className="type-4 w-full text-center font-bold">{startDay}</div>
 
@@ -64,19 +64,17 @@ const StanfordEventListItem = ({node, headingLevel, ...props}: Props) => {
           {dateTimeString}
         </time>
 
-        {node.suEventLocation && (
-          <div>
-            <div className="flex items-center gap-5">
-              <MapPinIcon width={30} className="shrink-0" />
-              <Address {...node.suEventLocation} />
-            </div>
-          </div>
-        )}
-
         {node.suEventAltLoc && (
           <div className="flex items-center gap-5">
             <MapPinIcon width={30} className="shrink-0" />
             {node.suEventAltLoc}
+          </div>
+        )}
+
+        {node.suEventLocation && (
+          <div className="flex items-center gap-5">
+            <MapPinIcon width={30} className="shrink-0" />
+            <Address {...node.suEventLocation} />
           </div>
         )}
       </div>

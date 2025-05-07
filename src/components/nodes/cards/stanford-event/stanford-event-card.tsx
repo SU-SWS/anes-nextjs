@@ -29,7 +29,7 @@ const StanfordEventCard = ({node, headingLevel, ...props}: Props) => {
   const Heading = headingLevel === "h3" ? H3 : H2
   return (
     <ImageCard {...props} aria-labelledby={node.uuid} isArticle>
-      <div aria-hidden className="flex max-w-lg items-center justify-between">
+      <div aria-hidden="true" className="flex max-w-lg items-center justify-between">
         <div className="flex w-fit flex-col items-start">
           <div className="type-0 mb-2 w-full text-center font-semibold">{startMonth.toUpperCase()}</div>
           <div className="type-4 w-full text-center font-bold">{startDay}</div>
@@ -38,7 +38,7 @@ const StanfordEventCard = ({node, headingLevel, ...props}: Props) => {
         {(startMonth !== endMonth || startDay !== endDay) && (
           <>
             <div className="mx-2">&mdash; to &mdash;</div>
-            <div aria-hidden className="flex w-fit flex-col items-start">
+            <div className="flex w-fit flex-col items-start">
               <div className="type-0 mb-2 w-full text-center font-semibold">{endMonth.toUpperCase()}</div>
               <div className="type-4 w-full text-center font-bold">{endDay}</div>
             </div>
@@ -61,19 +61,17 @@ const StanfordEventCard = ({node, headingLevel, ...props}: Props) => {
         {dateTimeString}
       </time>
 
-      {node.suEventLocation && (
-        <div>
-          <div className="flex items-center gap-5">
-            <MapPinIcon width={30} className="shrink-0" />
-            <Address {...node.suEventLocation} />
-          </div>
-        </div>
-      )}
-
       {node.suEventAltLoc && (
         <div className="flex items-center gap-5">
           <MapPinIcon width={30} className="shrink-0" />
           {node.suEventAltLoc}
+        </div>
+      )}
+
+      {node.suEventLocation && (
+        <div className="flex items-center gap-5">
+          <MapPinIcon width={30} className="shrink-0" />
+          <Address {...node.suEventLocation} />
         </div>
       )}
     </ImageCard>
