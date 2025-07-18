@@ -5,9 +5,11 @@ import {useBoolean, useCounter} from "usehooks-ts"
 import useFocusOnRender from "@hooks/useFocusOnRender"
 import useServerAction from "@hooks/useServerAction"
 import twMerge from "@lib/utils/twMerge"
-import {ArrowPathIcon, CheckIcon} from "@heroicons/react/20/solid"
+import {ArrowPathIcon} from "@heroicons/react/20/solid"
 import Button from "@components/elements/button"
 import {FilterGroup} from "@components/views/stanford-opportunities/opportunities-card-view"
+import InputGroup from "@components/elements/inputs/input-group"
+import RadioButton from "@components/elements/inputs/radio-button"
 
 type Props = LoadMoreListProps & {
   filters: Array<FilterGroup>
@@ -24,7 +26,7 @@ const OpportunitiesFilteredViewClient = ({
   ...props
 }: Props) => {
   const {count: filteredTotalItems, setCount: setFilteredTotalItems} = useCounter(totalItems)
-  const [chosenFilters, setChosenFilters] = useState<Array<string>>([])
+  const [chosenFilters, setChosenFilters] = useState<Record<string, string>>({})
   const id = useId()
   const {count: page, increment: incrementPage, reset: resetPage} = useCounter(0)
   const [items, setItems] = useState<JSX.Element[]>(children)
@@ -35,7 +37,7 @@ const OpportunitiesFilteredViewClient = ({
 
   const showMoreItems = () => {
     if (loadPage) {
-      runLoadPage(page + 1, {filters: chosenFilters})
+      runLoadPage(page + 1, {filters: Object.values(chosenFilters)})
         .then(results => {
           const resultChildren = results?.props.children
           setItems([...items, ...resultChildren])
@@ -53,13 +55,11 @@ const OpportunitiesFilteredViewClient = ({
     if (focusOnElement) setFocusOnItem()
   }, [focusOnElement, setFocusOnItem])
 
-  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value
-    const newState = chosenFilters.includes(value)
-      ? chosenFilters.filter(item => item !== value)
-      : [...chosenFilters, value]
+  const onInputChange = (filterIndex: string, event: ChangeEvent<HTMLInputElement>) => {
+    const newState = {...chosenFilters}
+    newState[filterIndex] = event.target.value
 
-    runLoadPage(0, {filters: newState})
+    runLoadPage(0, {filters: Object.values(newState).filter(Boolean)})
       .then(results => {
         const resultChildren = results?.props.children
         setFilteredTotalItems(results?.props.totalItems)
@@ -83,31 +83,32 @@ const OpportunitiesFilteredViewClient = ({
       <div className="flex flex-col gap-12 lg:flex-row">
         <form className="shrink-0 lg:w-1/4">
           {filters.map((filterGroup, i) => (
-            <fieldset
+            <InputGroup
               key={`filter-${filterGroup.label.toLowerCase().replaceAll(/[^a-z0-9-]/g, "-")}-${i}`}
-              className="mb-10 max-h-96 space-y-3 overflow-y-auto overflow-x-hidden pb-5"
+              label={filterGroup.label}
             >
-              <legend className="mb-10 w-full border-t border-black pt-10 font-semibold">{filterGroup.label}</legend>
+              <RadioButton
+                value=""
+                name={`filter-${filterGroup.label.toLowerCase().replaceAll(/[^a-z0-9-]/g, "-")}`}
+                onRadioChange={onInputChange.bind(null, filterGroup.label)}
+                inputProps={{defaultChecked: true}}
+              >
+                - Any -
+              </RadioButton>
               {filterGroup.options.map(option => (
-                <label key={option.value} className="group flex cursor-pointer items-center gap-5">
-                  <input
-                    type="checkbox"
-                    value={option.value}
-                    className="peer relative -left-[999px] h-0 w-0"
-                    onChange={onInputChange}
-                    checked={chosenFilters.includes(option.value)}
-                  />
-                  <span className="block h-10 w-10 rounded border border-black peer-checked:hidden peer-focus-visible:bg-cardinal-red" />
-                  <CheckIcon
-                    className="hidden rounded border border-black peer-checked:block peer-focus-visible:bg-cardinal-red peer-focus-visible:text-white"
-                    width={25}
-                  />
-                  <span className="block peer-hover:underline peer-focus-visible:underline">{option.label}</span>
-                </label>
+                <RadioButton
+                  key={option.value}
+                  value={option.value}
+                  name={`filter-${filterGroup.label.toLowerCase().replaceAll(/[^a-z0-9-]/g, "-")}`}
+                  onRadioChange={onInputChange.bind(null, filterGroup.label)}
+                >
+                  {option.label}
+                </RadioButton>
               ))}
-            </fieldset>
+            </InputGroup>
           ))}
         </form>
+
         <div className="flex-grow">
           <ul {...ulProps}>
             {items.map((item, i) => (
