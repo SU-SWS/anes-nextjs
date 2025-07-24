@@ -32,7 +32,6 @@ export const loadViewPage = async (
   "use server"
 
   const {items, totalItems} = await getViewPagedItems(viewId, displayId, pageSize, contextualFilter, page, filter)
-  console.log(filter)
   return (
     <View
       viewId={viewId}
