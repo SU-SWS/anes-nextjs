@@ -7,7 +7,7 @@ import twMerge from "@lib/utils/twMerge"
 
 type Props = {
   items: ParagraphUnion[]
-  config?: LayoutParagraphBehaviors["config"]
+  config?: LayoutParagraphBehaviors["config"] & {vertical_dividers?: boolean}
 }
 
 const ThreeColumn = ({items, config}: Props) => {
@@ -35,8 +35,22 @@ const ThreeColumn = ({items, config}: Props) => {
       )}
       data-columns="3"
     >
-      <OneColumn items={leftItems} config={{top_padding: "none", bottom_margin: "none"}} />
-      <OneColumn items={mainItems} config={{top_padding: "none", bottom_margin: "none"}} />
+      <OneColumn
+        items={leftItems}
+        config={{top_padding: "none", bottom_margin: "none"}}
+        className={clsx({
+          "after:contents('') relative after:absolute after:-right-10 after:top-0 after:h-full after:w-1 after:bg-black":
+            config?.vertical_dividers,
+        })}
+      />
+      <OneColumn
+        items={mainItems}
+        config={{top_padding: "none", bottom_margin: "none"}}
+        className={clsx({
+          "after:contents('') relative after:absolute after:-right-10 after:top-0 after:h-full after:w-1 after:bg-black":
+            config?.vertical_dividers,
+        })}
+      />
       <OneColumn items={rightItems} config={{top_padding: "none", bottom_margin: "none"}} />
     </div>
   )

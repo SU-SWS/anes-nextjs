@@ -8,7 +8,7 @@ import {LayoutParagraphBehaviors} from "@lib/drupal/drupal-jsonapi.d"
 export type TwoColumnConfig = LayoutParagraphBehaviors["config"] & {column_widths: "33-67" | "67-33"}
 type Props = {
   items: ParagraphUnion[]
-  config?: LayoutParagraphBehaviors["config"] & {column_widths: "33-67" | "67-33"}
+  config?: LayoutParagraphBehaviors["config"] & {column_widths: "33-67" | "67-33"; vertical_dividers?: boolean}
 }
 const TwoColumn = ({items, config}: Props) => {
   const leftItems = items.filter(item => getParagraphBehaviors(item).layout_paragraphs?.region === "left")
@@ -36,7 +36,14 @@ const TwoColumn = ({items, config}: Props) => {
       )}
       data-columns="2"
     >
-      <OneColumn items={leftItems} config={{top_padding: "none", bottom_margin: "none"}} />
+      <OneColumn
+        items={leftItems}
+        config={{top_padding: "none", bottom_margin: "none"}}
+        className={clsx({
+          "after:contents('') relative after:absolute after:-right-10 after:top-0 after:h-full after:w-1 after:bg-black":
+            config?.vertical_dividers,
+        })}
+      />
       <OneColumn items={rightItems} config={{top_padding: "none", bottom_margin: "none"}} />
     </div>
   )

@@ -3,16 +3,19 @@ import {ParagraphUnion} from "@lib/gql/__generated__/drupal.d"
 import {LayoutParagraphBehaviors} from "@lib/drupal/drupal-jsonapi.d"
 import {clsx} from "clsx"
 import twMerge from "@lib/utils/twMerge"
+import {HTMLAttributes} from "react"
 
-type Props = {
+type Props = HTMLAttributes<HTMLDivElement> & {
   items: ParagraphUnion[]
   config?: LayoutParagraphBehaviors["config"]
 }
 
-const OneColumn = ({items, config}: Props) => {
+const OneColumn = ({items, config, className, ...props}: Props) => {
   return (
     <div
+      {...props}
       className={twMerge(
+        className,
         clsx("mb-32 space-y-16 @container", {
           "px-5 pb-20 pt-20": !!config?.bg_color,
           "pt-0": config?.top_padding === "none",
