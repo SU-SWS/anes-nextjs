@@ -2,8 +2,9 @@
 
 import {usePathname} from "next/navigation"
 import {useIsClient} from "usehooks-ts"
+import {Maybe} from "@lib/gql/__generated__/drupal.d"
 
-const DrupalWindowSync = () => {
+const DrupalWindowSync = ({homePath}: {homePath?: Maybe<string>}) => {
   const pathname = usePathname()
   if (!useIsClient()) return
 
@@ -17,7 +18,7 @@ const DrupalWindowSync = () => {
     window.parent.postMessage(
       {
         type: "NEXT_DRUPAL_ROUTE_SYNC",
-        path: pathname,
+        path: pathname !== homePath ? pathname : "/",
       },
       process.env.NEXT_PUBLIC_DRUPAL_BASE_URL as string
     )

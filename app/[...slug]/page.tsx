@@ -1,6 +1,6 @@
 import NodePage from "@components/nodes/pages/node-page"
 import {NodeUnion} from "@lib/gql/__generated__/drupal.d"
-import {getAllNodes, getEntityFromPath} from "@lib/gql/gql-queries"
+import {getAllNodes, getEntityFromPath, getHomePagePath} from "@lib/gql/gql-queries"
 import {notFound, redirect} from "next/navigation"
 import {getPathFromContext, PageProps, Slug} from "@lib/utils/utils"
 
@@ -12,6 +12,9 @@ const Page = async (props: PageProps) => {
 
   const params = await props.params
   const path = getPathFromContext(params.slug)
+  const homePath = await getHomePagePath()
+  if (path === homePath) redirect("/")
+
   const {redirect: redirectPath, entity} = await getEntityFromPath<NodeUnion>(path)
 
   if (redirectPath) redirect(redirectPath)

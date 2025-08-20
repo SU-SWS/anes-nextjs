@@ -87,6 +87,7 @@ export const getConfigPageField = async <T extends ConfigPagesUnion, F>(
 }
 
 export const getMenu = async (name?: MenuAvailable, maxLevels?: number): Promise<MenuItem[]> => {
+  const homePath = await getHomePagePath()
   const menuName = name?.toLowerCase() || "main"
   cacheTag("menus", `menu:${menuName}`)
 
@@ -96,6 +97,11 @@ export const getMenu = async (name?: MenuAvailable, maxLevels?: number): Promise
   const filterInaccessible = (items: MenuItem[], level: number): MenuItem[] => {
     if ((maxLevels || maxLevels === 0) && level > maxLevels) return []
     items = items.filter(item => item.title !== "Inaccessible")
+
+    // Fix the home page path to make sure it's not the path alias.
+    items.map(item => {
+      item.url = item.url === homePath ? "/" : item.url
+    })
     items.map(item => (item.children = filterInaccessible(item.children, level + 1)))
     return items
   }

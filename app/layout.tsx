@@ -7,6 +7,7 @@ import DrupalWindowSync from "@components/elements/drupal-window-sync"
 import UserAnalytics from "@components/elements/user-analytics"
 import {twJoin} from "tailwind-merge"
 import GlobalPage from "@components/layouts/global-page"
+import {getHomePagePath} from "@lib/gql/gql-queries"
 
 const appleIcons: Icon[] = [60, 72, 76, 114, 120, 144, 152, 180].map(size => ({
   url: `https://www-media.stanford.edu/assets/favicon/apple-touch-icon-${size}x${size}.png`,
@@ -33,10 +34,11 @@ export const metadata = {
 }
 
 const RootLayout = async ({children, modal}: {children: React.ReactNode; modal: React.ReactNode}) => {
+  const homePath = await getHomePagePath()
   return (
     <html lang="en" className={twJoin(sourceSans3.className, stanford.variable)}>
       <UserAnalytics />
-      <DrupalWindowSync />
+      <DrupalWindowSync homePath={homePath} />
       <body>
         <nav aria-label="Skip Links">
           <a href="#main-content" className="skiplink">

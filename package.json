@@ -8,7 +8,7 @@
     "analyze": "ANALYZE=true next build",
     "preview": "next build --no-lint && next start",
     "start": "next start",
-    "lint": "next lint && tsc",
+    "lint": "eslint ./src ./app && tsc",
     "storybook": "storybook dev -p 6006",
     "graphql": "DOTENV_CONFIG_PATH=./.env.local graphql-codegen --config codegen.ts -r dotenv/config",
     "postinstall": "git config --local core.hooksPath .githooks/; exit 0"
@@ -83,9 +83,5 @@
     "tsconfig-paths-webpack-plugin": "^4.2.0",
     "typescript-eslint": "^8.40.0"
   },
-  "packageManager": "yarn@4.9.2",
-  "resolutions": {
-    "@types/react": "19.0.10",
-    "@types/react-dom": "19.0.4"
-  }
+  "packageManager": "yarn@4.9.3"
 }

@@ -3,7 +3,7 @@ import Link from "@components/elements/link"
 import parse, {HTMLReactParserOptions, Element, domToReact, attributesToProps, DOMNode} from "html-react-parser"
 import Image from "next/image"
 import Oembed from "@components/elements/ombed"
-import React, {ComponentProps, HtmlHTMLAttributes} from "react"
+import React, {HtmlHTMLAttributes} from "react"
 import {H2, H3, H4, H5, H6} from "@components/elements/headers"
 import twMerge from "@lib/utils/twMerge"
 import {Maybe} from "@lib/gql/__generated__/drupal.d"
@@ -167,7 +167,7 @@ const cleanMediaMarkup = (node: Element) => {
   const nodeProps = attributesToProps(node.attribs)
   nodeProps.className = fixClasses(nodeProps.className)
 
-  const getImage = (node: Element): ComponentProps<"img"> | undefined => {
+  const getImage = (node: Element): Record<string, string> | undefined => {
     let img
     if (node.name === "img") {
       const attribs = node.attribs
@@ -229,9 +229,8 @@ const cleanMediaMarkup = (node: Element) => {
     const {alt, width, height} = image
     if (!src) return
 
-    if (src?.startsWith("/")) {
-      src = process.env.NEXT_PUBLIC_DRUPAL_BASE_URL + src
-    }
+    if (src?.startsWith("/")) src = process.env.NEXT_PUBLIC_DRUPAL_BASE_URL + src
+
     const figCaption = getFigCaption(node)
 
     if (figCaption) {

@@ -152,7 +152,7 @@ export const MainMenuItemClientLink = ({href, children, ...props}: LinkProps) =>
     <Link
       {...props}
       href={href}
-      data-intrail={!isCurrent && currentPath.includes(href)}
+      data-intrail={!isCurrent && currentPath.includes(href) && href !== "/"}
       aria-current={isCurrent ? "page" : undefined}
     >
       {children}

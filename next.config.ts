@@ -46,13 +46,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/wp-:path*",
+        source: "/wp-:path",
         destination: "/not-found",
         permanent: true,
       },
       {
-        source: "/home",
-        destination: "/",
+        source: "/wp-:slug/:path*",
+        destination: "/not-found",
         permanent: true,
       },
       {
