@@ -103,6 +103,8 @@ const options: HTMLReactParserOptions = {
             })
           )
           return <ol {...nodeProps}>{domToReact(children, options)}</ol>
+        case "hr":
+          return <hr className="border-black" />
         case "tfoot":
         case "b":
         case "cite":
