@@ -13,6 +13,7 @@ import {ChevronRightIcon} from "@heroicons/react/20/solid"
 import StanfordPolicyListItem from "@components/nodes/list-item/stanford-policy/stanford-policy-list-item"
 import NodePageMetadata from "@components/nodes/pages/node-page-metadata"
 import {getCleanDescription} from "@lib/utils/text-tools"
+import {redirect} from "next/navigation"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   node: NodeStanfordPolicy
@@ -20,6 +21,8 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
 }
 
 const StanfordPolicyPage = async ({node, ...props}: Props) => {
+  if (node.suPolicySource?.url) redirect(node.suPolicySource.url)
+
   const changeLog = node.suPolicyChangelog?.filter(change => change.suPolicyPublic) || []
 
   const flattenedMenu: BookLink[] = []

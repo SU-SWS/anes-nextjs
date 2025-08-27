@@ -197,6 +197,9 @@ fragment FragmentNodeStanfordPerson on NodeStanfordPerson {
         ...FragmentText
     }
     suPersonResearchInterests
+    suPersonSource {
+        url
+    }
     suPersonScholarlyInterests {
         ...FragmentText
     }
@@ -231,6 +234,9 @@ fragment FragmentNodeStanfordPolicy on NodeStanfordPolicy {
     suPolicyTitle
     suPolicyUpdated {
         ...FragmentDateTime
+    }
+    suPolicySource {
+        url
     }
     book {
         id
@@ -445,6 +451,9 @@ fragment FragmentNodeStanfordPersonTeaser on NodeStanfordPerson {
     }
     suPersonFullTitle
     suPersonShortTitle
+    suPersonSource {
+        url
+    }
 }
 
 fragment FragmentNodeStanfordPolicyTeaser on NodeStanfordPolicy {
@@ -453,6 +462,9 @@ fragment FragmentNodeStanfordPolicyTeaser on NodeStanfordPolicy {
     }
     suPolicyUpdated {
         ...FragmentDateTime
+    }
+    suPolicySource {
+        url
     }
 }
 

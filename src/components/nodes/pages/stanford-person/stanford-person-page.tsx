@@ -12,6 +12,7 @@ import {NodeStanfordPerson} from "@lib/gql/__generated__/drupal.d"
 import ReverseVisualOrder from "@components/elements/reverse-visual-order"
 import NodePageMetadata from "@components/nodes/pages/node-page-metadata"
 import {getCleanDescription} from "@lib/utils/text-tools"
+import {redirect} from "next/navigation"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   node: NodeStanfordPerson
@@ -19,6 +20,8 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
 }
 
 const StanfordPersonPage = ({node, ...props}: Props) => {
+  if (node.suPersonSource?.url) redirect(node.suPersonSource.url)
+
   const imageUrl = node.suPersonPhoto?.mediaImage.url
 
   return (

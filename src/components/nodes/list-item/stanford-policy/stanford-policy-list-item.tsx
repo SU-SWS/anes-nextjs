@@ -13,7 +13,7 @@ const StanfordPolicyListItem = ({node, headingLevel, ...props}: Props) => {
   return (
     <article {...props} aria-labelledby={node.uuid}>
       <Heading id={node.uuid}>
-        <Link href={node.path || "#"}>{node.title}</Link>
+        <Link href={node.suPolicySource?.url || node.path || "#"}>{node.title}</Link>
       </Heading>
       {node.suPolicyUpdated && (
         <div className="mb-5">

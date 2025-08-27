@@ -700,6 +700,9 @@ export const FragmentNodeStanfordPersonFragmentDoc = gql`
     ...FragmentText
   }
   suPersonResearchInterests
+  suPersonSource {
+    url
+  }
   suPersonScholarlyInterests {
     ...FragmentText
   }
@@ -752,6 +755,9 @@ export const FragmentNodeStanfordPolicyFragmentDoc = gql`
   suPolicyUpdated {
     ...FragmentDateTime
   }
+  suPolicySource {
+    url
+  }
   book {
     id
     title
@@ -799,6 +805,9 @@ export const FragmentNodeStanfordPersonTeaserFragmentDoc = gql`
   }
   suPersonFullTitle
   suPersonShortTitle
+  suPersonSource {
+    url
+  }
 }
     ${FragmentMediaImageFragmentDoc}`;
 export const FragmentLinkFragmentDoc = gql`
@@ -992,6 +1001,9 @@ export const FragmentNodeStanfordPolicyTeaserFragmentDoc = gql`
   }
   suPolicyUpdated {
     ...FragmentDateTime
+  }
+  suPolicySource {
+    url
   }
 }
     ${FragmentTextSummaryFragmentDoc}
