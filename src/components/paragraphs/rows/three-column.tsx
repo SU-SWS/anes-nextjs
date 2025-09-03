@@ -39,7 +39,7 @@ const ThreeColumn = ({items, config}: Props) => {
         items={leftItems}
         config={{top_padding: "none", bottom_margin: "none"}}
         className={clsx({
-          "after:contents('') relative after:absolute after:-right-10 after:top-0 after:h-full after:w-1 after:bg-black":
+          "after:contents('') relative after:absolute after:-right-10 after:top-0 after:h-full after:w-[1px] after:bg-black":
             config?.vertical_dividers,
         })}
       />
@@ -47,7 +47,7 @@ const ThreeColumn = ({items, config}: Props) => {
         items={mainItems}
         config={{top_padding: "none", bottom_margin: "none"}}
         className={clsx({
-          "after:contents('') relative after:absolute after:-right-10 after:top-0 after:h-full after:w-1 after:bg-black":
+          "after:contents('') relative after:absolute after:-right-10 after:top-0 after:h-full after:w-[1px] after:bg-black":
             config?.vertical_dividers,
         })}
       />
