@@ -592,6 +592,9 @@ export const FragmentDateTimeFragmentDoc = gql`
     `;
 export const FragmentNodeStanfordNewsFragmentDoc = gql`
     fragment FragmentNodeStanfordNews on NodeStanfordNews {
+  body {
+    processed
+  }
   suNewsBanner {
     ...FragmentMediaUnion
   }
@@ -631,6 +634,9 @@ export const FragmentNodeStanfordPageFragmentDoc = gql`
     fragment FragmentNodeStanfordPage on NodeStanfordPage {
   layoutSelection {
     id
+  }
+  body {
+    processed
   }
   suBasicPageType {
     ...FragmentTermInterface
