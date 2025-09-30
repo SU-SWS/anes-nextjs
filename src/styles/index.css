@@ -19,12 +19,12 @@
   --container-14xl: 140rem;
   --container-15xl: 150rem;
 
-  --color-cardinal: #8c1515;
-  --color-digital-red: #b83a4b;
-
   --font-sans: var(--font-source-sans);
   --font-serif: var(--font-source-serif);
   --font-stanford: var(--font-stanford);
+
+  --font-lato: var(--font-lato);
+  --font-merriweather: var(--font-merriweather);
 }
 
 @layer utilities {
