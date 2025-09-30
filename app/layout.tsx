@@ -2,12 +2,13 @@
 
 import "../src/styles/index.css"
 import {Icon} from "next/dist/lib/metadata/types/metadata-types"
-import {sourceSans3, stanford} from "../src/styles/typography/fonts"
 import DrupalWindowSync from "@components/elements/drupal-window-sync"
 import UserAnalytics from "@components/elements/user-analytics"
 import {twJoin} from "tailwind-merge"
 import GlobalPage from "@components/layouts/global-page"
 import {getHomePagePath} from "@lib/gql/gql-queries"
+import {Source_Sans_3, Source_Serif_4} from "next/font/google"
+import localFont from "next/font/local"
 
 const appleIcons: Icon[] = [60, 72, 76, 114, 120, 144, 152, 180].map(size => ({
   url: `https://www-media.stanford.edu/assets/favicon/apple-touch-icon-${size}x${size}.png`,
@@ -21,6 +22,26 @@ const icons: Icon[] = [16, 32, 96, 128, 192, 196].map(size => ({
       : `https://www-media.stanford.edu/assets/favicon/favicon-${size}x${size}.png`,
   sizes: `${size}x${size}`,
 }))
+
+const sourceSans3 = Source_Sans_3({
+  subsets: ["latin"],
+  style: ["italic", "normal"],
+  display: "swap",
+  variable: "--font-source-sans",
+})
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  style: ["italic", "normal"],
+  display: "swap",
+  variable: "--font-source-serif",
+})
+
+const stanford = localFont({
+  src: "../public/fonts/stanford.woff2",
+  weight: "300",
+  variable: "--font-stanford",
+})
 
 /**
  * Metadata that does not change often.
@@ -36,7 +57,7 @@ export const metadata = {
 const RootLayout = async ({children, modal}: {children: React.ReactNode; modal: React.ReactNode}) => {
   const homePath = await getHomePagePath()
   return (
-    <html lang="en" className={twJoin(sourceSans3.className, stanford.variable)}>
+    <html lang="en" className={twJoin(sourceSans3.variable, sourceSerif.variable, stanford.variable)}>
       <UserAnalytics />
       <DrupalWindowSync homePath={homePath} />
       <body>
