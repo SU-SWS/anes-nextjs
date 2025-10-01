@@ -18,6 +18,7 @@
     "@mui/base": "5.0.0-dev.20240529-082515-213b5e33ab",
     "@next/third-parties": "15.5.4",
     "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/postcss": "^4.1.14",
     "@types/node": "24.5.2",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
