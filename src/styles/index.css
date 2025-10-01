@@ -32,6 +32,22 @@
 }
 
 @layer utilities {
+  .bg-gradient-blue-purple {
+    background-color: hsla(267, 26%, 85%, 1);
+    background-image:
+      radial-gradient(at 89% 9%, hsla(60, 26%, 94%, 1) 0px, transparent 50%),
+      radial-gradient(at 10% 10%, hsla(69, 17%, 95%, 1) 0px, transparent 50%),
+      radial-gradient(at 8% 90%, hsla(191, 36%, 83%, 1) 0px, transparent 50%);
+  }
+
+  .bg-gradient-purple-blue {
+    background-color: hsla(267, 26%, 85%, 1);
+    background-image:
+      radial-gradient(at 10% 86%, hsla(60, 26%, 94%, 1) 0px, transparent 50%),
+      radial-gradient(at 10% 10%, hsla(69, 17%, 95%, 1) 0px, transparent 50%),
+      radial-gradient(at 90% 89%, hsla(191, 36%, 83%, 1) 0px, transparent 50%);
+  }
+
   .global-message a {
     color: theme(--color-white);
   }
@@ -143,10 +159,6 @@
 
     @media (min-width: theme(--breakpoint-3xl)) {
       max-width: calc(100vw - 80px);
-    }
-
-    @media only screen and (min-width: 1920px) {
-      max-width: 1280px;
     }
   }
 
