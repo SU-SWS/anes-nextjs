@@ -1,6 +1,10 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css");
 @import "decanter";
 
+@custom-variant aria-current (&[aria-current="true"]);
+@custom-variant aria-current-page (&[aria-current="page"]);
+@custom-variant data-intrail (&[data-intrail="true"]);
+
 @theme {
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -107,18 +111,6 @@
   }
   .list-upper-roman {
     list-style-type: upper-roman;
-  }
-  .data-\[intrail\=true\]\:block[data-intrail="true"] {
-    display: block;
-  }
-  .data-\[intrail\=true\]\:hidden[data-intrail="true"] {
-    display: none;
-  }
-  .aria-\[current\=true\]\:font-bold[aria-current="true"] {
-    font-weight: bold;
-  }
-  .aria-\[current\=page\]\:font-bold[aria-current="page"] {
-    font-weight: bold;
   }
 }
 
