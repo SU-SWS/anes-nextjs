@@ -48,6 +48,17 @@
       radial-gradient(at 90% 89%, hsla(191, 36%, 83%, 1) 0px, transparent 50%);
   }
 
+  .bg-gradient-blue-pruple-white {
+    background-color: hsla(266, 0%, 100%, 1);
+    background-image:
+      radial-gradient(at 9% 100%, hsla(191, 36%, 83%, 1) 0px, transparent 50%),
+      radial-gradient(at 10% 68%, hsla(60, 26%, 94%, 1) 0px, transparent 50%),
+      radial-gradient(at 87% 100%, hsla(266, 25%, 85%, 1) 0px, transparent 50%),
+      radial-gradient(at 87% 43%, hsla(191, 36%, 83%, 1) 0px, transparent 50%),
+      radial-gradient(at 88% 66%, hsla(60, 26%, 94%, 1) 0px, transparent 50%),
+      radial-gradient(at 10% 42%, hsla(266, 25%, 85%, 1) 0px, transparent 50%);
+  }
+
   .global-message a {
     color: theme(--color-white);
   }
