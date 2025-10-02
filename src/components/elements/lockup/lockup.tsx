@@ -36,13 +36,16 @@ export const Lockup = async () => {
 
   if (!lockupSettingsConfig || lockupSettingsConfig.suLockupEnabled) {
     return (
-      <div className="py-10">
-        <Link href="/" className="flex no-underline">
-          <div className="self-end">
+      <div className="py-34">
+        <Link href="/" className="text-black no-underline">
+          <div className="flex flex-col gap-4 lg:flex-row">
             <div className="mr-2 border-black pr-2 lg:inline-block lg:border-r">
               <LockupLogo {...lockupProps} />
             </div>
-            <div className="type-2 font-normal text-black lg:inline-block">{siteName || "University"}</div>
+            <div className="font-normal">
+              <div className="type-0">Department of Anesthesiology,</div>
+              <div className="type-0">Perioperative and Pain Management</div>
+            </div>
           </div>
         </Link>
       </div>
