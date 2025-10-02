@@ -77,11 +77,11 @@
     radial-gradient(at 10% 42%, hsla(266, 25%, 85%, 1) 0px, transparent 50%);
 }
 
-@utlity bg-gradient-blue-purple-white {
-  background-color: hsla(266, 0%, 100%, 1);
+@utility bg-gradient-blue-purple-white {
+  background-color: hsla(180, 20%, 99%, 1);
   background-image:
-    radial-gradient(at 16% 13%, hsla(191, 36%, 83%, 1) 0px, transparent 50%),
-    radial-gradient(at 85% 13%, hsla(266, 40%, 84%, 1) 0px, transparent 50%);
+    radial-gradient(at 16% 0%, hsla(191, 36%, 83%, 1) 0px, transparent 50%),
+    radial-gradient(at 87% 0%, hsla(266, 40%, 84%, 1) 0px, transparent 50%);
 }
 
 @utility -scale-100 {
