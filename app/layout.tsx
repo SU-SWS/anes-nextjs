@@ -57,16 +57,7 @@ export const metadata = {
 const RootLayout = async ({children, modal}: {children: React.ReactNode; modal: React.ReactNode}) => {
   const homePath = await getHomePagePath()
   return (
-    <html
-      lang="en"
-      className={twJoin(
-        sourceSans3.variable,
-        sourceSerif.variable,
-        lato.variable,
-        merriweather.variable,
-        stanford.variable
-      )}
-    >
+    <html lang="en" className={twJoin(sourceSans3.variable, sourceSerif.variable, stanford.variable)}>
       <UserAnalytics />
       <DrupalWindowSync homePath={homePath} />
       <body>
