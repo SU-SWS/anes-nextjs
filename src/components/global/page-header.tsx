@@ -23,7 +23,7 @@ const PageHeader = async ({...props}: Props) => {
         <div className="centered flex items-center justify-between py-3">
           <Link
             prefetch={false}
-            className="font-stanford text-20 font-regular hocus:text-white hocus:underline leading-none text-white no-underline"
+            className="font-stanford text-20 font-regular leading-none text-white no-underline hocus:text-white hocus:underline"
             href="https://www.stanford.edu"
           >
             Stanford University
@@ -31,7 +31,7 @@ const PageHeader = async ({...props}: Props) => {
 
           {headerButton?.url && (
             <Link
-              className="hocus:text-white hocus:underline text-white no-underline lg:hidden"
+              className="text-white no-underline hocus:text-white hocus:underline lg:hidden"
               href={headerButton.url}
             >
               {headerButton.title}
@@ -41,7 +41,7 @@ const PageHeader = async ({...props}: Props) => {
       </div>
       <GlobalMessage />
       <div className="relative shadow">
-        <div className="centered min-h-50 pr-24 lg:pr-0">
+        <div className="min-h-50 centered pr-24 lg:pr-0">
           <div className="flex w-full items-center justify-between">
             <Lockup />
             <div>

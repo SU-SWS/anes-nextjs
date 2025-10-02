@@ -6,11 +6,6 @@
 @custom-variant data-intrail (&[data-intrail="true"]);
 
 @theme {
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --breakpoint-2xl: 1500px;
   --breakpoint-3xl: 1600px;
 
   /* Container sizes */
@@ -29,6 +24,30 @@
 
   --font-lato: var(--font-lato);
   --font-merriweather: var(--font-merriweather);
+}
+
+@layer components {
+  .local-footer .wysiwyg h2 {
+    font-size: 1.5em;
+  }
+
+  .local-footer .wysiwyg h3 {
+    font-size: 1.3em;
+  }
+
+  .local-footer .wysiwyg h4 {
+    font-size: 1.1em;
+  }
+
+  .wysiwyg > :first-child {
+    margin-top: 0;
+  }
+
+  .global-message a,
+  .global-message a:hover,
+  .global-message a:focus {
+    color: theme(--color-black);
+  }
 }
 
 /*  ANES Gradient Background Colors */
@@ -131,90 +150,54 @@
   list-style-type: upper-roman;
 }
 
-@layer components {
-  .centered {
-    max-width: calc(100vw - 32px);
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+@utility centered {
+  max-width: calc(100vw - 60px);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 
-    @media (min-width: theme(--breakpoint-sm)) {
-      max-width: calc(100vw - 40px);
-    }
-
-    @media (min-width: theme(--breakpoint-md)) {
-      max-width: calc(100vw - 48px);
-    }
-
-    @media (min-width: theme(--breakpoint-lg)) {
-      max-width: calc(100vw - 56px);
-    }
-
-    @media (min-width: theme(--breakpoint-xl)) {
-      max-width: calc(100vw - 64px);
-    }
-
-    @media (min-width: theme(--breakpoint-2xl)) {
-      max-width: calc(100vw - 72px);
-    }
-
-    @media (min-width: theme(--breakpoint-3xl)) {
-      max-width: calc(100vw - 80px);
-    }
+  @media (min-width: theme(--breakpoint-md)) {
+    max-width: calc(100vw - 100px);
   }
 
-  .gutters {
-    max-width: calc(100vw - 32px);
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-
-    /* Responsive max-widths based on screen margins */
-    @media (min-width: theme(--breakpoint-sm)) {
-      max-width: calc(100vw - 40px);
-    }
-
-    @media (min-width: theme(--breakpoint-md)) {
-      max-width: calc(100vw - 48px);
-    }
-
-    @media (min-width: theme(--breakpoint-lg)) {
-      max-width: calc(100vw - 56px);
-    }
-
-    @media (min-width: theme(--breakpoint-xl)) {
-      max-width: calc(100vw - 64px);
-    }
-
-    @media (min-width: theme(--breakpoint-2xl)) {
-      max-width: calc(100vw - 72px);
-    }
-
-    @media (min-width: theme(--breakpoint-3xl)) {
-      max-width: calc(100vw - 80px);
-    }
+  @media (min-width: theme(--breakpoint-lg)) {
+    max-width: calc(100vw - 160px);
   }
 
-  .local-footer .wysiwyg h2 {
-    font-size: 1.5em;
+  @media (min-width: theme(--breakpoint-xl)) {
+    max-width: calc(100vw - 200px);
+  }
+}
+
+@utility gutters {
+  max-width: calc(100vw - 32px);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* Responsive max-widths based on screen margins */
+  @media (min-width: theme(--breakpoint-sm)) {
+    max-width: calc(100vw - 40px);
   }
 
-  .local-footer .wysiwyg h3 {
-    font-size: 1.3em;
+  @media (min-width: theme(--breakpoint-md)) {
+    max-width: calc(100vw - 48px);
   }
 
-  .local-footer .wysiwyg h4 {
-    font-size: 1.1em;
+  @media (min-width: theme(--breakpoint-lg)) {
+    max-width: calc(100vw - 56px);
   }
 
-  .wysiwyg > :first-child {
-    margin-top: 0;
+  @media (min-width: theme(--breakpoint-xl)) {
+    max-width: calc(100vw - 64px);
   }
 
-  .global-message a,
-  .global-message a:hover,
-  .global-message a:focus {
-    color: theme(--color-black);
+  @media (min-width: theme(--breakpoint-2xl)) {
+    max-width: calc(100vw - 72px);
+  }
+
+  @media (min-width: theme(--breakpoint-3xl)) {
+    max-width: calc(100vw - 80px);
   }
 }
 
