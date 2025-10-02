@@ -7,7 +7,7 @@ import UserAnalytics from "@components/elements/user-analytics"
 import {twJoin} from "tailwind-merge"
 import GlobalPage from "@components/layouts/global-page"
 import {getHomePagePath} from "@lib/gql/gql-queries"
-import {Lato, Merriweather, Source_Sans_3, Source_Serif_4} from "next/font/google"
+import {Source_Sans_3, Source_Serif_4} from "next/font/google"
 import localFont from "next/font/local"
 
 const appleIcons: Icon[] = [60, 72, 76, 114, 120, 144, 152, 180].map(size => ({
@@ -35,21 +35,6 @@ const sourceSerif = Source_Serif_4({
   style: ["italic", "normal"],
   display: "swap",
   variable: "--font-source-serif",
-})
-
-const lato = Lato({
-  subsets: ["latin"],
-  style: ["italic", "normal"],
-  display: "swap",
-  variable: "--font-lato",
-  weight: "400",
-})
-
-const merriweather = Merriweather({
-  subsets: ["latin"],
-  style: ["italic", "normal"],
-  display: "swap",
-  variable: "--font-merriweather",
 })
 
 const stanford = localFont({

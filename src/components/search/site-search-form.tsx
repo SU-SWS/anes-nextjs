@@ -29,7 +29,7 @@ const SiteSearchForm = async ({inputValue, ...props}: Props) => {
           Search this site
         </label>
         <input
-          className="text-19 lg:border-black-20 w-full max-w-300 rounded-full px-20 py-5 lg:border"
+          className="h-15 lg:w-100 w-full rounded-full px-8 text-19 lg:border-black-20"
           type="text"
           placeholder="Search this site"
           id={inputId}
@@ -37,7 +37,7 @@ const SiteSearchForm = async ({inputValue, ...props}: Props) => {
           required
           defaultValue={inputValue}
         />
-        <button type="submit" className="absolute top-2 right-5">
+        <button type="submit" className="absolute right-5 top-2">
           <MagnifyingGlassIcon width={25} className="text-digital-red" />
           <span className="sr-only">Submit Search</span>
         </button>
