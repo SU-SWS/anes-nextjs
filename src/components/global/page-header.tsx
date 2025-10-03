@@ -1,5 +1,3 @@
-import SiteSearchForm from "@components/search/site-search-form"
-import MainMenu from "@components/menu/main-menu"
 import GlobalMessage from "@components/config-pages/global-message"
 import Lockup from "@components/elements/lockup/lockup"
 import {HTMLAttributes} from "react"

@@ -2,6 +2,7 @@ import {getConfigPageField} from "@lib/gql/gql-queries"
 import {StanfordBasicSiteSetting} from "@lib/gql/__generated__/drupal.d"
 import Button from "@components/elements/button"
 import Link from "@components/elements/link"
+import {MagnifyingGlassIcon} from "@heroicons/react/16/solid"
 
 const UtilityNav = async () => {
   const headerButton = await getConfigPageField<
@@ -28,7 +29,18 @@ const UtilityNav = async () => {
 
         {headerButton?.url && (
           <li className="mb-0">
-            <Button href={headerButton.url}>{headerButton.title}</Button>
+            <Button secondary href={headerButton.url} className="group font-semibold">
+              {headerButton.title}
+              {headerButton?.url.includes("search") && (
+                <span className="whitespace-nowrap">
+                  &#65279;
+                  <MagnifyingGlassIcon
+                    width={25}
+                    className="text-palo-alto-dark ml-4 inline-block transition group-hover:text-white group-focus:text-white"
+                  />
+                </span>
+              )}
+            </Button>
           </li>
         )}
       </ul>
