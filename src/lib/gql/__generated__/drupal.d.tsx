@@ -5531,7 +5531,7 @@ export type NodeQuery = {
               attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
             }
         >
-        body?: {__typename?: "TextSummary"; processed?: any | null} | null
+        body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
         suNewsBanner?:
           | {
               __typename: "MediaImage"
@@ -6043,7 +6043,7 @@ export type NodeQuery = {
             }
         >
         layoutSelection?: {__typename?: "LayoutLibrary"; id: string} | null
-        body?: {__typename?: "TextSummary"; processed?: any | null} | null
+        body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
         suBasicPageType?: Array<{
           __typename: "TermBasicPageType"
           uuid: string
@@ -7925,7 +7925,7 @@ export type NewsQuery = {
       suNewsHideSocial?: boolean | null
       uuid: string
       path?: string | null
-      body?: {__typename?: "TextSummary"; processed?: any | null} | null
+      body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
       suNewsBanner?:
         | {
             __typename: "MediaImage"
@@ -8135,7 +8135,7 @@ export type BasicPagesQuery = {
       uuid: string
       path?: string | null
       layoutSelection?: {__typename?: "LayoutLibrary"; id: string} | null
-      body?: {__typename?: "TextSummary"; processed?: any | null} | null
+      body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
       suBasicPageType?: Array<{
         __typename: "TermBasicPageType"
         uuid: string
@@ -10872,7 +10872,7 @@ export type FragmentNodeStanfordPageFragment = {
   __typename?: "NodeStanfordPage"
   suPageDescription?: string | null
   layoutSelection?: {__typename?: "LayoutLibrary"; id: string} | null
-  body?: {__typename?: "TextSummary"; processed?: any | null} | null
+  body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suBasicPageType?: Array<{
     __typename: "TermBasicPageType"
     uuid: string
@@ -11829,7 +11829,7 @@ export type FragmentNodeStanfordNewsFragment = {
   suNewsByline?: string | null
   suNewsDek?: string | null
   suNewsHideSocial?: boolean | null
-  body?: {__typename?: "TextSummary"; processed?: any | null} | null
+  body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suNewsBanner?:
     | {
         __typename: "MediaImage"
@@ -13546,7 +13546,7 @@ type FragmentNodeUnion_NodeStanfordNews_Fragment = {
         attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
       }
   >
-  body?: {__typename?: "TextSummary"; processed?: any | null} | null
+  body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suNewsBanner?:
     | {
         __typename: "MediaImage"
@@ -14060,7 +14060,7 @@ type FragmentNodeUnion_NodeStanfordPage_Fragment = {
       }
   >
   layoutSelection?: {__typename?: "LayoutLibrary"; id: string} | null
-  body?: {__typename?: "TextSummary"; processed?: any | null} | null
+  body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
   suBasicPageType?: Array<{
     __typename: "TermBasicPageType"
     uuid: string
@@ -14900,7 +14900,7 @@ export type FragmentNodeStanfordCourseTeaserFragment = {
       | {__typename?: "TermSuCourseTag"; uuid: string}
       | null
   }> | null
-  body?: {__typename?: "TextSummary"; processed?: any | null} | null
+  body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
 }
 
 export type FragmentNodeStanfordEventTeaserFragment = {
@@ -15239,7 +15239,7 @@ type FragmentNodeTeaserUnion_NodeStanfordCourse_Fragment = {
       | {__typename?: "TermSuCourseTag"; uuid: string}
       | null
   }> | null
-  body?: {__typename?: "TextSummary"; processed?: any | null} | null
+  body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
 }
 
 type FragmentNodeTeaserUnion_NodeStanfordEvent_Fragment = {
@@ -17047,7 +17047,7 @@ export type RouteQuery = {
                     attributes: {__typename?: "MetaTagValueAttributes"; name?: string | null; content?: string | null}
                   }
               >
-              body?: {__typename?: "TextSummary"; processed?: any | null} | null
+              body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
               suNewsBanner?:
                 | {
                     __typename: "MediaImage"
@@ -17603,7 +17603,7 @@ export type RouteQuery = {
                   }
               >
               layoutSelection?: {__typename?: "LayoutLibrary"; id: string} | null
-              body?: {__typename?: "TextSummary"; processed?: any | null} | null
+              body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
               suBasicPageType?: Array<{
                 __typename: "TermBasicPageType"
                 uuid: string
@@ -19283,7 +19283,7 @@ export type StanfordSharedTagsQuery = {
               | {__typename?: "TermSuCourseTag"; uuid: string}
               | null
           }> | null
-          body?: {__typename?: "TextSummary"; processed?: any | null} | null
+          body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
         }
       | {
           __typename: "NodeStanfordEvent"
@@ -19666,7 +19666,7 @@ export type SearchQuery = {
               | {__typename?: "TermSuCourseTag"; uuid: string}
               | null
           }> | null
-          body?: {__typename?: "TextSummary"; processed?: any | null} | null
+          body?: {__typename?: "TextSummary"; processed?: any | null; summary?: any | null} | null
         }
       | {
           __typename: "NodeStanfordEvent"
