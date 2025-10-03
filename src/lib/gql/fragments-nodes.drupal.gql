@@ -1,543 +1,546 @@
+
 fragment FragmentNodeInterface on NodeInterface {
-  __typename
-  uuid
-  title
-  path
+    __typename
+     uuid
+    title
+    path
 }
 
 fragment FragmentNodePage on NodeInterface {
-  ...FragmentNodeInterface
-  status
-  metatag {
-    ...FragmentMetaTag
-  }
+    ...FragmentNodeInterface
+    status
+    metatag {
+        ...FragmentMetaTag
+    }
 }
 
 fragment FragmentNodeStanfordPage on NodeStanfordPage {
-  layoutSelection {
-    id
-  }
-  body {
-    ...FragmentTextSummary
-  }
-  suBasicPageType {
-    ...FragmentTermInterface
-  }
-  suPageBanner {
-    ...FragmentParagraphInterface
-    ...FragmentParagraphStanfordBanner
-    ...FragmentParagraphStanfordPageTitleBanner
-  }
-  suPageComponents {
-    ...FragmentParagraphUnion
-  }
-  suPageDescription
-  suPageImage {
-    ...FragmentMediaUnion
-  }
+    layoutSelection {
+        id
+    }
+    body {
+        ...FragmentTextSummary
+    }
+    suBasicPageType {
+        ...FragmentTermInterface
+    }
+    suPageBanner {
+        ...FragmentParagraphInterface
+        ...FragmentParagraphStanfordBanner
+        ...FragmentParagraphStanfordPageTitleBanner
+    }
+    suPageComponents {
+        ...FragmentParagraphUnion
+    }
+    suPageDescription
+    suPageImage {
+        ...FragmentMediaUnion
+    }
 }
 
 fragment FragmentNodeStanfordCourse on NodeStanfordCourse {
-  body {
-    ...FragmentTextSummary
-  }
-  suCourseAcademicYear
-  suCourseCode
-  suCourseId
-  suCourseInstructors
-  suCourseLink {
-    url
-    title
-  }
-  suCourseQuarters {
-    ...FragmentTermInterface
-  }
-  suCourseSectionUnits
-  suCourseSubject {
-    ...FragmentTermInterface
-  }
-  suCourseTags {
-    ...FragmentTermInterface
-  }
+    body {
+        ...FragmentTextSummary
+    }
+    suCourseAcademicYear
+    suCourseCode
+    suCourseId
+    suCourseInstructors
+    suCourseLink {
+        url
+        title
+    }
+    suCourseQuarters {
+        ...FragmentTermInterface
+    }
+    suCourseSectionUnits
+    suCourseSubject {
+        ...FragmentTermInterface
+    }
+    suCourseTags {
+        ...FragmentTermInterface
+    }
 }
 
 fragment FragmentNodeStanfordEvent on NodeStanfordEvent {
-  body {
-    ...FragmentTextSummary
-  }
-  suEventAltLoc
-  suEventAudience {
-    ...FragmentTermInterface
-  }
-  suEventComponents {
-    ...FragmentParagraphUnion
-  }
-  suEventContactInfo
-  suEventCta {
-    url
-    title
-  }
-  suEventDateTime {
-    ...FragmentSmartDateType
-  }
-  suEventDek
-  suEventEmail
-  suEventGroups {
-    ...FragmentTermInterface
-  }
-  suEventKeywords {
-    ...FragmentTermInterface
-  }
-  suEventLocation {
-    ...FragmentAddressType
-  }
-  suEventMapLink {
-    url
-    title
-  }
-  suEventSchedule {
-    ...FragmentParagraphInterface
-    ...FragmentParagraphStanfordSchedule
-  }
-  suEventSource {
-    url
-    title
-  }
-  suEventSponsor
-  suEventSubheadline
-  suEventSubject {
-    ...FragmentTermInterface
-  }
-  suEventTelephone
-  suEventType {
-    ...FragmentTermInterface
-  }
+    body {
+        ...FragmentTextSummary
+    }
+    suEventAltLoc
+    suEventAudience {
+        ...FragmentTermInterface
+    }
+    suEventComponents {
+        ...FragmentParagraphUnion
+    }
+    suEventContactInfo
+    suEventCta {
+        url
+        title
+    }
+    suEventDateTime {
+        ...FragmentSmartDateType
+    }
+    suEventDek
+    suEventEmail
+    suEventGroups {
+        ...FragmentTermInterface
+    }
+    suEventKeywords {
+        ...FragmentTermInterface
+    }
+    suEventLocation {
+        ...FragmentAddressType
+    }
+    suEventMapLink {
+        url
+        title
+    }
+    suEventSchedule {
+        ...FragmentParagraphInterface
+        ...FragmentParagraphStanfordSchedule
+    }
+    suEventSource {
+        url
+        title
+    }
+    suEventSponsor
+    suEventSubheadline
+    suEventSubject {
+        ...FragmentTermInterface
+    }
+    suEventTelephone
+    suEventType {
+        ...FragmentTermInterface
+    }
 }
 
 fragment FragmentNodeStanfordEventSeries on NodeStanfordEventSeries {
-  suEventSeriesComponents {
-    ...FragmentParagraphUnion
-  }
-  suEventSeriesDek
-  suEventSeriesEvent {
-    ...FragmentNodeStanfordEventTeaser
-  }
-  suEventSeriesSubheadline
-  suEventSeriesType {
-    ...FragmentTermInterface
-  }
+    suEventSeriesComponents {
+        ...FragmentParagraphUnion
+    }
+    suEventSeriesDek
+    suEventSeriesEvent {
+        ...FragmentNodeStanfordEventTeaser
+    }
+    suEventSeriesSubheadline
+    suEventSeriesType {
+        ...FragmentTermInterface
+    }
 }
 
 fragment FragmentNodeStanfordNews on NodeStanfordNews {
-  body {
-    ...FragmentTextSummary
-  }
-  suNewsBanner {
-    ...FragmentMediaUnion
-  }
-  suNewsBannerMediaCaption
-  suNewsByline
-  suNewsComponents {
-    ...FragmentParagraphUnion
-  }
-  suNewsDek
-  suNewsFeaturedMedia {
-    ...FragmentMediaUnion
-  }
-  suNewsHideSocial
-  suNewsPublishingDate {
-    ...FragmentDateTime
-  }
-  suNewsSource {
-    url
-    title
-  }
-  suNewsTopics {
-    ...FragmentTermInterface
-  }
+    body {
+        ...FragmentTextSummary
+    }
+    suNewsBanner {
+        ...FragmentMediaUnion
+    }
+    suNewsBannerMediaCaption
+    suNewsByline
+    suNewsComponents {
+        ...FragmentParagraphUnion
+    }
+    suNewsDek
+    suNewsFeaturedMedia {
+        ...FragmentMediaUnion
+    }
+    suNewsHideSocial
+    suNewsPublishingDate {
+        ...FragmentDateTime
+    }
+    suNewsSource {
+        url
+        title
+    }
+    suNewsTopics {
+        ...FragmentTermInterface
+    }
 }
 
 fragment FragmentNodeStanfordPerson on NodeStanfordPerson {
-  body {
-    ...FragmentTextSummary
-  }
-  suPersonAcademicAppt
-  suPersonAdminAppts
-  suPersonAffiliations {
-    url
-    title
-  }
-  suPersonComponents {
-    ...FragmentParagraphUnion
-  }
-  suPersonEducation
-  suPersonEmail
-  suPersonFax
-  suPersonFirstName
-  suPersonFullTitle
-  suPersonLastName
-  suPersonLinks {
-    url
-    title
-  }
-  suPersonLocationAddress {
-    ...FragmentText
-  }
-  suPersonLocationName
-  suPersonMailCode
-  suPersonMapUrl {
-    url
-    title
-  }
-  suPersonMobilePhone
-  suPersonPhoto {
-    ...FragmentMediaImage
-  }
-  suPersonProfileLink {
-    url
-    title
-  }
-  suPersonPronouns
-  suPersonResearch {
-    ...FragmentText
-  }
-  suPersonResearchInterests
-  suPersonSource {
-    url
-  }
-  suPersonScholarlyInterests {
-    ...FragmentText
-  }
-  suPersonShortTitle
-  suPersonTelephone
-  suPersonTypeGroup {
-    ...FragmentTermInterface
-  }
+    body {
+        ...FragmentTextSummary
+    }
+    suPersonAcademicAppt
+    suPersonAdminAppts
+    suPersonAffiliations {
+        url
+        title
+    }
+    suPersonComponents {
+        ...FragmentParagraphUnion
+    }
+    suPersonEducation
+    suPersonEmail
+    suPersonFax
+    suPersonFirstName
+    suPersonFullTitle
+    suPersonLastName
+    suPersonLinks {
+        url
+        title
+    }
+    suPersonLocationAddress {
+        ...FragmentText
+    }
+    suPersonLocationName
+    suPersonMailCode
+    suPersonMapUrl {
+        url
+        title
+    }
+    suPersonMobilePhone
+    suPersonPhoto {
+        ...FragmentMediaImage
+    }
+    suPersonProfileLink {
+        url
+        title
+    }
+    suPersonPronouns
+    suPersonResearch {
+        ...FragmentText
+    }
+    suPersonResearchInterests
+    suPersonSource {
+        url
+    }
+    suPersonScholarlyInterests {
+        ...FragmentText
+    }
+    suPersonShortTitle
+    suPersonTelephone
+    suPersonTypeGroup {
+        ...FragmentTermInterface
+    }
 }
 
 fragment FragmentNodeStanfordPolicy on NodeStanfordPolicy {
-  body {
-    ...FragmentTextSummary
-  }
-  suPolicyAuthority
-  suPolicyAutoPrefix
-  suPolicyChangelog {
-    ...FragmentSuPolicyLog
-  }
-  suPolicyChapter
-  suPolicyEffective {
-    ...FragmentDateTime
-  }
-  suPolicyPolicyNum
-  suPolicyRelated {
-    ... on NodeInterface {
-      uuid
-      path
+    body {
+        ...FragmentTextSummary
     }
-  }
-  suPolicySubchapter
-  suPolicyTitle
-  suPolicyUpdated {
-    ...FragmentDateTime
-  }
-  suPolicySource {
-    url
-  }
-  book {
-    id
-    title
-    url
-    expanded
-    children {
-      id
-      title
-      url
-      expanded
-      children {
+    suPolicyAuthority
+    suPolicyAutoPrefix
+    suPolicyChangelog {
+        ...FragmentSuPolicyLog
+    }
+    suPolicyChapter
+    suPolicyEffective {
+        ...FragmentDateTime
+    }
+    suPolicyPolicyNum
+    suPolicyRelated {
+        ... on NodeInterface {
+            uuid
+            path
+        }
+    }
+    suPolicySubchapter
+    suPolicyTitle
+    suPolicyUpdated {
+        ...FragmentDateTime
+    }
+    suPolicySource {
+        url
+    }
+    book {
         id
         title
         url
         expanded
         children {
-          id
-          title
-          url
-          expanded
-          children {
             id
             title
             url
             expanded
             children {
-              id
-              title
-              url
-              expanded
+                id
+                title
+                url
+                expanded
+                children {
+                    id
+                    title
+                    url
+                    expanded
+                    children {
+                        id
+                        title
+                        url
+                        expanded
+                        children {
+                            id
+                            title
+                            url
+                            expanded
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
 }
 
 fragment FragmentNodeStanfordPublication on NodeStanfordPublication {
-  suPublicationAuthorRef {
-    ...FragmentNodeStanfordPersonTeaser
-  }
-  suPublicationComponents {
-    ...FragmentParagraphUnion
-  }
-  suPublicationCta {
-    ...FragmentLink
-  }
-  suPublicationImage {
-    ...FragmentMediaImage
-  }
-  suPublicationTopics {
-    ...FragmentTermInterface
-  }
+    suPublicationAuthorRef {
+        ...FragmentNodeStanfordPersonTeaser
+    }
+    suPublicationComponents {
+        ...FragmentParagraphUnion
+    }
+    suPublicationCta {
+        ...FragmentLink
+    }
+    suPublicationImage {
+        ...FragmentMediaImage
+    }
+    suPublicationTopics {
+        ...FragmentTermInterface
+    }
 }
 
+
 fragment FragmentNodeStanfordOpportunity on NodeStanfordOpportunity {
-  body {
-    ...FragmentTextSummary
-  }
-  suOppApplicationDeadline {
-    ...FragmentDateTime
-  }
-  suOppCardFooter {
-    ...FragmentText
-  }
-  suOppComponents {
-    ...FragmentParagraphUnion
-  }
-  suOppContactEmail
-  suOppContactName
-  suOppContactPhone
-  suOppContactUrl {
-    ...FragmentLink
-  }
-  suOppCourseCode
-  suOppCtaUrl {
-    ...FragmentLink
-  }
-  suOppEligibility {
-    ...FragmentText
-  }
-  suOppIcon {
-    iconName
-    style
-  }
-  suOppImage {
-    ...FragmentMediaImage
-  }
-  suOppLearnMore {
-    ...FragmentLink
-  }
-  suOppOpenDate {
-    ...FragmentDateTime
-  }
-  suOppPrerequisites {
-    ...FragmentText
-  }
-  suOppSource {
-    ...FragmentLink
-  }
-  suOppSponsor {
-    ...FragmentTermInterface
-  }
-  suOppStartDate {
-    ...FragmentDateTime
-  }
-  suOppStatus
-  suOppSummary {
-    ...FragmentText
-  }
-  suOppTags {
-    ...FragmentTermInterface
-  }
-  suOppType {
-    ...FragmentTermInterface
-  }
-  suOppUnits {
-    ...FragmentTermInterface
-  }
+    body {
+        ...FragmentTextSummary
+    }
+    suOppApplicationDeadline {
+        ...FragmentDateTime
+    }
+    suOppCardFooter {
+        ...FragmentText
+    }
+    suOppComponents {
+        ...FragmentParagraphUnion
+    }
+    suOppContactEmail
+    suOppContactName
+    suOppContactPhone
+    suOppContactUrl {
+        ...FragmentLink
+    }
+    suOppCourseCode
+    suOppCtaUrl {
+        ...FragmentLink
+    }
+    suOppEligibility {
+        ...FragmentText
+    }
+    suOppIcon {
+        iconName
+        style
+    }
+    suOppImage {
+        ...FragmentMediaImage
+    }
+    suOppLearnMore {
+        ...FragmentLink
+    }
+    suOppOpenDate {
+        ...FragmentDateTime
+    }
+    suOppPrerequisites {
+        ...FragmentText
+    }
+    suOppSource {
+        ...FragmentLink
+    }
+    suOppSponsor {
+        ...FragmentTermInterface
+    }
+    suOppStartDate {
+        ...FragmentDateTime
+    }
+    suOppStatus
+    suOppSummary {
+        ...FragmentText
+    }
+    suOppTags {
+        ...FragmentTermInterface
+    }
+    suOppType {
+        ...FragmentTermInterface
+    }
+    suOppUnits {
+        ...FragmentTermInterface
+    }
 }
 
 fragment FragmentNodeUnion on NodeUnion {
-  ...FragmentNodePage
-  ...FragmentNodeStanfordCourse
-  ...FragmentNodeStanfordEvent
-  ...FragmentNodeStanfordEventSeries
-  ...FragmentNodeStanfordNews
-  ...FragmentNodeStanfordPage
-  ...FragmentNodeStanfordPerson
-  ...FragmentNodeStanfordPolicy
-  ...FragmentNodeStanfordPublication
-  ...FragmentNodeStanfordOpportunity
+    ...FragmentNodePage
+    ...FragmentNodeStanfordCourse
+    ...FragmentNodeStanfordEvent
+    ...FragmentNodeStanfordEventSeries
+    ...FragmentNodeStanfordNews
+    ...FragmentNodeStanfordPage
+    ...FragmentNodeStanfordPerson
+    ...FragmentNodeStanfordPolicy
+    ...FragmentNodeStanfordPublication
+    ...FragmentNodeStanfordOpportunity
 }
 
 fragment FragmentNodeStanfordCourseTeaser on NodeStanfordCourse {
-  suCourseSubject {
-    ...FragmentTermInterface
-  }
-  suCourseAcademicYear
-  suCourseCode
-  suCourseQuarters {
-    ...FragmentTermInterface
-  }
-  suCourseInstructors
-  body {
-    ...FragmentTextSummary
-  }
+    suCourseSubject {
+        ...FragmentTermInterface
+    }
+    suCourseAcademicYear
+    suCourseCode
+    suCourseQuarters {
+        ...FragmentTermInterface
+    }
+    suCourseInstructors
+    body {
+        ...FragmentTextSummary
+    }
 }
 
 fragment FragmentNodeStanfordEventTeaser on NodeStanfordEvent {
-  suEventAltLoc
-  suEventSubheadline
-  suEventDek
-  suEventAltLoc
-  suEventLocation {
-    ...FragmentAddressType
-  }
-  suEventDateTime {
-    ...FragmentSmartDateType
-  }
-  suEventType {
-    ...FragmentTermInterface
-  }
-  suEventSource {
-    url
-    title
-  }
+    suEventAltLoc
+    suEventSubheadline
+    suEventDek
+    suEventAltLoc
+    suEventLocation {
+        ...FragmentAddressType
+    }
+    suEventDateTime {
+        ...FragmentSmartDateType
+    }
+    suEventType {
+        ...FragmentTermInterface
+    }
+    suEventSource {
+        url
+        title
+    }
 }
 
 fragment FragmentNodeStanfordEventSeriesTeaser on NodeStanfordEventSeries {
-  suEventSeriesDek
+    suEventSeriesDek
 }
 
 fragment FragmentNodeStanfordNewsTeaser on NodeStanfordNews {
-  suNewsDek
-  suNewsFeaturedMedia {
-    ...FragmentMediaImage
-  }
-  suNewsTopics {
-    ...FragmentTermInterface
-  }
-  suNewsPublishingDate {
-    ...FragmentDateTime
-  }
-  suNewsSource {
-    url
-  }
+    suNewsDek
+    suNewsFeaturedMedia {
+        ...FragmentMediaImage
+    }
+    suNewsTopics {
+        ...FragmentTermInterface
+    }
+    suNewsPublishingDate {
+        ...FragmentDateTime
+    }
+    suNewsSource {
+        url
+    }
 }
 
 fragment FragmentNodeStanfordPageTeaser on NodeStanfordPage {
-  suPageDescription
-  suPageImage {
-    ...FragmentMediaImage
-  }
-  suPageBanner {
-    ...FragmentParagraphInterface
-    ... on ParagraphStanfordBanner {
-      suBannerImage {
+    suPageDescription
+    suPageImage {
         ...FragmentMediaImage
-      }
     }
-    ...FragmentParagraphStanfordPageTitleBanner
-  }
+    suPageBanner {
+        ...FragmentParagraphInterface
+        ... on ParagraphStanfordBanner {
+            suBannerImage {
+                ...FragmentMediaImage
+            }
+        }
+        ...FragmentParagraphStanfordPageTitleBanner
+    }
 }
 
 fragment FragmentNodeStanfordPersonTeaser on NodeStanfordPerson {
-  suPersonPhoto {
-    ...FragmentMediaImage
-  }
-  suPersonFullTitle
-  suPersonShortTitle
-  suPersonSource {
-    url
-  }
+    suPersonPhoto {
+        ...FragmentMediaImage
+    }
+    suPersonFullTitle
+    suPersonShortTitle
+    suPersonSource {
+        url
+    }
 }
 
 fragment FragmentNodeStanfordPolicyTeaser on NodeStanfordPolicy {
-  body {
-    ...FragmentTextSummary
-  }
-  suPolicyUpdated {
-    ...FragmentDateTime
-  }
-  suPolicySource {
-    url
-  }
+    body {
+        ...FragmentTextSummary
+    }
+    suPolicyUpdated {
+        ...FragmentDateTime
+    }
+    suPolicySource {
+        url
+    }
 }
 
 fragment FragmentNodeStanfordPublicationTeaser on NodeStanfordPublication {
-  suPublicationTopics {
-    ...FragmentTermInterface
-  }
-  suPublicationCitation {
-    ... on CitationInterface {
-      uuid
-      title
-      ... on CitationSuArticleNewspaper {
-        apa
-        chicago
-      }
-      ... on CitationSuBook {
-        apa
-        chicago
-      }
-      ... on CitationSuArticleJournal {
-        apa
-        chicago
-      }
-      ... on CitationSuOther {
-        apa
-        chicago
-      }
-      ... on CitationSuThesi {
-        apa
-        chicago
-      }
+    suPublicationTopics {
+        ...FragmentTermInterface
     }
-  }
+    suPublicationCitation {
+        ... on CitationInterface {
+            uuid
+            title
+            ... on CitationSuArticleNewspaper {
+                apa
+                chicago
+            }
+            ... on CitationSuBook {
+                apa
+                chicago
+            }
+            ... on CitationSuArticleJournal {
+                apa
+                chicago
+            }
+            ... on CitationSuOther {
+                apa
+                chicago
+            }
+            ... on CitationSuThesi {
+                apa
+                chicago
+            }
+        }
+    }
 }
 
+
 fragment FragmentNodeStanfordOpportunityTeaser on NodeStanfordOpportunity {
-  suOppCardFooter {
-    ...FragmentText
-  }
-  suOppIcon {
-    iconName
-    style
-  }
-  suOppImage {
-    ...FragmentMediaImage
-  }
-  suOppSummary {
-    ...FragmentText
-  }
-  suOppSource {
-    url
-  }
-  suOppSponsor {
-    ...FragmentTermInterface
-  }
-  suOppType {
-    ...FragmentTermInterface
-  }
+    suOppCardFooter {
+        ...FragmentText
+    }
+    suOppIcon {
+        iconName
+        style
+    }
+    suOppImage {
+        ...FragmentMediaImage
+    }
+    suOppSummary {
+        ...FragmentText
+    }
+    suOppSource {
+        url
+    }
+    suOppSponsor {
+        ...FragmentTermInterface
+    }
+    suOppType {
+        ...FragmentTermInterface
+    }
 }
 
 fragment FragmentNodeTeaserUnion on NodeUnion {
-  ...FragmentNodeInterface
-  ...FragmentNodeStanfordCourseTeaser
-  ...FragmentNodeStanfordEventTeaser
-  ...FragmentNodeStanfordEventSeriesTeaser
-  ...FragmentNodeStanfordNewsTeaser
-  ...FragmentNodeStanfordPageTeaser
-  ...FragmentNodeStanfordPersonTeaser
-  ...FragmentNodeStanfordPolicyTeaser
-  ...FragmentNodeStanfordPublicationTeaser
-  ...FragmentNodeStanfordOpportunityTeaser
+    ...FragmentNodeInterface
+    ...FragmentNodeStanfordCourseTeaser
+    ...FragmentNodeStanfordEventTeaser
+    ...FragmentNodeStanfordEventSeriesTeaser
+    ...FragmentNodeStanfordNewsTeaser
+    ...FragmentNodeStanfordPageTeaser
+    ...FragmentNodeStanfordPersonTeaser
+    ...FragmentNodeStanfordPolicyTeaser
+    ...FragmentNodeStanfordPublicationTeaser
+    ...FragmentNodeStanfordOpportunityTeaser
 }
