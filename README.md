@@ -3,11 +3,20 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 ### Setup Local Environment Variables:
-1. copy .env.example to .env.local
-2. The only necessary variable is the `NEXT_PUBLIC_DRUPAL_BASE_URL`. Set this to your local drupal installation url.
+1. Clone the repo
+      * `git clone git@github.com:SU-SWS/anes-nextjs.git`
+      * `cd anes-nextjs`
+1. Copy `.env.example` to `.env.local`
+      * `cp .env.example .env.local`
+1. Set `NEXT_PUBLIC_DRUPAL_BASE_URL` (with protocol) and `NEXT_IMAGE_DOMAIN` (without protocol) to your local drupal installation url. E.g.,:
+      * `NEXT_PUBLIC_DRUPAL_BASE_URL=http://anes.lagunita.loc`
+      * `NEXT_IMAGE_DOMAIN=anes.lagunita.loc`
+1. Get the rest of the env.local configuration from the lead developer for the application.
+      * There are credentials that need to be added that are currently not stored in a place to pull from. These are `DRUPAL_REVALIDATE_SECRET`, `DRUPAL_PREVIEW_SECRET`, and `DRUPAL_BASIC_AUTH`.
+
   
 ### Set Up Drupal Environment (Optional)
-You can configure your Drupal environment to use this as a "preview".
+You can configure your Drupal environment to use this as a "preview". **If you have synced the Drupal site locally and received the configuration from the lead developer, some of these steps can be skipped**.
 
 1. In the Drupal environment, go to `/admin/config/services/next/sites/add` page.
 2. Enter a label of your choice.
