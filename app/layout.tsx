@@ -9,6 +9,7 @@ import GlobalPage from "@components/layouts/global-page"
 import {getHomePagePath} from "@lib/gql/gql-queries"
 import {Source_Sans_3, Source_Serif_4} from "next/font/google"
 import localFont from "next/font/local"
+import {getRandomGradient} from "@lib/utils/gradients"
 
 const appleIcons: Icon[] = [60, 72, 76, 114, 120, 144, 152, 180].map(size => ({
   url: `https://www-media.stanford.edu/assets/favicon/apple-touch-icon-${size}x${size}.png`,
@@ -56,11 +57,12 @@ export const metadata = {
 
 const RootLayout = async ({children, modal}: {children: React.ReactNode; modal: React.ReactNode}) => {
   const homePath = await getHomePagePath()
+  const gradient = getRandomGradient()
   return (
     <html lang="en" className={twJoin(sourceSans3.variable, sourceSerif.variable, stanford.variable)}>
       <UserAnalytics />
       <DrupalWindowSync homePath={homePath} />
-      <body>
+      <body className={gradient}>
         <nav aria-label="Skip Links">
           <a href="#main-content" className="skiplink">
             Skip to main content
