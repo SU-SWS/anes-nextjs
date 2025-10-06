@@ -133,9 +133,9 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
       {paragraph.suStatButton?.url && (
         <Link
           className={twMerge(
-            clsx("group flex w-fit items-center gap-3 text-black no-underline hocus:underline", {
+            clsx("group hocus:underline flex w-fit items-center gap-3 text-black no-underline", {
               "border border-black px-7 py-5": paragraph.suStatLinkStyle === "button",
-              "border-white text-white hocus:text-white": whiteText,
+              "hocus:text-white border-white text-white": whiteText,
               "mx-auto": paragraph.suStatCentered,
             })
           )}
@@ -144,7 +144,7 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
           {paragraph.suStatButton.title}
 
           {paragraph.suStatLinkStyle !== "button" && (
-            <ChevronRightIcon className="shrink-0 transition-all group-hocus:translate-x-1.5" width={20} />
+            <ChevronRightIcon className="group-hocus:translate-x-1.5 shrink-0 transition-all" width={20} />
           )}
         </Link>
       )}

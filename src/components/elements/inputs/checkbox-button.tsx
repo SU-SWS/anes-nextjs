@@ -17,9 +17,9 @@ const CheckboxButton = ({value, onChange, inputProps, children, ...props}: Props
         value={value}
         className="peer relative -left-[999px] h-0 w-0"
       />
-      <span className="block h-10 w-10 rounded border border-black peer-checked:hidden peer-focus-visible:bg-cardinal-red" />
+      <span className="peer-focus-visible:bg-cardinal-red block h-10 w-10 rounded border border-black peer-checked:hidden" />
       <CheckIcon
-        className="hidden rounded border border-black peer-checked:block peer-focus-visible:bg-cardinal-red peer-focus-visible:text-white"
+        className="peer-focus-visible:bg-cardinal-red hidden rounded border border-black peer-checked:block peer-focus-visible:text-white"
         width={25}
       />
       <span className="block peer-hover:underline peer-focus-visible:underline">{children}</span>

@@ -17,7 +17,7 @@ const GalleryParagraph = ({paragraph, ...props}: Props) => {
   return (
     <GalleryWrapper
       {...props}
-      className={twMerge("centered mb-20 flex flex-col gap-10 @container xl:max-w-[980px]", props.className)}
+      className={twMerge("centered @container mb-20 flex flex-col gap-10 xl:max-w-[980px]", props.className)}
       aria-labelledby={paragraph.suGalleryHeadline ? paragraph.uuid : undefined}
     >
       {paragraph.suGalleryHeadline && (
@@ -29,7 +29,7 @@ const GalleryParagraph = ({paragraph, ...props}: Props) => {
       <Wysiwyg html={paragraph.suGalleryDescription?.processed} />
 
       {paragraph.suGalleryImages && paragraph.suGalleryImages?.length > 0 && (
-        <ul className="list-unstyled grid gap-20 @5xl:grid-cols-2 @9xl:grid-cols-3">
+        <ul className="list-unstyled @9xl:grid-cols-3 grid gap-20 @5xl:grid-cols-2">
           {paragraph.suGalleryImages.map(image => (
             <li key={image.uuid} className="m-0">
               <GalleryImage image={image} galleryId={paragraph.uuid} />

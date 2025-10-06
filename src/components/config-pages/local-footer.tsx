@@ -60,7 +60,7 @@ const LocalFooter = async ({...props}: Props) => {
           <FooterLockup {...lockupProps} />
         </div>
 
-        <div className="grid gap-32 md:grid-cols-2 lg:grid-cols-4 [&_a:focus]:text-black [&_a:focus]:underline [&_a:hover]:text-black [&_a:hover]:underline [&_a]:font-normal [&_a]:no-underline [&_a]:transition">
+        <div className="grid gap-32 md:grid-cols-2 lg:grid-cols-4 [&_a]:font-normal [&_a]:no-underline [&_a]:transition [&_a:focus]:text-black [&_a:focus]:underline [&_a:hover]:text-black [&_a:hover]:underline">
           <div className="space-y-12">
             {localFooterConfig.suLocalFootAddress && <Address {...localFooterConfig.suLocalFootAddress} />}
 
@@ -87,7 +87,7 @@ const LocalFooter = async ({...props}: Props) => {
                     <li key={`footer-action-link-${index}`}>
                       <Link
                         href={link.url}
-                        className="block rounded-full border border-transparent p-2 hocus:border-digital-blue [&_svg]:fill-black hocus:[&_svg]:fill-digital-blue"
+                        className="hocus:border-digital-blue hocus:[&_svg]:fill-digital-blue block rounded-full border border-transparent p-2 [&_svg]:fill-black"
                       >
                         <SocialIcon url={link.url} />
                         <span className="sr-only">{link.title}</span>
@@ -238,7 +238,7 @@ const FooterLockup = ({useDefault = true, siteName, lockupOption, ...props}: Foo
         <LockupLogo {...lockupProps} />
 
         <div className="w-[1px] shrink-0 bg-black" />
-        <div className="type-3 font-normal leading-none text-black">{siteName || "University"}</div>
+        <div className="type-3 leading-none font-normal text-black">{siteName || "University"}</div>
       </Link>
     </div>
   )

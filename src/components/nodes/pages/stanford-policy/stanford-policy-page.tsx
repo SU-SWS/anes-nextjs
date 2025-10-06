@@ -99,7 +99,7 @@ const StanfordPolicyPage = async ({node, ...props}: Props) => {
           )}
 
           {changeLog.length > 0 && (
-            <div className="mb-10 border border-black-40 bg-black-10 p-20">
+            <div className="border-black-40 bg-black-10 mb-10 border p-20">
               <H2 className="type-2">Change log:</H2>
 
               {changeLog.map(change => (
@@ -176,7 +176,7 @@ const ChildTeaser = async ({path}: {path: NodeInterface["path"]}) => {
   if (!queryResponse.entity) return
 
   return (
-    <li className="mb-16 border-b border-black-20 pb-16 last:border-b-0 [&_p]:mb-0">
+    <li className="border-black-20 mb-16 border-b pb-16 last:border-b-0 [&_p]:mb-0">
       <StanfordPolicyListItem node={queryResponse.entity} />
     </li>
   )

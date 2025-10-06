@@ -20,7 +20,7 @@ const UtilityNav = async () => {
       <ul className="list-unstyled flex items-center gap-10">
         {headerLinks?.map((link, i) => (
           <li key={`utility-link-${i}`} className="mb-0">
-            <Link className="text-black no-underline hocus:underline" href={link.url || "#"}>
+            <Link className="hocus:underline text-black no-underline" href={link.url || "#"}>
               {link.title}
             </Link>
           </li>
