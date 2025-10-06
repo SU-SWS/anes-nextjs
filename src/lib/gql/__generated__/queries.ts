@@ -593,7 +593,7 @@ export const FragmentDateTimeFragmentDoc = gql`
 export const FragmentNodeStanfordNewsFragmentDoc = gql`
     fragment FragmentNodeStanfordNews on NodeStanfordNews {
   body {
-    processed
+    ...FragmentTextSummary
   }
   suNewsBanner {
     ...FragmentMediaUnion
@@ -619,7 +619,8 @@ export const FragmentNodeStanfordNewsFragmentDoc = gql`
     ...FragmentTermInterface
   }
 }
-    ${FragmentMediaUnionFragmentDoc}
+    ${FragmentTextSummaryFragmentDoc}
+${FragmentMediaUnionFragmentDoc}
 ${FragmentParagraphUnionFragmentDoc}
 ${FragmentDateTimeFragmentDoc}
 ${FragmentTermInterfaceFragmentDoc}`;
@@ -636,7 +637,7 @@ export const FragmentNodeStanfordPageFragmentDoc = gql`
     id
   }
   body {
-    processed
+    ...FragmentTextSummary
   }
   suBasicPageType {
     ...FragmentTermInterface
@@ -654,7 +655,8 @@ export const FragmentNodeStanfordPageFragmentDoc = gql`
     ...FragmentMediaUnion
   }
 }
-    ${FragmentTermInterfaceFragmentDoc}
+    ${FragmentTextSummaryFragmentDoc}
+${FragmentTermInterfaceFragmentDoc}
 ${FragmentParagraphInterfaceFragmentDoc}
 ${FragmentParagraphStanfordBannerFragmentDoc}
 ${FragmentParagraphStanfordPageTitleBannerFragmentDoc}
@@ -953,10 +955,11 @@ export const FragmentNodeStanfordCourseTeaserFragmentDoc = gql`
   }
   suCourseInstructors
   body {
-    processed
+    ...FragmentTextSummary
   }
 }
-    ${FragmentTermInterfaceFragmentDoc}`;
+    ${FragmentTermInterfaceFragmentDoc}
+${FragmentTextSummaryFragmentDoc}`;
 export const FragmentNodeStanfordEventSeriesTeaserFragmentDoc = gql`
     fragment FragmentNodeStanfordEventSeriesTeaser on NodeStanfordEventSeries {
   suEventSeriesDek

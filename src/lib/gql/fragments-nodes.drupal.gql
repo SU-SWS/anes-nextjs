@@ -19,7 +19,7 @@ fragment FragmentNodeStanfordPage on NodeStanfordPage {
         id
     }
     body {
-        processed
+        ...FragmentTextSummary
     }
     suBasicPageType {
         ...FragmentTermInterface
@@ -131,7 +131,7 @@ fragment FragmentNodeStanfordEventSeries on NodeStanfordEventSeries {
 
 fragment FragmentNodeStanfordNews on NodeStanfordNews {
     body {
-        processed
+        ...FragmentTextSummary
     }
     suNewsBanner {
         ...FragmentMediaUnion
@@ -391,7 +391,7 @@ fragment FragmentNodeStanfordCourseTeaser on NodeStanfordCourse {
     }
     suCourseInstructors
     body {
-        processed
+        ...FragmentTextSummary
     }
 }
 
