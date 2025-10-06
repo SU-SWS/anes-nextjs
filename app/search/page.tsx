@@ -35,7 +35,7 @@ const Page = async (props: {searchParams?: Promise<Record<string, string>>}) => 
 
   return (
     <div className="centered mt-32">
-      <div className="mx-auto 3xl:w-10/12">
+      <div className="3xl:w-10/12 mx-auto">
         <H1 className="mb-44" id="page-title">
           Search
         </H1>

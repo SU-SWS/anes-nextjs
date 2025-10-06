@@ -40,12 +40,12 @@ const GlobalMessage = async () => {
           <Wysiwyg
             html={globalMessageConfig.suGlobalMsgMessage?.processed}
             className={twMerge(
-              "[&_a.btn]:border-2 [&_a]:no-underline [&_a]:hocus:underline",
+              "[&_a]:hocus:underline [&_a]:no-underline [&_a.btn]:border-2",
               clsx({
-                "[&_a.btn]:border-white [&_a.btn]:bg-transparent [&_a]:text-white": !["warning", "plain"].includes(
+                "[&_a]:text-white [&_a.btn]:border-white [&_a.btn]:bg-transparent": !["warning", "plain"].includes(
                   globalMessageConfig.suGlobalMsgType
                 ),
-                "[&_a.btn]:border-black [&_a.btn]:bg-transparent [&_a]:text-black [&_a]:hocus:text-black": [
+                "[&_a]:hocus:text-black [&_a]:text-black [&_a.btn]:border-black [&_a.btn]:bg-transparent": [
                   "warning",
                   "plain",
                 ].includes(globalMessageConfig.suGlobalMsgType),
@@ -57,10 +57,10 @@ const GlobalMessage = async () => {
             <Link
               href={globalMessageConfig.suGlobalMsgLink.url}
               className={twMerge(
-                "no-underline hocus:underline",
+                "hocus:underline no-underline",
                 clsx({
-                  "text-white hocus:text-white": !["warning", "plain"].includes(globalMessageConfig.suGlobalMsgType),
-                  "text-black hocus:text-black": ["warning", "plain"].includes(globalMessageConfig.suGlobalMsgType),
+                  "hocus:text-white text-white": !["warning", "plain"].includes(globalMessageConfig.suGlobalMsgType),
+                  "hocus:text-black text-black": ["warning", "plain"].includes(globalMessageConfig.suGlobalMsgType),
                 })
               )}
             >

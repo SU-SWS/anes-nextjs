@@ -18,7 +18,7 @@ const RadioButton = ({value, name, onRadioChange, inputProps, children, ...props
         name={name}
         className="peer relative -left-[999px] h-0 w-0"
       />
-      <span className="realtive m-1 block h-10 w-10 rounded-full border-3 border-white outline outline-1 outline-black transition-colors peer-checked:bg-black peer-hover:bg-cardinal-red peer-focus-visible:bg-cardinal-red" />
+      <span className="realtive peer-hover:bg-cardinal-red peer-focus-visible:bg-cardinal-red m-1 block h-10 w-10 rounded-full border-3 border-white outline outline-1 outline-black transition-colors peer-checked:bg-black" />
       <span className="block peer-hover:underline peer-focus-visible:underline">{children}</span>
     </label>
   )

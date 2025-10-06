@@ -54,7 +54,7 @@ const StanfordOpportunityPage = async ({node, ...props}: Props) => {
       <div className="mx-auto mb-20 flex flex-col gap-20 lg:w-10/12 lg:flex-row">
         <div className="lg:w-9/12">
           {(node.suOppEligibility?.processed || node.suOppPrerequisites?.processed) && (
-            <div className="mb-20 flex flex-col gap-20 bg-black-10 bg-opacity-80 p-10">
+            <div className="bg-black-10 bg-opacity-80 mb-20 flex flex-col gap-20 p-10">
               {node.suOppEligibility && (
                 <div>
                   <H2 className="text-3xl">Eligibility</H2>
@@ -73,9 +73,9 @@ const StanfordOpportunityPage = async ({node, ...props}: Props) => {
 
           <Wysiwyg html={node.body?.processed} />
         </div>
-        <div className="border-t border-black-30 lg:w-3/12">
+        <div className="border-black-30 border-t lg:w-3/12">
           {(node.suOppType || node.suOppCourseCode || node.suOppUnits) && (
-            <div className="flex flex-col gap-8 border-b border-black-30 px-5 py-16">
+            <div className="border-black-30 flex flex-col gap-8 border-b px-5 py-16">
               {node.suOppType && (
                 <div className="font-semibold">{node.suOppType.map(type => type.name).join(", ")}</div>
               )}
@@ -93,7 +93,7 @@ const StanfordOpportunityPage = async ({node, ...props}: Props) => {
           )}
 
           {node.suOppApplicationDeadline && (
-            <div className="border-b border-black-30 px-5 py-16">
+            <div className="border-black-30 border-b px-5 py-16">
               <div className="font-semibold">Application Deadline</div>
               {new Date(node.suOppApplicationDeadline.time)
                 .toLocaleString("en-us", {
@@ -142,7 +142,7 @@ const FilterTerms = async ({terms}: {terms: TermOpportunityTagFilter[]}) => {
     }
   })
   return (
-    <div className="flex flex-col gap-8 border-b border-black-30 px-5 py-16">
+    <div className="border-black-30 flex flex-col gap-8 border-b px-5 py-16">
       {groups.map(group => (
         <div key={group.uuid}>
           <H2 className="text-3xl">{group.name}</H2>

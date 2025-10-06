@@ -60,7 +60,7 @@ const DrupalLink = ({href, showExtLinkIcon, className, children, ...props}: Link
         {externalLink && (
           <ArrowUpRightIcon
             height={20}
-            className="ml-2 inline-block transition-all group-hocus-visible:translate-x-2"
+            className="group-hocus-visible:translate-x-2 ml-2 inline-block transition-all"
           />
         )}
       </Button>
@@ -75,7 +75,7 @@ const DrupalLink = ({href, showExtLinkIcon, className, children, ...props}: Link
       {externalLink && (
         <ArrowUpRightIcon
           height={20}
-          className="ml-2 inline-block transition-all group-hocus-visible:-translate-y-1 group-hocus-visible:translate-x-1"
+          className="group-hocus-visible:-translate-y-1 group-hocus-visible:translate-x-1 ml-2 inline-block transition-all"
         />
       )}
     </Link>

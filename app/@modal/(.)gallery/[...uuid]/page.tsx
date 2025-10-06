@@ -62,7 +62,7 @@ const Page = async (props: Props) => {
                   {prevImageIndex >= 0 && (
                     <li className="mr-auto">
                       <Link
-                        className="text-white no-underline hocus:text-white hocus:underline"
+                        className="hocus:text-white hocus:underline text-white no-underline"
                         href={`/gallery/${paragraph.uuid}/${paragraph.suGalleryImages?.[prevImageIndex].uuid}`}
                         replace={true}
                         scroll={false}
@@ -74,7 +74,7 @@ const Page = async (props: Props) => {
                   {nextImageIndex >= 0 && (
                     <li className="ml-auto">
                       <Link
-                        className="text-white no-underline hocus:text-white hocus:underline"
+                        className="hocus:text-white hocus:underline text-white no-underline"
                         href={`/gallery/${paragraph.uuid}/${paragraph.suGalleryImages?.[nextImageIndex].uuid}`}
                         replace={true}
                         scroll={false}

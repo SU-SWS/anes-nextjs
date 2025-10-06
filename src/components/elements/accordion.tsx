@@ -88,7 +88,7 @@ const Accordion = ({
       <Heading id={`${id}-button`}>
         <button
           {...buttonProps}
-          className={twMerge("flex w-full items-center text-left hocus-visible:underline", buttonProps?.className)}
+          className={twMerge("hocus-visible:underline flex w-full items-center text-left", buttonProps?.className)}
           aria-expanded={isExpanded}
           aria-controls={`${id}-panel`}
           onClick={onButtonClick}

@@ -21,7 +21,7 @@ const SocialIcons = ({...props}) => {
     <div {...props}>
       <a
         href={`http://www.facebook.com/sharer.php?u=${path}&display=popup`}
-        className="text-black transition hocus:text-digital-blue"
+        className="hocus:text-digital-blue text-black transition"
       >
         <FacebookIcon />
         <span className="sr-only">Facebook</span>
@@ -29,23 +29,23 @@ const SocialIcons = ({...props}) => {
 
       <a
         href={`https://twitter.com/intent/tweet?url=${path}&text=`}
-        className="text-black transition hocus:text-digital-blue"
+        className="hocus:text-digital-blue text-black transition"
       >
         <TwitterIcon />
         <span className="sr-only">Twitter</span>
       </a>
       <a
         href={`https://www.linkedin.com/shareArticle?mini=true&url=${path}&title=&summary=`}
-        className="text-black transition hocus:text-digital-blue"
+        className="hocus:text-digital-blue text-black transition"
       >
         <LinkedInIcon />
         <span className="sr-only">LinkedIn</span>
       </a>
-      <a href={`mailto:?subject=${subject}&body=${path}`} className="text-black transition hocus:text-digital-blue">
+      <a href={`mailto:?subject=${subject}&body=${path}`} className="hocus:text-digital-blue text-black transition">
         <EnvelopeIcon width={30} />
         <span className="sr-only">Email</span>
       </a>
-      <button onClick={() => window.print()} className="text-black transition hocus:text-digital-blue">
+      <button onClick={() => window.print()} className="hocus:text-digital-blue text-black transition">
         <PrinterIcon width={30} />
         <span className="sr-only">Print</span>
       </button>

@@ -33,7 +33,7 @@ const MediaCaptionParagraph = async ({paragraph, ...props}: Props) => {
       )}
       {videoUrl && <Oembed url={videoUrl} />}
 
-      <figcaption className="color type-0 text-right text-cool-grey">
+      <figcaption className="color type-0 text-cool-grey text-right">
         {paragraph.suMediaCaptionLink?.url && (
           <Link href={paragraph.suMediaCaptionLink.url}>{paragraph.suMediaCaptionLink.title}</Link>
         )}

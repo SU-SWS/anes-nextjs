@@ -45,7 +45,7 @@ const FaqParagraph = ({paragraph, ...props}: Props) => {
       <div>
         {paragraph.suFaqQuestions?.map(question => (
           <Accordion
-            className="border-t border-black-40 last:border-b"
+            className="border-black-40 border-t last:border-b"
             buttonProps={{className: "mt-6"}}
             key={question.uuid}
             button={question.suAccordionTitle}

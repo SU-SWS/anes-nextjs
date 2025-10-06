@@ -36,7 +36,7 @@ const InterceptionModal = ({children, ...props}: HtmlHTMLAttributes<HTMLDialogEl
       returnFocus
       as="dialog"
       ref={overlay}
-      className={twMerge("fixed left-0 top-0 z-[10000] h-lvh w-screen bg-black-true bg-opacity-90", props.className)}
+      className={twMerge("bg-black-true bg-opacity-90 fixed top-0 left-0 z-[10000] h-lvh w-screen", props.className)}
       onClick={onClick}
       lockProps={{open: true}}
       {...props}
@@ -48,11 +48,11 @@ const InterceptionModal = ({children, ...props}: HtmlHTMLAttributes<HTMLDialogEl
       <button
         type="button"
         onClick={onDismiss}
-        className="group absolute -right-[100px] -top-[100px] flex h-[200px] w-[200px] items-center rounded-full bg-black-true bg-opacity-40 text-white"
+        className="group bg-black-true bg-opacity-40 absolute -top-[100px] -right-[100px] flex h-[200px] w-[200px] items-center rounded-full text-white"
       >
         <span className="sr-only">Close Overlay</span>
         <XMarkIcon
-          className="translate-x-[50px] translate-y-[35px] border-b-2 border-transparent group-hocus:border-white"
+          className="group-hocus:border-white translate-x-[50px] translate-y-[35px] border-b-2 border-transparent"
           width={25}
         />
       </button>

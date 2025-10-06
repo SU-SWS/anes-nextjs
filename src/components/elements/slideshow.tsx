@@ -9,9 +9,9 @@ import {clsx} from "clsx"
 export const NextArrow = ({className, onClick}: CustomArrowProps) => {
   const slickDisabled = className?.includes("slick-disabled")
   return (
-    <button className="absolute right-1 top-1/3 z-50" onClick={onClick} aria-label="Next" disabled={slickDisabled}>
+    <button className="absolute top-1/3 right-1 z-50" onClick={onClick} aria-label="Next" disabled={slickDisabled}>
       <ArrowRightIcon
-        className={twMerge("w-50 bg-teal rounded-full p-10 text-black-true", clsx({"text-black-50": slickDisabled}))}
+        className={twMerge("bg-teal text-black-true w-50 rounded-full p-10", clsx({"text-black-50": slickDisabled}))}
       />
     </button>
   )
@@ -20,9 +20,9 @@ export const NextArrow = ({className, onClick}: CustomArrowProps) => {
 export const PrevArrow = ({className, onClick}: CustomArrowProps) => {
   const slickDisabled = className?.includes("slick-disabled")
   return (
-    <button className="absolute left-1 top-1/3 z-50" onClick={onClick} aria-label="Previous" disabled={slickDisabled}>
+    <button className="absolute top-1/3 left-1 z-50" onClick={onClick} aria-label="Previous" disabled={slickDisabled}>
       <ArrowLeftIcon
-        className={twMerge("w-50 bg-teal rounded-full p-10 text-black-true", clsx({"text-black-50": slickDisabled}))}
+        className={twMerge("bg-teal text-black-true w-50 rounded-full p-10", clsx({"text-black-50": slickDisabled}))}
       />
     </button>
   )

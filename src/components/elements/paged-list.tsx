@@ -113,7 +113,7 @@ const PagedList = ({
   return (
     <div {...props} className={twMerge("relative", props.className)}>
       {isRunning && (
-        <div className="absolute left-0 top-0 z-10 h-full w-full rounded-2xl bg-black-20 bg-opacity-30">
+        <div className="bg-black-20 bg-opacity-30 absolute top-0 left-0 z-10 h-full w-full rounded-2xl">
           <div className="absolute bottom-20 left-1/2 -translate-x-1/2">
             <ArrowPathIcon className="animate-spin" width={50} />
           </div>
@@ -187,7 +187,7 @@ const PaginationButton = ({
   return (
     <li className="m-0 flex items-center">
       <button
-        className="group type-3 font-medium hocus:underline"
+        className="group type-3 hocus:underline font-medium"
         onClick={handleClick}
         aria-current={isCurrent ? "page" : undefined}
         disabled={disabled}
@@ -203,7 +203,7 @@ const PaginationButton = ({
             "block h-fit border-b-2 px-4",
             clsx({
               "border-stone-dark text-stone-dark": isCurrent,
-              "border-transparent text-cardinal-red": !isCurrent,
+              "text-cardinal-red border-transparent": !isCurrent,
             })
           )}
         >

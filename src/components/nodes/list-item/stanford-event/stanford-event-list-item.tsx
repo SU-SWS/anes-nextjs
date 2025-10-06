@@ -47,7 +47,7 @@ const StanfordEventListItem = ({node, headingLevel, ...props}: Props) => {
           <Heading id={node.uuid}>
             <Link
               href={node.suEventSource?.url || node.path || "#"}
-              className="text-digital-red no-underline hocus:text-black hocus:underline"
+              className="text-digital-red hocus:text-black hocus:underline no-underline"
             >
               {node.title}
             </Link>

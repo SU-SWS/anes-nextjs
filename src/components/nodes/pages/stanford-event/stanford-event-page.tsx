@@ -51,7 +51,7 @@ const StanfordEventPage = ({node, ...props}: Props) => {
         </div>
       )}
 
-      <div className="mx-auto border border-black-40 px-10 py-20 lg:w-3/4 lg:px-48">
+      <div className="border-black-40 mx-auto border px-10 py-20 lg:w-3/4 lg:px-48">
         <H2 className="type-3">Event Details:</H2>
         <div className="grid items-start gap-20 lg:grid-cols-2">
           <time className="flex items-center gap-5" dateTime={startTime.toISOString()}>
@@ -60,7 +60,7 @@ const StanfordEventPage = ({node, ...props}: Props) => {
           </time>
 
           {(node.suEventEmail || node.suEventTelephone) && (
-            <div className="flex-col-2 flex items-start gap-lg">
+            <div className="flex-col-2 gap-lg flex items-start">
               <PhoneIcon width={30} className="shrink-0" />
               <div>
                 <H3 className="type-2">Contact</H3>
