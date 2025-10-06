@@ -74,7 +74,7 @@ const OpportunitiesFilteredViewClient = ({
   return (
     <div {...props} className={twMerge("relative", props.className)}>
       {isPending && (
-        <div className="absolute left-0 top-0 z-20 h-full w-full bg-black-30 bg-opacity-80">
+        <div className="bg-black-30 bg-opacity-80 absolute top-0 left-0 z-20 h-full w-full">
           <div className="absolute bottom-20 left-1/2 -translate-x-[25px]">
             <ArrowPathIcon className="animate-spin" width={50} />
           </div>

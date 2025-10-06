@@ -24,7 +24,7 @@ const StanfordOpportunityListItem = ({node, headingLevel, ...props}: Props) => {
             <Heading className="font-bold" id={node.uuid}>
               <Link
                 href={node.suOppSource?.url || node.path || "#"}
-                className="order-2 text-digital-red no-underline hocus:text-black hocus:underline"
+                className="text-digital-red hocus:text-black hocus:underline order-2 no-underline"
               >
                 {node.title}
               </Link>

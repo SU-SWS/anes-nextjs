@@ -19,8 +19,8 @@ const ThreeColumn = ({items, config}: Props) => {
   return (
     <div
       className={twMerge(
-        clsx("gutters mb-32 grid gap-10 @10xl:grid-cols-3 @10xl:gap-20", {
-          "px-5 pb-20 pt-20": !!config?.bg_color,
+        clsx("gutters @10xl:grid-cols-3 @10xl:gap-20 mb-32 grid gap-10", {
+          "px-5 pt-20 pb-20": !!config?.bg_color,
           "pt-0": config?.top_padding === "none",
           "pt-40": config?.top_padding === "more",
           "mb-0": config?.bottom_margin === "none",
@@ -39,7 +39,7 @@ const ThreeColumn = ({items, config}: Props) => {
         items={leftItems}
         config={{top_padding: "none", bottom_margin: "none"}}
         className={clsx({
-          "after:contents('') relative after:absolute after:-right-10 after:top-0 after:h-full after:w-[1px] after:bg-black":
+          "after:contents('') relative after:absolute after:top-0 after:-right-10 after:h-full after:w-[1px] after:bg-black":
             config?.vertical_dividers,
         })}
       />
@@ -47,7 +47,7 @@ const ThreeColumn = ({items, config}: Props) => {
         items={mainItems}
         config={{top_padding: "none", bottom_margin: "none"}}
         className={clsx({
-          "after:contents('') relative after:absolute after:-right-10 after:top-0 after:h-full after:w-[1px] after:bg-black":
+          "after:contents('') relative after:absolute after:top-0 after:-right-10 after:h-full after:w-[1px] after:bg-black":
             config?.vertical_dividers,
         })}
       />

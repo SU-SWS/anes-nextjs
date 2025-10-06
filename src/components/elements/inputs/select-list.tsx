@@ -32,7 +32,7 @@ const renderSelectedValue = (
     return value.map(item => (
       <span
         key={item}
-        className="mb-2 block max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded bg-archway p-5 text-white"
+        className="bg-archway mb-2 block max-w-full overflow-hidden rounded p-5 text-ellipsis whitespace-nowrap text-white"
       >
         {renderSelectedValue(item, options)}
       </span>
@@ -80,7 +80,7 @@ const CustomOption = (props: OptionProps) => {
       {...otherProps}
       id={id}
       className={
-        "m-0 mb-2 cursor-pointer overflow-hidden px-10 py-2 hocus:underline " +
+        "hocus:underline m-0 mb-2 cursor-pointer overflow-hidden px-10 py-2 " +
         (selected ? selectedStyles : highlighted ? highlightedStyles : "hocus:bg-black-10 hocus:text-black")
       }
     >
@@ -151,7 +151,7 @@ const SelectList = ({
     <div className="relative h-fit">
       <button
         {...getButtonProps()}
-        className="w-full rounded border border-black-40 p-5 text-left"
+        className="border-black-40 w-full rounded border p-5 text-left"
         aria-labelledby={labeledBy}
       >
         <div className="flex flex-wrap justify-between">
@@ -172,7 +172,7 @@ const SelectList = ({
 
       <div
         className={
-          "absolute left-0 top-full z-[10] max-h-[300px] w-full overflow-y-scroll border border-black-20 bg-white pb-5 shadow-lg " +
+          "border-black-20 absolute top-full left-0 z-[10] max-h-[300px] w-full overflow-y-scroll border bg-white pb-5 shadow-lg " +
           (listboxVisible ? "" : "hidden")
         }
       >

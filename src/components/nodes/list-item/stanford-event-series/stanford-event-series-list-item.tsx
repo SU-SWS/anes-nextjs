@@ -15,7 +15,7 @@ const StanfordEventSeriesListItem = ({node, headingLevel, ...props}: Props) => {
     <article
       {...props}
       aria-labelledby={node.uuid}
-      className={twMerge("mx-auto w-full max-w-[500px] border border-black-20 p-10 shadow-xl", props.className)}
+      className={twMerge("border-black-20 mx-auto w-full max-w-[500px] border p-10 shadow-xl", props.className)}
     >
       <Heading id={node.uuid}>
         <Link href={node.path || "#"}>{node.title}</Link>

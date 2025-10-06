@@ -21,7 +21,7 @@ const TwoColumn = ({items, config}: Props) => {
         clsx({
           "@7xl:grid-cols-1-2": config?.column_widths === "33-67",
           "@7xl:grid-cols-2-1": config?.column_widths === "67-33",
-          "px-5 pb-20 pt-20": !!config?.bg_color,
+          "px-5 pt-20 pb-20": !!config?.bg_color,
           "pt-0": config?.top_padding === "none",
           "pt-40": config?.top_padding === "more",
           "mb-0": config?.bottom_margin === "none",
@@ -40,7 +40,7 @@ const TwoColumn = ({items, config}: Props) => {
         items={leftItems}
         config={{top_padding: "none", bottom_margin: "none"}}
         className={clsx({
-          "after:contents('') relative after:absolute after:-right-10 after:top-0 after:h-full after:w-[1px] after:bg-black":
+          "after:contents('') relative after:absolute after:top-0 after:-right-10 after:h-full after:w-[1px] after:bg-black":
             config?.vertical_dividers,
         })}
       />

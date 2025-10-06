@@ -58,7 +58,7 @@ const BannerParagraph = ({paragraph, eagerLoadImage, ...props}: Props) => {
           )}
 
           {paragraph.suBannerSupHeader && (
-            <div className="order-first text-09em font-semibold">{paragraph.suBannerSupHeader}</div>
+            <div className="text-09em order-first font-semibold">{paragraph.suBannerSupHeader}</div>
           )}
 
           <Wysiwyg html={paragraph.suBannerBody?.processed} className="type-0" />

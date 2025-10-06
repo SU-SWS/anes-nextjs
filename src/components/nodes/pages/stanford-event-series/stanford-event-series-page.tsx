@@ -25,7 +25,7 @@ const StanfordEventSeriesPage = ({node, ...props}: Props) => {
       {node.suEventSeriesEvent && (
         <div className="mb-20">
           {node.suEventSeriesEvent.map(event => (
-            <div key={event.uuid} className="border-b border-black-20 py-20 last:border-0">
+            <div key={event.uuid} className="border-black-20 border-b py-20 last:border-0">
               <StanfordEventListItem node={event} />
             </div>
           ))}
