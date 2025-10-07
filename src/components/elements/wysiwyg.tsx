@@ -155,6 +155,7 @@ const fixClasses = (classes?: string | boolean): string => {
     .replaceAll(" related-text ", " shadow-lg border border-black-20 p-16 ")
     .replaceAll(" intro-text ", " type-2 ")
     .replaceAll(" quote-text ", " px-24 py-16 ml-32 type-3 border-l-3 border-black ")
+    .replaceAll(" large-text ", " type-4 ")
     .replaceAll(
       " drop-cap ",
       " type-2 first-letter:font-bold first-letter:type-6 first-letter:float-left first-letter:my-2 first-letter:mr-4 "
