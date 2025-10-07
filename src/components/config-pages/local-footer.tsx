@@ -61,16 +61,16 @@ const LocalFooter = async ({...props}: Props) => {
     >
       <div className="cc">
         {localFooterConfig.suLocalFootPrCo?.processed && (
-          <div className="3xl:max-w-1200 font-merriweather rs-mb-10 w-full max-w-800">
+          <div className="3xl:max-w-1200 lg:rs-mb-10 mb-100 w-full max-w-800">
             <Wysiwyg html={localFooterConfig.suLocalFootPrCo?.processed} />
           </div>
         )}
-        <div className="flex flex-row items-end justify-between">
+        <div className="flex flex-col gap-58 lg:flex-row lg:items-end lg:justify-between">
           <div className="w-fit">
             <FooterLockup variant="light" {...lockupProps} />
           </div>
 
-          <div className="grid gap-32 md:grid-cols-2 md:gap-61 [&_a]:font-normal [&_a]:no-underline [&_a]:transition [&_a:focus]:text-black [&_a:focus]:underline [&_a:hover]:text-black [&_a:hover]:underline">
+          <div className="flex flex-col gap-58 sm:flex-row lg:gap-61 [&_a]:font-normal [&_a]:no-underline [&_a]:transition [&_a:focus]:text-black [&_a:focus]:underline [&_a:hover]:text-black [&_a:hover]:underline">
             {/* <div className="space-y-12">
               {localFooterConfig.suLocalFootAddress && <Address {...localFooterConfig.suLocalFootAddress} />}
 
@@ -90,7 +90,7 @@ const LocalFooter = async ({...props}: Props) => {
               )}
             </div> */}
 
-            <div>
+            <div className="w-fit shrink-0">
               {localFooterConfig.suLocalFootPrimeH && <H2 className="type-0">{localFooterConfig.suLocalFootPrimeH}</H2>}
               {localFooterConfig.suLocalFootPrimary && (
                 <ul className="list-unstyled">
@@ -121,7 +121,7 @@ const LocalFooter = async ({...props}: Props) => {
                   {localFooterConfig.suLocalFootSecond.map((link, index) => {
                     if (!link.url) return
                     return (
-                      <li key={`footer-second-link-${index}`} className="mb-18 p-0">
+                      <li key={`footer-second-link-${index}`} className="mb-18 p-0 last:mb-0">
                         <Link
                           href={link.url}
                           className="type-0 hocus:underline hocus:text-white text-white no-underline"
@@ -135,14 +135,14 @@ const LocalFooter = async ({...props}: Props) => {
               )}
 
               {localFooterConfig.suLocalFootSocial && (
-                <ul className="list-unstyled flex flex-wrap gap-3">
+                <ul className="list-unstyled mt-18 hidden flex-wrap gap-18 lg:flex">
                   {localFooterConfig.suLocalFootSocial.map((link, index) => {
                     if (!link.url) return
                     return (
                       <li key={`footer-action-link-${index}`} className="mb-0 p-0">
                         <Link
                           href={link.url}
-                          className="hocus:border-digital-blue hocus:[&_svg]:fill-digital-blue block rounded-full border border-transparent p-2 [&_svg]:fill-white"
+                          className="hocus:outline-white block rounded-[1.3rem] outline outline-offset-2 outline-transparent [&_svg]:fill-white"
                         >
                           <SocialIcon url={link.url} />
                           <span className="sr-only">{link.title}</span>
@@ -154,6 +154,25 @@ const LocalFooter = async ({...props}: Props) => {
               )}
             </div>
           </div>
+
+          {localFooterConfig.suLocalFootSocial && (
+            <ul className="list-unstyled flex flex-wrap gap-18 lg:hidden">
+              {localFooterConfig.suLocalFootSocial.map((link, index) => {
+                if (!link.url) return
+                return (
+                  <li key={`footer-action-link-${index}`} className="mb-0 p-0">
+                    <Link
+                      href={link.url}
+                      className="hocus:outline-white block rounded-[1.3rem] outline outline-offset-2 outline-transparent [&_svg]:fill-white"
+                    >
+                      <SocialIcon url={link.url} />
+                      <span className="sr-only">{link.title}</span>
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </div>
       </div>
     </div>
