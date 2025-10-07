@@ -6,14 +6,14 @@ type Props = HtmlHTMLAttributes<SVGSVGElement> & {
   variant?: "light" | "dark"
 }
 
-const StanfordWordMark = ({height = 91, width = 426, variant = "dark", ...props}: Props) => {
+const StanfordWordMark = ({height = 45, width = 169, variant = "dark", ...props}: Props) => {
   const fillColor = variant === "light" ? "fill-white" : "fill-black"
-  if (height != 91 && width == 426) {
-    width *= height / 91
+  if (height != 45 && width == 169) {
+    width *= height / 45
   }
 
-  if (height == 91 && width != 426) {
-    height *= width / 426
+  if (height == 45 && width != 169) {
+    height *= width / 169
   }
 
   return (

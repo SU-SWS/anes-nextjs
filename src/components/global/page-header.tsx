@@ -11,7 +11,7 @@ const PageHeader = async ({...props}: Props) => {
       <GlobalMessage />
       <div className="bg-gradient-blue-purple-white relative">
         <div className="centered min-h-50 pr-24 lg:pr-0">
-          <div className="flex w-full items-center justify-between">
+          <div className="flex w-full items-center justify-between py-20 md:pt-55 md:pb-48 2xl:py-60">
             <Lockup />
             <div>
               <UtilityNav />

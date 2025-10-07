@@ -39,7 +39,7 @@ export const Lockup = async () => {
       <div className="py-34">
         <Link href="/" className="text-black no-underline">
           <div className="flex flex-col gap-4 lg:flex-row">
-            <div className="mr-2 border-black pr-2 lg:inline-block lg:border-r">
+            <div className="mr-12 border-black pr-12 lg:inline-block lg:border-r-3">
               <LockupLogo {...lockupProps} />
             </div>
             <div className="font-normal">
