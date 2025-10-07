@@ -42,10 +42,7 @@ export const Lockup = async () => {
             <div className="mr-12 border-black pr-12 lg:inline-block lg:border-r-3">
               <LockupLogo {...lockupProps} />
             </div>
-            <div className="font-normal">
-              <div className="type-0">Department of Anesthesiology,</div>
-              <div className="type-0">Perioperative and Pain Management</div>
-            </div>
+            <div className="type-2 font-normal text-black lg:inline-block">{siteName || "School of Medicine"}</div>
           </div>
         </Link>
       </div>
