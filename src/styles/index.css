@@ -50,6 +50,42 @@
   }
 }
 
+/*  ANES Gradient Background Colors */
+@utility bg-gradient-blue-purple {
+  background-color: hsla(264, 30%, 96%, 1);
+  background-image:
+    radial-gradient(at 72% 4%, hsla(265, 17%, 96%, 1) 0px, transparent 50%),
+    radial-gradient(at 17% 4%, hsla(265, 18%, 96%, 1) 0px, transparent 50%),
+    radial-gradient(at 78% 84%, hsla(266, 25%, 85%, 1) 0px, transparent 50%),
+    radial-gradient(at 21% 86%, hsla(191, 36%, 83%, 1) 0px, transparent 80%);
+}
+
+@utility bg-gradient-purple-blue {
+  background-color: hsla(267, 55%, 90%, 0.3);
+  background-image:
+    radial-gradient(at 10% 86%, hsla(60, 26%, 94%, 0.5) 0px, transparent 50%),
+    radial-gradient(at 10% 10%, hsla(69, 17%, 95%, 0.5) 0px, transparent 50%),
+    radial-gradient(at 90% 89%, hsla(191, 36%, 83%, 0.5) 0px, transparent 50%);
+}
+
+@utility bg-gradient-white-blue-purple {
+  background-color: hsla(266, 0%, 100%, 0.5);
+  background-image:
+    radial-gradient(at 9% 100%, hsla(191, 36%, 83%, 0.5) 0px, transparent 50%),
+    radial-gradient(at 10% 68%, hsla(60, 26%, 94%, 0.5) 0px, transparent 50%),
+    radial-gradient(at 87% 100%, hsla(266, 25%, 85%, 0.5) 0px, transparent 50%),
+    radial-gradient(at 87% 43%, hsla(191, 36%, 83%, 0.5) 0px, transparent 50%),
+    radial-gradient(at 88% 66%, hsla(60, 26%, 94%, 0.5) 0px, transparent 50%),
+    radial-gradient(at 10% 42%, hsla(266, 25%, 85%, 0.5) 0px, transparent 50%);
+}
+
+@utility bg-gradient-blue-purple-white {
+  background-color: hsla(180, 20%, 99%, 1);
+  background-image:
+    radial-gradient(at 16% 0%, hsla(191, 36%, 83%, 1) 0px, transparent 50%),
+    radial-gradient(at 87% 0%, hsla(266, 40%, 84%, 1) 0px, transparent 50%);
+}
+
 @utility -scale-100 {
   transform: scale(-1);
 }

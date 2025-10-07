@@ -10,7 +10,10 @@ const GlobalPage = ({children, ...props}: Props) => {
     <div {...props} className={twMerge("flex min-h-screen flex-col", props.className)}>
       <PageHeader data-nosnippet="true" />
 
-      <main id="main-content" className="mb-32 flex-grow">
+      <main
+        id="main-content"
+        // className="mb-32 flex-grow"
+      >
         {children}
 
         <BackToTop />
