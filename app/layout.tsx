@@ -72,6 +72,7 @@ export const metadata = {
 
 const RootLayout = async ({children, modal}: {children: React.ReactNode; modal: React.ReactNode}) => {
   const homePath = await getHomePagePath()
+  // @TODO: Uncomment before merge
   // const gradient = getRandomGradient()
   return (
     <html
