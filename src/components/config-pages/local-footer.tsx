@@ -60,10 +60,12 @@ const LocalFooter = async ({...props}: Props) => {
       )}
     >
       <div className="cc">
-        <div className="3xl:max-w-1200 font-merriweather w-full max-w-800">
-          <Wysiwyg html={localFooterConfig.suLocalFootPrCo?.processed} />
-        </div>
-        <div className="rs-mt-10 flex flex-row items-end justify-between">
+        {localFooterConfig.suLocalFootPrCo?.processed && (
+          <div className="3xl:max-w-1200 font-merriweather rs-mb-10 w-full max-w-800">
+            <Wysiwyg html={localFooterConfig.suLocalFootPrCo?.processed} />
+          </div>
+        )}
+        <div className="flex flex-row items-end justify-between">
           <div className="w-fit">
             <FooterLockup variant="light" {...lockupProps} />
           </div>
