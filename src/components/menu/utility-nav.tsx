@@ -36,7 +36,7 @@ const UtilityNav = async () => {
                   &#65279;
                   <MagnifyingGlassIcon
                     width={25}
-                    className="text-palo-alto-dark ml-4 inline-block transition group-hover:text-white group-focus:text-white"
+                    className="fill-palo-alto-dark ml-4 inline-block transition group-hover:fill-white group-focus:fill-white"
                   />
                 </span>
               )}
