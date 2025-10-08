@@ -22,9 +22,7 @@ const LockupLogo = ({
           />
         </picture>
       )}
-      {!logoUrl && (
-        <StanfordWordMark variant={variant} className="text-cardinal-red block max-h-45 w-auto no-underline" />
-      )}
+      {!logoUrl && <StanfordWordMark variant={variant} className="block max-h-45 w-auto no-underline" />}
     </>
   )
 }

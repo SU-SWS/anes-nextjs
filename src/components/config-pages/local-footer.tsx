@@ -59,7 +59,7 @@ const LocalFooter = async ({...props}: Props) => {
         props.className
       )}
     >
-      <div className="cc">
+      <div className="centered">
         {localFooterConfig.suLocalFootPrCo?.processed && (
           <div className="3xl:max-w-1200 lg:rs-mb-10 mb-100 w-full max-w-800">
             <Wysiwyg html={localFooterConfig.suLocalFootPrCo?.processed} />
@@ -218,6 +218,7 @@ const FooterLockup = ({
   ...props
 }: FooterLockupProps): JSX.Element => {
   const lockupProps = {
+    variant,
     ...props,
   }
 
@@ -228,7 +229,7 @@ const FooterLockup = ({
       return (
         <div>
           <Link href="/" className="flex flex-col gap-4 no-underline lg:flex-row">
-            <LockupLogo variant={variant} {...lockupProps} />
+            <LockupLogo {...lockupProps} />
           </Link>
         </div>
       )
@@ -272,9 +273,9 @@ const FooterLockup = ({
 
   return (
     <div>
-      <Link href="/" className="hocus:underline flex flex-col gap-4 text-white no-underline lg:flex-row">
-        <div className="mr-2 border-white pr-2 lg:inline-block lg:border-r">
-          <LockupLogo variant={variant} {...lockupProps} />
+      <Link href="/" className="flex flex-col gap-12 text-white no-underline lg:flex-row">
+        <div className="border-white pr-12 lg:inline-block lg:border-r-3">
+          <LockupLogo {...lockupProps} />
         </div>
         <div className="font-normal">
           <div className="type-0">Department of Anesthesiology,</div>
