@@ -71,25 +71,6 @@ const LocalFooter = async ({...props}: Props) => {
           </div>
 
           <div className="flex flex-col gap-18 sm:flex-row sm:gap-58 lg:gap-61 [&_a]:font-normal [&_a]:no-underline [&_a]:transition [&_a:focus]:text-black [&_a:focus]:underline [&_a:hover]:text-black [&_a:hover]:underline">
-            {/* <div className="space-y-12">
-              {localFooterConfig.suLocalFootAddress && <Address {...localFooterConfig.suLocalFootAddress} />}
-
-              {localFooterConfig.suLocalFootAction && (
-                <ul className="list-unstyled">
-                  {localFooterConfig.suLocalFootAction.map((link, index) => {
-                    if (!link.url) return
-                    return (
-                      <li key={`footer-action-link-${index}`} className="m-0 p-0">
-                        <ActionLink href={link.url} className="text-2xl">
-                          {link.title}
-                        </ActionLink>
-                      </li>
-                    )
-                  })}
-                </ul>
-              )}
-            </div> */}
-
             <div className="w-fit shrink-0">
               {localFooterConfig.suLocalFootPrimeH && (
                 <H2 className="type-0 mb-18">{localFooterConfig.suLocalFootPrimeH}</H2>
@@ -229,11 +210,9 @@ const FooterLockup = ({
   switch (lockupOption) {
     case "none":
       return (
-        <div>
-          <Link href="/" className="flex flex-col gap-4 no-underline lg:flex-row">
-            <LockupLogo {...lockupProps} />
-          </Link>
-        </div>
+        <Link href="/" className="flex flex-col gap-4 no-underline lg:flex-row">
+          <LockupLogo {...lockupProps} />
+        </Link>
       )
 
     case "a":
@@ -274,17 +253,15 @@ const FooterLockup = ({
   }
 
   return (
-    <div>
-      <Link href="/" className="flex flex-col gap-12 text-white no-underline lg:flex-row">
-        <div className="border-white pr-12 lg:inline-block lg:border-r-3">
-          <LockupLogo {...lockupProps} />
-        </div>
-        <div className="font-normal">
-          <div className="type-0">Department of Anesthesiology,</div>
-          <div className="type-0">Perioperative and Pain Management</div>
-        </div>
-      </Link>
-    </div>
+    <Link href="/" className="flex flex-col gap-12 text-white no-underline lg:flex-row">
+      <div className="border-white pr-12 lg:inline-block lg:border-r-3">
+        <LockupLogo {...lockupProps} />
+      </div>
+      <div className="font-normal">
+        <div className="type-0">Department of Anesthesiology,</div>
+        <div className="type-0">Perioperative and Pain Management</div>
+      </div>
+    </Link>
   )
 }
 export default LocalFooter

@@ -1,5 +1,5 @@
 import {Maybe} from "@lib/gql/__generated__/drupal.d"
-import StanfordWordMark from "@components/images/stanford-wordmark"
+import StanfordMedicineLogo from "@components/images/stanford-medicine-logo"
 import clsx from "clsx"
 
 const LockupLogo = ({
@@ -22,7 +22,7 @@ const LockupLogo = ({
           />
         </picture>
       )}
-      {!logoUrl && <StanfordWordMark variant={variant} className="block max-h-45 w-auto no-underline" />}
+      {!logoUrl && <StanfordMedicineLogo variant={variant} className="block max-h-45 w-auto no-underline" />}
     </>
   )
 }

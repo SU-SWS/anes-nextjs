@@ -7,7 +7,7 @@ type Props = HtmlHTMLAttributes<SVGSVGElement> & {
   variant?: "light" | "dark"
 }
 
-const StanfordWordMark = ({height = 45, width = 169, variant = "dark", className, ...props}: Props) => {
+const StanfordMedicineLogo = ({height = 45, width = 169, variant = "dark", className, ...props}: Props) => {
   const fillColor = variant === "light" ? "fill-white" : "fill-black"
 
   if (height != 45 && width == 169) {
@@ -71,4 +71,4 @@ const StanfordWordMark = ({height = 45, width = 169, variant = "dark", className
   )
 }
 
-export default StanfordWordMark
+export default StanfordMedicineLogo
