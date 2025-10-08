@@ -70,7 +70,7 @@ const LocalFooter = async ({...props}: Props) => {
             <FooterLockup variant="light" {...lockupProps} />
           </div>
 
-          <div className="flex flex-col gap-58 sm:flex-row lg:gap-61 [&_a]:font-normal [&_a]:no-underline [&_a]:transition [&_a:focus]:text-black [&_a:focus]:underline [&_a:hover]:text-black [&_a:hover]:underline">
+          <div className="flex flex-col gap-18 sm:flex-row sm:gap-58 lg:gap-61 [&_a]:font-normal [&_a]:no-underline [&_a]:transition [&_a:focus]:text-black [&_a:focus]:underline [&_a:hover]:text-black [&_a:hover]:underline">
             {/* <div className="space-y-12">
               {localFooterConfig.suLocalFootAddress && <Address {...localFooterConfig.suLocalFootAddress} />}
 
@@ -91,7 +91,9 @@ const LocalFooter = async ({...props}: Props) => {
             </div> */}
 
             <div className="w-fit shrink-0">
-              {localFooterConfig.suLocalFootPrimeH && <H2 className="type-0">{localFooterConfig.suLocalFootPrimeH}</H2>}
+              {localFooterConfig.suLocalFootPrimeH && (
+                <H2 className="type-0 mb-18">{localFooterConfig.suLocalFootPrimeH}</H2>
+              )}
               {localFooterConfig.suLocalFootPrimary && (
                 <ul className="list-unstyled">
                   {localFooterConfig.suLocalFootPrimary.map((link, index) => {
@@ -113,7 +115,7 @@ const LocalFooter = async ({...props}: Props) => {
 
             <div className="flex flex-col justify-end">
               {localFooterConfig.suLocalFootSecondH && (
-                <H2 className="type-0">{localFooterConfig.suLocalFootSecondH}</H2>
+                <H2 className="type-0 mb-18">{localFooterConfig.suLocalFootSecondH}</H2>
               )}
 
               {localFooterConfig.suLocalFootSecond && (
