@@ -1,4 +1,3 @@
-import Address from "@components/elements/address"
 import Link from "@components/elements/link"
 import Wysiwyg from "@components/elements/wysiwyg"
 import LockupLogo from "@components/elements/lockup/lockup-logo"
@@ -31,7 +30,6 @@ import GithubIcon from "@components/elements/icons/GithubIcon"
 import GoogleScholarIcon from "@components/elements/icons/GoogleScholarIcon"
 import MastodonIcon from "@components/elements/icons/MastodonIcon"
 import ThreadsIcon from "@components/elements/icons/ThreadsIcon"
-import ActionLink from "@components/elements/action-link"
 
 type Props = HTMLAttributes<HTMLDivElement>
 
@@ -54,94 +52,110 @@ const LocalFooter = async ({...props}: Props) => {
   }
 
   return (
-    <div {...props} className={twMerge("local-footer bg-foggy-light py-20", props.className)}>
+    <div
+      {...props}
+      className={twMerge(
+        "local-footer bg-palo-alto-light rs-pt-5 rs-pb-3 3xl:rs-pt-6 font-lato text-white",
+        props.className
+      )}
+    >
       <div className="centered">
-        <div className="mb-20">
-          <FooterLockup {...lockupProps} />
-        </div>
-
-        <div className="grid gap-32 md:grid-cols-2 lg:grid-cols-4 [&_a]:font-normal [&_a]:no-underline [&_a]:transition [&_a:focus]:text-black [&_a:focus]:underline [&_a:hover]:text-black [&_a:hover]:underline">
-          <div className="space-y-12">
-            {localFooterConfig.suLocalFootAddress && <Address {...localFooterConfig.suLocalFootAddress} />}
-
-            {localFooterConfig.suLocalFootAction && (
-              <ul className="list-unstyled">
-                {localFooterConfig.suLocalFootAction.map((link, index) => {
-                  if (!link.url) return
-                  return (
-                    <li key={`footer-action-link-${index}`} className="m-0 p-0">
-                      <ActionLink href={link.url} className="text-2xl">
-                        {link.title}
-                      </ActionLink>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-
-            {localFooterConfig.suLocalFootSocial && (
-              <ul className="list-unstyled flex flex-wrap gap-3">
-                {localFooterConfig.suLocalFootSocial.map((link, index) => {
-                  if (!link.url) return
-                  return (
-                    <li key={`footer-action-link-${index}`}>
-                      <Link
-                        href={link.url}
-                        className="hocus:border-digital-blue hocus:[&_svg]:fill-digital-blue block rounded-full border border-transparent p-2 [&_svg]:fill-black"
-                      >
-                        <SocialIcon url={link.url} />
-                        <span className="sr-only">{link.title}</span>
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-
+        {localFooterConfig.suLocalFootPrCo?.processed && (
+          <div className="3xl:max-w-1200 lg:rs-mb-10 mb-100 w-full max-w-800">
             <Wysiwyg html={localFooterConfig.suLocalFootPrCo?.processed} />
           </div>
-
-          <div>
-            {localFooterConfig.suLocalFootPrimeH && <H2 className="type-0">{localFooterConfig.suLocalFootPrimeH}</H2>}
-            {localFooterConfig.suLocalFootPrimary && (
-              <ul className="list-unstyled">
-                {localFooterConfig.suLocalFootPrimary.map((link, index) => {
-                  if (!link.url) return
-                  return (
-                    <li key={`footer-primary-link-${index}`} className="m-0 p-0">
-                      <Link href={link.url} className="text-3xl">
-                        {link.title}
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-            <Wysiwyg html={localFooterConfig.suLocalFootSeCo?.processed} />
+        )}
+        <div className="flex flex-col gap-58 lg:flex-row lg:items-end lg:justify-between">
+          <div className="w-fit">
+            <FooterLockup variant="light" {...lockupProps} />
           </div>
 
-          <div>
-            {localFooterConfig.suLocalFootSecondH && <H2 className="type-0">{localFooterConfig.suLocalFootSecondH}</H2>}
+          <div className="flex flex-col gap-18 sm:flex-row sm:gap-58 lg:gap-61 [&_a]:font-normal [&_a]:no-underline [&_a]:transition [&_a:focus]:text-black [&_a:focus]:underline [&_a:hover]:text-black [&_a:hover]:underline">
+            <div className="w-fit shrink-0">
+              {localFooterConfig.suLocalFootPrimeH && (
+                <H2 className="type-0 mb-18">{localFooterConfig.suLocalFootPrimeH}</H2>
+              )}
+              {localFooterConfig.suLocalFootPrimary && (
+                <ul className="list-unstyled">
+                  {localFooterConfig.suLocalFootPrimary.map((link, index) => {
+                    if (!link.url) return
+                    return (
+                      <li key={`footer-primary-link-${index}`} className="mb-18 p-0 last:mb-0">
+                        <Link
+                          href={link.url}
+                          className="type-0 hocus:underline hocus:text-white text-white no-underline"
+                        >
+                          {link.title}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              )}
+            </div>
 
-            {localFooterConfig.suLocalFootSecond && (
-              <ul className="list-unstyled">
-                {localFooterConfig.suLocalFootSecond.map((link, index) => {
-                  if (!link.url) return
-                  return (
-                    <li key={`footer-second-link-${index}`} className="m-0 p-0">
-                      <Link href={link.url} className="text-3xl">
-                        {link.title}
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
+            <div className="flex flex-col justify-end">
+              {localFooterConfig.suLocalFootSecondH && (
+                <H2 className="type-0 mb-18">{localFooterConfig.suLocalFootSecondH}</H2>
+              )}
 
-            <Wysiwyg html={localFooterConfig.suLocalFootTr2Co?.processed} />
+              {localFooterConfig.suLocalFootSecond && (
+                <ul className="list-unstyled">
+                  {localFooterConfig.suLocalFootSecond.map((link, index) => {
+                    if (!link.url) return
+                    return (
+                      <li key={`footer-second-link-${index}`} className="mb-18 p-0 last:mb-0">
+                        <Link
+                          href={link.url}
+                          className="type-0 hocus:underline hocus:text-white text-white no-underline"
+                        >
+                          {link.title}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              )}
+
+              {localFooterConfig.suLocalFootSocial && (
+                <ul className="list-unstyled mt-18 hidden flex-wrap gap-18 lg:flex">
+                  {localFooterConfig.suLocalFootSocial.map((link, index) => {
+                    if (!link.url) return
+                    return (
+                      <li key={`footer-action-link-${index}`} className="mb-0 p-0">
+                        <Link
+                          href={link.url}
+                          className="hocus:outline-white block rounded-[1.3rem] outline outline-offset-2 outline-transparent [&_svg]:fill-white"
+                        >
+                          <SocialIcon url={link.url} />
+                          <span className="sr-only">{link.title}</span>
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              )}
+            </div>
           </div>
 
-          <Wysiwyg html={localFooterConfig.suLocalFootTrCo?.processed} />
+          {localFooterConfig.suLocalFootSocial && (
+            <ul className="list-unstyled flex flex-wrap gap-18 lg:hidden">
+              {localFooterConfig.suLocalFootSocial.map((link, index) => {
+                if (!link.url) return
+                return (
+                  <li key={`footer-action-link-${index}`} className="mb-0 p-0">
+                    <Link
+                      href={link.url}
+                      className="hocus:outline-white block rounded-[1.3rem] outline outline-offset-2 outline-transparent [&_svg]:fill-white"
+                    >
+                      <SocialIcon url={link.url} />
+                      <span className="sr-only">{link.title}</span>
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </div>
       </div>
     </div>
@@ -176,10 +190,18 @@ export interface FooterLockupProps {
   line4?: Maybe<string>
   line5?: Maybe<string>
   logoUrl?: Maybe<string>
+  variant?: "light" | "dark"
 }
 
-const FooterLockup = ({useDefault = true, siteName, lockupOption, ...props}: FooterLockupProps): JSX.Element => {
+const FooterLockup = ({
+  useDefault = true,
+  siteName,
+  lockupOption,
+  variant,
+  ...props
+}: FooterLockupProps): JSX.Element => {
   const lockupProps = {
+    variant,
     ...props,
   }
 
@@ -188,11 +210,9 @@ const FooterLockup = ({useDefault = true, siteName, lockupOption, ...props}: Foo
   switch (lockupOption) {
     case "none":
       return (
-        <div className="py-10">
-          <Link href="/" className="flex flex-col gap-4 no-underline lg:flex-row">
-            <LockupLogo {...lockupProps} />
-          </Link>
-        </div>
+        <Link href="/" className="flex flex-col gap-4 no-underline lg:flex-row">
+          <LockupLogo {...lockupProps} />
+        </Link>
       )
 
     case "a":
@@ -233,14 +253,15 @@ const FooterLockup = ({useDefault = true, siteName, lockupOption, ...props}: Foo
   }
 
   return (
-    <div className="py-10">
-      <Link href="/" className="flex flex-col gap-4 no-underline lg:flex-row">
+    <Link href="/" className="flex flex-col gap-12 text-white no-underline lg:flex-row">
+      <div className="border-white pr-12 lg:inline-block lg:border-r-3">
         <LockupLogo {...lockupProps} />
-
-        <div className="w-[1px] shrink-0 bg-black" />
-        <div className="type-3 leading-none font-normal text-black">{siteName || "University"}</div>
-      </Link>
-    </div>
+      </div>
+      <div className="font-normal">
+        <div className="type-0">Department of Anesthesiology,</div>
+        <div className="type-0">Perioperative and Pain Management</div>
+      </div>
+    </Link>
   )
 }
 export default LocalFooter
