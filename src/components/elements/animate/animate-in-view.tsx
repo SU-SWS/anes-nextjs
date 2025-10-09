@@ -14,7 +14,7 @@ export type AnimateInViewProps = {
 }
 
 const AnimateInView = ({
-  animation = "zoomIn",
+  animation = "slideUp",
   once = true,
   duration = 0.6,
   delay,
