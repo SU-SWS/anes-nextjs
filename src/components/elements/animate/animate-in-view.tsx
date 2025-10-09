@@ -22,9 +22,9 @@ const AnimateInView = ({
   className,
   ...props
 }: AnimateInViewProps) => {
-  const ref = useRef<HTMLDivElement | null>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
-  const isInView = useInView(ref as React.RefObject<Element>, {once})
+  const isInView = useInView(ref, {once})
 
   if (animation === "none") {
     return <div>{children}</div>
