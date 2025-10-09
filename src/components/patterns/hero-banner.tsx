@@ -4,7 +4,6 @@ import twMerge from "@lib/utils/twMerge"
 import {Maybe} from "@lib/gql/__generated__/drupal.d"
 import {getImagePlaceholder} from "@lib/utils/get-image-placeholder"
 import {clsx} from "clsx"
-import AnimateInView from "@components/elements/animate/animate-in-view"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   /**
@@ -57,8 +56,7 @@ const HeroBanner = async ({
       </div>
 
       {children && (
-        // @TODO: Remove before merging
-        <AnimateInView
+        <div
           className={twMerge(
             "rs-p-2 relative flex w-full flex-col gap-10 shadow-lg @6xl:z-10 @6xl:my-24 @6xl:max-w-[550px] @6xl:bg-white",
             clsx({
@@ -68,7 +66,7 @@ const HeroBanner = async ({
           )}
         >
           {children}
-        </AnimateInView>
+        </div>
       )}
     </BannerWrapper>
   )
