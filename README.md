@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Anesthesiology NextJS Frontend
+
+This repository contains the Next.js frontend application for the decoupled Anesthesiology Drupal site. The backend is managed by Drupal (see https://github.com/SU-SWS/ace-stanfordlagunita). The application is hosted and deployed using Vercel.
 
 ## Getting Started
 
@@ -192,6 +194,8 @@ If all of the above fails, there are two quick fixes that can help in a pinch.
 - [Vercel Edge Caching](https://vercel.com/docs/edge-network/caching)
 
 ## Learn More
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 To learn more about Next.js, take a look at the following resources:
 
