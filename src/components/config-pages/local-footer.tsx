@@ -253,19 +253,6 @@ const FooterLockup = ({
   }
 
   return (
-<<<<<<< HEAD
-    <div>
-      <Link href="/" className="flex flex-col gap-12 text-white no-underline lg:flex-row">
-        <div className="border-white pr-12 lg:inline-block lg:border-r-3">
-          <LockupLogo {...lockupProps} />
-        </div>
-        <div className="font-normal">
-          <div className="type-0">Department of Anesthesiology,</div>
-          <div className="type-0">Perioperative and Pain Management</div>
-        </div>
-      </Link>
-    </div>
-=======
     <Link href="/" className="flex flex-col gap-12 text-white no-underline lg:flex-row">
       <div className="border-white pr-12 lg:inline-block lg:border-r-3">
         <LockupLogo {...lockupProps} />
@@ -275,7 +262,6 @@ const FooterLockup = ({
         <div className="type-0">Perioperative and Pain Management</div>
       </div>
     </Link>
->>>>>>> 1.x
   )
 }
 export default LocalFooter
