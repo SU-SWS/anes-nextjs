@@ -2,7 +2,7 @@
 import {useRef, ReactNode} from "react"
 import {motion, useScroll, useTransform, useSpring, useReducedMotion} from "motion/react"
 
-type ParallaxProps = {
+type AnimateParallaxProps = {
   /**
    * This is the vertical offset in px that the element will move in response to the scroll.
    * The larger the offset, the more apparent the parallax effect.
@@ -12,7 +12,7 @@ type ParallaxProps = {
   children: ReactNode
 }
 
-const Parallax = ({children, offset = 60}: ParallaxProps) => {
+const AnimateParallax = ({children, offset = 60}: AnimateParallaxProps) => {
   const prefersReducedMotion = useReducedMotion()
   const ref = useRef<HTMLDivElement>(null)
   const {scrollYProgress} = useScroll({
@@ -33,4 +33,4 @@ const Parallax = ({children, offset = 60}: ParallaxProps) => {
   )
 }
 
-export default Parallax
+export default AnimateParallax
