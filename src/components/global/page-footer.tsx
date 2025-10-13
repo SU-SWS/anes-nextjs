@@ -2,6 +2,11 @@ import LocalFooter from "@components/config-pages/local-footer"
 import SuperFooter from "@components/config-pages/super-footer"
 import FacebookIcon from "@components/elements/icons/FacebookIcon"
 import TwitterIcon from "@components/elements/icons/TwitterIcon"
+import StanfordChildrensHealthLogo from "@components/images/stanford-childrens-health-logo"
+import StanfordHealthCareLogo from "@components/images/stanford-health-care-logo"
+import StanfordHealthCareTriValleyLogo from "@components/images/stanford-health-care-tri-valley-logo"
+import StanfordMedicinePartnerLogo from "@components/images/stanford-medicine-partners-logo"
+import StanfordMedicineSomLogo from "@components/images/stanford-medicine-som-logo"
 import {HTMLAttributes} from "react"
 
 type Props = HTMLAttributes<HTMLElement>
@@ -63,35 +68,35 @@ const PageFooter = ({...props}: Props) => {
 
           <ul className="text-16 children:ml-0 m-0 mx-auto mt-36 flex max-w-1300 list-none flex-row justify-around p-0 [&_a]:text-white [&_a]:no-underline [&_a:hocus]:text-white">
             <li>
-              <a className="logo type-1 hocus:text-white text-white" href="https://www.stanford.edu">
+              <a className="logo text-25 hocus:text-white text-white" href="https://www.stanford.edu">
                 Stanford
                 <br />
                 University
               </a>
             </li>
-            <li className="w-110">
+            <li>
               <a href="//med.stanford.edu" title="Stanford School of Medicine">
-                Stanford School of Medicine
+                <StanfordMedicineSomLogo className="h-45" />
               </a>
             </li>
-            <li className="w-110">
+            <li>
               <a href="http://stanfordhealthcare.org" title="Stanford Health Care">
-                Stanford Health Care
+                <StanfordHealthCareLogo className="h-45" />
               </a>
             </li>
-            <li className="w-110">
+            <li>
               <a href="http://www.stanfordchildrens.org" title="Stanford Children's Health">
-                Stanford Children&apos;s Health
+                <StanfordChildrensHealthLogo className="h-45" />
               </a>
             </li>
-            <li className="w-110">
+            <li>
               <a href="http://ValleyCare.com" title="Stanford Health Care Tri-Valley">
-                Stanford Health Care Tri-Valley
+                <StanfordHealthCareTriValleyLogo className="h-70" />
               </a>
             </li>
-            <li className="w-110">
+            <li>
               <a href="http://universityhealthcarealliance.org" title="Stanford Medicine Partners">
-                Stanford Medicine Partners
+                <StanfordMedicinePartnerLogo className="h-45" />
               </a>
             </li>
           </ul>
