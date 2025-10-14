@@ -38,7 +38,7 @@ const MediaCaptionParagraph = async ({paragraph, ...props}: Props) => {
           <Link href={paragraph.suMediaCaptionLink.url}>{paragraph.suMediaCaptionLink.title}</Link>
         )}
 
-        <Wysiwyg html={paragraph.suMediaCaptionCaption?.processed} />
+        <Wysiwyg className="*:font-lato *:italic" html={paragraph.suMediaCaptionCaption?.processed} />
       </figcaption>
     </figure>
   )

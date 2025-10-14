@@ -11,10 +11,10 @@ const SpacerParagraph = ({paragraph, ...props}: Props) => {
   return (
     <div
       className={twMerge(
-        "h-20",
         clsx({
-          "h-10": paragraph.suSpacerSize === "su-spacer-minimal",
-          "h-15": paragraph.suSpacerSize === "su-spacer-reduced",
+          "rs-pb-2": !paragraph.suSpacerSize,
+          "rs-pb-0": paragraph.suSpacerSize === "su-spacer-minimal",
+          "rs-pb-1": paragraph.suSpacerSize === "su-spacer-reduced",
         })
       )}
       {...props}
