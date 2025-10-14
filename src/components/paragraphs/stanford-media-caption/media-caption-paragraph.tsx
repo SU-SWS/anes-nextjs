@@ -20,7 +20,7 @@ const MediaCaptionParagraph = async ({paragraph, ...props}: Props) => {
   return (
     <figure {...props} className={twMerge("centered xl:max-w-[980px]", props.className)}>
       {image?.url && (
-        <div className="relative aspect-[16/9] w-full">
+        <div className="relative aspect-[16/9] w-full rounded-[3.5rem]">
           <Image
             className="object-cover"
             src={image.url}
