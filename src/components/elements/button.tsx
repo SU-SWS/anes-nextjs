@@ -67,7 +67,7 @@ export const Button = ({
       "btn--big text-5xl": big,
       "bg-white/25 backdrop-blur-[2.1rem] shadow-glass text-palo-alto-dark font-normal text-palo-alto-dark hocus:bg-white no-underline hocus:underline":
         !secondary && !outline,
-      "btn--secondary bg-palo-alto-light font-normal text-white hocus:bg-black hocus:text-white  no-underline hocus:underline":
+      "btn--secondary bg-palo-alto-light font-normal text-white hocus:bg-black hocus:text-white no-underline hocus:underline":
         secondary,
       "btn--outline text-palo-alto-light border-2 border-palo-alto-light hocus:border-black no-underline hocus:bg-palo-alto-dark hocus:text-white hocus:underline  font-normal":
         outline,
