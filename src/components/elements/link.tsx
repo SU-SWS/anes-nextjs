@@ -5,7 +5,6 @@ import ActionLink from "@components/elements/action-link"
 import Button from "@components/elements/button"
 import {LinkProps as NextLinkProps} from "next/dist/client/link"
 import {ArrowUpRightIcon} from "@heroicons/react/16/solid"
-import twMerge from "@lib/utils/twMerge"
 import clsx from "clsx"
 
 export type LinkProps = HtmlHTMLAttributes<HTMLAnchorElement | HTMLButtonElement> &
@@ -21,7 +20,6 @@ const DrupalLink = ({href, showExtLinkIcon, className, children, ...props}: Link
   // Make sure all links have a href.
   href = href || "#"
   const drupalBase: string = (process.env.NEXT_PUBLIC_DRUPAL_BASE_URL || "").replace(/\/$/, "")
-  const linkStyle = "text-palo-alto-dark font-semibold no-underline hocus:underline"
 
   // Make sure links to documents or images go to the Drupal origin.
   if (href.startsWith("/") && href.includes("/files/")) {
@@ -70,7 +68,17 @@ const DrupalLink = ({href, showExtLinkIcon, className, children, ...props}: Link
   }
 
   return (
-    <Link href={href} className={twMerge("group", className, !className?.includes("btn") && linkStyle)} {...props}>
+    <Link
+      href={href}
+      className={clsx(
+        "group",
+        {
+          "text-palo-alto-dark hocus:underline font-semibold no-underline": !className?.includes("btn"),
+        },
+        className
+      )}
+      {...props}
+    >
       {children}
       {href.startsWith("mailto") && <EnvelopeIcon width={20} className="ml-4 inline-block" />}
 
