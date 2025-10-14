@@ -18,13 +18,13 @@ const PageFooter = ({...props}: Props) => {
       <LocalFooter />
 
       <div className="bg-black pb-50 text-white">
-        <div className="mx-auto w-full max-w-1130">
-          <div className="text-16 flex flex-row justify-between pt-24 pb-12">
-            <div className="font-semibold">
+        <div className="centered mx-auto w-full xl:max-w-1130">
+          <div className="text-16 flex flex-col justify-between gap-10 pt-24 pb-12 lg:flex-row lg:gap-50">
+            <div className="shrink-0 font-semibold">
               ©<span>{new Date().getFullYear()}</span> Stanford University
             </div>
 
-            <ul className="flex flex-row items-center p-0 [&_a]:text-white [&_a]:no-underline [&_a:hocus]:text-white">
+            <ul className="flex w-full max-w-550 flex-row flex-wrap items-center p-0 [&_a]:text-white [&_a]:no-underline [&_a:hocus]:text-white">
               <li className="mb-0 list-none pr-30">
                 <a href="https://www.stanford.edu/site/privacy">Privacy Policy</a>
               </li>
@@ -53,7 +53,7 @@ const PageFooter = ({...props}: Props) => {
               </li>
             </ul>
           </div>
-          <div className="mr-142 mb-18 ml-auto w-400 [&_a]:text-white [&_a]:underline [&_a:hocus]:text-white">
+          <div className="mr-142 mb-18 w-314 max-lg:pt-30 lg:ml-auto lg:w-400 [&_a]:text-white [&_a]:underline [&_a:hocus]:text-white">
             <h4 className="text-21 leading-cozy mt-14 mb-0">Non-Discrimination</h4>
             <p className="text-16 mb-0 font-semibold">
               Stanford complies with all applicable civil rights laws and does not engage in illegal preferences or
@@ -66,7 +66,7 @@ const PageFooter = ({...props}: Props) => {
             </p>
           </div>
 
-          <ul className="text-16 children:ml-0 m-0 mx-auto mt-36 flex max-w-1300 list-none flex-row justify-around p-0 [&_a]:text-white [&_a]:no-underline [&_a:hocus]:text-white">
+          <ul className="text-16 children:ml-0 m-0 mx-auto mt-40 flex max-w-1300 list-none flex-col justify-around p-0 max-lg:items-center max-lg:gap-30 lg:mt-36 lg:flex-row [&_a]:text-white [&_a]:no-underline [&_a:hocus]:text-white">
             <li>
               <a className="logo text-25 hocus:text-white text-white" href="https://www.stanford.edu">
                 Stanford
@@ -76,27 +76,27 @@ const PageFooter = ({...props}: Props) => {
             </li>
             <li>
               <a href="//med.stanford.edu" title="Stanford School of Medicine">
-                <StanfordMedicineSomLogo className="h-45" />
+                <StanfordMedicineSomLogo className="lg:h-45" height={55} />
               </a>
             </li>
             <li>
               <a href="http://stanfordhealthcare.org" title="Stanford Health Care">
-                <StanfordHealthCareLogo className="h-45" />
+                <StanfordHealthCareLogo className="lg:h-45" height={55} />
               </a>
             </li>
             <li>
               <a href="http://www.stanfordchildrens.org" title="Stanford Children's Health">
-                <StanfordChildrensHealthLogo className="h-45" />
+                <StanfordChildrensHealthLogo className="lg:h-45" height={55} />
               </a>
             </li>
             <li>
               <a href="http://ValleyCare.com" title="Stanford Health Care Tri-Valley">
-                <StanfordHealthCareTriValleyLogo className="h-70" />
+                <StanfordHealthCareTriValleyLogo className="lg:h-70" height={80} />
               </a>
             </li>
             <li>
               <a href="http://universityhealthcarealliance.org" title="Stanford Medicine Partners">
-                <StanfordMedicinePartnerLogo className="h-45" />
+                <StanfordMedicinePartnerLogo className="lg:h-45" height={55} />
               </a>
             </li>
           </ul>
