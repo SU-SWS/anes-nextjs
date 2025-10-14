@@ -24,6 +24,8 @@
 
   --font-lato: var(--font-lato);
   --font-merriweather: var(--font-merriweather);
+
+  --shadow-glass: 0 2px 1px 0 #abd1d0;
 }
 
 @layer components {
