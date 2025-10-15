@@ -63,7 +63,7 @@ const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...pr
           className={twMerge(
             "bottom-0 mb-50 flex w-full max-w-400 flex-col text-white md:max-w-700 @6xl:absolute @6xl:z-10",
             clsx({
-              "@6xl:right-0 @6xl:mr-50 @6xl:ml-auto": overlayPosition === "right",
+              "items-end @6xl:right-0 @6xl:mr-50 @6xl:ml-auto": overlayPosition === "right",
               "@6xl:left-0 @6xl:mr-auto @6xl:ml-50": overlayPosition !== "right",
             })
           )}
@@ -115,9 +115,9 @@ const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...pr
               width="50"
               height="50"
               viewBox="1 0 50 50"
-              className={clsx("fill-backdrop-blur-[2.1rem] aspect-1/1 h-35 w-35 shrink-0 rotate-0 fill-black/60", {
-                "order-1": overlayPosition === "right",
-                "": overlayPosition !== "right",
+              className={clsx("fill-backdrop-blur-[2.1rem] aspect-1/1 h-35 w-35 shrink-0 fill-black/60", {
+                "order-first rotate-90": overlayPosition === "right",
+                "rotate-0": overlayPosition !== "right",
               })}
             >
               <path d="M50.7969 0C23.1826 -1.17772e-06 0.796878 22.3858 0.796877 50L0.796875 2.18557e-06L50.7969 0Z" />
