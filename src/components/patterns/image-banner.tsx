@@ -104,25 +104,25 @@ const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...pr
 
             <Wysiwyg html={paragraph.suBannerBody?.processed} className="type-0" />
           </div>
-          <div className="flex flex-row content-start">
-            <div className="rs-px-4 rs-pb-1 w-fit rounded-[3.5rem] rounded-t-none bg-black/60 backdrop-blur-[2.1rem]">
-              {paragraph.suBannerButton?.url && (
+          {paragraph.suBannerButton?.url && (
+            <div className="flex flex-row content-start">
+              <div className="rs-px-4 rs-pb-1 w-fit rounded-[3.5rem] rounded-t-none bg-black/60 backdrop-blur-[2.1rem]">
                 <Button href={paragraph.suBannerButton.url}>{paragraph.suBannerButton.title}</Button>
-              )}
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="1 0 50 50"
+                className={clsx("fill-backdrop-blur-[2.1rem] aspect-1/1 h-35 w-35 shrink-0 fill-black/60", {
+                  "order-first rotate-90": overlayPosition === "right",
+                  "rotate-0": overlayPosition !== "right",
+                })}
+              >
+                <path d="M50.7969 0C23.1826 -1.17772e-06 0.796878 22.3858 0.796877 50L0.796875 2.18557e-06L50.7969 0Z" />
+              </svg>
             </div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
-              viewBox="1 0 50 50"
-              className={clsx("fill-backdrop-blur-[2.1rem] aspect-1/1 h-35 w-35 shrink-0 fill-black/60", {
-                "order-first rotate-90": overlayPosition === "right",
-                "rotate-0": overlayPosition !== "right",
-              })}
-            >
-              <path d="M50.7969 0C23.1826 -1.17772e-06 0.796878 22.3858 0.796877 50L0.796875 2.18557e-06L50.7969 0Z" />
-            </svg>
-          </div>
+          )}
         </div>
       )}
     </BannerWrapper>
