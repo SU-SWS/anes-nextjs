@@ -49,20 +49,23 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
   return (
     <ImageCard
       {...props}
-      className={clsx({
-        "text-center": paragraph.suStatCentered,
-        "text-white [&_a]:text-white": whiteText,
-        "bg-black": paragraph.suStatBgColor?.color === "2e2d29",
-        "bg-cool-grey": paragraph.suStatBgColor?.color === "53565a",
-        "bg-stone-dark": paragraph.suStatBgColor?.color === "544948",
-        "bg-cardinal-red": paragraph.suStatBgColor?.color === "8c1515",
-        "bg-plum": paragraph.suStatBgColor?.color === "620059",
-        "bg-lagunita": paragraph.suStatBgColor?.color === "007c92",
-        "bg-palo-alto": paragraph.suStatBgColor?.color === "175e54",
-        "bg-poppy": paragraph.suStatBgColor?.color === "e98300",
-        "bg-foggy-light": paragraph.suStatBgColor?.color === "f4f4f4",
-        "bg-spirited": paragraph.suStatBgColor?.color === "e04f39",
-      })}
+      className={twMerge(
+        "border-0 bg-transparent p-10 shadow-none",
+        clsx({
+          "text-center": paragraph.suStatCentered,
+          "text-white [&_a]:text-white": whiteText,
+          "bg-black": paragraph.suStatBgColor?.color === "2e2d29",
+          "bg-cool-grey": paragraph.suStatBgColor?.color === "53565a",
+          "bg-stone-dark": paragraph.suStatBgColor?.color === "544948",
+          "bg-cardinal-red": paragraph.suStatBgColor?.color === "8c1515",
+          "bg-plum": paragraph.suStatBgColor?.color === "620059",
+          "bg-lagunita": paragraph.suStatBgColor?.color === "007c92",
+          "bg-palo-alto": paragraph.suStatBgColor?.color === "175e54",
+          "bg-poppy": paragraph.suStatBgColor?.color === "e98300",
+          "bg-foggy-light": paragraph.suStatBgColor?.color === "f4f4f4",
+          "bg-spirited": paragraph.suStatBgColor?.color === "e04f39",
+        })
+      )}
       aria-labelledby={paragraph.suStatHeadline ? paragraph.uuid : undefined}
       imageUrl={paragraph.suStatImage?.mediaImage.url}
       imageAlt={paragraph.suStatImage?.mediaImage.alt}
@@ -113,7 +116,7 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
               end={parseFloat(statMatches[1])}
               prefix={prefix}
               suffix={(statMatches && statMatches[2]) || undefined}
-              className={clsx("text-[40px] font-bold @xl:text-[50px] @2xl:text-[60px]", {
+              className={clsx("text-palo-alto type-6 font-bold", {
                 "text-cardinal-red": allowTextColors && paragraph.suStatStatColor?.color === "8c1515",
                 "text-plum": allowTextColors && paragraph.suStatStatColor?.color === "620059",
                 "text-lagunita": allowTextColors && paragraph.suStatStatColor?.color === "007c92",
@@ -129,7 +132,7 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
           )}
         </div>
       </ReverseVisualOrder>
-      <Wysiwyg html={paragraph.suStatBody?.processed} />
+      <Wysiwyg className="text-palo-alto [&_p]:text-33" html={paragraph.suStatBody?.processed} />
       {paragraph.suStatButton?.url && (
         <Link
           className={twMerge(
