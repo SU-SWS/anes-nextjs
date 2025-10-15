@@ -72,8 +72,8 @@ const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...pr
             className={twMerge(
               "rs-px-4 rs-py-2 flex w-full flex-col gap-10 rounded-[3.5rem] bg-black/60 backdrop-blur-[2.1rem]",
               clsx({
-                "rounded-br-none": overlayPosition === "right",
-                "rounded-bl-none": overlayPosition !== "right",
+                "rounded-br-none": overlayPosition === "right" && paragraph.suBannerButton?.url,
+                "rounded-bl-none": overlayPosition !== "right" && paragraph.suBannerButton?.url,
               })
             )}
           >
