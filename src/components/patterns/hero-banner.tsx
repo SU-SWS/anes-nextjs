@@ -40,13 +40,7 @@ const HeroBanner = async ({
   const BannerWrapper: ElementType = isSection ? "section" : "div"
 
   return (
-    <BannerWrapper
-      {...props}
-      className={twMerge(
-        "rs-mb-5 centered @container relative overflow-hidden rounded-[3.5rem] md:min-h-[700px]",
-        props.className
-      )}
-    >
+    <BannerWrapper {...props} className={twMerge("rs-mb-5 @container relative md:min-h-[400px]", props.className)}>
       <div className="bg-cool-grey relative aspect-[16/9] w-full @6xl:absolute @6xl:aspect-auto @6xl:h-full">
         {imageUrl && (
           <Image
@@ -64,10 +58,10 @@ const HeroBanner = async ({
       {children && (
         <div
           className={twMerge(
-            "rs-px-4 rs-py-2 bottom-0 mb-50 flex w-full flex-col gap-10 rounded-[3.5rem] bg-black/60 text-white shadow-lg backdrop-blur-[2.1rem] @6xl:absolute @6xl:z-10 @6xl:max-w-700",
+            "rs-p-2 relative flex w-full flex-col gap-10 shadow-lg @6xl:z-10 @6xl:my-24 @6xl:max-w-[550px] @6xl:bg-white",
             clsx({
-              "@6xl:right-0 @6xl:mr-50 @6xl:ml-auto": overlayPosition === "right",
-              "@6xl:left-0 @6xl:mr-auto @6xl:ml-50": overlayPosition !== "right",
+              "@6xl:mr-20 @6xl:ml-auto": overlayPosition === "right",
+              "@6xl:mr-auto @6xl:ml-20": overlayPosition !== "right",
             })
           )}
         >
