@@ -75,21 +75,23 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
         {paragraph.suStatHeadline && (
           <>
             {headerTag === "h2" && (
-              <H2 id={paragraph.uuid} className={twMerge("type-2 mb-0", headerClasses)}>
+              <H2 id={paragraph.uuid} className={twMerge("text-palo-alto type-2 mb-0", headerClasses)}>
                 {paragraph.suStatHeadline}
               </H2>
             )}
             {headerTag === "h3" && (
-              <H3 id={paragraph.uuid} className={twMerge("type-1 mb-0", headerClasses)}>
+              <H3 id={paragraph.uuid} className={twMerge("text-palo-alto type-1 mb-0", headerClasses)}>
                 {paragraph.suStatHeadline}
               </H3>
             )}
             {headerTag === "h4" && (
-              <H4 id={paragraph.uuid} className={twMerge("type-0 mb-0", headerClasses)}>
+              <H4 id={paragraph.uuid} className={twMerge("text-palo-alto type-0 mb-0", headerClasses)}>
                 {paragraph.suStatHeadline}
               </H4>
             )}
-            {headerTag === "div" && <div className={twMerge("mb-0", headerClasses)}>{paragraph.suStatHeadline}</div>}
+            {headerTag === "div" && (
+              <div className={twMerge("text-palo-alto mb-0", headerClasses)}>{paragraph.suStatHeadline}</div>
+            )}
           </>
         )}
 
