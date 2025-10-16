@@ -27,6 +27,10 @@ type Props = HtmlHTMLAttributes<HTMLAnchorElement | HTMLButtonElement> & {
    */
   outline?: boolean
   /**
+   * Display a ghost styled button.
+   */
+  ghost?: boolean
+  /**
    * Center the button in the container.
    */
   centered?: boolean
@@ -54,6 +58,7 @@ export const Button = ({
   big = false,
   secondary = false,
   outline = false,
+  ghost = false,
   centered = false,
   children,
   className,
@@ -66,11 +71,13 @@ export const Button = ({
       "inline-block text-center w-fit": !centered,
       "btn--big text-5xl": big,
       "bg-white/25 backdrop-blur-[2.1rem] shadow-glass text-palo-alto-dark font-normal text-palo-alto-dark hocus:bg-white no-underline hocus:underline":
-        !secondary && !outline,
+        !secondary && !outline && !ghost,
       "btn--secondary bg-palo-alto-light font-normal text-white hocus:bg-black hocus:text-white no-underline hocus:underline":
         secondary,
       "btn--outline text-palo-alto-light border-2 border-palo-alto-light hocus:border-black no-underline hocus:bg-palo-alto-dark hocus:text-white hocus:underline  font-normal":
         outline,
+      "btn--ghost text-white border-2 bg-transparent border-white hocus:border-palo-alto-dark no-underline hocus:bg-white hocus:text-palo-alto-dark hocus:underline font-normal":
+        ghost,
     }
   )
 

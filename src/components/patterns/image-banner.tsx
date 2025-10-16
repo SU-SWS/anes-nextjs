@@ -9,6 +9,7 @@ import {BannerParagraphBehaviors} from "@lib/drupal/drupal-jsonapi.d"
 import Wysiwyg from "@components/elements/wysiwyg"
 import Button from "@components/elements/button"
 import {H2, H3, H4} from "@components/elements/headers"
+import AnimateInView from "@components/elements/animate/animate-in-view"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   paragraph: ParagraphStanfordBanner
@@ -26,7 +27,7 @@ type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   eagerLoadImage?: Maybe<boolean>
 }
 
-const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...props}: Props) => {
+const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
   const behaviors = getParagraphBehaviors<BannerParagraphBehaviors>(paragraph)
   const hasCard =
     paragraph.suBannerHeader || paragraph.suBannerButton || paragraph.suBannerBody || paragraph.suBannerSupHeader
@@ -42,35 +43,40 @@ const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...pr
   return (
     <BannerWrapper
       {...props}
-      className={twMerge("rs-mb-5 centered @container relative md:min-h-[700px]", props.className)}
+      aria-labelledby={paragraph.suBannerHeader ? paragraph.uuid : undefined}
+      className={twMerge(
+        "rs-mb-5 centered @container relative min-h-[700px] overflow-hidden rounded-[3.5rem]",
+        props.className
+      )}
     >
-      <div className="bg-cool-grey relative aspect-[16/9] w-full overflow-hidden rounded-[3.5rem] @6xl:absolute @6xl:aspect-auto @6xl:h-full">
-        {imageUrl && (
+      <div className="bg-cool-grey relative aspect-[16/9] h-full w-full md:absolute md:aspect-auto">
+        {paragraph.suBannerImage?.mediaImage.url && (
           <Image
             className="object-cover"
-            src={imageUrl}
-            alt={imageAlt || ""}
+            src={paragraph.suBannerImage?.mediaImage.url}
+            alt={paragraph.suBannerImage?.mediaImage.alt || ""}
             loading={eagerLoadImage ? "eager" : "lazy"}
             fill
             sizes="100vw"
-            {...await getImagePlaceholder(imageUrl)}
+            {...await getImagePlaceholder(paragraph.suBannerImage?.mediaImage.url)}
           />
         )}
       </div>
 
       {hasCard && (
-        <div
+        <AnimateInView
+          animation="slideUp"
           className={twMerge(
-            "bottom-0 mb-50 flex w-full max-w-400 flex-col text-white md:max-w-700 @6xl:absolute @6xl:z-10",
+            "relative bottom-0 z-10 mb-50 flex w-full flex-col text-white md:absolute md:max-w-400 md:max-w-700",
             clsx({
-              "items-end @6xl:right-0 @6xl:mr-50 @6xl:ml-auto": overlayPosition === "right",
-              "@6xl:left-0 @6xl:mr-auto @6xl:ml-50": overlayPosition !== "right",
+              "right-0 items-end md:mx-50 md:mr-50 md:ml-auto": overlayPosition === "right",
+              "left-0 md:mx-50 md:mr-auto md:ml-50": overlayPosition !== "right",
             })
           )}
         >
           <div
             className={twMerge(
-              "rs-px-4 rs-py-2 flex w-full flex-col gap-10 rounded-[3.5rem] bg-black/80",
+              "rs-px-4 rs-py-2 max flex w-full flex-col gap-10 rounded-[3.5rem] bg-black/80 max-md:rounded-t-none",
               clsx({
                 "rounded-br-none": overlayPosition === "right" && paragraph.suBannerButton?.url,
                 "rounded-bl-none": overlayPosition !== "right" && paragraph.suBannerButton?.url,
@@ -107,7 +113,9 @@ const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...pr
           {paragraph.suBannerButton?.url && (
             <div className="flex flex-row content-start">
               <div className="rs-px-4 rs-pb-1 w-fit rounded-[3.5rem] rounded-t-none bg-black/80">
-                <Button href={paragraph.suBannerButton.url}>{paragraph.suBannerButton.title}</Button>
+                <Button ghost className="link--action" href={paragraph.suBannerButton.url}>
+                  {paragraph.suBannerButton.title}
+                </Button>
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +131,7 @@ const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...pr
               </svg>
             </div>
           )}
-        </div>
+        </AnimateInView>
       )}
     </BannerWrapper>
   )
