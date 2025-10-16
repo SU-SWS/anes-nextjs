@@ -34,6 +34,7 @@ const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
 
   const headerTagChoice = (behaviors.hero_pattern?.heading || "h2").split(".", 2)
   const headerTag = headerTagChoice[0]
+  const isScrolly = paragraph.suBannerBody?.processed
 
   let headerClasses = headerTagChoice[1]?.replace(".", " ").replace("su-font-splash", "type-3 font-bold") || ""
   if (behaviors.hero_pattern?.hide_heading) headerClasses += " sr-only"
@@ -44,15 +45,22 @@ const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
     <BannerWrapper
       {...props}
       aria-labelledby={paragraph.suBannerHeader ? paragraph.uuid : undefined}
-      className={twMerge(
-        "rs-mb-5 centered @container relative overflow-hidden rounded-[3.5rem] md:min-h-[700px]",
+      className={clsx(
+        "rs-mb-5 @container relative",
+        {"w-full overflow-clip": isScrolly},
+        {"centered overflow-hidden rounded-[3.5rem] md:min-h-[700px]": !isScrolly},
         props.className
       )}
     >
-      <div className="bg-cool-grey relative aspect-[16/9] h-full w-full md:absolute md:aspect-auto">
+      <div
+        className={clsx("bg-cool-grey w-full", {
+          "sticky top-0 z-0 h-screen": isScrolly,
+          "relative aspect-[16/9] h-full md:absolute md:aspect-auto": !isScrolly,
+        })}
+      >
         {paragraph.suBannerImage?.mediaImage.url && (
           <Image
-            className="object-cover"
+            className={clsx("object-cover", {"absolute top-0 left-0 z-0 size-full object-cover": isScrolly})}
             src={paragraph.suBannerImage?.mediaImage.url}
             alt={paragraph.suBannerImage?.mediaImage.alt || ""}
             loading={eagerLoadImage ? "eager" : "lazy"}
@@ -66,20 +74,26 @@ const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
       {hasCard && (
         <AnimateInView
           animation="slideUp"
+          delay={isScrolly && 0}
+          duration={isScrolly && 0}
           className={twMerge(
-            "relative bottom-0 z-10 mb-50 flex w-full flex-col text-white md:absolute md:max-w-400 lg:max-w-700",
+            "relative z-10 mb-50 text-white",
             clsx({
               "right-0 items-end md:mx-50 md:mr-50 md:ml-auto": overlayPosition === "right",
               "left-0 md:mx-50 md:mr-auto md:ml-50": overlayPosition !== "right",
+              "cc -mt-[90vh] w-full sm:w-2/3 md:w-1/2": isScrolly,
+              "bottom-0 flex w-full flex-col md:absolute md:w-fit md:max-w-400 lg:max-w-700": !isScrolly,
             })
           )}
         >
           <div
             className={twMerge(
-              "rs-px-4 rs-py-2 max flex w-full flex-col gap-10 rounded-[3.5rem] bg-black/80 max-md:rounded-t-none max-sm:rounded-b-none",
+              "rs-px-4 rs-py-2 max flex w-full flex-col gap-10 rounded-[3.5rem] bg-black/80",
               clsx({
                 "rounded-br-none": overlayPosition === "right" && paragraph.suBannerButton?.url,
                 "rounded-bl-none": overlayPosition !== "right" && paragraph.suBannerButton?.url,
+                "max-md:rounded-t-none max-sm:rounded-b-none": !isScrolly,
+                "backdrop-blur-[2.5rem]": isScrolly,
               })
             )}
           >
@@ -112,7 +126,7 @@ const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
 
             <Wysiwyg html={paragraph.suBannerBody?.processed} className="type-0" />
           </div>
-          {paragraph.suBannerButton?.url && (
+          {paragraph.suBannerButton?.url && !isScrolly && (
             <div className="flex flex-row content-start">
               <div className="rs-px-4 rs-pb-1 w-full rounded-[3.5rem] rounded-t-none bg-black/80 sm:w-fit">
                 <Button ghost className="link--action" href={paragraph.suBannerButton.url}>
