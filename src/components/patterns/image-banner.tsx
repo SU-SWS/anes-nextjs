@@ -70,7 +70,7 @@ const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...pr
         >
           <div
             className={twMerge(
-              "rs-px-4 rs-py-2 flex w-full flex-col gap-10 rounded-[3.5rem] bg-black/60 backdrop-blur-[2.1rem]",
+              "rs-px-4 rs-py-2 flex w-full flex-col gap-10 rounded-[3.5rem] bg-black/80",
               clsx({
                 "rounded-br-none": overlayPosition === "right" && paragraph.suBannerButton?.url,
                 "rounded-bl-none": overlayPosition !== "right" && paragraph.suBannerButton?.url,
@@ -106,7 +106,7 @@ const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...pr
           </div>
           {paragraph.suBannerButton?.url && (
             <div className="flex flex-row content-start">
-              <div className="rs-px-4 rs-pb-1 w-fit rounded-[3.5rem] rounded-t-none bg-black/60 backdrop-blur-[2.1rem]">
+              <div className="rs-px-4 rs-pb-1 w-fit rounded-[3.5rem] rounded-t-none bg-black/80">
                 <Button href={paragraph.suBannerButton.url}>{paragraph.suBannerButton.title}</Button>
               </div>
               <svg
@@ -114,7 +114,7 @@ const ImageBanner = async ({imageUrl, imageAlt, eagerLoadImage, paragraph, ...pr
                 width="50"
                 height="50"
                 viewBox="1 0 50 50"
-                className={clsx("fill-backdrop-blur-[2.1rem] aspect-1/1 h-35 w-35 shrink-0 fill-black/60", {
+                className={clsx("aspect-1/1 h-35 w-35 shrink-0 fill-black/80", {
                   "order-first rotate-90": overlayPosition === "right",
                   "rotate-0": overlayPosition !== "right",
                 })}
