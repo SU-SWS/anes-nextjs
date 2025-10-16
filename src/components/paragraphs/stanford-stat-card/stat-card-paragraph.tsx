@@ -132,7 +132,7 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
           )}
         </div>
       </ReverseVisualOrder>
-      <Wysiwyg className="text-palo-alto [&_p]:type-2" html={paragraph.suStatBody?.processed} />
+      <Wysiwyg className="text-palo-alto type-2" html={paragraph.suStatBody?.processed} />
       {paragraph.suStatButton?.url && (
         <Link
           className={twMerge(
