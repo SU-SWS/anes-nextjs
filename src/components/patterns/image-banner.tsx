@@ -76,7 +76,7 @@ const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
         >
           <div
             className={twMerge(
-              "rs-px-4 rs-py-2 max flex w-full flex-col gap-10 rounded-[3.5rem] bg-black/80 max-md:rounded-t-none",
+              "rs-px-4 rs-py-2 max flex w-full flex-col gap-10 rounded-[3.5rem] bg-black/80 max-md:rounded-t-none max-sm:rounded-b-none",
               clsx({
                 "rounded-br-none": overlayPosition === "right" && paragraph.suBannerButton?.url,
                 "rounded-bl-none": overlayPosition !== "right" && paragraph.suBannerButton?.url,
@@ -114,7 +114,7 @@ const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
           </div>
           {paragraph.suBannerButton?.url && (
             <div className="flex flex-row content-start">
-              <div className="rs-px-4 rs-pb-1 w-fit rounded-[3.5rem] rounded-t-none bg-black/80">
+              <div className="rs-px-4 rs-pb-1 w-full rounded-[3.5rem] rounded-t-none bg-black/80 sm:w-fit">
                 <Button ghost className="link--action" href={paragraph.suBannerButton.url}>
                   {paragraph.suBannerButton.title}
                 </Button>
@@ -124,7 +124,7 @@ const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
                 width="50"
                 height="50"
                 viewBox="1 0 50 50"
-                className={clsx("aspect-1/1 h-35 w-35 shrink-0 fill-black/80", {
+                className={clsx("hidden aspect-1/1 h-35 w-35 shrink-0 fill-black/80 sm:block", {
                   "order-first rotate-90": overlayPosition === "right",
                   "rotate-0": overlayPosition !== "right",
                 })}
