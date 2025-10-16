@@ -28,6 +28,21 @@
   --shadow-glass: 0 2px 1px 0 #abd1d0;
 }
 
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: theme(--font-lato);
+  }
+
+  body {
+    font-family: theme(--font-merriweather);
+  }
+}
+
 @layer components {
   .local-footer .wysiwyg h2 {
     font-size: 1.5em;
