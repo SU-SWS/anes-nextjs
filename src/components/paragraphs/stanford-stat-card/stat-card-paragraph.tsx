@@ -138,8 +138,8 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
       {paragraph.suStatButton?.url && (
         <Link
           className={twMerge(
-            clsx("group hocus:underline flex w-fit items-center gap-3 text-black no-underline", {
-              "type-0 rounded-2xl border border-black px-18 py-9": paragraph.suStatLinkStyle === "button",
+            clsx("group hocus:underline mt-25 flex w-fit items-center gap-3 text-black no-underline", {
+              "type-0 mt-25 rounded-2xl border border-black px-18 py-9": paragraph.suStatLinkStyle === "button",
               "hocus:text-white rs-px-4 rs-pb-1 w-full rounded-[3.5rem] rounded-t-none border-white bg-black/80 text-white sm:w-fit":
                 whiteText,
               "mx-auto": paragraph.suStatCentered,
