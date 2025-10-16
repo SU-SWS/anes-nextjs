@@ -36,12 +36,12 @@ const StanfordPagePage = ({node, ...props}: Props) => {
       )}
 
       {node.suPageBanner?.__typename !== "ParagraphStanfordPageTitleBanner" && (
-        <H1 className="centered mt-32">{node.title}</H1>
+        <H1 className="centered rs-mt-3 text-center">{node.title}</H1>
       )}
 
       {!fullWidth && (
         <InteriorPage currentPath={node.path || "#"}>
-          <Wysiwyg html={node.body?.processed} className="centered mb-32 xl:max-w-[980px]" />
+          <Wysiwyg html={node.body?.processed} className="centered sm:max-w-550 lg:w-full lg:max-w-535 xl:max-w-725" />
           <Rows components={node.suPageComponents} />
         </InteriorPage>
       )}

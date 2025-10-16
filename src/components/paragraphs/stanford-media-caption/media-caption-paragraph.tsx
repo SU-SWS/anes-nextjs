@@ -20,7 +20,7 @@ const MediaCaptionParagraph = async ({paragraph, ...props}: Props) => {
   return (
     <figure {...props} className={twMerge("centered xl:max-w-[980px]", props.className)}>
       {image?.url && (
-        <div className="relative aspect-[16/9] w-full">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[3.5rem]">
           <Image
             className="object-cover"
             src={image.url}
@@ -38,7 +38,7 @@ const MediaCaptionParagraph = async ({paragraph, ...props}: Props) => {
           <Link href={paragraph.suMediaCaptionLink.url}>{paragraph.suMediaCaptionLink.title}</Link>
         )}
 
-        <Wysiwyg html={paragraph.suMediaCaptionCaption?.processed} />
+        <Wysiwyg className="*:font-lato *:italic" html={paragraph.suMediaCaptionCaption?.processed} />
       </figcaption>
     </figure>
   )
