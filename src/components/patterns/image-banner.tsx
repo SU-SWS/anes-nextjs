@@ -67,7 +67,7 @@ const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
         <AnimateInView
           animation="slideUp"
           className={twMerge(
-            "relative bottom-0 z-10 mb-50 flex w-full flex-col text-white md:absolute md:max-w-400 md:max-w-700",
+            "relative bottom-0 z-10 mb-50 flex w-full flex-col text-white md:absolute md:max-w-400 lg:max-w-700",
             clsx({
               "right-0 items-end md:mx-50 md:mr-50 md:ml-auto": overlayPosition === "right",
               "left-0 md:mx-50 md:mr-auto md:ml-50": overlayPosition !== "right",
