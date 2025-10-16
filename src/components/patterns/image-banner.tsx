@@ -86,21 +86,23 @@ const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
             {paragraph.suBannerHeader && (
               <>
                 {headerTag === "h2" && (
-                  <H2 id={paragraph.uuid} className={twMerge(headerClasses, "type-2 mb-0")}>
+                  <H2 id={paragraph.uuid} className={twMerge(headerClasses, "fluid-type-7 mb-0")}>
                     {paragraph.suBannerHeader}
                   </H2>
                 )}
                 {headerTag === "h3" && (
-                  <H3 id={paragraph.uuid} className={headerClasses}>
+                  <H3 id={paragraph.uuid} className={twMerge(headerClasses, "fluid-type-6 mb-0")}>
                     {paragraph.suBannerHeader}
                   </H3>
                 )}
                 {headerTag === "h4" && (
-                  <H4 id={paragraph.uuid} className={headerClasses}>
+                  <H4 id={paragraph.uuid} className={twMerge(headerClasses, "fluid-type-5 mb-0")}>
                     {paragraph.suBannerHeader}
                   </H4>
                 )}
-                {headerTag === "div" && <div className={headerClasses}>{paragraph.suBannerHeader}</div>}
+                {headerTag === "div" && (
+                  <div className={twMerge(headerClasses, "fluid-type-4 mb-0")}>{paragraph.suBannerHeader}</div>
+                )}
               </>
             )}
 
