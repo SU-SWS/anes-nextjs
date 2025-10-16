@@ -50,7 +50,7 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
     <ImageCard
       {...props}
       className={twMerge(
-        "border-0 bg-transparent p-10 shadow-none",
+        "max-w-[475px] border-0 bg-transparent px-0 py-50 shadow-none sm:py-61 sm:pr-61 sm:pl-0 md:px-0 md:py-61 lg:py-61 lg:pr-61 lg:pl-0",
         clsx({
           "text-center": paragraph.suStatCentered,
           "text-white [&_a]:text-white": whiteText,
@@ -132,7 +132,7 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
           )}
         </div>
       </ReverseVisualOrder>
-      <Wysiwyg className="text-palo-alto [&_p]:text-33" html={paragraph.suStatBody?.processed} />
+      <Wysiwyg className="text-palo-alto [&_p]:type-2" html={paragraph.suStatBody?.processed} />
       {paragraph.suStatButton?.url && (
         <Link
           className={twMerge(
