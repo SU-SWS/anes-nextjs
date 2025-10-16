@@ -45,7 +45,7 @@ const ImageBanner = async ({paragraph, eagerLoadImage, ...props}: Props) => {
       {...props}
       aria-labelledby={paragraph.suBannerHeader ? paragraph.uuid : undefined}
       className={twMerge(
-        "rs-mb-5 centered @container relative min-h-[700px] overflow-hidden rounded-[3.5rem]",
+        "rs-mb-5 centered @container relative overflow-hidden rounded-[3.5rem] md:min-h-[700px]",
         props.className
       )}
     >
