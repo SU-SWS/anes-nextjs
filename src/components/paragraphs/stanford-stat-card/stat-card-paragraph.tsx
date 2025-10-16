@@ -75,17 +75,17 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
         {paragraph.suStatHeadline && (
           <>
             {headerTag === "h2" && (
-              <H2 id={paragraph.uuid} className={twMerge("mb-0", headerClasses)}>
+              <H2 id={paragraph.uuid} className={twMerge("type-2 mb-0", headerClasses)}>
                 {paragraph.suStatHeadline}
               </H2>
             )}
             {headerTag === "h3" && (
-              <H3 id={paragraph.uuid} className={twMerge("mb-0", headerClasses)}>
+              <H3 id={paragraph.uuid} className={twMerge("type-1 mb-0", headerClasses)}>
                 {paragraph.suStatHeadline}
               </H3>
             )}
             {headerTag === "h4" && (
-              <H4 id={paragraph.uuid} className={twMerge("mb-0", headerClasses)}>
+              <H4 id={paragraph.uuid} className={twMerge("type-0 mb-0", headerClasses)}>
                 {paragraph.suStatHeadline}
               </H4>
             )}
@@ -110,7 +110,9 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
               />
             </div>
           )}
-          {paragraph.suStatSuperhead && <div className="font-semibold">{paragraph.suStatSuperhead}</div>}
+          {paragraph.suStatSuperhead && (
+            <div className="type-0 text-palo-alto font-bold uppercase">{paragraph.suStatSuperhead}</div>
+          )}
           {statMatches && (
             <CountUpNumber
               end={parseFloat(statMatches[1])}
@@ -137,8 +139,9 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
         <Link
           className={twMerge(
             clsx("group hocus:underline flex w-fit items-center gap-3 text-black no-underline", {
-              "border border-black px-7 py-5": paragraph.suStatLinkStyle === "button",
-              "hocus:text-white border-white text-white": whiteText,
+              "type-0 rounded-2xl border border-black px-18 py-9": paragraph.suStatLinkStyle === "button",
+              "hocus:text-white rs-px-4 rs-pb-1 w-full rounded-[3.5rem] rounded-t-none border-white bg-black/80 text-white sm:w-fit":
+                whiteText,
               "mx-auto": paragraph.suStatCentered,
             })
           )}
