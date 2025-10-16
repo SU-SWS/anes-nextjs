@@ -116,7 +116,7 @@ const StatCardParagraph = ({paragraph, ...props}: Props) => {
               end={parseFloat(statMatches[1])}
               prefix={prefix}
               suffix={(statMatches && statMatches[2]) || undefined}
-              className={clsx("text-palo-alto type-6 font-bold", {
+              className={clsx("text-palo-alto-light type-6 font-bold", {
                 "text-cardinal-red": allowTextColors && paragraph.suStatStatColor?.color === "8c1515",
                 "text-plum": allowTextColors && paragraph.suStatStatColor?.color === "620059",
                 "text-lagunita": allowTextColors && paragraph.suStatStatColor?.color === "007c92",
