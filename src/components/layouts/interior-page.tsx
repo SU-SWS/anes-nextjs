@@ -22,7 +22,7 @@ const InteriorPage = async ({children, currentPath, menuItems, ...props}: Props)
   const subTree = topMenuItem ? topMenuItem.children : []
 
   return (
-    <div {...props} className={twMerge("centered flex gap-20", props.className)}>
+    <div {...props} className={twMerge("centered rs-mt-7 rs-mb-10", props.className)}>
       {(subTree.length > 1 || subTree[0]?.children) && (
         <aside className="hidden w-1/4 shrink-0 lg:block">
           <a href="#page-content" className="skiplink">

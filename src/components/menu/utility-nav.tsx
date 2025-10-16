@@ -29,7 +29,7 @@ const UtilityNav = async () => {
 
         {headerButton?.url && (
           <li className="mb-0">
-            <Button secondary href={headerButton.url} className="group font-semibold">
+            <Button outline href={headerButton.url} className="group font-semibold">
               {headerButton.title}
               {headerButton?.url.includes("search") && (
                 <span className="whitespace-nowrap">

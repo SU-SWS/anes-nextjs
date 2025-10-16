@@ -24,7 +24,7 @@ const Wysiwyg = ({html, className, ...props}: Props) => {
 
   const addMathJax = html.match(/\$\$.*\$\$/) || html.match(/\\\[.*\\\]/) || html.match(/\\\(.*\\\)/)
   return (
-    <div className={twMerge("wysiwyg", className)} {...props}>
+    <div className={twMerge("wysiwyg font-merriweather", className)} {...props}>
       {addMathJax && <Mathjax />}
       {formatHtml(html)}
     </div>
@@ -63,7 +63,7 @@ const options: HTMLReactParserOptions = {
           return cleanMediaMarkup(domNode)
 
         case "p":
-          nodeProps.className = twMerge("max-w-[100ch] leading-[1.7] text-21", nodeProps.className)
+          nodeProps.className = twMerge("leading-[1.7] type-0", nodeProps.className)
           return <NodeName {...nodeProps}>{domToReact(children, options)}</NodeName>
 
         case "script":
@@ -158,7 +158,7 @@ const fixClasses = (classes?: string | boolean): string => {
     .replaceAll(" large-text ", " type-4 font-merriweather ")
     .replaceAll(
       " drop-cap ",
-      " type-2 first-letter:font-bold first-letter:type-6 first-letter:float-left first-letter:my-2 first-letter:mr-4 "
+      " type-2 first-letter:font-bold first-letter:text-60 first-letter:leading-tight first-letter:mr-4 "
     )
     .replaceAll(/ tablesaw[\w-] /g, " ")
   return twMerge(classes)

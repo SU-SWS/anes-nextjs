@@ -5,7 +5,7 @@ import ActionLink from "@components/elements/action-link"
 import Button from "@components/elements/button"
 import {LinkProps as NextLinkProps} from "next/dist/client/link"
 import {ArrowUpRightIcon} from "@heroicons/react/16/solid"
-import twMerge from "@lib/utils/twMerge"
+import clsx from "clsx"
 
 export type LinkProps = HtmlHTMLAttributes<HTMLAnchorElement | HTMLButtonElement> &
   NextLinkProps & {
@@ -40,7 +40,7 @@ const DrupalLink = ({href, showExtLinkIcon, className, children, ...props}: Link
 
   if (className?.includes("link--action")) {
     return (
-      <ActionLink href={href} className={className?.replaceAll("link--action", "")} {...props}>
+      <ActionLink href={href} className={clsx(className?.replaceAll("link--action", ""))} {...props}>
         {children}
       </ActionLink>
     )
@@ -68,14 +68,24 @@ const DrupalLink = ({href, showExtLinkIcon, className, children, ...props}: Link
   }
 
   return (
-    <Link href={href} className={twMerge("group", className)} {...props}>
+    <Link
+      href={href}
+      className={clsx(
+        "group",
+        {
+          "text-palo-alto-dark hocus:underline font-semibold no-underline": !className?.includes("btn"),
+        },
+        className
+      )}
+      {...props}
+    >
       {children}
       {href.startsWith("mailto") && <EnvelopeIcon width={20} className="ml-4 inline-block" />}
 
       {externalLink && (
         <ArrowUpRightIcon
           height={20}
-          className="group-hocus-visible:-translate-y-1 group-hocus-visible:translate-x-1 ml-2 inline-block transition-all"
+          className="group-hocus-visible:-translate-y-3 group-hocus-visible:translate-x-1 ml-2 inline-block transition-all"
         />
       )}
     </Link>

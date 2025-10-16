@@ -23,6 +23,10 @@ type Props = HtmlHTMLAttributes<HTMLAnchorElement | HTMLButtonElement> & {
    */
   secondary?: boolean
   /**
+   * Display a outline styled button.
+   */
+  outline?: boolean
+  /**
    * Center the button in the container.
    */
   centered?: boolean
@@ -49,23 +53,26 @@ export const Button = ({
   buttonElem = false,
   big = false,
   secondary = false,
+  outline = false,
   centered = false,
   children,
   className,
   ...props
 }: Props) => {
-  const standardClasses = clsx("btn transition rounded-[1.5rem]", {
-    "flex items-center w-fit mx-auto": centered,
-    "inline-block text-center w-fit": !centered,
-    "btn--big  text-5xl text-white hocus:text-white bg-palo-alto-light hocus:bg-black no-underline hocus:underline py-6 px-12 font-normal":
-      big && !secondary,
-    "bg-palo-alto-light font-normal text-white hocus:bg-black hocus:text-white rs-py-neg1 rs-px-1 no-underline hocus:underline":
-      !big && !secondary,
-    "btn--secondary text-palo-alto-light border-2 border-palo-alto-light hocus:border-black no-underline hocus:bg-palo-alto-dark hocus:text-white hocus:underline rs-py-neg1 rs-px-1 font-normal":
-      !big && secondary,
-    " btn--big btn--secondary text-5xl text-palo-alto-dark border-2 border-palo-alto-dark hocus:border-black no-underline hocus:underline py-6 px-12 font-normal":
-      big && secondary,
-  })
+  const standardClasses = clsx(
+    "btn transition leading-snug rounded-[1.5rem] font-lato font-normal rs-py-neg1 rs-px-1",
+    {
+      "flex items-center w-fit mx-auto": centered,
+      "inline-block text-center w-fit": !centered,
+      "btn--big text-5xl": big,
+      "bg-white/25 backdrop-blur-[2.1rem] shadow-glass text-palo-alto-dark font-normal text-palo-alto-dark hocus:bg-white no-underline hocus:underline":
+        !secondary && !outline,
+      "btn--secondary bg-palo-alto-light font-normal text-white hocus:bg-black hocus:text-white no-underline hocus:underline":
+        secondary,
+      "btn--outline text-palo-alto-light border-2 border-palo-alto-light hocus:border-black no-underline hocus:bg-palo-alto-dark hocus:text-white hocus:underline  font-normal":
+        outline,
+    }
+  )
 
   if (!href || buttonElem) {
     return (
