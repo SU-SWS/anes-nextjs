@@ -18,7 +18,7 @@ export const ImageBannerScrollingCard = ({overlayPosition, children, button, ...
       animation="slideUp"
       {...props}
       className={twMerge(
-        "cc relative z-10 -mt-[90vh] mb-50 w-full text-white sm:w-2/3 md:w-1/2 md:p-0",
+        "cc relative z-10 -mt-[90vh] mb-50 w-full text-white sm:w-3/4 md:w-1/2 md:p-0",
         clsx({
           "right-0 items-end md:mx-50 md:mr-50 md:ml-auto": overlayPosition === "right",
           "left-0 md:mx-50 md:mr-auto md:ml-50": overlayPosition !== "right",
