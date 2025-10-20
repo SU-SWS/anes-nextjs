@@ -2,7 +2,6 @@
 
 import {useEffect, useRef, useState} from "react"
 import {motion, useInView, useMotionValue, useSpring, useReducedMotion} from "motion/react"
-import {useComponentAnimation} from "@hooks/useComponentAnimation"
 
 type CountUpProps = {
   end: number
@@ -26,14 +25,10 @@ const CountUpNumber = ({
 }: CountUpProps) => {
   const prefersReducedMotion = useReducedMotion()
 
-  // Check if animations are enabled for this component
-  const {isEnabled} = useComponentAnimation()
-  const isAnimationEnabled = isEnabled("statCard")
-
   const ref = useRef<HTMLSpanElement>(null)
   const motionValue = useMotionValue(start)
   const springValue = useSpring(motionValue, {
-    duration: prefersReducedMotion || !isAnimationEnabled ? 0 : duration * 1000,
+    duration: prefersReducedMotion ? 0 : duration * 1000,
     bounce: 0,
   })
   const [displayValue, setDisplayValue] = useState(start)
