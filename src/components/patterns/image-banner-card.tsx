@@ -1,5 +1,6 @@
 import AnimateInView from "@components/elements/animate/animate-in-view"
 import Button from "@components/elements/button"
+import CardFlourish from "@components/images/card-flourish"
 import {Link, Maybe} from "@lib/gql/__generated__/drupal.d"
 import clsx from "clsx"
 import React, {HtmlHTMLAttributes} from "react"
@@ -48,18 +49,12 @@ export const ImageBannerCard = ({overlayPosition, children, button, ...props}: P
               {button.title}
             </Button>
           </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="50"
-            height="50"
-            viewBox="1 0 50 50"
+          <CardFlourish
             className={clsx("hidden aspect-1/1 h-35 w-35 shrink-0 fill-black/80 sm:block", {
               "order-first rotate-90": overlayPosition === "right",
               "rotate-0": overlayPosition !== "right",
             })}
-          >
-            <path d="M50.7969 0C23.1826 -1.17772e-06 0.796878 22.3858 0.796877 50L0.796875 2.18557e-06L50.7969 0Z" />
-          </svg>
+          />
         </div>
       )}
     </AnimateInView>
