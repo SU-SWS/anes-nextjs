@@ -17,8 +17,9 @@ const TwoColumn = ({items, config}: Props) => {
   return (
     <div
       className={twMerge(
-        "gutters mb-32 grid gap-10 @7xl:grid-cols-2 @7xl:gap-20",
+        "gutters mb-32 grid gap-25 @7xl:gap-50",
         clsx({
+          "@7xl:grid-cols-2": !config?.column_widths,
           "@7xl:grid-cols-1-2": config?.column_widths === "33-67",
           "@7xl:grid-cols-2-1": config?.column_widths === "67-33",
           "px-5 pt-20 pb-20": !!config?.bg_color,
