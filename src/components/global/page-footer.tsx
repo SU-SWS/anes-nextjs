@@ -17,7 +17,7 @@ const PageFooter = ({...props}: Props) => {
       <SuperFooter />
       <LocalFooter />
 
-      <div className="bg-black pb-50 text-white">
+      <div className="bg-black pb-50 font-sans text-white">
         <div className="centered mx-auto w-full xl:max-w-1130">
           <div className="text-16 flex flex-col justify-between gap-10 pt-24 pb-12 lg:flex-row lg:gap-50">
             <div className="shrink-0 font-semibold">
@@ -54,7 +54,7 @@ const PageFooter = ({...props}: Props) => {
             </ul>
           </div>
           <div className="mr-142 mb-18 w-314 max-lg:pt-30 lg:ml-auto lg:w-400 [&_a]:text-white [&_a]:underline [&_a:hocus]:text-white">
-            <h4 className="text-21 leading-cozy mt-14 mb-0">Non-Discrimination</h4>
+            <h4 className="text-21 leading-cozy mt-14 mb-0 font-sans">Non-Discrimination</h4>
             <p className="text-16 mb-0 font-semibold">
               Stanford complies with all applicable civil rights laws and does not engage in illegal preferences or
               discrimination.
