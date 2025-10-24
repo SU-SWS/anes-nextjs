@@ -2,11 +2,12 @@ import React, {HtmlHTMLAttributes} from "react"
 import {ParagraphStanfordBanner} from "@lib/gql/__generated__/drupal.d"
 import {H2, H3, H4} from "@components/elements/headers"
 import Wysiwyg from "@components/elements/wysiwyg"
-import Button from "@components/elements/button"
 import {getParagraphBehaviors} from "@components/paragraphs/get-paragraph-behaviors"
 import twMerge from "@lib/utils/twMerge"
-import HeroBanner from "@components/patterns/hero-banner"
 import {BannerParagraphBehaviors} from "@lib/drupal/drupal-jsonapi.d"
+import ImageBanner from "@components/patterns/image-banner"
+import {ImageBannerCard} from "@components/patterns/image-banner-card"
+import {ImageBannerScrollingCard} from "@components/patterns/image-banner-scrolling-card"
 
 type Props = HtmlHTMLAttributes<HTMLDivElement> & {
   paragraph: ParagraphStanfordBanner
@@ -24,18 +25,22 @@ const BannerParagraph = ({paragraph, eagerLoadImage, ...props}: Props) => {
   let headerClasses = headerTagChoice[1]?.replace(".", " ").replace("su-font-splash", "type-3 font-bold") || ""
   if (behaviors.hero_pattern?.hide_heading) headerClasses += " sr-only"
 
+  const isScrolly = paragraph.suBannerBody?.processed
+  const CardOverlay = isScrolly ? ImageBannerScrollingCard : ImageBannerCard
+
   return (
-    <HeroBanner
+    <ImageBanner
       {...props}
       aria-labelledby={paragraph.suBannerHeader ? paragraph.uuid : undefined}
       imageUrl={paragraph.suBannerImage?.mediaImage.url}
       imageAlt={paragraph.suBannerImage?.mediaImage.alt}
       isSection={!!paragraph.suBannerHeader && headerTag !== "div"}
+      isScrolly={isScrolly}
       overlayPosition={behaviors.hero_pattern?.overlay_position}
       eagerLoadImage={eagerLoadImage}
     >
       {hasCard && (
-        <>
+        <CardOverlay button={paragraph.suBannerButton}>
           {paragraph.suBannerHeader && (
             <>
               {headerTag === "h2" && (
@@ -62,13 +67,9 @@ const BannerParagraph = ({paragraph, eagerLoadImage, ...props}: Props) => {
           )}
 
           <Wysiwyg html={paragraph.suBannerBody?.processed} className="type-0" />
-
-          {paragraph.suBannerButton?.url && (
-            <Button href={paragraph.suBannerButton.url}>{paragraph.suBannerButton.title}</Button>
-          )}
-        </>
+        </CardOverlay>
       )}
-    </HeroBanner>
+    </ImageBanner>
   )
 }
 export default BannerParagraph
