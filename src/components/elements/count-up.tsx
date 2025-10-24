@@ -50,12 +50,17 @@ const CountUpNumber = ({
     }
   }, [motionValue, end, isInView])
 
-  const formattedValue = decimals > 0 ? displayValue.toFixed(decimals) : Math.floor(displayValue).toString()
+  const numericValue = decimals > 0 ? displayValue : Math.floor(displayValue)
+  const formattedValue = decimals > 0 ? numericValue.toFixed(decimals) : numericValue.toString()
+  const formattedValueWithCommas = Intl.NumberFormat(undefined, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  }).format(Number(formattedValue))
 
   return (
     <motion.span ref={ref} className={className} {...props}>
       {prefix}
-      {formattedValue}
+      {formattedValueWithCommas}
       {suffix}
     </motion.span>
   )
