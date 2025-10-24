@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: process.env.CI !== "true",
   },
   images: {
+    dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
         // Allow any stanford domain for images, but require https.
