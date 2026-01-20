@@ -35,39 +35,58 @@ const CardParagraph = ({paragraph, ...props}: Props) => {
       imageAlt={image?.alt}
       videoUrl={videoUrl}
       isArticle={!!paragraph.suCardHeader && headerTag !== "div"}
+      showFlourish={behaviors.su_card_styles?.visual_corner_chip}
     >
-      {paragraph.suCardHeader && (
-        <>
-          {headerTag === "h2" && (
-            <H2 id={paragraph.uuid} className={headerClasses}>
-              {paragraph.suCardHeader}
-            </H2>
-          )}
-          {headerTag === "h3" && (
-            <H3 id={paragraph.uuid} className={headerClasses}>
-              {paragraph.suCardHeader}
-            </H3>
-          )}
-          {headerTag === "h4" && (
-            <H4 id={paragraph.uuid} className={headerClasses}>
-              {paragraph.suCardHeader}
-            </H4>
-          )}
-          {headerTag === "div" && <div className={headerClasses}>{paragraph.suCardHeader}</div>}
-        </>
-      )}
+      {paragraph.suCardHeader &&
+        (() => {
+          const content =
+            !paragraph.suCardLink?.title && paragraph.suCardLink?.url ? (
+              <ActionLink href={paragraph.suCardLink.url}>{paragraph.suCardHeader}</ActionLink>
+            ) : (
+              paragraph.suCardHeader
+            )
+
+          switch (headerTag) {
+            case "h2":
+              return (
+                <H2 id={paragraph.uuid} className={headerClasses}>
+                  {content}
+                </H2>
+              )
+            case "h3":
+              return (
+                <H3 id={paragraph.uuid} className={headerClasses}>
+                  {content}
+                </H3>
+              )
+            case "h4":
+              return (
+                <H4 id={paragraph.uuid} className={headerClasses}>
+                  {content}
+                </H4>
+              )
+            case "div":
+              return <div className={headerClasses}>{content}</div>
+            default:
+              return null
+          }
+        })()}
 
       {paragraph.suCardSuperHeader && <div className="order-first font-semibold">{paragraph.suCardSuperHeader}</div>}
 
       <Wysiwyg html={paragraph.suCardBody?.processed} />
 
-      {paragraph.suCardLink?.url && (
+      {paragraph.suCardLink?.title && paragraph.suCardLink?.url && (
         <>
           {behaviors.su_card_styles?.link_style === "action" && (
-            <ActionLink href={paragraph.suCardLink.url}>{paragraph.suCardLink.title}</ActionLink>
+            <ActionLink className="mt-34" href={paragraph.suCardLink.url}>
+              {paragraph.suCardLink.title}
+            </ActionLink>
           )}
           {behaviors.su_card_styles?.link_style !== "action" && (
-            <Button href={paragraph.suCardLink.url}>{paragraph.suCardLink.title}</Button>
+            <Button className="mt-34" href={paragraph.suCardLink.url}>
+              {paragraph.suCardLink.title}
+            </Button>
           )}
         </>
       )}

@@ -9,6 +9,7 @@
   --breakpoint-3xl: 1600px;
 
   /* Container sizes */
+  --container-7xl: 70rem;
   --container-8xl: 80rem;
   --container-9xl: 90rem;
   --container-10xl: 100rem;

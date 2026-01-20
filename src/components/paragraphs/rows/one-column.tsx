@@ -16,7 +16,7 @@ const OneColumn = ({items, config, className, ...props}: Props) => {
       {...props}
       className={twMerge(
         className,
-        clsx("@container mb-32 space-y-16", {
+        clsx("@container mb-32 space-y-40", {
           "px-5 pt-20 pb-20": !!config?.bg_color,
           "pt-0": config?.top_padding === "none",
           "pt-40": config?.top_padding === "more",
